@@ -2,6 +2,8 @@
 
 #include "../Inputs/Includes.h"
 
+#include "../Includes.h"
+
 
 //---------------------------------------------------------------------------------------------
 GameApplication::GameApplication()
@@ -43,9 +45,9 @@ void GameApplication::Init( HWND a_handle )
 	RECT rc;
 	GetClientRect(a_handle, &rc);
 
-/*	RhiManager::CreateInstance();
+	RhiManager::CreateInstance();
 	RhiManager::GetInstance()->Init( a_handle ,  rc.right - rc.left , rc.bottom - rc.top  );
-*/
+
 	InputManager::CreateInstance();
 
 	// perform custom inits
@@ -83,10 +85,10 @@ void GameApplication::PerformUpdates()
 //---------------------------------------------------------------------------------------------
 void GameApplication::PerformDraw()
 {
-//	RhiManager::GetInstance()->BeginFrame();
+	RhiManager::GetInstance()->BeginFrame();
 
 	OnDraw();
 
-//	RhiManager::GetInstance()->EndFrame();
+	RhiManager::GetInstance()->EndFrame();
 }
 //---------------------------------------------------------------------------------------------

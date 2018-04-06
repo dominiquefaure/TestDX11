@@ -16,6 +16,21 @@
     <Filter Include="Inputs">
       <UniqueIdentifier>{22f5a35d-d935-4243-9ea6-8a83d3b6e9f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RHI">
+      <UniqueIdentifier>{5d1192e4-7544-47f7-abff-502c83eddd9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RHI\DirectX11">
+      <UniqueIdentifier>{2a64781d-bfaf-44fd-9b1c-35e9bcce2180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RHI\DirectX11\Buffers">
+      <UniqueIdentifier>{5c119605-2d2e-4c70-91a9-0a0c05a7c003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RHI\DirectX11\Context">
+      <UniqueIdentifier>{9d00a3ec-ad09-4c8a-8bfa-88eb356e861f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RHI\DirectX11\StateObjects">
+      <UniqueIdentifier>{84d98df0-a1d4-4ea3-b65c-1c50a7514979}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -54,6 +69,61 @@
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h">
       <Filter>Inputs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\RhiManager.h">
+      <Filter>RHI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\RhiWrapper.h">
+      <Filter>RHI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\RhiEnums.h">
+      <Filter>RHI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.h">
+      <Filter>RHI\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\IncludesDX11.h">
+      <Filter>RHI\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.h">
+      <Filter>RHI\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.h">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.h">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.h">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.h">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\Includes.h">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.h">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h">
+      <Filter>RHI\DirectX11\StateObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h">
+      <Filter>RHI\DirectX11\StateObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\Includes.h">
+      <Filter>RHI\DirectX11\StateObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Includes.h">
+      <Filter>RHI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -68,5 +138,67 @@
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp">
       <Filter>Inputs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp">
+      <Filter>RHI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp">
+      <Filter>RHI\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.cpp">
+      <Filter>RHI\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.cpp">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.cpp">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.cpp">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.cpp">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.cpp">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp">
+      <Filter>RHI\DirectX11\StateObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp">
+      <Filter>RHI\DirectX11\StateObjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
+      <Filter>RHI</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.inl">
+      <Filter>RHI\DirectX11</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.inl">
+      <Filter>RHI\DirectX11</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.inl">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.inl">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.inl">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.inl">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.inl">
+      <Filter>RHI\DirectX11\Context</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.inl">
+      <Filter>RHI\DirectX11\StateObjects</Filter>
+    </None>
   </ItemGroup>
 </Project>

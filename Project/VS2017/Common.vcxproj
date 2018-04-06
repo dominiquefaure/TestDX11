@@ -27,16 +27,57 @@
     <ClInclude Include="..\..\Sources\Common\Core\CoreIncludes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Core\DesignPatterns\Singleton.h" />
+    <ClInclude Include="..\..\Sources\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputManager.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\KeyboardDevice.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\IncludesDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\RhiEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\RhiManager.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\RhiWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\GameApplication.cpp" />
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\RhiManager.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9BE0670F-D0DA-456D-863B-47F6AFD3EEF4}</ProjectGuid>
@@ -54,20 +95,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
