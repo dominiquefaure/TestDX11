@@ -1,0 +1,34 @@
+#ifndef __INPUTS_INCLUDE_MACROS_H__
+#define __INPUTS_INCLUDE_MACROS_H__
+
+
+enum InputState
+{
+	INPUT_STATE_JUST_RELEASED = 0,
+	INPUT_STATE_RELEASED,
+	INPUT_STATE_JUST_PRESSED,
+	INPUT_STATE_PRESSED,
+};
+
+enum KeyboardInputs
+{
+	KEY_UP	=	0,
+	KEY_DOWN,
+	KEY_LEFT,
+	KEY_RIGHT,
+	KEY_SPACE,
+
+	KEY_HOME,
+	KEY_END,
+
+
+	KEY_A,
+	KEY_D,
+	KEY_S,
+	KEY_W,
+
+
+	KEY_COUNT,
+};
+
+#endif
