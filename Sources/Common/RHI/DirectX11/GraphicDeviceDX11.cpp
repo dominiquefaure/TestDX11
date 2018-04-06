@@ -300,3 +300,35 @@ IndexBufferDX11* GraphicDeviceDX11::CreateIndexBuffer( RhiBufferUsage a_usage , 
 	return t_indexBuffer;
 }
 //-------------------------------------------------------------------------------------------------
+
+
+
+
+//////////////
+// Shaders Methods
+/////////////
+
+
+//-------------------------------------------------------------------------------------------------
+VertexShaderDX11* GraphicDeviceDX11::CreateVertexShader( ShaderByteCodeDX11& a_byteCode )
+{
+	VertexShaderDX11* t_shader								=	new VertexShaderDX11();
+
+	HRESULT t_result										=	m_d3dDevice->CreateVertexShader( a_byteCode.GetByteCode() , a_byteCode.GetSize() , nullptr , &( t_shader->m_shader ) );
+	assert( t_result == S_OK );
+
+	return t_shader;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+PixelShaderDX11* GraphicDeviceDX11::CreatePixelShader( ShaderByteCodeDX11& a_byteCode )
+{
+	PixelShaderDX11* t_shader								=	new PixelShaderDX11();
+
+	HRESULT t_result										=	m_d3dDevice->CreatePixelShader( a_byteCode.GetByteCode() , a_byteCode.GetSize() , nullptr , &( t_shader->m_shader ) );
+	assert( t_result == S_OK );
+
+	return t_shader;
+}
+//-------------------------------------------------------------------------------------------------

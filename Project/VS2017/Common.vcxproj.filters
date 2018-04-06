@@ -31,6 +31,12 @@
     <Filter Include="RHI\DirectX11\StateObjects">
       <UniqueIdentifier>{84d98df0-a1d4-4ea3-b65c-1c50a7514979}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RHI\DirectX11\Shaders">
+      <UniqueIdentifier>{80c48978-d8b3-4957-bc19-f45b35132f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\IO">
+      <UniqueIdentifier>{4de39819-ca2b-450f-b54f-3416d0a68bfa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -124,6 +130,30 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Includes.h">
       <Filter>RHI</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\BaseShaderDX11.h">
+      <Filter>RHI\DirectX11\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\VertexShaderDX11.h">
+      <Filter>RHI\DirectX11\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\PixelShaderDX11.h">
+      <Filter>RHI\DirectX11\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\ShaderByteCodeDX11.h">
+      <Filter>RHI\DirectX11\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\Includes.h">
+      <Filter>RHI\DirectX11\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\FileSystem.h">
+      <Filter>Core\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\Includes.h">
+      <Filter>Core\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\FileHandle.h">
+      <Filter>Core\IO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -171,6 +201,15 @@
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp">
       <Filter>RHI\DirectX11\StateObjects</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Shaders\ShaderByteCodeDX11.cpp">
+      <Filter>RHI\DirectX11\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp">
+      <Filter>Core\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp">
+      <Filter>Core\IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -199,6 +238,9 @@
     </None>
     <None Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.inl">
       <Filter>RHI\DirectX11\StateObjects</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl">
+      <Filter>Core\IO</Filter>
     </None>
   </ItemGroup>
 </Project>

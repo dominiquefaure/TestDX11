@@ -27,6 +27,9 @@
     <ClInclude Include="..\..\Sources\Common\Core\CoreIncludes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Core\DesignPatterns\Singleton.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\FileHandle.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\FileSystem.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
@@ -42,6 +45,11 @@
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\IncludesDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\BaseShaderDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\PixelShaderDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\ShaderByteCodeDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\VertexShaderDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h" />
@@ -54,6 +62,8 @@
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\GameApplication.cpp" />
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp" />
@@ -63,12 +73,14 @@
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Shaders\ShaderByteCodeDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.inl" />

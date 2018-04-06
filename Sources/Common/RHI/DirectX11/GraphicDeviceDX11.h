@@ -14,6 +14,8 @@
 #include "Context/GraphicContextDX11.h"
 
 #include "StateObjects/StateObjectsManagerDX11.h"
+#include "Shaders/Includes.h"
+
 
 // Inernal structure to save DX parameters associed to a ShaderUsage enum
 struct BufferUsageParams
@@ -92,6 +94,20 @@ public:
 	*/
 	IndexBufferDX11* CreateIndexBuffer( RhiBufferUsage a_usage , TUint32 a_indexCount , RhiIndexBufferType a_type , void* a_initialDatas = NULL );
 
+
+	/*
+	* Create a Vertex Shader from compiled ByteCode
+	*
+	* @param a_byteCode :	Object that contain the compiled byte code for the shader
+	*/
+	VertexShaderDX11* CreateVertexShader( ShaderByteCodeDX11& a_byteCode );
+
+	/*
+	* Create a Pixel Shader from compiled ByteCode
+	*
+	* @param a_byteCode :	Object that contain the compiled byte code for the shader
+	*/
+	PixelShaderDX11* CreatePixelShader( ShaderByteCodeDX11& a_byteCode );
 
 
 private:

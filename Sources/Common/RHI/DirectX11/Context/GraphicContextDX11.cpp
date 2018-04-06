@@ -4,6 +4,9 @@
 #include "../SwapChainDX11.h"
 #include "../GraphicDeviceDX11.h"
 
+#include "../Shaders/Includes.h"
+
+
 #ifdef _DEBUG
 #include "GraphicContextDX11.inl"
 #endif
@@ -99,7 +102,27 @@ void GraphicContextDX11::SetPrimitiveType( RhiPrimitiveType a_type )
 }
 //---------------------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetVertexShader( VertexShaderDX11* a_shader )
+{
+	m_deviceContext->VSSetShader( a_shader->GetShader() , 0, 0 );
 
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetPixelShader( PixelShaderDX11* a_shader )
+{
+	m_deviceContext->PSSetShader( a_shader->GetShader() , 0, 0 );
+}
+//---------------------------------------------------------------------------------------------------------
+
+
+
+
+//////////
+//// Draw Methods
+//////////
 
 //---------------------------------------------------------------------------------------------------------
 void GraphicContextDX11::DrawPrimitive( int a_primitiveCount , int a_startIndex )

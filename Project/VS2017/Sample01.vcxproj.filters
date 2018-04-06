@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{37631073-6594-4087-881c-aa63325a55c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinResources">
       <UniqueIdentifier>{17481700-d98f-45b0-9ba7-913cfff68ff9}</UniqueIdentifier>
     </Filter>
@@ -33,13 +30,5 @@
     <Image Include="..\..\Sources\Sample01\WinResources\Sample1.ico">
       <Filter>WinResources</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="..\..\Sources\Sample01\Shaders\SimplePS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="..\..\Sources\Sample01\Shaders\SimpleVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>

@@ -15,6 +15,10 @@
 class GraphicDeviceDX11;
 class SwapchainDX11;
 
+class VertexShaderDX11;
+class PixelShaderDX11;
+
+
 class GraphicContextDX11
 {
 
@@ -57,6 +61,21 @@ public:
 	* @param a_type		The Type of primitive to use for next drawing
 	*/
 	void SetPrimitiveType( RhiPrimitiveType a_type );
+
+
+	/*
+	* set the VertexShader to use
+	*
+	* @param a_shader	The vertexShader to use
+	*/
+	void SetVertexShader( VertexShaderDX11* a_shader );
+
+	/*
+	* set the PixelShader to use
+	*
+	* @param a_shader	The PixelShader to use
+	*/
+	void SetPixelShader( PixelShaderDX11* a_shader );
 
 
 	//////

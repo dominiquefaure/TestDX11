@@ -86,7 +86,7 @@ void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
 
 
 
-	float t_vertexSize = sizeof( TriangleVertice );
+	int t_vertexSize = sizeof( TriangleVertice );
 
 
 	m_vertexBuffer											=	a_device->CreateVertexBuffer( RHI_BUFFER_USAGE_IMMUTABLE ,
@@ -100,24 +100,21 @@ void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
 //---------------------------------------------------------------------------------------------
 void Sample::LoadVertexShader( RhiGraphicDevice* a_device )
 {
-	std::ifstream t_vertexShaderFile(  "SimpleVS.cso" , std::ios::binary);
-	std::vector<char> t_vertexShaderData = { std::istreambuf_iterator<char>(t_vertexShaderFile), std::istreambuf_iterator<char>() };
+	ShaderByteCode t_byteCode;
+	t_byteCode.CompileFromFile( VERTEX_SHADER , "SimpleVS.hlsl" );
 
+	m_vertexShader											=	a_device->CreateVertexShader( t_byteCode );
 
-	HRESULT t_result										=	a_device->GetD3DDevice()->CreateVertexShader(	t_vertexShaderData.data() ,
-																												t_vertexShaderData.size() ,
-																												nullptr ,
-																												&m_vertexShader );
 	D3D11_INPUT_ELEMENT_DESC t_vertexLayout[]
 	{
 		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 	
 	};
-	t_result										=	a_device->GetD3DDevice()->CreateInputLayout( t_vertexLayout,
+	HRESULT t_result										=	a_device->GetD3DDevice()->CreateInputLayout( t_vertexLayout,
 																											2,
-																											t_vertexShaderData.data(),
-																											t_vertexShaderData.size(),
+																											t_byteCode.GetByteCode(),
+																											t_byteCode.GetSize(),
 																											&m_inputLayout);
 
 }
@@ -126,15 +123,10 @@ void Sample::LoadVertexShader( RhiGraphicDevice* a_device )
 //---------------------------------------------------------------------------------------------
 void Sample::LoadPixelShader( RhiGraphicDevice* a_device )
 {
-	std::ifstream t_pixelShaderFile(  "SimplePS.cso" , std::ios::binary);
-	std::vector<char> t_pixelShaderData = { std::istreambuf_iterator<char>(t_pixelShaderFile), std::istreambuf_iterator<char>() };
+	ShaderByteCode t_byteCode;
+	t_byteCode.CompileFromFile( PIXEL_SHADER , "SimplePS.hlsl" );
 
-	HRESULT t_result										=	a_device->GetD3DDevice()->CreatePixelShader(	t_pixelShaderData.data() ,
-																												t_pixelShaderData.size() ,
-																												nullptr ,
-																												&m_pixelShader );
-
-
+	m_pixelShader											=	a_device->CreatePixelShader( t_byteCode );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -165,8 +157,8 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
 	ID3D11DeviceContext* t_renderContext					=	a_context->GetContext();
 
-	t_renderContext->VSSetShader( m_vertexShader , 0, 0 );
-	t_renderContext->PSSetShader( m_pixelShader , 0, 0 );
+	a_context->SetVertexShader( m_vertexShader  );
+	a_context->SetPixelShader( m_pixelShader  );
 	t_renderContext->IASetInputLayout( m_inputLayout );
 
 	a_context->SetPrimitiveType( RHI_PRIMITIVE_TYPE_TRIANGLE_LIST );

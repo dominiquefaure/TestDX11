@@ -53,4 +53,11 @@ enum RhiCullingMode
 	RHI_CULLING_MODE_BACK	=	3
 };
 
+
+enum RhiShaderType
+{
+	VERTEX_SHADER = 0,
+	PIXEL_SHADER
+};
+
 #endif

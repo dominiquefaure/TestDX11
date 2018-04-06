@@ -8,5 +8,6 @@
 #include "Context/Includes.h"
 #include "StateObjects/Includes.h"
 
+#include "Shaders/Includes.h"
 
 #endif
