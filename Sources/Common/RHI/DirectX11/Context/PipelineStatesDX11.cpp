@@ -2,6 +2,8 @@
 
 #include "../StateObjects/StateObjectsManagerDX11.h"
 
+#include "../Shaders/Includes.h"
+
 #ifdef _DEBUG
 #include "PipelineStatesDX11.inl"
 #endif
@@ -30,10 +32,38 @@ void PipelineStatesDX11::SetStateObjectManager( StateObjectsManagerDX11* a_manag
 void PipelineStatesDX11::Reset()
 {
 	m_rasterizerStates.SetDefault();
+	m_vertexShader											=	NULL;
+	m_pixelShader											=	NULL;
 
 	m_lastRasterizerUID										=	0;
+	m_dirtyFlags											=	0;	
 }
 //----------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------
+void PipelineStatesDX11::SetVertexShader( VertexShaderDX11* a_shader )
+{
+	if( m_vertexShader != a_shader )
+	{
+		m_vertexShader										=	a_shader;
+		m_dirtyFlags										|=	DIRTY_FLAG_VERTEX_SHADER;
+	}
+}
+//----------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------
+void PipelineStatesDX11::SetPixelShader( PixelShaderDX11* a_shader )
+{
+	if( m_pixelShader != a_shader )
+	{
+		m_pixelShader										=	a_shader;
+		m_dirtyFlags										|=	DIRTY_FLAG_PIXEL_SHADER;
+	}
+
+}
+//----------------------------------------------------------------------------------------------------
+
 
 //----------------------------------------------------------------------------------------------------
 void PipelineStatesDX11::Commit( ID3D11DeviceContext* a_context )
@@ -64,5 +94,18 @@ void PipelineStatesDX11::Commit( ID3D11DeviceContext* a_context )
 		// save the new UID
 		m_lastRasterizerUID									=	t_uid;
 	}
+
+	if( ( m_dirtyFlags & DIRTY_FLAG_VERTEX_SHADER ) == DIRTY_FLAG_VERTEX_SHADER )
+	{
+		a_context->VSSetShader( m_vertexShader->GetShader() , 0, 0 );
+	}
+
+	if( ( m_dirtyFlags & DIRTY_FLAG_PIXEL_SHADER ) == DIRTY_FLAG_PIXEL_SHADER )
+	{
+		a_context->PSSetShader( m_pixelShader->GetShader() , 0, 0 );
+	}
+
+	// reset the dirty flag
+	m_dirtyFlags											=	0;
 }
 //----------------------------------------------------------------------------------------------------

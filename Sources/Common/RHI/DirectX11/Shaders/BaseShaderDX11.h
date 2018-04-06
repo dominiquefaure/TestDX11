@@ -23,6 +23,8 @@ protected:
 		SAFE_RELEASE( m_shader );
 	}
 
+public:
+
 	T* GetShader()
 	{
 		return m_shader;

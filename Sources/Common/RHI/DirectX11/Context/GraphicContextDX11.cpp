@@ -105,15 +105,14 @@ void GraphicContextDX11::SetPrimitiveType( RhiPrimitiveType a_type )
 //---------------------------------------------------------------------------------------------------------
 void GraphicContextDX11::SetVertexShader( VertexShaderDX11* a_shader )
 {
-	m_deviceContext->VSSetShader( a_shader->GetShader() , 0, 0 );
-
+	m_pipelineStates.SetVertexShader( a_shader );
 }
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
 void GraphicContextDX11::SetPixelShader( PixelShaderDX11* a_shader )
 {
-	m_deviceContext->PSSetShader( a_shader->GetShader() , 0, 0 );
+	m_pipelineStates.SetPixelShader( a_shader );
 }
 //---------------------------------------------------------------------------------------------------------
 

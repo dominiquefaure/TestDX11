@@ -7,12 +7,21 @@
 
 
 class StateObjectsManagerDX11;
+class VertexShaderDX11;
+class PixelShaderDX11;
+
 
 /*
 * Store the Pipeline States for a Context
 */
 class PipelineStatesDX11
 {
+
+	enum dirtyFlags
+	{
+		DIRTY_FLAG_VERTEX_SHADER		=	1,
+		DIRTY_FLAG_PIXEL_SHADER			=	2,
+	};
 
 public:
 
@@ -46,8 +55,24 @@ public:
 	*/
 	FORCE_INLINE void SetCullingMode( RhiCullingMode a_mode );
 
+	/*
+	* set the VertexShader to use
+	*
+	* @param a_shader	The vertexShader to use
+	*/
+	void SetVertexShader( VertexShaderDX11* a_shader );
+
+	/*
+	* set the PixelShader to use
+	*
+	* @param a_shader	The PixelShader to use
+	*/
+	void SetPixelShader( PixelShaderDX11* a_shader );
+
 
 private:
+
+	TUint32							m_dirtyFlags;
 
 	// Last state UID
 	TUint64							m_lastRasterizerUID;
@@ -58,6 +83,9 @@ private:
 	// pointer to the RenderStateManager for quick access
 	StateObjectsManagerDX11*		m_stateObjectsManager;
 
+	// Active Shaders to use
+	VertexShaderDX11*				m_vertexShader;
+	PixelShaderDX11*				m_pixelShader;
 };
 
 // The inline is included in the Header only if not in debug mode
