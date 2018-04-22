@@ -17,6 +17,10 @@ SwapchainDX11::SwapchainDX11()
 //------------------------------------------------------------------------------
 SwapchainDX11::~SwapchainDX11()
 {
+	SAFE_RELEASE( m_renderTargetView );
+	SAFE_RELEASE( m_swapchain );
+
+	m_owner													=	NULL;
 }
 //------------------------------------------------------------------------------
 

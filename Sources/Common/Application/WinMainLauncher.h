@@ -6,7 +6,7 @@
 #include "WindowsAppConfig.h"
 #include "GameApplication.h"
 
-
+#include "../Core/CoreIncludes.h"
 
 class WinMainLauncher
 {
@@ -24,12 +24,20 @@ private:
 	BOOL Init( GameApplication* a_application , HINSTANCE a_hInstance, int a_nCmdShow );
 
 	/*
+	* Close the Application
+	*/
+	void Close();
+
+	/*
 	* Register the WNDCLASSEX Class
 	*/
 	BOOL RegisterWndClass( );
 
 
 	BOOL CreateWindowDlg( int a_nCmdShow );
+
+
+	void ProcessWindowsMessages();
 
 //// Fields
 private:
@@ -45,6 +53,8 @@ private:
 	WinAppConfig		m_config;
 
 	GameApplication*	m_application;
+
+	TBool				m_quitRequested;
 };
 
 #endif

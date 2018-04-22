@@ -48,6 +48,10 @@ void Sample::OnInit( )
 void Sample::OnClose()
 {
 	SAFE_DELETE( m_geometry );
+
+	SAFE_DELETE( m_vertexShader );
+	SAFE_DELETE( m_pixelShader );
+
 }
 //---------------------------------------------------------------------------------------------
 

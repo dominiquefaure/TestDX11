@@ -11,7 +11,7 @@ class PixelShaderDX11 : public BaseShaderDX11<ID3D11PixelShader>
 {
 	friend class GraphicDeviceDX11;
 
-protected:
+public:
 
 	PixelShaderDX11()
 	{

@@ -11,7 +11,7 @@ class VertexShaderDX11 : public BaseShaderDX11<ID3D11VertexShader>
 {
 	friend class GraphicDeviceDX11;
 
-protected:
+public:
 
 	VertexShaderDX11()
 	{

@@ -26,6 +26,8 @@ GraphicDeviceDX11::~GraphicDeviceDX11()
 {
 	SAFE_DELETE( m_mainContext );
 	SAFE_DELETE( m_swapchain );
+
+	SAFE_RELEASE( m_d3dDevice );
 }
 //-------------------------------------------------------------------------------------------------
 

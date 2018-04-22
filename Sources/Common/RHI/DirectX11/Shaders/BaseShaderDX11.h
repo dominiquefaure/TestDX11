@@ -12,7 +12,7 @@ class BaseShaderDX11
 	friend class GraphicDeviceDX11;
 	friend class GraphicContextDX11;
 
-protected:
+public:
 
 	BaseShaderDX11()
 	{

@@ -13,7 +13,7 @@ LRESULT PASCAL AppWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 WinMainLauncher::WinMainLauncher()
 {
-	
+	m_quitRequested											=	false;
 }
 //---------------------------------------------------------------------------------------------
 
@@ -127,34 +127,49 @@ int WinMainLauncher::Run( GameApplication* a_application , HINSTANCE a_hInstance
 
 //    HACCEL hAccelTable = LoadAccelerators( m_hInst , MAKEINTRESOURCE(IDC_HELLOTRIANGLE) );
 
-    // Main message loop:
-	MSG t_msg = { 0 };
-	while( t_msg.message != WM_QUIT )
-    {
-		if( PeekMessage( &t_msg, NULL, 0, 0, PM_REMOVE ) ) 
-		{
-			TranslateMessage( &t_msg );
-			DispatchMessage( &t_msg );
+	while(! m_quitRequested )
+	{
+		// ahndle all the windows messages
+		ProcessWindowsMessages();
 
-			// if the User close the window
-			if( t_msg.message == WM_QUIT )
-			{
-				break;
-			}
+		// Process a Frame
+		a_application->OnFrame();
+	}
 
-		}
-		else
-		{
-			a_application->OnFrame();
-		}
-    }
+	Close();
 
-    return (int) t_msg.wParam;
+    return 0;
 
 }
 //---------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------
+void WinMainLauncher::ProcessWindowsMessages()
+{
+    // Main message loop:
+	MSG t_msg = { 0 };
+	while(  PeekMessage( &t_msg, NULL, 0, 0, PM_REMOVE ) )
+    {
+		TranslateMessage( &t_msg );
+		DispatchMessage( &t_msg );
 
+		// if the User close the window
+		if( t_msg.message == WM_QUIT )
+		{
+			m_quitRequested									=	true;
+		}
+    }
+
+}
+//---------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+void WinMainLauncher::Close()
+{
+	// Close the App correctly
+	m_application->Close();
+}
+//---------------------------------------------------------------------------------------------
 
 //
 //  FUNCTION: AppWindowProc(HWND, UINT, WPARAM, LPARAM)

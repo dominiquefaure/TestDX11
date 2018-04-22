@@ -61,6 +61,8 @@ void GameApplication::Close()
 	// Close Application Custom data
 	OnClose();
 
+	InputManager::DestroyInstance();
+	RhiManager::DestroyInstance();
 }
 //---------------------------------------------------------------------------------------------
 
