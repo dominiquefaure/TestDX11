@@ -35,6 +35,9 @@
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputManager.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\KeyboardDevice.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.h" />
@@ -66,6 +69,7 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.cpp" />
@@ -81,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.inl" />
@@ -196,7 +201,7 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
-      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;dxguid.lib;</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;D3DCompiler.lib;dxgi.lib;dxguid.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x64</AdditionalLibraryDirectories>

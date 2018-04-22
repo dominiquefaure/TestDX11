@@ -91,7 +91,10 @@ void GraphicContextDX11::SetVertexStream( int a_index , VertexBufferDX11* a_stre
 //---------------------------------------------------------------------------------------------------------
 void GraphicContextDX11::SetIndexBuffer( IndexBufferDX11* a_indexBuffer , TUint32 a_startOffset )
 {
-	m_geometryStates.SetIndexBuffer( a_indexBuffer->GetBuffer() , a_indexBuffer->GetDxFormat() , a_startOffset );
+	if( a_indexBuffer != NULL )
+	{
+		m_geometryStates.SetIndexBuffer( a_indexBuffer->GetBuffer() , a_indexBuffer->GetDxFormat() , a_startOffset );
+	}
 }
 //---------------------------------------------------------------------------------------------------------
 

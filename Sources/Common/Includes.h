@@ -4,6 +4,7 @@
 #include "Core/CoreIncludes.h"
 
 #include "RHI/Includes.h"
+#include "Renderer/Includes.h"
 #include "Inputs/Includes.h"
 #include "Application/Includes.h"
 

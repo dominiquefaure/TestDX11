@@ -72,11 +72,10 @@ private:
 // Fields
 private:
 
-	RhiVertexBuffer*	m_vertexBuffer;
-
 	RhiVertexShader*	m_vertexShader;
 	RhiPixelShader*		m_pixelShader;
 
 	ID3D11InputLayout*	m_inputLayout;
 
+	StaticGeometry*		m_geometry;
 };

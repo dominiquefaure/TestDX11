@@ -10,6 +10,7 @@
 //---------------------------------------------------------------------------------------------
 Sample::Sample()
 {
+	m_geometry												=	NULL;
 }
 //---------------------------------------------------------------------------------------------
 
@@ -46,6 +47,7 @@ void Sample::OnInit( )
 //---------------------------------------------------------------------------------------------
 void Sample::OnClose()
 {
+	SAFE_DELETE( m_geometry );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -89,10 +91,8 @@ void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
 	int t_vertexSize = sizeof( TriangleVertice );
 
 
-	m_vertexBuffer											=	a_device->CreateVertexBuffer( RHI_BUFFER_USAGE_IMMUTABLE ,
-																								t_vertexSize * 3 ,
-																								t_vertexSize,
-																								t_vertices );
+	m_geometry												=	new StaticGeometry();
+	m_geometry->Init( a_device , RHI_PRIMITIVE_TYPE_TRIANGLE_LIST , t_vertices , t_vertexSize , 3 );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -161,12 +161,9 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 	a_context->SetPixelShader( m_pixelShader  );
 	t_renderContext->IASetInputLayout( m_inputLayout );
 
-	a_context->SetPrimitiveType( RHI_PRIMITIVE_TYPE_TRIANGLE_LIST );
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 
-	a_context->SetVertexStream( 0 , m_vertexBuffer );
-
-	a_context->DrawPrimitive( 3 );
+	m_geometry->Draw( a_context );
 }
 //---------------------------------------------------------------------------------------------

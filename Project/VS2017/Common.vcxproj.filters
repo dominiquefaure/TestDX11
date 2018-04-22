@@ -37,6 +37,12 @@
     <Filter Include="Core\IO">
       <UniqueIdentifier>{4de39819-ca2b-450f-b54f-3416d0a68bfa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{3964c458-9529-414d-9b64-49c9e34d59ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Geometry">
+      <UniqueIdentifier>{75f8d7e5-69d7-4d1a-825a-06f870bdbe5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -154,6 +160,15 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\FileHandle.h">
       <Filter>Core\IO</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h">
+      <Filter>Renderer\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Includes.h">
+      <Filter>Renderer\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -210,6 +225,9 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp">
       <Filter>Core\IO</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp">
+      <Filter>Renderer\Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -241,6 +259,9 @@
     </None>
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl">
       <Filter>Core\IO</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.inl">
+      <Filter>Renderer\Geometry</Filter>
     </None>
   </ItemGroup>
 </Project>
