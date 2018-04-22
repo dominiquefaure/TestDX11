@@ -58,6 +58,16 @@ public:
 	*/
 	void Draw( RhiGraphicContext* a_context );
 
+	/*
+	* Load geometry content from a File
+	*/
+	void LoadFromJSon( RhiGraphicDevice* a_device , const char* a_path );
+			
+	/*
+	* Load geometry content from a JSon node
+	*/
+	void LoadFromJSon( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
+
 // Methods
 private:
 
@@ -71,6 +81,22 @@ private:
 	*/
 	void SetIndexBuffer( RhiGraphicDevice* a_device , RhiIndexBufferType a_type , TUint32 a_count , void* a_datas );
 
+	/*
+	* try Load vertexBuffer content from Geometry root JSon node
+	*/
+	bool TryLoadVertexBuffer( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
+
+	void LoadVertexBufferContent( RhiGraphicDevice* a_device , JSonNode& a_vertexBufferNode );
+
+	/*
+	* try to Load indexBuffer content from Geometry root JSon node
+	*/
+	void TryLoadIndexBuffer( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
+
+	/*
+	* Load indexBuffer content from a JSon node storing the indexBuffer content
+	*/
+	void LoadIndexBufferContent( RhiGraphicDevice* a_device , JSonNode& a_indexBufferNode );
 
 // Fields
 private:

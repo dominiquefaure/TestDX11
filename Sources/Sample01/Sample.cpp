@@ -58,46 +58,8 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
 {
-	TriangleVertice t_vertices[ 3 ];
-
-	// Vertex 0 Position
-	t_vertices[ 0 ].x	=	0.0f;
-	t_vertices[ 0 ].y	=	0.5f;
-	t_vertices[ 0 ].z	=	0.5f;
-
-	// Vertex 0 Color
-	t_vertices[ 0 ].r	=	1.0f;
-	t_vertices[ 0 ].g	=	0.0f;
-	t_vertices[ 0 ].b	=	0.0f;
-
-	// Vertex 1 Position
-	t_vertices[ 1 ].x	=	-0.5f;
-	t_vertices[ 1 ].y	=	-0.5f;
-	t_vertices[ 1 ].z	=	0.5f;
-
-	// Vertex 1 Color
-	t_vertices[ 1 ].r	=	0.0f;
-	t_vertices[ 1 ].g	=	1.0f;
-	t_vertices[ 1 ].b	=	0.0f;
-
-	// Vertex 2 Position
-	t_vertices[ 2 ].x	=	0.5f;
-	t_vertices[ 2 ].y	=	-0.5f;
-	t_vertices[ 2 ].z	=	0.5f;
-
-	// Vertex 2 Color
-	t_vertices[ 2 ].r	=	0.0f;
-	t_vertices[ 2 ].g	=	0.0f;
-	t_vertices[ 2 ].b	=	1.0f;
-
-
-
-	int t_vertexSize = sizeof( TriangleVertice );
-
-
 	m_geometry												=	new StaticGeometry();
-	m_geometry->Init( a_device , RHI_PRIMITIVE_TYPE_TRIANGLE_LIST , t_vertices , t_vertexSize , 3 );
-
+	m_geometry->LoadFromJSon( a_device , "SolidCube.geo");
 }
 //---------------------------------------------------------------------------------------------
 

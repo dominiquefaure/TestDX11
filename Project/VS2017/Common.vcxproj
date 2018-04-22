@@ -30,6 +30,11 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\FileHandle.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\FileSystem.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonDocument.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonNode.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.h" />
     <ClInclude Include="..\..\Sources\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
@@ -67,6 +72,9 @@
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonDocument.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonNode.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
@@ -178,6 +186,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../Sources/Thirdparty</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -196,6 +205,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../Sources/Thirdparty</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -216,6 +226,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../Sources/Thirdparty</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -236,6 +247,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../Sources/Thirdparty</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
