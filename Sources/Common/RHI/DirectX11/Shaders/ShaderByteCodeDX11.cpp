@@ -50,14 +50,14 @@ int ShaderByteCodeDX11::GetSize()const
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , std::string& a_sourceCode )
+bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , std::string& a_sourceCode , const std::string& a_entryPoint )
 {
-	return Compile( a_type , a_sourceCode.c_str() , a_sourceCode.size() );
+	return Compile( a_type , a_sourceCode.c_str() , a_sourceCode.size() , a_entryPoint.c_str() );
 }
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size )
+bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size ,  const char* a_entryPoint )
 {
 	m_type													=	a_type;
 
@@ -71,7 +71,7 @@ bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , const char* a_sourceCod
 																			NULL ,
 																			NULL ,
 																			NULL ,
-																			"main",
+																			a_entryPoint,
 																			g_shaderTargetType[ a_type ].c_str(),
 																			t_compilationFlag,
 																			0,

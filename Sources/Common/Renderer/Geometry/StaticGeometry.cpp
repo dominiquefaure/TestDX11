@@ -191,7 +191,7 @@ void StaticGeometry::LoadIndexBufferContent( RhiGraphicDevice* a_device , JSonNo
 	m_isIndexed												=	true;
 
 	// Get the number of Index
-	int t_indexCount										=	a_indexBufferNode.GetInt64Property( "IndexCount" );
+	TUint64 t_indexCount									=	a_indexBufferNode.GetInt64Property( "IndexCount" );
 	int16_t* t_indexBuffer									=	new int16_t[ t_indexCount ];
 
 	// Get the Property that store the Index buffer datas

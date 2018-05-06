@@ -6,6 +6,7 @@
 
 #include "../Shaders/Includes.h"
 
+#include "../VertexLayout/Includes.h"
 
 #ifdef _DEBUG
 #include "GraphicContextDX11.inl"
@@ -119,6 +120,12 @@ void GraphicContextDX11::SetPixelShader( PixelShaderDX11* a_shader )
 }
 //---------------------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::GraphicContextDX11::SetVertexLayout( VertexLayoutDX11* a_layout )
+{
+	m_deviceContext->IASetInputLayout( a_layout->GetInputLayout() );
+}
+//---------------------------------------------------------------------------------------------------------
 
 
 

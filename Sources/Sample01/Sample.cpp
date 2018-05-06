@@ -51,7 +51,7 @@ void Sample::OnClose()
 
 	SAFE_DELETE( m_vertexShader );
 	SAFE_DELETE( m_pixelShader );
-
+	SAFE_DELETE( m_vertexLayout );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -68,20 +68,16 @@ void Sample::LoadVertexShader( RhiGraphicDevice* a_device )
 {
 	ShaderByteCode t_byteCode;
 	t_byteCode.CompileFromFile( VERTEX_SHADER , "SimpleVS.hlsl" );
-
 	m_vertexShader											=	a_device->CreateVertexShader( t_byteCode );
 
-	D3D11_INPUT_ELEMENT_DESC t_vertexLayout[]
-	{
-		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-	
-	};
-	HRESULT t_result										=	a_device->GetD3DDevice()->CreateInputLayout( t_vertexLayout,
-																											2,
-																											t_byteCode.GetByteCode(),
-																											t_byteCode.GetSize(),
-																											&m_inputLayout);
+
+
+	m_vertexLayout											=	new VertexLayoutDX11();
+
+	m_vertexLayout->PushElement( 0 , RHI_VERTEX_ELEMENT_TYPE_POSITION );
+	m_vertexLayout->PushElement( 0 , RHI_VERTEX_ELEMENT_TYPE_COLOR );
+
+	m_vertexLayout->Build( a_device );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -121,11 +117,9 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	ID3D11DeviceContext* t_renderContext					=	a_context->GetContext();
-
 	a_context->SetVertexShader( m_vertexShader  );
 	a_context->SetPixelShader( m_pixelShader  );
-	t_renderContext->IASetInputLayout( m_inputLayout );
+	a_context->SetVertexLayout( m_vertexLayout );
 
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );

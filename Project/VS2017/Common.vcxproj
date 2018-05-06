@@ -62,6 +62,9 @@
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\RhiEnums.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\RhiManager.h" />
@@ -89,6 +92,8 @@
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +107,8 @@
     <None Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.inl" />
+    <None Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -334,3 +334,17 @@ PixelShaderDX11* GraphicDeviceDX11::CreatePixelShader( ShaderByteCodeDX11& a_byt
 	return t_shader;
 }
 //-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+ID3D11InputLayout* GraphicDeviceDX11::CreateInputLayout( D3D11_INPUT_ELEMENT_DESC* a_descriptor , TUint32 a_elementcount , ShaderByteCodeDX11& a_byteCode )
+{
+	ID3D11InputLayout* t_layout								=	NULL;
+
+	HRESULT t_result										=	m_d3dDevice->CreateInputLayout( a_descriptor,
+																								a_elementcount,
+																								a_byteCode.GetByteCode(),
+																								a_byteCode.GetSize(),
+																								&t_layout );
+	return t_layout;
+}
+//-------------------------------------------------------------------------------------------------

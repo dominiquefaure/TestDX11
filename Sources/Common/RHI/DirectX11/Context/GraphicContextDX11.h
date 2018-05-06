@@ -17,7 +17,7 @@ class SwapchainDX11;
 
 class VertexShaderDX11;
 class PixelShaderDX11;
-
+class VertexLayoutDX11;
 
 class GraphicContextDX11
 {
@@ -77,6 +77,10 @@ public:
 	*/
 	void SetPixelShader( PixelShaderDX11* a_shader );
 
+	/*
+	* Set the Vertx Layout to use
+	*/
+	void SetVertexLayout( VertexLayoutDX11* a_layout );
 
 	//////
 	// Rasterizer states Methods

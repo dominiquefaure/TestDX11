@@ -25,9 +25,12 @@ struct BufferUsageParams
 };
 
 
+class VertexLayoutDX11;
+
 class GraphicDeviceDX11
 {
 	friend class SwapchainDX11;
+	friend class VertexLayoutDX11;
 
 public:
 
@@ -161,6 +164,10 @@ private:
 	void SetBufferDescriptor( D3D11_BUFFER_DESC& a_descriptor , RhiResourceBindType a_bindType, RhiBufferUsage a_usage , TUint32 a_bufferSize , TUint32 a_structuredStrideSize = 0 );
 
 
+	/*
+	* Create an input Layout
+	*/
+	ID3D11InputLayout* CreateInputLayout( D3D11_INPUT_ELEMENT_DESC* a_descriptor , TUint32 a_elementcount , ShaderByteCodeDX11& a_byteCode );
 
 private:
 

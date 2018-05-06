@@ -75,7 +75,8 @@ private:
 	RhiVertexShader*	m_vertexShader;
 	RhiPixelShader*		m_pixelShader;
 
-	ID3D11InputLayout*	m_inputLayout;
+	VertexLayoutDX11*	m_vertexLayout;
+
 
 	StaticGeometry*		m_geometry;
 };

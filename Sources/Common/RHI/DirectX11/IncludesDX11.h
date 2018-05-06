@@ -9,5 +9,6 @@
 #include "StateObjects/Includes.h"
 
 #include "Shaders/Includes.h"
+#include "VertexLayout/Includes.h"
 
 #endif

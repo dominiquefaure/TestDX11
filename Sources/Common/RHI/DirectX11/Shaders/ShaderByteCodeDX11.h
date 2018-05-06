@@ -33,12 +33,12 @@ public:
 	/*
 	* Compile the ByteCode from an HLSL string
 	*/
-	bool Compile( RhiShaderType a_type , std::string& a_sourceCode );
+	bool Compile( RhiShaderType a_type , std::string& a_sourceCode , const std::string& a_entryPoint );
 
 	/*
 	* Compile the ByteCode from an HLSL string
 	*/
-	bool Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size );
+	bool Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size , const char* a_entryPoint = "main" );
 
 	/*
 	* Compile the ByteCode, from an HLSL file
