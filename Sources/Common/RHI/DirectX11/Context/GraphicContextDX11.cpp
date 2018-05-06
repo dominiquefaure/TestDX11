@@ -123,7 +123,7 @@ void GraphicContextDX11::SetPixelShader( PixelShaderDX11* a_shader )
 //---------------------------------------------------------------------------------------------------------
 void GraphicContextDX11::GraphicContextDX11::SetVertexLayout( VertexLayoutDX11* a_layout )
 {
-	m_deviceContext->IASetInputLayout( a_layout->GetInputLayout() );
+	m_pipelineStates.SetVertexLayout( a_layout );
 }
 //---------------------------------------------------------------------------------------------------------
 

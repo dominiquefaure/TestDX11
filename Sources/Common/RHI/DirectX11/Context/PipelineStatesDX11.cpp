@@ -3,6 +3,7 @@
 #include "../StateObjects/StateObjectsManagerDX11.h"
 
 #include "../Shaders/Includes.h"
+#include "../VertexLayout/Includes.h"
 
 #ifdef _DEBUG
 #include "PipelineStatesDX11.inl"
@@ -34,6 +35,7 @@ void PipelineStatesDX11::Reset()
 	m_rasterizerStates.SetDefault();
 	m_vertexShader											=	NULL;
 	m_pixelShader											=	NULL;
+	m_vertexLayout											=	NULL;
 
 	m_lastRasterizerUID										=	0;
 	m_dirtyFlags											=	0;	
@@ -64,6 +66,17 @@ void PipelineStatesDX11::SetPixelShader( PixelShaderDX11* a_shader )
 }
 //----------------------------------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------------------------------
+void PipelineStatesDX11::SetVertexLayout( VertexLayoutDX11* a_layout )
+{
+	if( m_vertexLayout != a_layout )
+	{
+		m_vertexLayout										=	a_layout;
+		m_dirtyFlags										|=	DIRTY_FLAG_VERTEX_LAYOUT;
+	}
+
+}
+//----------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------
 void PipelineStatesDX11::Commit( ID3D11DeviceContext* a_context )
@@ -103,6 +116,11 @@ void PipelineStatesDX11::Commit( ID3D11DeviceContext* a_context )
 	if( ( m_dirtyFlags & DIRTY_FLAG_PIXEL_SHADER ) == DIRTY_FLAG_PIXEL_SHADER )
 	{
 		a_context->PSSetShader( m_pixelShader->GetShader() , 0, 0 );
+	}
+
+	if( ( m_dirtyFlags & DIRTY_FLAG_VERTEX_LAYOUT ) == DIRTY_FLAG_VERTEX_LAYOUT )
+	{
+		a_context->IASetInputLayout( m_vertexLayout->GetInputLayout() );
 	}
 
 	// reset the dirty flag

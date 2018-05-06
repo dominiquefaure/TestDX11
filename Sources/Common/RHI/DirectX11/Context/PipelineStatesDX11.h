@@ -9,7 +9,7 @@
 class StateObjectsManagerDX11;
 class VertexShaderDX11;
 class PixelShaderDX11;
-
+class VertexLayoutDX11;
 
 /*
 * Store the Pipeline States for a Context
@@ -21,6 +21,7 @@ class PipelineStatesDX11
 	{
 		DIRTY_FLAG_VERTEX_SHADER		=	1,
 		DIRTY_FLAG_PIXEL_SHADER			=	2,
+		DIRTY_FLAG_VERTEX_LAYOUT		=	4
 	};
 
 public:
@@ -69,6 +70,10 @@ public:
 	*/
 	void SetPixelShader( PixelShaderDX11* a_shader );
 
+	/*
+	* Set the vertex Layout to use
+	*/
+	void SetVertexLayout( VertexLayoutDX11* a_layout );
 
 private:
 
@@ -86,6 +91,8 @@ private:
 	// Active Shaders to use
 	VertexShaderDX11*				m_vertexShader;
 	PixelShaderDX11*				m_pixelShader;
+	VertexLayoutDX11*				m_vertexLayout;
+
 };
 
 // The inline is included in the Header only if not in debug mode
