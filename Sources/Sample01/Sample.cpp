@@ -70,7 +70,6 @@ void Sample::LoadVertexShader( RhiGraphicDevice* a_device )
 	m_vertexShader											=	a_device->CreateVertexShader( t_byteCode );
 
 
-	m_vertexLayout											=	a_device->GetVertexLayout( RHI_VERTEX_FORMAT_KEY_POSITION_COLORED );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -111,7 +110,6 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
 	a_context->SetVertexShader( m_vertexShader  );
 	a_context->SetPixelShader( m_pixelShader  );
-	a_context->SetVertexLayout( m_vertexLayout );
 
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );

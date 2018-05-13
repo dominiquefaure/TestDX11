@@ -18,7 +18,7 @@ class IndexBufferDX11;
 class VertexShaderDX11;
 class PixelShaderDX11;
 class ShaderByteCodeDX11;
-
+class VertexLayoutDX11;
 
 typedef GraphicDeviceDX11	RhiGraphicDevice;
 typedef GraphicContextDX11	RhiGraphicContext;
@@ -27,6 +27,7 @@ typedef SwapchainDX11		RhiSwapchain;
 typedef VertexBufferDX11	RhiVertexBuffer;
 typedef IndexBufferDX11		RhiIndexBuffer;
 
+typedef VertexLayoutDX11	RhiVertexLayout;
 typedef VertexShaderDX11	RhiVertexShader;
 typedef PixelShaderDX11		RhiPixelShader;
 typedef ShaderByteCodeDX11	ShaderByteCode;

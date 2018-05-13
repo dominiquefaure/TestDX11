@@ -34,6 +34,12 @@ public:
 	*/
 	FORCE_INLINE RhiPrimitiveType GetPrimityveType()const;
 
+
+	/*
+	* Get the Vertex layout used
+	*/
+	FORCE_INLINE RhiVertexLayout* GetVertexLayout()const;
+
 // Methods
 public:
 
@@ -98,6 +104,11 @@ private:
 	*/
 	void LoadIndexBufferContent( RhiGraphicDevice* a_device , JSonNode& a_indexBufferNode );
 
+	/*
+	* Load the VertexLayout from the JSon node
+	*/
+	void LoadVertexLayout( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
+
 // Fields
 private:
 
@@ -116,6 +127,8 @@ private:
 
 	// type used
 	RhiPrimitiveType		m_primitiveType;
+
+	RhiVertexLayout*		m_vertexLayout;
 
 };
 

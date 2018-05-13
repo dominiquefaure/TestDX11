@@ -75,8 +75,6 @@ private:
 	RhiVertexShader*	m_vertexShader;
 	RhiPixelShader*		m_pixelShader;
 
-	VertexLayoutDX11*	m_vertexLayout;
-
 
 	StaticGeometry*		m_geometry;
 };

@@ -71,6 +71,8 @@ void StaticGeometry::Apply( RhiGraphicContext* a_context )
 	a_context->SetPrimitiveType( m_primitiveType );
 	a_context->SetIndexBuffer( m_indexBuffer );
 	a_context->SetVertexStream( 0 , m_vertexBuffer );
+
+	a_context->SetVertexLayout( m_vertexLayout );
 }
 //-----------------------------------------------------------------------------------------------
 
@@ -115,6 +117,8 @@ void StaticGeometry::LoadFromJSon( RhiGraphicDevice* a_device , JSonNode& a_root
 	TryLoadIndexBuffer( a_device , a_rootNode );
 
 	m_primitiveType											=	(RhiPrimitiveType)a_rootNode.GetInt64Property( "PrimitiveType" , RHI_PRIMITIVE_TYPE_TRIANGLE_LIST );
+
+	LoadVertexLayout( a_device , a_rootNode );
 }
 //-----------------------------------------------------------------------------------------------
 
@@ -213,5 +217,16 @@ void StaticGeometry::LoadIndexBufferContent( RhiGraphicDevice* a_device , JSonNo
 
 	delete[] t_indexBuffer;
 
+}
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+void StaticGeometry::LoadVertexLayout( RhiGraphicDevice* a_device , JSonNode& a_rootNode )
+{
+	// Get the Layout Index
+	int t_layoutIndex										=	a_rootNode.GetInt64Property( "VertexLayout"  );
+
+	// Get the Vertex Layout
+	m_vertexLayout											=	a_device->GetVertexLayout( (RhiVertexFormatTypes)t_layoutIndex );
 }
 //-----------------------------------------------------------------------------------------------

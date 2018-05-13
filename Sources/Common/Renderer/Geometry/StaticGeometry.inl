@@ -27,3 +27,10 @@ FORCE_INLINE RhiPrimitiveType StaticGeometry::GetPrimityveType()const
 	return m_primitiveType;
 }
 //-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+FORCE_INLINE RhiVertexLayout* StaticGeometry::GetVertexLayout()const
+{
+	return m_vertexLayout;
+}
+//-----------------------------------------------------------------------------------------------
