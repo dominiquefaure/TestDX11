@@ -3,5 +3,5 @@
 
 #include "VertexElementDX11.h"
 #include "VertexLayoutDX11.h"
-
+#include "VertexLayoutManagerDX11.h"
 #endif

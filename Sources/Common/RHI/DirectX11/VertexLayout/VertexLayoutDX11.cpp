@@ -33,10 +33,7 @@ static const char g_dummyShaderFooter[] =
 VertexLayoutDX11::VertexLayoutDX11()
 {
 	m_inputLayout											=	NULL;
-
-	InitStreams( VERTEX_LAYOUT_MAX_STREAM );
-
-
+	m_streamSizes											=	NULL;
 }
 //-----------------------------------------------------------------------------------------------
 
@@ -58,6 +55,26 @@ VertexLayoutDX11::~VertexLayoutDX11()
 
 }
 //-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+void VertexLayoutDX11::Build( RhiVertexFormatTypeKey a_key , GraphicDeviceDX11* a_device )
+{
+	m_key													=	a_key;
+
+	InitStreams( VERTEX_LAYOUT_MAX_STREAM );
+
+	for( int i = 0 ; i < RHI_VERTEX_ELEMENT_TYPE_COUNT ; i ++ )
+	{
+		if( ISBITSET( a_key , i ) )
+		{
+			PushElement( 0 , (RhiVertexElementType) i );
+		}
+	}
+
+	Build( a_device );
+}
+//-----------------------------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------------------------
 void VertexLayoutDX11::InitStreams( int a_count )
@@ -87,6 +104,7 @@ void VertexLayoutDX11::PushElement( TUint32 a_slot , RhiVertexElementType a_type
 	m_elements.push_back( t_element );
 }
 //-----------------------------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------------------------
 void VertexLayoutDX11::Build( GraphicDeviceDX11* a_device )

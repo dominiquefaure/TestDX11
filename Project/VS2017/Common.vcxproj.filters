@@ -49,6 +49,9 @@
     <Filter Include="RHI\DirectX11\VertexLayout">
       <UniqueIdentifier>{ad004644-506d-48d4-b082-02a9d80b6191}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RHI\Common">
+      <UniqueIdentifier>{67055bdf-fbe1-43a5-b9ca-b48fe56bac3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -199,6 +202,9 @@
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\Includes.h">
       <Filter>RHI\DirectX11\VertexLayout</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.h">
+      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -271,6 +277,9 @@
       <Filter>RHI\DirectX11\VertexLayout</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp">
+      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.cpp">
       <Filter>RHI\DirectX11\VertexLayout</Filter>
     </ClCompile>
   </ItemGroup>

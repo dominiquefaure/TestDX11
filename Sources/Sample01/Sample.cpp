@@ -51,7 +51,6 @@ void Sample::OnClose()
 
 	SAFE_DELETE( m_vertexShader );
 	SAFE_DELETE( m_pixelShader );
-	SAFE_DELETE( m_vertexLayout );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -71,14 +70,7 @@ void Sample::LoadVertexShader( RhiGraphicDevice* a_device )
 	m_vertexShader											=	a_device->CreateVertexShader( t_byteCode );
 
 
-
-	m_vertexLayout											=	new VertexLayoutDX11();
-
-	m_vertexLayout->PushElement( 0 , RHI_VERTEX_ELEMENT_TYPE_POSITION );
-	m_vertexLayout->PushElement( 0 , RHI_VERTEX_ELEMENT_TYPE_COLOR );
-
-	m_vertexLayout->Build( a_device );
-
+	m_vertexLayout											=	a_device->GetVertexLayout( RHI_VERTEX_FORMAT_KEY_POSITION_COLORED );
 }
 //---------------------------------------------------------------------------------------------
 

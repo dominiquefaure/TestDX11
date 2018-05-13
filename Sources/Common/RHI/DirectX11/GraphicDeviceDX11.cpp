@@ -5,6 +5,9 @@
 
 #include <assert.h>
 
+
+#include "VertexLayout/Includes.h"
+
 #ifdef _DEBUG
 #include "GraphicDeviceDX11.inl"
 #endif
@@ -18,6 +21,7 @@ GraphicDeviceDX11::GraphicDeviceDX11()
 
 	InitShaderBindFlagArray();
 	InitBufferUsageArray();
+
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -26,6 +30,8 @@ GraphicDeviceDX11::~GraphicDeviceDX11()
 {
 	SAFE_DELETE( m_mainContext );
 	SAFE_DELETE( m_swapchain );
+	SAFE_DELETE( m_vertexLayoutManager );
+
 
 	SAFE_RELEASE( m_d3dDevice );
 }
@@ -46,6 +52,8 @@ void GraphicDeviceDX11::Init( HWND a_handle , TUint32 a_width , TUint32 a_height
 
 	// Setup correctly the Main Context
 	InitMainContext();
+
+	InitVertexLayouts();
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -155,6 +163,7 @@ void GraphicDeviceDX11::InitMainContext()
 	m_mainContext->SetSwapchain( m_swapchain );
 }
 //-------------------------------------------------------------------------------------------------
+
 
 
 
@@ -334,6 +343,31 @@ PixelShaderDX11* GraphicDeviceDX11::CreatePixelShader( ShaderByteCodeDX11& a_byt
 	return t_shader;
 }
 //-------------------------------------------------------------------------------------------------
+
+
+
+//-------------------------------------------------------------------------------------------------
+void GraphicDeviceDX11::InitVertexLayouts()
+{
+	m_vertexLayoutManager									=	new VertexLayoutManagerDX11();
+	m_vertexLayoutManager->Init( this );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexFormatTypes a_type )
+{
+	return m_vertexLayoutManager->GetLayout( a_type );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexFormatTypeKey a_key )
+{
+	return m_vertexLayoutManager->GetLayout( a_key );
+}
+//-------------------------------------------------------------------------------------------------
+
 
 //-------------------------------------------------------------------------------------------------
 ID3D11InputLayout* GraphicDeviceDX11::CreateInputLayout( D3D11_INPUT_ELEMENT_DESC* a_descriptor , TUint32 a_elementcount , ShaderByteCodeDX11& a_byteCode )

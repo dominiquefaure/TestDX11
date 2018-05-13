@@ -65,6 +65,7 @@
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\RhiEnums.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\RhiManager.h" />
@@ -94,6 +95,7 @@
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp" />
   </ItemGroup>
   <ItemGroup>

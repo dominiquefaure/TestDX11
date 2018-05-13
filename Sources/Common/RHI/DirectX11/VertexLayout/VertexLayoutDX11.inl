@@ -1,6 +1,13 @@
 
 
 //-----------------------------------------------------------------------------------------------
+FORCE_INLINE RhiVertexFormatTypeKey	VertexLayoutDX11::GetLayoutKey()const
+{
+	return m_key;
+}
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
 FORCE_INLINE ID3D11InputLayout* VertexLayoutDX11::GetInputLayout()
 {
 	return m_inputLayout;

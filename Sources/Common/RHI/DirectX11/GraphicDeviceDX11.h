@@ -26,6 +26,7 @@ struct BufferUsageParams
 
 
 class VertexLayoutDX11;
+class VertexLayoutManagerDX11;
 
 class GraphicDeviceDX11
 {
@@ -36,12 +37,6 @@ public:
 
 	GraphicDeviceDX11();
 	~GraphicDeviceDX11();
-
-	// To be Removed!!!!!!
-	inline ID3D11Device* GetD3DDevice()
-	{
-		return m_d3dDevice;
-	}
 
 	/*
 	* Get the Main Graphic Context sued to display on Screen
@@ -113,6 +108,16 @@ public:
 	PixelShaderDX11* CreatePixelShader( ShaderByteCodeDX11& a_byteCode );
 
 
+	/*
+	* Get the Vertex Layout matching the given Type
+	*/
+	VertexLayoutDX11* GetVertexLayout( RhiVertexFormatTypes a_type );
+
+	/*
+	* Get the Vertex Layout matching the given Key
+	*/
+	VertexLayoutDX11* GetVertexLayout( RhiVertexFormatTypeKey a_key );
+
 private:
 
 	/*
@@ -139,6 +144,11 @@ private:
 	* Init the Array that Define the Dx values associed to a RhiBufferUsage
 	*/
 	void InitBufferUsageArray();
+
+	/*
+	* Create all the Vertex Layout supported
+	*/
+	void InitVertexLayouts();
 
 	/*
 	* Create a DX11 Swapchain According to the given Descriptor
@@ -192,6 +202,9 @@ private:
 	// Store the different properties matching a RhiBufferUsage
 	BufferUsageParams		m_bufferUsages[ RHI_BUFFER_USAGE_COUNT ];
 
+
+
+	VertexLayoutManagerDX11*	m_vertexLayoutManager;
 
 	StateObjectsManagerDX11	m_stateObjectsManager;
 };
