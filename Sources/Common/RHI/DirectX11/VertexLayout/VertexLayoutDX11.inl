@@ -6,7 +6,6 @@ FORCE_INLINE TUint32 VertexLayoutDX11::GetElementCount()const
 }
 //-------------------------------------------------------------------------------------------------
 
-
 //-----------------------------------------------------------------------------------------------
 FORCE_INLINE RhiVertexLayoutTypeKey	VertexLayoutDX11::GetLayoutKey()const
 {

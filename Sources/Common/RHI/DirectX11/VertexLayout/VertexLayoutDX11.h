@@ -39,12 +39,6 @@ public:
 	FORCE_INLINE RhiVertexLayoutTypeKey	GetLayoutKey()const;
 
 	/*
-	* Get the Input Element Desc for this Layout
-	*/
-	FORCE_INLINE const D3D11_INPUT_ELEMENT_DESC* GetInputElementDesc()const;
-
-
-	/*
 	* Get the DX11 Input Layout matching this VertexLayout
 	*/
 	FORCE_INLINE ID3D11InputLayout* GetInputLayout();
