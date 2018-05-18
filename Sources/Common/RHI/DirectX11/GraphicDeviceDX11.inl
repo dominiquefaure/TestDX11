@@ -14,6 +14,21 @@ FORCE_INLINE SwapchainDX11* GraphicDeviceDX11::GetSwapchain()
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
+FORCE_INLINE VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexLayoutType a_type )
+{
+	return m_vertexLayoutManager->GetLayout( a_type );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+FORCE_INLINE VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexLayoutTypeKey a_key )
+{
+	return m_vertexLayoutManager->GetLayout( a_key );
+}
+//-------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------------------------
 FORCE_INLINE StateObjectsManagerDX11* GraphicDeviceDX11::GetStateObjetManager()
 {
 	return &m_stateObjectsManager;

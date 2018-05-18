@@ -111,12 +111,12 @@ public:
 	/*
 	* Get the Vertex Layout matching the given Type
 	*/
-	VertexLayoutDX11* GetVertexLayout( RhiVertexLayoutType a_type );
+	FORCE_INLINE VertexLayoutDX11* GetVertexLayout( RhiVertexLayoutType a_type );
 
 	/*
 	* Get the Vertex Layout matching the given Key
 	*/
-	VertexLayoutDX11* GetVertexLayout( RhiVertexLayoutTypeKey a_key );
+	FORCE_INLINE VertexLayoutDX11* GetVertexLayout( RhiVertexLayoutTypeKey a_key );
 
 private:
 
