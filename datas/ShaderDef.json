@@ -1,0 +1,14 @@
+{
+    "VertexShader":
+    {
+        "Type":0,
+        "PermutationMask":0,
+        "SourcePath":"SimpleVS.hlsl"
+    },
+    "PixelShader":
+    {
+        "Type":1,
+        "PermutationMask":1,
+        "SourcePath":"SimplePS.hlsl"
+    }
+}

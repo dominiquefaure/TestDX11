@@ -147,7 +147,7 @@ void VertexLayoutDX11::GenerateShaderByteCode()
 	t_sourceCode											+=	g_dummyShaderFooter;
 
 	// Compile the Shader
-	m_byteCode.Compile( VERTEX_SHADER , t_sourceCode , "VSMain" );
+	m_byteCode.Compile( VERTEX_SHADER , t_sourceCode , 0 , "VSMain" );
 
 }
 //-----------------------------------------------------------------------------------------------

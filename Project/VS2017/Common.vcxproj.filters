@@ -52,6 +52,9 @@
     <Filter Include="RHI\Common">
       <UniqueIdentifier>{67055bdf-fbe1-43a5-b9ca-b48fe56bac3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Shaders">
+      <UniqueIdentifier>{3bcc5e7c-ba43-4101-8382-26d723f1a93c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -208,6 +211,18 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Geometrydataset.h">
       <Filter>Renderer\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.h">
+      <Filter>Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.h">
+      <Filter>Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\Includes.h">
+      <Filter>Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.h">
+      <Filter>Renderer\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -288,6 +303,15 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.cpp">
       <Filter>Renderer\Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.cpp">
+      <Filter>Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.cpp">
+      <Filter>Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.cpp">
+      <Filter>Renderer\Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -331,6 +355,15 @@
     </None>
     <None Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.inl">
       <Filter>Renderer\Geometry</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.inl">
+      <Filter>Renderer\Shaders</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.inl">
+      <Filter>Renderer\Shaders</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.inl">
+      <Filter>Renderer\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

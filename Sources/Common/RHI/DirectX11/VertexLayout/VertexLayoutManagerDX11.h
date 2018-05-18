@@ -1,5 +1,5 @@
-#ifndef __VERTEX_LAYOUT_MANAGER_DX11_H__
-#define __VERTEX_LAYOUT_MANAGER_DX11_H__
+#ifndef __RHI_VERTEX_LAYOUT_MANAGER_DX11_H__
+#define __RHI_VERTEX_LAYOUT_MANAGER_DX11_H__
 
 #include "../../../Core/CoreIncludes.h"
 
@@ -9,11 +9,8 @@ class GraphicDeviceDX11;
 
 class VertexLayoutManagerDX11
 {
-
 	friend class GraphicDeviceDX11;
 
-
-// Methods
 private:
 
 	VertexLayoutManagerDX11();

@@ -38,24 +38,23 @@ void Sample::OnInit( )
 
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
 
-	CreateVertexBuffer( t_device );
-	LoadVertexShader( t_device );
-	LoadPixelShader( t_device );
+	LoadGoemetry( t_device );
+	LoadShaders( );
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
 void Sample::OnClose()
 {
+	SAFE_DELETE( m_shader );
+
 	SAFE_DELETE( m_geometry );
 
-	SAFE_DELETE( m_vertexShader );
-	SAFE_DELETE( m_pixelShader );
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
+void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 {
 
 	GeometryDataset* t_data									=	new GeometryDataset();
@@ -65,28 +64,14 @@ void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
 	m_geometry->Build( a_device , t_data );
 
 	SAFE_DELETE( t_data );
-
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void Sample::LoadVertexShader( RhiGraphicDevice* a_device )
+void Sample::LoadShaders( )
 {
-	ShaderByteCode t_byteCode;
-	t_byteCode.CompileFromFile( VERTEX_SHADER , "SimpleVS.hlsl" );
-	m_vertexShader											=	a_device->CreateVertexShader( t_byteCode );
-
-
-}
-//---------------------------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------------------------
-void Sample::LoadPixelShader( RhiGraphicDevice* a_device )
-{
-	ShaderByteCode t_byteCode;
-	t_byteCode.CompileFromFile( PIXEL_SHADER , "SimplePS.hlsl" );
-
-	m_pixelShader											=	a_device->CreatePixelShader( t_byteCode );
+	m_shader												=	new ShaderProgram();
+	m_shader->Load( "ShaderDef.json" );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -115,13 +100,12 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	a_context->SetVertexShader( m_vertexShader  );
-	a_context->SetPixelShader( m_pixelShader  );
 
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 
 	m_geometry->Apply( a_context );
+	m_shader->Apply( a_context , 0 );
 
 	m_geometry->ProcessDraw( a_context );
 }

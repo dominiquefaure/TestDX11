@@ -30,7 +30,7 @@ typedef IndexBufferDX11		RhiIndexBuffer;
 typedef VertexLayoutDX11	RhiVertexLayout;
 typedef VertexShaderDX11	RhiVertexShader;
 typedef PixelShaderDX11		RhiPixelShader;
-typedef ShaderByteCodeDX11	ShaderByteCode;
+typedef ShaderByteCodeDX11	RhiShaderByteCode;
 
 
 #include "DirectX11/IncludesDX11.h"

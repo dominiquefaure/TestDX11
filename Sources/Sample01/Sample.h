@@ -59,11 +59,8 @@ protected:
 
 private:
 
-	void CreateVertexBuffer( RhiGraphicDevice* a_device );
-	void LoadVertexShader( RhiGraphicDevice* a_device );
-	void LoadPixelShader( RhiGraphicDevice* a_device );
-
-
+	void LoadShaders(  );
+	void LoadGoemetry( RhiGraphicDevice* a_device );
 
 	void DrawTriangle( RhiGraphicContext* a_context );
 
@@ -73,9 +70,7 @@ private:
 // Fields
 private:
 
-	RhiVertexShader*	m_vertexShader;
-	RhiPixelShader*		m_pixelShader;
-
-
 	StaticGeometry*		m_geometry;
+
+	ShaderProgram*		m_shader;
 };
