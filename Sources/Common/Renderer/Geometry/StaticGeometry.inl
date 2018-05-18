@@ -1,3 +1,5 @@
+#ifndef __RENDERER_STATIC_GEOMETRY_INL__
+#define __RENDERER_STATIC_GEOMETRY_INL__
 
 
 //-----------------------------------------------------------------------------------------------
@@ -15,14 +17,14 @@ FORCE_INLINE TUint32 StaticGeometry::GetIndiceCount()const
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-FORCE_INLINE TUint32 StaticGeometry::GetVerticeCount()const
+FORCE_INLINE TUint32 StaticGeometry::GetVertexCount()const
 {
-	return m_verticeCount;
+	return m_vertexCount;
 }
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-FORCE_INLINE RhiPrimitiveType StaticGeometry::GetPrimityveType()const
+FORCE_INLINE RhiPrimitiveType StaticGeometry::GetPrimitiveType()const
 {
 	return m_primitiveType;
 }
@@ -34,3 +36,5 @@ FORCE_INLINE RhiVertexLayout* StaticGeometry::GetVertexLayout()const
 	return m_vertexLayout;
 }
 //-----------------------------------------------------------------------------------------------
+
+#endif

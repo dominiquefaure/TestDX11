@@ -1,6 +1,6 @@
 {
     "PrimitiveType": 3,
-    "VertexLayout" : 0,
+    "VertexLayout" : 1,
     "IndexBuffer" : 
     {
         "IndexCount" : 36 ,

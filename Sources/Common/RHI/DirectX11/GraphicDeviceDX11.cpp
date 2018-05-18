@@ -355,14 +355,14 @@ void GraphicDeviceDX11::InitVertexLayouts()
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexFormatTypes a_type )
+VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexLayoutType a_type )
 {
 	return m_vertexLayoutManager->GetLayout( a_type );
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexFormatTypeKey a_key )
+VertexLayoutDX11* GraphicDeviceDX11::GetVertexLayout( RhiVertexLayoutTypeKey a_key )
 {
 	return m_vertexLayoutManager->GetLayout( a_key );
 }

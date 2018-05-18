@@ -1,7 +1,14 @@
 
+//-------------------------------------------------------------------------------------------------
+FORCE_INLINE TUint32 VertexLayoutDX11::GetElementCount()const
+{
+	return (TUint32)m_elements.size();
+}
+//-------------------------------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------------------------
-FORCE_INLINE RhiVertexFormatTypeKey	VertexLayoutDX11::GetLayoutKey()const
+FORCE_INLINE RhiVertexLayoutTypeKey	VertexLayoutDX11::GetLayoutKey()const
 {
 	return m_key;
 }

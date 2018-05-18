@@ -57,8 +57,15 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::CreateVertexBuffer( RhiGraphicDevice* a_device )
 {
+
+	GeometryDataset* t_data									=	new GeometryDataset();
+	t_data->LoadFromJSon( "SolidCube.geo" );
+
 	m_geometry												=	new StaticGeometry();
-	m_geometry->LoadFromJSon( a_device , "SolidCube.geo");
+	m_geometry->Build( a_device , t_data );
+
+	SAFE_DELETE( t_data );
+
 }
 //---------------------------------------------------------------------------------------------
 
@@ -114,6 +121,8 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 
-	m_geometry->Draw( a_context );
+	m_geometry->Apply( a_context );
+
+	m_geometry->ProcessDraw( a_context );
 }
 //---------------------------------------------------------------------------------------------

@@ -27,12 +27,12 @@ private:
 	/*
 	* Get the Vertex Layout matching the given Type
 	*/
-	VertexLayoutDX11* GetLayout( RhiVertexFormatTypes a_type );
+	VertexLayoutDX11* GetLayout( RhiVertexLayoutType a_type );
 
 	/*
 	* Get the Vertex Layout matching the given Key
 	*/
-	VertexLayoutDX11* GetLayout( RhiVertexFormatTypeKey a_key );
+	VertexLayoutDX11* GetLayout( RhiVertexLayoutTypeKey a_key );
 
 // fields
 private:

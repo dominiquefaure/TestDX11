@@ -5,6 +5,11 @@
 #include "../../RHI/Includes.h"
 
 
+#include "GeometryDataset.h"
+
+/*
+* Base class for the Different Geometry classes
+*/
 class StaticGeometry
 {
 
@@ -27,87 +32,51 @@ public:
 	/*
 	* total number of vertices
 	*/
-	FORCE_INLINE TUint32 GetVerticeCount()const;
+	FORCE_INLINE TUint32 GetVertexCount()const;
 
 	/*
 	* Get the Type of primitive
 	*/
-	FORCE_INLINE RhiPrimitiveType GetPrimityveType()const;
-
+	FORCE_INLINE RhiPrimitiveType GetPrimitiveType()const;
 
 	/*
-	* Get the Vertex layout used
+	* Get the VertexLayout to use with this Geometry
 	*/
 	FORCE_INLINE RhiVertexLayout* GetVertexLayout()const;
 
-// Methods
-public:
 
 	/*
-	* Init a Static non indexed Geometry
-	*/
-	void Init( RhiGraphicDevice* a_device , RhiPrimitiveType a_type , void* a_vertexBuffer, TUint32 a_vertexSize , TUint32 a_vertexCount );
-	
-	/*
-	* Init an Indexed Geometry
-	*/
-	void Init( RhiGraphicDevice* a_device , RhiPrimitiveType a_type , void* a_vertexBuffer, TUint32 a_vertexSize , TUint32 a_vertexCount , RhiIndexBufferType a_indexType , void* a_indiceDatas , TUint32 a_indexCount );
+	 * Build this Static Geometry
+	 */
+	void Build( RhiGraphicDevice* a_device , const GeometryDataset* a_datas );
 
 
 	/*
-	* Apply this Geometry settings but not display it
+	* Set to the Graphic the information's stored inside this Geometry
+	*
+	* @param a_context		The Graphic context that will draw this Geometry
 	*/
 	void Apply( RhiGraphicContext* a_context );
 
 	/*
-	* Draw the Geometry
-	*/
-	void Draw( RhiGraphicContext* a_context );
+	 * Draw the Geometry , Apply has to be called before
+	 * Shader has to be set correctly before
+	 */
+	void ProcessDraw( RhiGraphicContext* a_context );
 
-	/*
-	* Load geometry content from a File
-	*/
-	void LoadFromJSon( RhiGraphicDevice* a_device , const char* a_path );
-			
-	/*
-	* Load geometry content from a JSon node
-	*/
-	void LoadFromJSon( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
 
 // Methods
 private:
 
 	/*
-	* Create teh VertexBuffer
-	*/
-	void SetVertexBuffer( RhiGraphicDevice* a_device , TUint32 a_vertexSize , TUint32 a_vertexCount , void* a_vertexBuffer );
+	 * Create the Index according to the Geometry data
+	 */
+	void CreateIndexBuffer( RhiGraphicDevice* a_device , const GeometryDataset* a_datas );
 
 	/*
-	* Init the index buffer.
-	*/
-	void SetIndexBuffer( RhiGraphicDevice* a_device , RhiIndexBufferType a_type , TUint32 a_count , void* a_datas );
-
-	/*
-	* try Load vertexBuffer content from Geometry root JSon node
-	*/
-	bool TryLoadVertexBuffer( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
-
-	void LoadVertexBufferContent( RhiGraphicDevice* a_device , JSonNode& a_vertexBufferNode );
-
-	/*
-	* try to Load indexBuffer content from Geometry root JSon node
-	*/
-	void TryLoadIndexBuffer( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
-
-	/*
-	* Load indexBuffer content from a JSon node storing the indexBuffer content
-	*/
-	void LoadIndexBufferContent( RhiGraphicDevice* a_device , JSonNode& a_indexBufferNode );
-
-	/*
-	* Load the VertexLayout from the JSon node
-	*/
-	void LoadVertexLayout( RhiGraphicDevice* a_device , JSonNode& a_rootNode );
+	 * Create the VertexBuffer according to the Geometry data
+	 */
+	void CreateVertexBuffer( RhiGraphicDevice* a_device , const GeometryDataset* a_datas );
 
 // Fields
 private:
@@ -115,11 +84,17 @@ private:
 	// is the geometry use index buffer?
 	TBool					m_isIndexed;
 
+	// data type of the Index Buffer
+	RhiIndexBufferType		m_indexType;
+
 	// number of vertices required to draw it using index buffer
 	TUint32					m_indexCount;
 
 	// number of different vertices
-	TUint32					m_verticeCount;
+	TUint32					m_vertexCount;
+
+	// Size of 1 vertex
+	TUint32					m_vertexSize;
 
 	// Buffers that store the Mesh datas.
 	RhiVertexBuffer*		m_vertexBuffer;
