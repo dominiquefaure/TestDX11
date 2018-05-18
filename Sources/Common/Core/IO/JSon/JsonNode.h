@@ -64,7 +64,7 @@ public:
 	/*
 	* Get the value of a String Property
 	*/
-	const char* GetStringProperty( const std::string & a_propertyName );
+	std::string GetStringProperty( const std::string & a_propertyName );
 
 	/*
 	* Get a Sub Node property

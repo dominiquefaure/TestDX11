@@ -33,7 +33,8 @@ void GameApplication::SetWindowConfig( WinAppConfig& a_config )
 
 	a_config.m_smallIconResID								=	0;
 	a_config.m_iconResID									=	0;
-
+	a_config.m_menuID										=	0;
+	
 	// Allow custom configuration
 	OnSetWindowConfig( a_config );
 }
@@ -61,6 +62,7 @@ void GameApplication::Close()
 	// Close Application Custom data
 	OnClose();
 
+	// Free the Managers
 	InputManager::DestroyInstance();
 	RhiManager::DestroyInstance();
 }

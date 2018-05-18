@@ -4,9 +4,9 @@ VertexElementTypeProperties g_vertexElementTypeProperties[]=
 {
 	{"POSITION", 0 , DXGI_FORMAT_R32G32B32_FLOAT , 12 , "float3 position : POSITION;\n" },
 	{"COLOR", 0 , DXGI_FORMAT_R32G32B32A32_FLOAT , 16 , "float4 color: COLOR;\n" },
+	{"TEXTCOORD", 0 , DXGI_FORMAT_R8G8_UNORM , 8 , "float2 texCoord: TEXTCOORD;\n" },
 
 };
-
 
 
 #ifdef _DEBUG

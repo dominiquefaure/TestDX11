@@ -97,15 +97,24 @@ bool ShaderByteCodeDX11::CompileFromFile( RhiShaderType a_type , const std::stri
 
 	FileHandle* t_handle									=	FileSystem::GetInstance()->OpenRead( a_filePath , false );
 
-	int t_size												=	t_handle->GetSize();
-	char* t_sourceCode										=	new char[ t_size ];
-	t_handle->Read( t_sourceCode , t_size );
+	if( t_handle != NULL )
+	{
+		// Load the File Content
+		int t_size											=	t_handle->GetSize();
+		char* t_sourceCode									=	new char[ t_size ];
+		int t_readSize										=	t_handle->Read( t_sourceCode , t_size );
 
-	// Free the File Handle
-	delete t_handle;
 
+//		bool t_result										=	Compile( a_type , t_sourceCode , t_readSize , a_macro );		bool t_result										=	Compile( a_type , t_sourceCode , t_readSize , a_macro );
+		bool t_result										=	Compile( a_type , t_sourceCode , t_readSize  );
 
-	return Compile( a_type , t_sourceCode , t_size );
+		delete[] t_sourceCode;
+
+		// Free the File Handle
+		delete t_handle;
+
+		return t_result;
+	}
 
 	return false;
 }
@@ -114,9 +123,26 @@ bool ShaderByteCodeDX11::CompileFromFile( RhiShaderType a_type , const std::stri
 //-----------------------------------------------------------------------------------------------
 bool ShaderByteCodeDX11::LoadBinary( RhiShaderType a_type , const std::string& a_filePath )
 {
-//	FileHandle* t_handle									=	FileSystem::GetInstance()->OpenRead( a_filePath , true );
+	FileHandle* t_handle									=	FileSystem::GetInstance()->OpenRead( a_filePath , true );
 
+	if( t_handle != NULL )
+	{
+		// Load the File Content
+		int t_size											=	t_handle->GetSize();
+		char* t_sourceCode									=	new char[ t_size ];
 
+		t_handle->Read( t_sourceCode , t_size );
+
+		// Free the File Handle
+		delete t_handle;
+
+		// Create the Blob and copy the Shader byte code into it
+		D3DCreateBlob( t_size , &m_compiledBlob );
+		memcpy( m_compiledBlob->GetBufferPointer() , t_sourceCode , t_size );
+
+		return true;
+	}
+	
 	return false;
 }
 //-----------------------------------------------------------------------------------------------

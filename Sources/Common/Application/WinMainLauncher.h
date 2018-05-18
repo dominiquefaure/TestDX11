@@ -45,8 +45,6 @@ private:
 	HWND          m_hWnd;
 
 
-	TCHAR			m_strClass[MAX_PATH];
-	TCHAR			m_strCaption[MAX_PATH];
 	WNDCLASSEX		m_stWcex;
 
 

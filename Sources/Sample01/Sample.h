@@ -15,6 +15,7 @@ struct TriangleVertice
 	float r;
 	float g;
 	float b;
+	float a;
 };
 
 
@@ -23,7 +24,7 @@ class Sample : public GameApplication
 public:
 
 	Sample();
-	~Sample();
+	virtual ~Sample();
 
 
 

@@ -37,11 +37,18 @@ public:
 
 	/*
 	* Compile the ByteCode from an HLSL string
+	* a_type		Type fo Shader to compile
+	* a_sourceCode	String that store the HSLS code
+	* a_size		Size of the source code string
+	* a_macros		Bitfield that store the different macro to define
 	*/
 	bool Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size , const char* a_entryPoint = "main" );
 
 	/*
 	* Compile the ByteCode, from an HLSL file
+	* a_type		Type fo Shader to compile
+	* a_filePath	HLSL file path
+	* a_macros		Bitfield that store the different macro to define
 	*/
 	bool CompileFromFile( RhiShaderType a_type , const std::string& a_filePath );
 

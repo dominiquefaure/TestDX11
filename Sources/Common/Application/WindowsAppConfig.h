@@ -18,6 +18,8 @@ struct WinAppConfig
 
 	int		m_iconResID;
 	int		m_smallIconResID;
+
+	int		m_menuID;
 };
 
 
