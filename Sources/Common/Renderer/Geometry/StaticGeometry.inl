@@ -22,7 +22,7 @@ FORCE_INLINE TUint32 StaticGeometry::GetVerticeCount()const
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-FORCE_INLINE RhiPrimitiveType StaticGeometry::GetPrimityveType()const
+FORCE_INLINE RhiPrimitiveType StaticGeometry::GetPrimitiveType()const
 {
 	return m_primitiveType;
 }

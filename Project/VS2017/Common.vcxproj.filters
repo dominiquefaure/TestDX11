@@ -52,6 +52,9 @@
     <Filter Include="RHI\Common">
       <UniqueIdentifier>{67055bdf-fbe1-43a5-b9ca-b48fe56bac3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Shaders">
+      <UniqueIdentifier>{9fdd91e1-d798-4ad1-bd55-0716e3c1a31b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">

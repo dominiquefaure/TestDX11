@@ -32,7 +32,7 @@ public:
 	/*
 	* Get the Type of primitive
 	*/
-	FORCE_INLINE RhiPrimitiveType GetPrimityveType()const;
+	FORCE_INLINE RhiPrimitiveType GetPrimitiveType()const;
 
 
 	/*
