@@ -1,40 +1,34 @@
-#include "IndexBufferDX11.h"
-
-
-#ifdef _DEBUG
-#include "IndexBufferDX11.inl"
-#endif
+#include "ConstantBufferDX11.h"
 
 //-------------------------------------------------------------------------------------------------
-IndexBufferDX11::IndexBufferDX11()
+ConstantBufferDX11::ConstantBufferDX11()
 {
-	m_dxFormat												=	DXGI_FORMAT_R32_UINT;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-IndexBufferDX11::~IndexBufferDX11()
+ConstantBufferDX11::~ConstantBufferDX11()
 {
 
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void IndexBufferDX11::SetProperties( RhiIndexBufferType a_type , TUint32 a_count )
+void ConstantBufferDX11::Update( GraphicContextDX11* a_context , void* a_datas , TUint32 a_size )
 {
-	m_type													=	a_type;
+	// Try to map the REsource
+	void* t_bufferDatas										=	Map( a_context , D3D11_MAP_WRITE_DISCARD );
 
-	switch( a_type )
+
+	//if succeed, update the buffer content
+	if( t_bufferDatas != NULL )
 	{
-		case INDEX_BUFFER_TYPE_16:
-			m_dxFormat										=	DXGI_FORMAT_R16_UINT;
-		break;
-
-		case INDEX_BUFFER_TYPE_32:
-			m_dxFormat										=	DXGI_FORMAT_R32_UINT;
-		break;
+		// copy the Datas
+		memcpy( t_bufferDatas , a_datas , a_size );
+	
+		// unmap the resource
+		Unmap( a_context );
 	}
 
-	m_indexCount											=	a_count;
 }
 //-------------------------------------------------------------------------------------------------

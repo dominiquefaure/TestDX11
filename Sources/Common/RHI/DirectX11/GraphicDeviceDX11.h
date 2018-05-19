@@ -118,6 +118,13 @@ public:
 	*/
 	FORCE_INLINE VertexLayoutDX11* GetVertexLayout( RhiVertexLayoutTypeKey a_key );
 
+
+	/*
+	* Create a new Constant Buffer
+	*/
+	ConstantBufferDX11* CreateConstantBuffer( int a_size );
+
+
 private:
 
 	/*

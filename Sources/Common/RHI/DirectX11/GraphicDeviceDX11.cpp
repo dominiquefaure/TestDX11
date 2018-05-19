@@ -312,7 +312,23 @@ IndexBufferDX11* GraphicDeviceDX11::CreateIndexBuffer( RhiBufferUsage a_usage , 
 }
 //-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+ConstantBufferDX11* GraphicDeviceDX11::CreateConstantBuffer( int a_size )
+{
+	// Create the Buffer on GPU
+	ID3D11Buffer* t_buffer									=	CreateBuffer( RHI_RESOURCE_BIND_CONSTANT_BUFFER , RHI_BUFFER_USAGE_DYNAMIC , a_size , NULL );
 
+	assert( t_buffer != NULL );
+
+	//Set the Constant Buffer
+	ConstantBufferDX11* t_constantBuffer					=	new ConstantBufferDX11();
+	t_constantBuffer->Init( t_buffer , a_size );
+
+	// return the ConstantBuffer Created
+	return t_constantBuffer;
+
+}
+//-------------------------------------------------------------------------------------------------
 
 
 //////////////

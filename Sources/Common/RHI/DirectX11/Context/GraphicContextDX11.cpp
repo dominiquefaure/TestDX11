@@ -55,7 +55,7 @@ void GraphicContextDX11::OnBeginFrame()
 	m_deviceContext->OMSetRenderTargets(1, &t_renderTargetView, nullptr);
 	m_deviceContext->RSSetViewports( 1 , m_swapchain->GetViewport() );
 
-	ResetSttes();
+	ResetStates();
 }
 //---------------------------------------------------------------------------------------------------------
 
@@ -156,7 +156,7 @@ void GraphicContextDX11::DrawIndexedPrimitive( int a_indexCount , int a_startInd
 
 
 //---------------------------------------------------------------------------------------------------------
-void GraphicContextDX11::ResetSttes()
+void GraphicContextDX11::ResetStates()
 {
 	m_pipelineStates.Reset();
 	m_geometryStates.Reset();
@@ -169,5 +169,57 @@ void GraphicContextDX11::CommitStates()
 {
 	m_pipelineStates.Commit( m_deviceContext );
 	m_geometryStates.Commit( m_deviceContext );
+}
+//---------------------------------------------------------------------------------------------------------
+
+
+/////////
+// Resources Mapping
+/////////
+
+//---------------------------------------------------------------------------------------------------------
+bool GraphicContextDX11::MapResource( ID3D11Resource* a_resource ,  int a_subResource ,  void*& a_data , int& a_rowPitch , int& a_depthPitch , D3D11_MAP a_mapType , D3D11_MAP_FLAG a_flag  )
+{
+	D3D11_MAPPED_SUBRESOURCE t_subresource;
+
+	m_deviceContext->Map( a_resource , a_subResource , a_mapType , a_flag , &t_subresource );
+
+	a_data													=	t_subresource.pData;
+	a_rowPitch												=	t_subresource.RowPitch;
+	a_depthPitch											=	t_subresource.DepthPitch;
+
+	return ( a_data != NULL );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::UnmapResource( ID3D11Resource* a_resource , int a_subResource )
+{
+	m_deviceContext->Unmap( a_resource , a_subResource );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::BindConstantBuffer( RhiShaderType a_type , int a_slot , const ConstantBufferDX11* a_buffer )
+{
+	ID3D11Buffer* t_buffer										=	NULL;
+
+	if( a_buffer != NULL )
+	{
+		t_buffer												=	a_buffer->GetBuffer();
+	}
+
+	// Bind the Constant buffer to the correct type of Shader
+	switch( a_type )
+	{
+		case RHI_SHADER_TYPE_VERTEX_SHADER:
+			m_deviceContext->VSSetConstantBuffers( a_slot , 1 , &t_buffer );
+		break;
+
+		case RHI_SHADER_TYPE_PIXEL_SHADER:
+			m_deviceContext->PSSetConstantBuffers( a_slot , 1 , &t_buffer );
+		break;
+	}
+
 }
 //---------------------------------------------------------------------------------------------------------

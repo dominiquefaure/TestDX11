@@ -7,7 +7,7 @@
 //---------------------------------------------------------------------------------------------
 ShaderDefinition::ShaderDefinition()
 {
-	m_type													=	SHADER_TYPE_NOT_SET;
+	m_type													=	RHI_SHADER_TYPE_NOT_SET;
 	m_sourceCode											=	"";
 	m_permutationMask										=	0;
 }
