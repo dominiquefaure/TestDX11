@@ -21,6 +21,12 @@ FileHandle* FileSystem::OpenRead( const std::string& a_path, bool a_binaryMode )
 		t_handle->Open( a_path , FileHandle::FILE_MODE_READ_TEXT );
 	}
 
+	if( !t_handle->m_isOpen )
+	{
+		delete t_handle;
+		return NULL;
+	}
+
 	return t_handle;
 
 }

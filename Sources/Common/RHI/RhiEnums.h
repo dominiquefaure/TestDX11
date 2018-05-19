@@ -27,7 +27,8 @@ enum RhiResourceBindType
 
 enum RhiIndexBufferType
 {
-	INDEX_BUFFER_TYPE_16	=	0,
+	INDEX_BUFFER_TYPE_INVALID	=	-1,
+	INDEX_BUFFER_TYPE_16		=	0,
 	INDEX_BUFFER_TYPE_32,
 };
 
@@ -56,7 +57,8 @@ enum RhiCullingMode
 
 enum RhiShaderType
 {
-	VERTEX_SHADER = 0,
+	SHADER_TYPE_NOT_SET	=	-1,
+	VERTEX_SHADER 		=	0,
 	PIXEL_SHADER
 };
 
@@ -77,20 +79,36 @@ enum RhiVertexElementType
 	RHI_VERTEX_ELEMENT_TYPE_COUNT
 };
 
-// the differnet type of Vertex Format supported
-enum RhiVertexFormatTypes
-{
-	RHI_VERTEX_FORMAT_POSITION_COLORED	=	0,
-	RHI_VERTEX_FORMAT_SPRITES,
 
-	RHI_VERTEX_FORMAT_COUNT
+// all the supported vertex layout
+enum RhiVertexLayoutType
+{
+	RHI_VERTEX_LAYOUT_INVALID	=	-1,
+	RHI_VERTEX_LAYOUT_POSITION_ONLY	=	0,
+	RHI_VERTEX_LAYOUT_POSITION_COLOR,
+
+	RHI_VERTEX_LAYOUT_SPRITES,
+
+	RHI_VERTEX_LAYOUT_COUNT
 };
 
+
+
+
 // Key Id to identify a VertexFormat
-enum RhiVertexFormatTypeKey
+enum RhiVertexLayoutTypeKey
 {
+	RHI_VERTEX_FORMAT_KEY_POSITION_ONLY		=	1,
 	RHI_VERTEX_FORMAT_KEY_POSITION_COLORED	=	3,
 	RHI_VERTEX_FORMAT_KEY_SPRITES			=	7,	
+};
+
+enum RhiShaderCompilationMacro
+{
+	SHADER_MACRO_NONE	=	-1,
+	SHADER_MACRO_DUMMY_COLOR = 0,
+
+	SHADER_MACRO_COUNT
 };
 
 

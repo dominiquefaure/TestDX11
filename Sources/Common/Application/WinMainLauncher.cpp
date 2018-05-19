@@ -38,6 +38,10 @@ BOOL WinMainLauncher::RegisterWndClass( )
     m_stWcex.hbrBackground									=	( HBRUSH ) ( COLOR_WINDOW + 1 );
     m_stWcex.lpszClassName									=	m_config.m_className.c_str();
 
+	m_stWcex.hIcon											=	NULL;
+	m_stWcex.hIconSm										=	NULL;
+	m_stWcex.lpszMenuName									=	NULL;
+
 
 	if( m_config.m_iconResID != 0 )
 	{
@@ -48,10 +52,12 @@ BOOL WinMainLauncher::RegisterWndClass( )
 	{
 	    m_stWcex.hIconSm									=	LoadIcon( m_hInst, MAKEINTRESOURCE( m_config.m_smallIconResID ));
 	}
-	
-//    m_stWcex.lpszMenuName									=	MAKEINTRESOURCEW(IDC_HELLOTRIANGLE);;
-//    m_stWcex.lpszMenuName									=	NULL;
 
+	if( m_config.m_menuID != 0 )
+	{
+		m_stWcex.lpszMenuName								=	MAKEINTRESOURCEW( m_config.m_menuID );
+	}
+	
 
 	if ( !RegisterClassEx( &m_stWcex ) )
 	{
@@ -117,6 +123,25 @@ BOOL WinMainLauncher::Init( GameApplication* a_application , HINSTANCE a_hInstan
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
+void WinMainLauncher::Close()
+{
+	if( m_application != NULL )
+	{
+		m_application->Close();
+		m_application										=	NULL;
+	}
+
+	// Drestroy the Window
+	if (m_hWnd)
+	{
+		SetWindowLong(m_hWnd, GWLP_USERDATA, NULL);
+		DestroyWindow(m_hWnd);
+		m_hWnd = NULL;
+	}
+}
+//---------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
 int WinMainLauncher::Run( GameApplication* a_application , HINSTANCE a_hInstance, int a_nCmdShow )
 {
 
@@ -127,19 +152,21 @@ int WinMainLauncher::Run( GameApplication* a_application , HINSTANCE a_hInstance
 
 //    HACCEL hAccelTable = LoadAccelerators( m_hInst , MAKEINTRESOURCE(IDC_HELLOTRIANGLE) );
 
-	while(! m_quitRequested )
-	{
-		// ahndle all the windows messages
+
+	while( !m_quitRequested )
+    {
+		// Process all the Windows messages
 		ProcessWindowsMessages();
 
-		// Process a Frame
-		a_application->OnFrame();
-	}
+		if( ! m_quitRequested )
+		{
+			a_application->OnFrame();
+		}
+    }
 
 	Close();
 
-    return 0;
-
+	return 0;
 }
 //---------------------------------------------------------------------------------------------
 
@@ -163,13 +190,7 @@ void WinMainLauncher::ProcessWindowsMessages()
 }
 //---------------------------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------------------------
-void WinMainLauncher::Close()
-{
-	// Close the App correctly
-	m_application->Close();
-}
-//---------------------------------------------------------------------------------------------
+
 
 //
 //  FUNCTION: AppWindowProc(HWND, UINT, WPARAM, LPARAM)

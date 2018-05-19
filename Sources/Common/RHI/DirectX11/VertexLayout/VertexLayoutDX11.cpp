@@ -44,7 +44,7 @@ VertexLayoutDX11::~VertexLayoutDX11()
 	int t_count												=	m_elements.size();
 	for( int i = 0 ; i < t_count ; i ++ )
 	{
-		delete m_elements[ i ];
+		SAFE_DELETE( m_elements[ i ] );
 	}
 	m_elements.clear();
 
@@ -57,7 +57,7 @@ VertexLayoutDX11::~VertexLayoutDX11()
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-void VertexLayoutDX11::Build( RhiVertexFormatTypeKey a_key , GraphicDeviceDX11* a_device )
+void VertexLayoutDX11::Build( RhiVertexLayoutTypeKey a_key , GraphicDeviceDX11* a_device )
 {
 	m_key													=	a_key;
 
@@ -95,7 +95,7 @@ void VertexLayoutDX11::PushElement( TUint32 a_slot , RhiVertexElementType a_type
 {
 	// Setupt the vertex element
 	VertexElementDX11* t_element							=	new VertexElementDX11();
-	t_element->Init( a_type , a_slot , m_streamSizes[ a_slot ] );
+	t_element->Init( a_slot , a_type , m_streamSizes[ a_slot ] );
 
 	// increase the matching stream size
 	m_streamSizes[ a_slot ]									+=	t_element->GetSize();
@@ -126,7 +126,7 @@ void VertexLayoutDX11::ComputeInputElementDesc()
 
 	for( int i = 0 ; i < t_count ; i ++ )
 	{
-		m_elements[ i ]->SetElementDescriptor( &m_inputElementDesc[ i ] );
+		m_elements[ i ]->SetInputDescriptor( &m_inputElementDesc[ i ] );
 	}
 }
 //-----------------------------------------------------------------------------------------------
@@ -147,7 +147,7 @@ void VertexLayoutDX11::GenerateShaderByteCode()
 	t_sourceCode											+=	g_dummyShaderFooter;
 
 	// Compile the Shader
-	m_byteCode.Compile( VERTEX_SHADER , t_sourceCode , "VSMain" );
+	m_byteCode.Compile( VERTEX_SHADER , t_sourceCode , 0 , "VSMain" );
 
 }
 //-----------------------------------------------------------------------------------------------

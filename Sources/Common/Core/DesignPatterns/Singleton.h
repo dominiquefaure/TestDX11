@@ -53,7 +53,7 @@ private:
 	static T* s_instance;
 };
 
-template<typename T> T* Singleton<T>::s_instance	=	NULL;
+template<typename T> T* Singleton<T>::s_instance	=	nullptr;
 
 
 #endif

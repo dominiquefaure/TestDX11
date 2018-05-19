@@ -19,26 +19,27 @@ VertexLayoutManagerDX11::~VertexLayoutManagerDX11()
 //-----------------------------------------------------------------------------------------------
 void VertexLayoutManagerDX11::Init( GraphicDeviceDX11* a_device )
 {
-	m_layoutList											=	new VertexLayoutDX11[ RHI_VERTEX_FORMAT_COUNT ];
+	m_layoutList											=	new VertexLayoutDX11[ RHI_VERTEX_LAYOUT_COUNT ];
 
-	m_layoutList[ RHI_VERTEX_FORMAT_POSITION_COLORED ].Build( RHI_VERTEX_FORMAT_KEY_POSITION_COLORED , a_device	);
-	m_layoutList[ RHI_VERTEX_FORMAT_SPRITES ].Build( RHI_VERTEX_FORMAT_KEY_SPRITES , a_device	);
+	m_layoutList[ RHI_VERTEX_LAYOUT_POSITION_ONLY ].Build( RHI_VERTEX_FORMAT_KEY_POSITION_ONLY , a_device	);
+	m_layoutList[ RHI_VERTEX_LAYOUT_POSITION_COLOR ].Build( RHI_VERTEX_FORMAT_KEY_POSITION_COLORED , a_device	);
+	m_layoutList[ RHI_VERTEX_LAYOUT_SPRITES ].Build( RHI_VERTEX_FORMAT_KEY_SPRITES , a_device	);
 }
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-VertexLayoutDX11* VertexLayoutManagerDX11::GetLayout( RhiVertexFormatTypes a_type )
+VertexLayoutDX11* VertexLayoutManagerDX11::GetLayout( RhiVertexLayoutType a_type )
 {
 	return &m_layoutList[ a_type ];
 }
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-VertexLayoutDX11* VertexLayoutManagerDX11::GetLayout( RhiVertexFormatTypeKey a_key )
+VertexLayoutDX11* VertexLayoutManagerDX11::GetLayout( RhiVertexLayoutTypeKey a_key )
 {
 	// Parse the list of layout to search the one matching the key
 	VertexLayoutDX11* t_layout;
-	for( int i = 0 ; i < RHI_VERTEX_FORMAT_COUNT ; i ++ )
+	for( int i = 0 ; i < RHI_VERTEX_LAYOUT_COUNT ; i ++ )
 	{
 		t_layout											=	&m_layoutList[ i ];
 

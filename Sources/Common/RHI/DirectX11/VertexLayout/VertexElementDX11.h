@@ -6,6 +6,13 @@
 
 #include <d3d11.h>
 
+#include "../../../Core/Base/BaseDataTypes.h"
+#include "../../../Core/CoreMacros.h"
+#include "../../RhiEnums.h"
+
+class VertexLayoutManagerDX11;
+class VertexLayoutDX11;
+
 /*
 * Struct that store all the common properties for a VeterElement Type
 */
@@ -15,39 +22,37 @@ struct VertexElementTypeProperties
 	std::string				m_semanticName;
 	
 	// Index if more than 1 element has the same semantic ( 4x4 Matric has 4 elements with the SemanticName Matrix and different index )
-	unsigned int			m_semanticIndex;
+	TUint32					m_semanticIndex;
 
 	// format of the element in th Vertex Buffer
 	DXGI_FORMAT				m_dataFormat;
 
-	// Size in byte of the element
+	// Size in Bytes of the Element
 	TUint32					m_size;
 
 	//get the String representing the declaration of the element in a VertexShader
 	std::string				m_shaderDeclaration;
 };
 
-
-class VertexLayoutDX11;
-
 /*
 * Represent 1 Element of a Vertex
 */
 class VertexElementDX11 
 {
+	friend class VertexLayoutManagerDX11;
 	friend class VertexLayoutDX11;
 
 public:
 
 	/*
-	* get the Size in bytes of the element
+	* Get the Size in bytes of the Vertex Element
 	*/
 	FORCE_INLINE TUint32 GetSize()const;
 
 	/*
-	* get teh Declaration for the vertex shader
+	* Get the String representing this Element Declaration inside Vertex Shader input
 	*/
-	FORCE_INLINE std::string& GetShaderDeclaration()const;
+	FORCE_INLINE const std::string& GetShaderDeclaration()const;
 
 private:
 
@@ -56,28 +61,30 @@ private:
 	~VertexElementDX11();
 
 	/*
-	* Initialize this element properties
+	* Set the Type that Identify this VertexElement
 	*/
-	void Init( RhiVertexElementType a_type , TUint32 a_slot , TUint32 a_offset );
+	void Init( TUint32 a_inputSlot , RhiVertexElementType a_type , TUint32 a_offset );
 
 	/*
-	* Set an Input element descriptor properties according to this element values
+	* Set the common properties of the Input Element Desc, that will represent this VertexElement
 	*/
-	void SetElementDescriptor( D3D11_INPUT_ELEMENT_DESC* a_desc );
+	void SetInputDescriptor( D3D11_INPUT_ELEMENT_DESC* a_desc );
+
+
 
 private:
 
 	// Type of this Element
 	RhiVertexElementType			m_type;
 
-	// pointer to the Type property
-	VertexElementTypeProperties*	m_typeProperties;
-
-	// vertex Stream Slot the element is present
+	// Stream Input Slot
 	TUint32							m_inputSlot;
 
-	// Offset in the vertex Stram the element start
+	// Start Offset in the VertexStream of the Element
 	TUint32							m_offset;
+
+	// VertexElement Properties
+	VertexElementTypeProperties*	m_typeProperties;
 };
 
 

@@ -114,7 +114,7 @@ TFloat64 JSonNode::GetDoubleProperty( const std::string & a_propertyName , TFloa
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
-const char* JSonNode::GetStringProperty( const std::string & a_propertyName )
+std::string JSonNode::GetStringProperty( const std::string & a_propertyName )
 {
 	JSonProperty t_property									=	GetProperty( a_propertyName );
 
