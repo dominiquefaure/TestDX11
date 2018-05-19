@@ -6,18 +6,15 @@
 
 #include <d3d11.h>
 
-struct TriangleVertice
+
+struct MeshTransform
 {
 	float x;
 	float y;
 	float z;
 
-	float r;
-	float g;
-	float b;
-	float a;
+	float	padding;
 };
-
 
 class Sample : public GameApplication
 {
@@ -64,13 +61,20 @@ private:
 
 	void DrawTriangle( RhiGraphicContext* a_context );
 
-
+	void CreateConstantBuffer( RhiGraphicDevice* a_device );
 
 
 // Fields
 private:
 
 	StaticGeometry*		m_geometry;
-
 	ShaderProgram*		m_shader;
+
+
+	RhiConstantBuffer*	m_constantBuffer;
+
+
+	MeshTransform		m_transform;
+
+
 };

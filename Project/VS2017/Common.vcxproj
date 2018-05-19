@@ -49,6 +49,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.h" />
@@ -92,6 +93,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.cpp" />

@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------------------------
 ShaderPermutation::ShaderPermutation()
 {
-	m_shaderType											=	SHADER_TYPE_NOT_SET;
+	m_shaderType											=	RHI_SHADER_TYPE_NOT_SET;
 	m_permutationID											=	0;
 
 	m_vertexShader											=	NULL;
@@ -34,10 +34,11 @@ void ShaderPermutation::Init( RhiGraphicDevice* a_device , RhiShaderType a_type 
 	// Create the correct shader
 	switch( a_type )
 	{
-		case VERTEX_SHADER:
+		case RHI_SHADER_TYPE_VERTEX_SHADER:
 			m_vertexShader									=	a_device->CreateVertexShader( a_byteCode );
 		break;
-		case PIXEL_SHADER:
+
+		case RHI_SHADER_TYPE_PIXEL_SHADER:
 			m_pixelShader									=	a_device->CreatePixelShader( a_byteCode );
 		break;
 	}

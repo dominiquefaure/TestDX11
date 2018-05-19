@@ -223,6 +223,9 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.h">
       <Filter>Renderer\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.h">
+      <Filter>RHI\DirectX11\Buffers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -311,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.cpp">
       <Filter>Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.cpp">
+      <Filter>RHI\DirectX11\Buffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

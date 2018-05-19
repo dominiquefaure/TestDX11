@@ -40,6 +40,8 @@ void Sample::OnInit( )
 
 	LoadGoemetry( t_device );
 	LoadShaders( );
+
+	CreateConstantBuffer( t_device );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -75,10 +77,42 @@ void Sample::LoadShaders( )
 }
 //---------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------
+void Sample::CreateConstantBuffer( RhiGraphicDevice* a_device )
+{
+	m_constantBuffer										=	a_device->CreateConstantBuffer( sizeof( m_transform) );
+}
+//---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
 void Sample::OnUpdate()
 {
+	KeyboardDevice* t_keyboard								=	InputManager::GetInstance()->GetKeyboard();
+
+	if( t_keyboard->IsPressed( KEY_LEFT ) )
+	{
+		m_transform.x										-=	0.001f;
+	}
+	else
+	{
+		if( t_keyboard->IsPressed( KEY_RIGHT ) )
+		{
+			m_transform.x									+=	0.001f;
+		}
+	}
+
+	if( t_keyboard->IsPressed( KEY_UP ) )
+	{
+		m_transform.y										+=	0.001f;
+	}
+	else
+	{
+		if( t_keyboard->IsPressed( KEY_DOWN ) )
+		{
+			m_transform.y									-=	0.001f;
+		}
+	}
+
 }
 //---------------------------------------------------------------------------------------------
 
@@ -100,6 +134,8 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
+	m_constantBuffer->Update( a_context , &m_transform , sizeof( m_transform) );
+	a_context->BindConstantBuffer( RHI_SHADER_TYPE_VERTEX_SHADER , 0 , m_constantBuffer );
 
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );

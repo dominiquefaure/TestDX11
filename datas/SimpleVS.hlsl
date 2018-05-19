@@ -1,4 +1,9 @@
 
+cbuffer meshInfos : register(b0)
+{
+	float3 m_worldPosition;
+};
+
 
 struct Input
 {
@@ -16,7 +21,7 @@ Output main(Input input)
 {
 	Output output;
 
-	output.position = float4(input.position, 1.0 );
+	output.position = float4( m_worldPosition + input.position, 1.0 );
 
 	output.color = float4(input.color.rgb, 1.0);
 

@@ -18,12 +18,13 @@ class SwapchainDX11;
 class VertexShaderDX11;
 class PixelShaderDX11;
 class VertexLayoutDX11;
+class BaseBufferDX11;
 
 class GraphicContextDX11
 {
 
 	friend class GraphicDeviceDX11;
-
+	friend class BaseBufferDX11;
 
 public:
 
@@ -62,7 +63,6 @@ public:
 	*/
 	void SetPrimitiveType( RhiPrimitiveType a_type );
 
-
 	/*
 	* set the VertexShader to use
 	*
@@ -81,6 +81,17 @@ public:
 	* Set the Vertx Layout to use
 	*/
 	void SetVertexLayout( VertexLayoutDX11* a_layout );
+
+
+
+
+	/*
+	* Bind a Constant buffer to the Context at a Given slot
+	*/
+	void BindConstantBuffer( RhiShaderType a_type , int a_slot , const ConstantBufferDX11* a_buffer );
+
+
+
 
 	//////
 	// Rasterizer states Methods
@@ -136,12 +147,23 @@ private:
 	/*
 	* Reset all the States
 	*/
-	void ResetSttes();
+	void ResetStates();
 
 	/*
 	* Commit all the modified states since last draw
 	*/
 	void CommitStates();
+
+
+
+
+	bool MapResource( ID3D11Resource* a_resource , int a_subResource , void*& a_data , int& a_rowPitch , int& a_depthPitch , D3D11_MAP a_mapType , D3D11_MAP_FLAG a_flag = (D3D11_MAP_FLAG)0 );
+
+	/*
+	* Unmap a Mapped Resource 
+	*/
+	void UnmapResource( ID3D11Resource* a_resource , int a_subResource );
+
 
 private:
 

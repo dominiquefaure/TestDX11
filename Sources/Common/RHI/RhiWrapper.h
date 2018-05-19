@@ -20,6 +20,8 @@ class PixelShaderDX11;
 class ShaderByteCodeDX11;
 class VertexLayoutDX11;
 
+class ConstantBufferDX11;
+
 typedef GraphicDeviceDX11	RhiGraphicDevice;
 typedef GraphicContextDX11	RhiGraphicContext;
 typedef SwapchainDX11		RhiSwapchain;
@@ -32,6 +34,7 @@ typedef VertexShaderDX11	RhiVertexShader;
 typedef PixelShaderDX11		RhiPixelShader;
 typedef ShaderByteCodeDX11	RhiShaderByteCode;
 
+typedef ConstantBufferDX11	RhiConstantBuffer;
 
 #include "DirectX11/IncludesDX11.h"
 
