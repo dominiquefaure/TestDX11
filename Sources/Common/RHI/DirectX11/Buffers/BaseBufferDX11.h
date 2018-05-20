@@ -40,16 +40,7 @@ protected:
 	void Init( ID3D11Buffer* a_buffer , int a_size );
 
 
-	/*
-	* Map the Buffer in order to update it 
-	*/
-	void* Map( GraphicContextDX11* a_context , D3D11_MAP a_mapType , D3D11_MAP_FLAG a_flag = (D3D11_MAP_FLAG)0 );
-
-	/*
-	* Unmap the Buffer
-	*/
-	void Unmap( GraphicContextDX11* a_context );
-
+	virtual void OnInit(){}
 
 // Fields
 protected:

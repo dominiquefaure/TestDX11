@@ -134,8 +134,8 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	m_constantBuffer->Update( a_context , &m_transform , sizeof( m_transform) );
-	a_context->BindConstantBuffer( RHI_SHADER_TYPE_VERTEX_SHADER , 0 , m_constantBuffer );
+	m_constantBuffer->Update( (TUint8*)&m_transform , 0 , sizeof( m_transform) );
+	m_constantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 0 );
 
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );

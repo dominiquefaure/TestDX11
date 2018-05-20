@@ -18,13 +18,13 @@ class SwapchainDX11;
 class VertexShaderDX11;
 class PixelShaderDX11;
 class VertexLayoutDX11;
-class BaseBufferDX11;
+class ConstantBufferDX11;
 
 class GraphicContextDX11
 {
 
 	friend class GraphicDeviceDX11;
-	friend class BaseBufferDX11;
+	friend class ConstantBufferDX11;
 
 public:
 
@@ -82,13 +82,6 @@ public:
 	*/
 	void SetVertexLayout( VertexLayoutDX11* a_layout );
 
-
-
-
-	/*
-	* Bind a Constant buffer to the Context at a Given slot
-	*/
-	void BindConstantBuffer( RhiShaderType a_type , int a_slot , const ConstantBufferDX11* a_buffer );
 
 
 
@@ -154,16 +147,15 @@ private:
 	*/
 	void CommitStates();
 
-
-
-
-	bool MapResource( ID3D11Resource* a_resource , int a_subResource , void*& a_data , int& a_rowPitch , int& a_depthPitch , D3D11_MAP a_mapType , D3D11_MAP_FLAG a_flag = (D3D11_MAP_FLAG)0 );
+	/*
+	* Update the Content of a Constant Buffer using Map/Unmap
+	*/
+	TBool UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a_data , TUint32 a_size );
 
 	/*
-	* Unmap a Mapped Resource 
+	* Set the Active constant buffer for the Given Slot
 	*/
-	void UnmapResource( ID3D11Resource* a_resource , int a_subResource );
-
+	void SetConstantBuffer( RhiShaderType a_type , int a_slot , ID3D11Buffer* a_buffer );
 
 private:
 

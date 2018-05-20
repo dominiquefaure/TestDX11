@@ -174,52 +174,47 @@ void GraphicContextDX11::CommitStates()
 
 
 /////////
-// Resources Mapping
+// Constant Buffer Methods
 /////////
 
+
 //---------------------------------------------------------------------------------------------------------
-bool GraphicContextDX11::MapResource( ID3D11Resource* a_resource ,  int a_subResource ,  void*& a_data , int& a_rowPitch , int& a_depthPitch , D3D11_MAP a_mapType , D3D11_MAP_FLAG a_flag  )
+TBool GraphicContextDX11::UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a_data , TUint32 a_size )
 {
 	D3D11_MAPPED_SUBRESOURCE t_subresource;
 
-	m_deviceContext->Map( a_resource , a_subResource , a_mapType , a_flag , &t_subresource );
+	m_deviceContext->Map( a_buffer , 0 , D3D11_MAP_WRITE_DISCARD , 0 , &t_subresource );
 
-	a_data													=	t_subresource.pData;
-	a_rowPitch												=	t_subresource.RowPitch;
-	a_depthPitch											=	t_subresource.DepthPitch;
-
-	return ( a_data != NULL );
-}
-//---------------------------------------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------------------------------------
-void GraphicContextDX11::UnmapResource( ID3D11Resource* a_resource , int a_subResource )
-{
-	m_deviceContext->Unmap( a_resource , a_subResource );
-}
-//---------------------------------------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------------------------------------
-void GraphicContextDX11::BindConstantBuffer( RhiShaderType a_type , int a_slot , const ConstantBufferDX11* a_buffer )
-{
-	ID3D11Buffer* t_buffer										=	NULL;
-
-	if( a_buffer != NULL )
+	// if succeed
+	if( t_subresource.pData != NULL )
 	{
-		t_buffer												=	a_buffer->GetBuffer();
+		// copy the Datas
+		memcpy( t_subresource.pData , a_data , a_size );
+
+
+		// unmap it
+		m_deviceContext->Unmap( a_buffer , 0 );
+
+		return true;
 	}
 
+	return false;
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetConstantBuffer( RhiShaderType a_type , int a_slot , ID3D11Buffer* a_buffer )
+{
 	// Bind the Constant buffer to the correct type of Shader
 	switch( a_type )
 	{
 		case RHI_SHADER_TYPE_VERTEX_SHADER:
-			m_deviceContext->VSSetConstantBuffers( a_slot , 1 , &t_buffer );
+			m_deviceContext->VSSetConstantBuffers( a_slot , 1 , &a_buffer );
 		break;
 
 		case RHI_SHADER_TYPE_PIXEL_SHADER:
-			m_deviceContext->PSSetConstantBuffers( a_slot , 1 , &t_buffer );
+			m_deviceContext->PSSetConstantBuffers( a_slot , 1 , &a_buffer );
 		break;
 	}
-
 }
 //---------------------------------------------------------------------------------------------------------
