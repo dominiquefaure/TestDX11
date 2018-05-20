@@ -42,6 +42,15 @@ void Sample::OnInit( )
 	LoadShaders( );
 
 	CreateConstantBuffer( t_device );
+
+
+	Matrix44 t_projection;
+	Matrix44 t_view;
+
+	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 1000.0f );
+	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -10.0f) , Vector3F( 0.0f , 0.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
+
+	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 }
 //---------------------------------------------------------------------------------------------
 
@@ -49,8 +58,10 @@ void Sample::OnInit( )
 void Sample::OnClose()
 {
 	SAFE_DELETE( m_shader );
-
 	SAFE_DELETE( m_geometry );
+
+	SAFE_DELETE( m_perFrameConstantBuffer );
+	SAFE_DELETE( m_perDrawConstantBuffer );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -80,7 +91,8 @@ void Sample::LoadShaders( )
 //---------------------------------------------------------------------------------------------
 void Sample::CreateConstantBuffer( RhiGraphicDevice* a_device )
 {
-	m_constantBuffer										=	a_device->CreateConstantBuffer( sizeof( m_transform) );
+	m_perFrameConstantBuffer								=	a_device->CreateConstantBuffer( sizeof( PerFrameConstants) );
+	m_perDrawConstantBuffer									=	a_device->CreateConstantBuffer( sizeof( PerDrawConstants) );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -89,29 +101,33 @@ void Sample::OnUpdate()
 {
 	KeyboardDevice* t_keyboard								=	InputManager::GetInstance()->GetKeyboard();
 
+	float t_updateCoef										=	0.001f;
+
 	if( t_keyboard->IsPressed( KEY_LEFT ) )
 	{
-		m_transform.x										-=	0.001f;
+		m_translate.x										-=	t_updateCoef;
 	}
 	else
 	{
 		if( t_keyboard->IsPressed( KEY_RIGHT ) )
 		{
-			m_transform.x									+=	0.001f;
+			m_translate.x									+=	t_updateCoef;
 		}
 	}
 
 	if( t_keyboard->IsPressed( KEY_UP ) )
 	{
-		m_transform.y										+=	0.001f;
+		m_translate.y										+=	t_updateCoef;
 	}
 	else
 	{
 		if( t_keyboard->IsPressed( KEY_DOWN ) )
 		{
-			m_transform.y									-=	0.001f;
+			m_translate.y									-=	t_updateCoef;
 		}
 	}
+
+	m_perDrawConstants.m_worldTransform.SetTranslate( m_translate );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -134,8 +150,11 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	m_constantBuffer->Update( (TUint8*)&m_transform , 0 , sizeof( m_transform) );
-	m_constantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 0 );
+	m_perFrameConstantBuffer->Update( (TUint8*)&m_perFrameConstants , 0 , sizeof( m_perFrameConstants) );
+	m_perDrawConstantBuffer->Update( (TUint8*)&m_perDrawConstants , 0 , sizeof( m_perDrawConstants) );
+
+	m_perFrameConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 0 );
+	m_perDrawConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 1 );
 
 	a_context->SetWireframe( false );
 	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );

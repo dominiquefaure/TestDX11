@@ -1,9 +1,13 @@
 
-cbuffer meshInfos : register(b0)
+cbuffer perFrameConstants : register(b0)
 {
-	float3 m_worldPosition;
+	matrix	m_viewProjection;
 };
 
+cbuffer meshInfos : register(b1)
+{
+	matrix	m_meshTransform;
+};
 
 struct Input
 {
@@ -21,7 +25,9 @@ Output main(Input input)
 {
 	Output output;
 
-	output.position = float4( m_worldPosition + input.position, 1.0 );
+
+	matrix t_mvp	=	mul( m_viewProjection , m_meshTransform );
+	output.position	=	mul( t_mvp , float4( input.position , 1 ) );
 
 	output.color = float4(input.color.rgb, 1.0);
 

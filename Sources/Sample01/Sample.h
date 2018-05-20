@@ -6,14 +6,14 @@
 
 #include <d3d11.h>
 
-
-struct MeshTransform
+struct PerFrameConstants
 {
-	float x;
-	float y;
-	float z;
+	Matrix44	m_viewProjection;
+};
 
-	float	padding;
+struct PerDrawConstants
+{
+	Matrix44	m_worldTransform;
 };
 
 class Sample : public GameApplication
@@ -71,10 +71,12 @@ private:
 	ShaderProgram*		m_shader;
 
 
-	RhiConstantBuffer*	m_constantBuffer;
+	Vector3F			m_translate;
 
+	PerFrameConstants	m_perFrameConstants;
+	PerDrawConstants	m_perDrawConstants;
 
-	MeshTransform		m_transform;
-
+	RhiConstantBuffer*	m_perFrameConstantBuffer;
+	RhiConstantBuffer*	m_perDrawConstantBuffer;
 
 };
