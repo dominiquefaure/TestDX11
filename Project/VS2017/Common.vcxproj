@@ -35,6 +35,12 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonEnums.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonNode.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Math\Color.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Math\includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Math\MathMacros.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Math\Maths.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Math\Matrix44.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Math\Vector3F.h" />
     <ClInclude Include="..\..\Sources\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
@@ -85,6 +91,10 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonDocument.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonNode.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Math\Color.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Math\Maths.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Math\Vector3F.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.cpp" />
@@ -111,6 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl" />
+    <None Include="..\..\Sources\Common\Core\Math\Color.inl" />
+    <None Include="..\..\Sources\Common\Core\Math\Maths.inl" />
+    <None Include="..\..\Sources\Common\Core\Math\Matrix44.inl" />
+    <None Include="..\..\Sources\Common\Core\Math\Vector3F.inl" />
     <None Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.inl" />
     <None Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.inl" />

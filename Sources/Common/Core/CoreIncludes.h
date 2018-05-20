@@ -6,5 +6,6 @@
 #include "CoreMacros.h"
 #include "DesignPatterns/Singleton.h"
 #include "IO/Includes.h"
+#include "Math/includes.h"
 
 #endif
