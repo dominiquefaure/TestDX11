@@ -59,23 +59,23 @@ int ShaderByteCodeDX11::GetSize()const
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , std::string& a_sourceCode , const TUint64 a_macro , const std::string& a_entryPoint )
+bool ShaderByteCodeDX11::Compile( std::string& a_sourceCode , RhiShaderCompilationParams& a_params )
 {
-	return Compile( a_type , a_sourceCode.c_str() , a_sourceCode.size() , a_macro , a_entryPoint.c_str() );
+	return Compile( a_sourceCode.c_str() , a_sourceCode.size() , a_params );
 }
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size , const TUint64 a_macro , const char* a_entryPoint )
+bool ShaderByteCodeDX11::Compile( const char* a_sourceCode , int a_size , RhiShaderCompilationParams& a_params )
 {
-	m_type													=	a_type;
+	m_type													=	a_params.m_shaderType;
 
 	ID3DBlob* t_errorMessage;
 
 	int t_compilationFlag									=	0;
 
 	// Build the Array that store the different macro needed
-	BuildMacroList( a_macro );
+	BuildMacroList( a_params.m_permutationFlags );
 
 	// Compile the Shader
 	HRESULT t_result										=	D3DCompile( a_sourceCode ,
@@ -83,8 +83,8 @@ bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , const char* a_sourceCod
 																			NULL ,
 																			m_macroList ,
 																			NULL ,
-																			a_entryPoint,
-																			g_shaderTargetType[ a_type ].c_str(),
+																			a_params.m_entryPoint.c_str(),
+																			g_shaderTargetType[ m_type ].c_str(),
 																			t_compilationFlag,
 																			0,
 																			&m_compiledBlob,
@@ -107,9 +107,8 @@ bool ShaderByteCodeDX11::Compile( RhiShaderType a_type , const char* a_sourceCod
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-bool ShaderByteCodeDX11::CompileFromFile( RhiShaderType a_type , const std::string& a_filePath , const TUint64 a_macro )
+bool ShaderByteCodeDX11::CompileFromFile( const std::string& a_filePath , RhiShaderCompilationParams& a_params )
 {
-
 	FileHandle* t_handle									=	FileSystem::GetInstance()->OpenRead( a_filePath , false );
 
 	if( t_handle != NULL )
@@ -120,7 +119,7 @@ bool ShaderByteCodeDX11::CompileFromFile( RhiShaderType a_type , const std::stri
 		int t_readSize										=	t_handle->Read( t_sourceCode , t_size );
 
 
-		bool t_result										=	Compile( a_type , t_sourceCode , t_readSize , a_macro );
+		bool t_result										=	Compile( t_sourceCode , t_readSize , a_params );
 
 		delete[] t_sourceCode;
 
@@ -180,7 +179,7 @@ void ShaderByteCodeDX11::InitMacroList( )
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-void ShaderByteCodeDX11::PushMacro( RhiShaderCompilationMacro a_macroID )
+void ShaderByteCodeDX11::PushMacro( RhiShaderCompilationMacros a_macroID )
 {
 	assert( m_macroCount < MAX_SHADER_MACRO_COUNT );
 	
@@ -201,7 +200,7 @@ void ShaderByteCodeDX11::BuildMacroList( const TUint64 a_macro )
 	{
 		if( ISBITSET( a_macro , i ) )
 		{
-			PushMacro( (RhiShaderCompilationMacro)i );
+			PushMacro( (RhiShaderCompilationMacros)i );
 		}
 	}
 }

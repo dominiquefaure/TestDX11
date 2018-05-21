@@ -247,6 +247,9 @@
     <ClInclude Include="..\..\Sources\Common\Core\Math\Matrix44.h">
       <Filter>Core\Math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h">
+      <Filter>RHI\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">

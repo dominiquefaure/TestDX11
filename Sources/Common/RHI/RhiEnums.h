@@ -103,13 +103,5 @@ enum RhiVertexLayoutTypeKey
 	RHI_VERTEX_FORMAT_KEY_SPRITES			=	7,	
 };
 
-enum RhiShaderCompilationMacro
-{
-	SHADER_MACRO_NONE	=	-1,
-	SHADER_MACRO_DUMMY_COLOR = 0,
-
-	SHADER_MACRO_COUNT
-};
-
 
 #endif

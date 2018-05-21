@@ -33,13 +33,13 @@
 
 #define ISBITSET( bitField , bit )	( bitField & ( 1 << bit ) ) 
 #define SETBIT( bitField , bit ) bitField |= ( 1 << bit )
-#define CLEARBIT ( bitField , bit ) bitField &= ~( 1 << bit )
-#define TOOGLEBIT ( bitField , mask ) bitField ^= ( 1 << bit )
+#define CLEARBIT( bitField , bit ) bitField &= ~( 1 << bit )
+#define TOOGLEBIT( bitField , bit ) bitField ^= ( 1 << bit )
 
 #define ISMASKSET( bitField , mask ) return ( bitField & mask ) 
 #define SETMASK( bitField , mask ) bitField |= mask
-#define CLEARMASK ( bitField , mask ) bitField &= ~mask
-#define TOOGLEMASK ( bitField , mask ) bitField ^= mask
+#define CLEARMASK( bitField , mask ) bitField &= ~mask
+#define TOOGLEMASK( bitField , mask ) bitField ^= mask
 
 
 #endif

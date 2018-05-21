@@ -71,7 +71,7 @@ private:
 
 // The inline is included in the Header only if not in debug mode
 #ifndef _DEBUG
-#include "Shader.inl"
+#include "ShaderDefinition.inl"
 #endif
 
 

@@ -94,9 +94,15 @@ void ShaderDefinition::LoadFromJSon( JSonNode& a_rootNode )
 //---------------------------------------------------------------------------------------------
 ShaderPermutation* ShaderDefinition::CreatePermutation( const TUint64 a_permutationID )
 {
+	// Set the Compilations params
+	RhiShaderCompilationParams t_params;
+	t_params.m_shaderType									=	m_type;
+	t_params.m_entryPoint									=	"main";
+	t_params.m_permutationFlags								=	a_permutationID;
+
 	// Generate the byte code matching the permutation
 	RhiShaderByteCode t_byteCode;
-	t_byteCode.Compile( m_type , m_sourceCode , a_permutationID , "main" );
+	t_byteCode.Compile( m_sourceCode , t_params );
 
 	//get the device
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();

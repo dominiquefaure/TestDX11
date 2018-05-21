@@ -37,7 +37,6 @@ void ShaderPermutation::Init( RhiGraphicDevice* a_device , RhiShaderType a_type 
 		case RHI_SHADER_TYPE_VERTEX_SHADER:
 			m_vertexShader									=	a_device->CreateVertexShader( a_byteCode );
 		break;
-
 		case RHI_SHADER_TYPE_PIXEL_SHADER:
 			m_pixelShader									=	a_device->CreatePixelShader( a_byteCode );
 		break;

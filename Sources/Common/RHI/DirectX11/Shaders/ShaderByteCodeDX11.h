@@ -5,6 +5,7 @@
 #include <string>
 
 #include "../../RhiEnums.h"
+#include "../../Common/RhiShaderCompilationParams.h"
 #include "../../../Core/CoreIncludes.h"
 
 
@@ -34,25 +35,25 @@ public:
 
 	/*
 	* Compile the ByteCode from an HLSL string
+	* a_sourceCode	String that store the HSLS code
+	* a_params		set of parameters to drive the compilation
 	*/
-	bool Compile( RhiShaderType a_type , std::string& a_sourceCode , const TUint64 a_macro, const std::string& a_entryPoint );
+	bool Compile( std::string& a_sourceCode , RhiShaderCompilationParams& a_params );
 
 	/*
 	* Compile the ByteCode from an HLSL string
-	* a_type		Type fo Shader to compile
 	* a_sourceCode	String that store the HSLS code
 	* a_size		Size of the source code string
-	* a_macros		Bitfield that store the different macro to define
+	* a_params		set of parameters to drive the compilation
 	*/
-	bool Compile( RhiShaderType a_type , const char* a_sourceCode , int a_size , const TUint64 a_macro, const char* a_entryPoint = "main" );
+	bool Compile( const char* a_sourceCode , int a_size , RhiShaderCompilationParams& a_params );
 
 	/*
 	* Compile the ByteCode, from an HLSL file
-	* a_type		Type fo Shader to compile
 	* a_filePath	HLSL file path
-	* a_macros		Bitfield that store the different macro to define
+	* a_params		set of parameters to drive the compilation
 	*/
-	bool CompileFromFile( RhiShaderType a_type , const std::string& a_filePath , const TUint64 a_macro );
+	bool CompileFromFile( const std::string& a_filePath , RhiShaderCompilationParams& a_params );
 
 	/*
 	* Load pre-compiled ByteCode
@@ -72,7 +73,7 @@ private:
 	*/
 	void InitMacroList( );
 
-	void PushMacro( RhiShaderCompilationMacro a_macro );
+	void PushMacro( RhiShaderCompilationMacros a_macro );
 
 
 

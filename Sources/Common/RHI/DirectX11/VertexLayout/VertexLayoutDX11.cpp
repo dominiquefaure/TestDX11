@@ -146,8 +146,15 @@ void VertexLayoutDX11::GenerateShaderByteCode()
 
 	t_sourceCode											+=	g_dummyShaderFooter;
 
+
+	// Set the Compilations params
+	RhiShaderCompilationParams t_params;
+	t_params.m_shaderType									=	RHI_SHADER_TYPE_VERTEX_SHADER;
+	t_params.m_entryPoint									=	"VSMain";
+	t_params.m_permutationFlags								=	0;
+
 	// Compile the Shader
-	m_byteCode.Compile( RHI_SHADER_TYPE_VERTEX_SHADER , t_sourceCode , 0 , "VSMain" );
+	m_byteCode.Compile( t_sourceCode , t_params );
 
 }
 //-----------------------------------------------------------------------------------------------
