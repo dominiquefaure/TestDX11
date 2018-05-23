@@ -85,6 +85,8 @@ void ShaderDefinition::LoadFromJSon( JSonNode& a_rootNode )
 
 	m_permutationMask										=	a_rootNode.GetInt64Property("PermutationMask" );
 
+	m_entryPoint											=	a_rootNode.GetStringProperty( "EntryPoint" );
+
 	std::string& t_filePath									=	a_rootNode.GetStringProperty( "SourcePath" );
 
 	LoadSourceCode( m_type , t_filePath );
@@ -97,7 +99,7 @@ ShaderPermutation* ShaderDefinition::CreatePermutation( const TUint64 a_permutat
 	// Set the Compilations params
 	RhiShaderCompilationParams t_params;
 	t_params.m_shaderType									=	m_type;
-	t_params.m_entryPoint									=	"main";
+	t_params.m_entryPoint									=	m_entryPoint;
 	t_params.m_permutationFlags								=	a_permutationID;
 
 	// Generate the byte code matching the permutation

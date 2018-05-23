@@ -64,6 +64,9 @@ private:
 	// Shader source code, allow to generate permutation at runtime
 	std::string								m_sourceCode;
 
+	// name of the Shader Entry point method
+	std::string								m_entryPoint;
+
 	// map that store the Different Permutations
 	std::map<TUint64 , ShaderPermutation* >	m_permutationMap;
 
