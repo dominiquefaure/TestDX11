@@ -21,9 +21,10 @@ void VertexLayoutManagerDX11::Init( GraphicDeviceDX11* a_device )
 {
 	m_layoutList											=	new VertexLayoutDX11[ RHI_VERTEX_LAYOUT_COUNT ];
 
-	m_layoutList[ RHI_VERTEX_LAYOUT_POSITION_ONLY ].Build( RHI_VERTEX_FORMAT_KEY_POSITION_ONLY , a_device	);
-	m_layoutList[ RHI_VERTEX_LAYOUT_POSITION_COLOR ].Build( RHI_VERTEX_FORMAT_KEY_POSITION_COLORED , a_device	);
-	m_layoutList[ RHI_VERTEX_LAYOUT_SPRITES ].Build( RHI_VERTEX_FORMAT_KEY_SPRITES , a_device	);
+	m_layoutList[ RHI_VERTEX_LAYOUT_POSITION_ONLY ].Build( RHI_VERTEX_LAYOUT_POSITION_ONLY , RHI_VERTEX_FORMAT_KEY_POSITION_ONLY , a_device );
+	m_layoutList[ RHI_VERTEX_LAYOUT_POSITION_COLOR ].Build( RHI_VERTEX_LAYOUT_POSITION_COLOR , RHI_VERTEX_FORMAT_KEY_POSITION_COLORED , a_device );
+	m_layoutList[ RHI_VERTEX_LAYOUT_SPRITES ].Build( RHI_VERTEX_LAYOUT_SPRITES , RHI_VERTEX_FORMAT_KEY_SPRITES , a_device );
+
 }
 //-----------------------------------------------------------------------------------------------
 

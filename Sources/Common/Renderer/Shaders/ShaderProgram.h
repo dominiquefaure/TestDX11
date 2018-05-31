@@ -3,7 +3,9 @@
 
 #include "../../Core/CoreIncludes.h"
 
-#include "ShaderDefinition.h"
+#include "../../RHI/Includes.h"
+
+class ShaderDefinition;
 
 class ShaderProgram
 {
@@ -29,12 +31,23 @@ public:
 
 	/*
 	 * Apply the correct shaders to the Context
+	 * return false if there is no permutation available for the actual VertexLayout
 	 */
-	void Apply( RhiGraphicContext* a_context, const TUint64 a_permutationID );
+	TBool Apply( RhiGraphicContext* a_context, const TUint64 a_permutationID );
 
 // Methods
 private:
 
+	/*
+	 * Init the Buffer that store flag to know if a layout is supported
+	 * set all the values to false by default
+	 */
+	void InitVertexLayoutSupport();
+
+	/*
+	 * Get from the JSon node the different vertexLayuout supported
+	 */
+	void SetSupportedVertexLayouts( JSonNode& a_rootNode );
 
 	/*
 	 * Try to load a Shader Definition from the JSon file
@@ -48,6 +61,10 @@ private:
 	// Definition for the different Shaders supported
 	ShaderDefinition*	m_vertexShader;
 	ShaderDefinition*	m_pixelShader;
+
+	// Arrray that store flags used to know if a given VertexLayout is supported by this Program
+	TBool*				m_vertexLayoutSupport;
+
 };
 
 // The inline is included in the Header only if not in debug mode

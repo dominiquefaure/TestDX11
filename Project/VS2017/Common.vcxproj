@@ -54,7 +54,9 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiVerteLayoutEnums.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h" />

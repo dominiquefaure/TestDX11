@@ -8,7 +8,10 @@
 
 #include "../../../Core/Base/BaseDataTypes.h"
 #include "../../../Core/CoreMacros.h"
+
+#include "../../Common/Includes.h"
 #include "../../RhiEnums.h"
+
 
 class VertexLayoutManagerDX11;
 class VertexLayoutDX11;

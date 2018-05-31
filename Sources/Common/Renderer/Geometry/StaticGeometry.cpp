@@ -4,6 +4,8 @@
 #include "StaticGeometry.inl"
 #endif
 
+#include "GeometryDataset.h"
+
 
 //-------------------------------------------------------------------------------------------------
 StaticGeometry::StaticGeometry()

@@ -4,8 +4,7 @@
 #include "../../Core/CoreIncludes.h"
 #include "../../RHI/Includes.h"
 
-
-#include "GeometryDataset.h"
+class GeometryDataset;
 
 /*
 * Base class for the Different Geometry classes

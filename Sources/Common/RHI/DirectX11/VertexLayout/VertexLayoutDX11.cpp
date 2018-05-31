@@ -34,6 +34,8 @@ VertexLayoutDX11::VertexLayoutDX11()
 {
 	m_inputLayout											=	NULL;
 	m_streamSizes											=	NULL;
+	
+	m_streamCount											=	0;
 }
 //-----------------------------------------------------------------------------------------------
 
@@ -57,8 +59,9 @@ VertexLayoutDX11::~VertexLayoutDX11()
 //-----------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------
-void VertexLayoutDX11::Build( RhiVertexLayoutTypeKey a_key , GraphicDeviceDX11* a_device )
+void VertexLayoutDX11::Build( RhiVertexLayoutType a_type , RhiVertexLayoutTypeKey a_key , GraphicDeviceDX11* a_device )
 {
+	m_type													=	a_type;
 	m_key													=	a_key;
 
 	InitStreams( VERTEX_LAYOUT_MAX_STREAM );

@@ -3,7 +3,9 @@
 
 #include "../../Core/CoreIncludes.h"
 
-#include "ShaderPermutation.h"
+#include "../../RHI/Includes.h"
+
+class ShaderPermutation;
 
 class ShaderDefinition
 {

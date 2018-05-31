@@ -4,6 +4,10 @@
 #include "ShaderDefinition.inl"
 #endif
 
+
+#include "ShaderPermutation.h"
+
+
 //---------------------------------------------------------------------------------------------
 ShaderDefinition::ShaderDefinition()
 {

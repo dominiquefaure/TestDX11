@@ -2,6 +2,8 @@
 #define __RHI_VERTEX_LAYOUT_MANAGER_DX11_H__
 
 #include "../../../Core/CoreIncludes.h"
+#include "../../Common/Includes.h"
+
 
 #include "VertexLayoutDX11.h"
 

@@ -29,6 +29,12 @@ public:
 	PipelineStatesDX11();
 	~PipelineStatesDX11();
 
+
+	/*
+	 * Get the current VertexLayout
+	 */
+	FORCE_INLINE const VertexLayoutDX11* GetVertexLayout()const;
+
 	/*
 	* Set reference to the State Object manager to avoid get it every times
 	*/
@@ -43,7 +49,6 @@ public:
 	* commit all the updates made since last call
 	*/
 	void Commit( ID3D11DeviceContext* a_context );
-
 
 
 	/*

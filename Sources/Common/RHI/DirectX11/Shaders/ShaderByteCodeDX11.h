@@ -82,10 +82,10 @@ private :
 
 
 	// indicate the Type of Shader ( VS , PS ... )
-	RhiShaderType	m_type;
+	RhiShaderType		m_type;
 
 	// Blob used to store the compiled byte code
-	ID3DBlob*		m_compiledBlob;
+	ID3DBlob*			m_compiledBlob;
 
 	// internal array that store all the macro defined to compile a Shader. 
 	D3D_SHADER_MACRO*	m_macroList;

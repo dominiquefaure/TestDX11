@@ -3,8 +3,9 @@
 
 #include <d3d11.h>
 
-#include "../../RhiEnums.h"
 #include "../../../Core/CoreIncludes.h"
+#include "../../Common/Includes.h"
+#include "../../RhiEnums.h"
 
 #include "../Shaders/ShaderByteCodeDX11.h"
 
@@ -34,6 +35,11 @@ public:
 	FORCE_INLINE TUint32 GetElementCount()const;
 
 	/*
+	* Get the type of the Vertex Layout
+	*/
+	FORCE_INLINE RhiVertexLayoutType GetLayoutType()const;
+
+	/*
 	* Get the Key that identify this layout and the elements that compose it
 	*/
 	FORCE_INLINE RhiVertexLayoutTypeKey	GetLayoutKey()const;
@@ -50,7 +56,7 @@ public:
 	* @param a_key		Unique key identifier to generate a VertexLayout
 	* @param a_device	The device that allow to create the input layout on GPU
 	*/
-	void Build( RhiVertexLayoutTypeKey a_key , GraphicDeviceDX11* a_device );
+	void Build( RhiVertexLayoutType a_type , RhiVertexLayoutTypeKey a_key , GraphicDeviceDX11* a_device );
 
 // Methods
 private:
@@ -87,6 +93,9 @@ private:
 
 // Fields
 private:
+
+	// Get the vertex Layout type
+	RhiVertexLayoutType				m_type;
 
 	// Key that identify this Layout
 	RhiVertexLayoutTypeKey			m_key;

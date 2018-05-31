@@ -8,7 +8,13 @@
 enum RhiShaderCompilationMacros
 {
 	SHADER_MACRO_NONE	=	-1,
-	SHADER_MACRO_DUMMY_COLOR = 0,
+
+	// Macro for VertexLayouts
+	SHADER_MACRO_VERTEX_COLOR = 0,
+	SHADER_MACRO_VERTEX_TEXTURED,
+
+	// start of Engine options
+	SHADER_MACRO_DUMMY_COLOR =8,
 
 	SHADER_MACRO_COUNT
 };

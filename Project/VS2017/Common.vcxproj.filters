@@ -250,6 +250,12 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h">
       <Filter>RHI\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiVerteLayoutEnums.h">
+      <Filter>RHI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h">
+      <Filter>RHI\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">

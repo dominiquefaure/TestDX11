@@ -17,6 +17,14 @@ static std::string g_shaderTargetType[]=
 
 LPCSTR g_shaderMacroList[]=
 {
+	"VERTEX_COLOR",
+	"VERTEX_TEXCOORD",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"DUMMY_COLOR"
 };
 

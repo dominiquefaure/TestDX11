@@ -8,6 +8,7 @@
 
 #include "../../Core/CoreIncludes.h"
 
+#include "../../Common/Includes.h"
 #include "../RhiEnums.h"
 
 #include "Buffers/Includes.h"

@@ -28,12 +28,10 @@ class GraphicContextDX11
 
 public:
 
-	// To be Removed!!!!!!
-	inline ID3D11DeviceContext* GetContext()
-	{
-		return m_deviceContext;
-	}
-
+	/*
+	 * Get the VewrtexLayout currently in use
+	 */
+	FORCE_INLINE const VertexLayoutDX11* GetVertexLayout()const;
 
 	/*
 	* Clear the Screen
