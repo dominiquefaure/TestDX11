@@ -50,6 +50,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.h" />
@@ -102,6 +103,7 @@
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.cpp" />

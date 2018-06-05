@@ -58,6 +58,9 @@
     <Filter Include="Core\Math">
       <UniqueIdentifier>{5eb73dfd-c8e2-43ad-be78-abd9a7efee2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Scene">
+      <UniqueIdentifier>{c1c4a6ac-cb73-41de-a83d-dcd597351ece}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -256,6 +259,9 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h">
       <Filter>RHI\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.h">
+      <Filter>Renderer\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -359,6 +365,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp">
       <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.cpp">
+      <Filter>Renderer\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

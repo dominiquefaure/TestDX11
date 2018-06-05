@@ -46,9 +46,11 @@ void Sample::OnInit( )
 
 	Matrix44 t_projection;
 	Matrix44 t_view;
+	Matrix44 t_translation;
 
 	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 1000.0f );
-	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -10.0f) , Vector3F( 0.0f , 0.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
+	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -10.0f) , Vector3F( 0.0f , 0.0f , 1.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
+
 
 	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 }
