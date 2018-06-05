@@ -53,6 +53,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.h" />
@@ -108,6 +109,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.cpp" />

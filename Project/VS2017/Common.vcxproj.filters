@@ -64,6 +64,9 @@
     <Filter Include="Renderer\Importers\Fbx">
       <UniqueIdentifier>{44a89253-b48a-44e7-a040-9db4410e495a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Scene">
+      <UniqueIdentifier>{762289e0-0a55-4b77-bef9-033376761f48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -271,6 +274,9 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.h">
+      <Filter>Renderer\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -383,6 +389,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp">
       <Filter>Renderer\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.cpp">
+      <Filter>Renderer\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

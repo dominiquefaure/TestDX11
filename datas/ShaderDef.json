@@ -1,5 +1,5 @@
 {
-	"SupportedLayouts": [ 1 ],
+	"SupportedLayouts": [ 0 , 1 , 2 ],
     "VertexShader":
     {
         "Type":0,

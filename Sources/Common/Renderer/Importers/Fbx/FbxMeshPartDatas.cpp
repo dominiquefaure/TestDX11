@@ -122,18 +122,13 @@ RhiVertexLayoutType FbxMeshPartDatas::ComputeVertexFormat( )
 		return RHI_VERTEX_LAYOUT_POSITION_COLOR;
 	}
 
-	return RHI_VERTEX_LAYOUT_INVALID;
+	return RHI_VERTEX_LAYOUT_POSITION_ONLY;
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
 void FbxMeshPartDatas::ProcessVertice( int a_controlPointIndex )
 {
-	FbxGeometryElementVertexColor* t_vertexColor		=	m_meshPart->GetElementVertexColor( 0 );
-	FbxGeometryElement::EMappingMode t_mappingMode		=	t_vertexColor->GetMappingMode();
-	FbxColor t_color								=	t_vertexColor->GetDirectArray().GetAt( a_controlPointIndex );
-
-
 	FbxVector4& t_position									=	m_meshPart->GetControlPointAt( a_controlPointIndex );
 
 
@@ -144,6 +139,15 @@ void FbxMeshPartDatas::ProcessVertice( int a_controlPointIndex )
 	m_vertexBuffer[ t_offset ++ ]							=	t_position[ 1 ];
 	m_vertexBuffer[ t_offset ++ ]							=	t_position[ 2 ];
 
+	FbxGeometryElementVertexColor* t_vertexColor		=	m_meshPart->GetElementVertexColor( 0 );
+
+	if( t_vertexColor != NULL )
+	{
+		FbxGeometryElement::EMappingMode t_mappingMode		=	t_vertexColor->GetMappingMode();
+		FbxColor t_color								=	t_vertexColor->GetDirectArray().GetAt( a_controlPointIndex );
+
+
+	}
 
 
 }
