@@ -7,6 +7,8 @@
 
 #include "WinResources/Resource.h"
 
+#include "../Common/Renderer/Importers/Fbx/FbxAssetImporter.h"
+
 //---------------------------------------------------------------------------------------------
 Sample::Sample()
 {
@@ -46,13 +48,16 @@ void Sample::OnInit( )
 
 	Matrix44 t_projection;
 	Matrix44 t_view;
-	Matrix44 t_translation;
 
-	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 1000.0f );
-	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -10.0f) , Vector3F( 0.0f , 0.0f , 1.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
-
+	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 10000.0f );
+	t_view.SetLookAt( Vector3F( 0.0f , 50.0f , -200.0f) , Vector3F( 0.0f , 050.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
 
 	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
+
+
+	m_scale.Set( 0.2f , 0.2f , 0.2f );
+	m_rotate.Set( 0 , 0 , 0 );
+
 }
 //---------------------------------------------------------------------------------------------
 
@@ -71,9 +76,13 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 {
+	FbxAssetImporter t_importer;
+	t_importer.LoadFBX( "model1.fbx" );
 
-	GeometryDataset* t_data									=	new GeometryDataset();
-	t_data->LoadFromJSon( "SolidCube.geo" );
+	GeometryDataset* t_data									=	t_importer.ImportMesh();
+
+//	GeometryDataset* t_data									=	new GeometryDataset();
+//	t_data->LoadFromJSon( "SolidCube.geo" );
 
 	m_geometry												=	new StaticGeometry();
 	m_geometry->Build( a_device , t_data );
@@ -129,7 +138,7 @@ void Sample::OnUpdate()
 		}
 	}
 
-	m_perDrawConstants.m_worldTransform.SetTranslate( m_translate );
+	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
 }
 //---------------------------------------------------------------------------------------------
