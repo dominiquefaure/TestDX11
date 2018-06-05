@@ -58,6 +58,12 @@
     <Filter Include="Core\Math">
       <UniqueIdentifier>{5eb73dfd-c8e2-43ad-be78-abd9a7efee2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Importers">
+      <UniqueIdentifier>{8a208bda-1b37-4ca2-8a10-0d8a7a92c2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Importers\Fbx">
+      <UniqueIdentifier>{44a89253-b48a-44e7-a040-9db4410e495a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -256,6 +262,15 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h">
       <Filter>RHI\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.h">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -359,6 +374,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp">
       <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.cpp">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp">
+      <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

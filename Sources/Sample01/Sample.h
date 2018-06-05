@@ -72,6 +72,8 @@ private:
 
 
 	Vector3F			m_translate;
+	Vector3F			m_rotate;
+	Vector3F			m_scale;
 
 	PerFrameConstants	m_perFrameConstants;
 	PerDrawConstants	m_perDrawConstants;
