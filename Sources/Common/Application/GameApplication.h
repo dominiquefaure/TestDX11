@@ -31,6 +31,12 @@ public:
  	 */
 	void OnFrame();
 
+	/*
+	* Process the custom windows messages
+	*/
+	void ProcessWindowsMessages( HWND a_hwnd, UINT a_msg, WPARAM a_wParam, LPARAM a_lParam );
+
+
 // pure Virtual methods to be overrided
 protected:
 
@@ -58,6 +64,7 @@ protected:
 	 * Allow custom config of the Windows creation
 	 */
 	virtual void OnSetWindowConfig( WinAppConfig& a_config ){}
+
 
 // Methodss
 private:

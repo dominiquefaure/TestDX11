@@ -9,6 +9,8 @@
 // Callback that will be Called to Handle Windows Messages
 LRESULT PASCAL AppWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
+GameApplication* s_application;
+
 
 //---------------------------------------------------------------------------------------------
 WinMainLauncher::WinMainLauncher()
@@ -107,6 +109,7 @@ BOOL WinMainLauncher::Init( GameApplication* a_application , HINSTANCE a_hInstan
 
 	// Save pointer to the Application
 	m_application											=	a_application;
+	s_application											=	a_application;
 
 	m_application->SetWindowConfig( m_config );
 
@@ -186,7 +189,6 @@ void WinMainLauncher::ProcessWindowsMessages()
 			m_quitRequested									=	true;
 		}
     }
-
 }
 //---------------------------------------------------------------------------------------------
 
@@ -239,6 +241,7 @@ LRESULT CALLBACK AppWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
         PostQuitMessage(0);
         break;
     default:
+		s_application->ProcessWindowsMessages( hWnd, message, wParam, lParam );
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;

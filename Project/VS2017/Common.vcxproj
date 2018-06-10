@@ -41,6 +41,9 @@
     <ClInclude Include="..\..\Sources\Common\Core\Math\Maths.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Math\Matrix44.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Math\Vector3F.h" />
+    <ClInclude Include="..\..\Sources\Common\DebugUI\ImGuiWrapper.h" />
+    <ClInclude Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.h" />
+    <ClInclude Include="..\..\Sources\Common\DebugUI\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
@@ -89,6 +92,9 @@
     <ClInclude Include="..\..\Sources\Common\RHI\RhiEnums.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\RhiManager.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\RhiWrapper.h" />
+    <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imconfig.h" />
+    <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imgui.h" />
+    <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imgui_internal.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\GameApplication.cpp" />
@@ -102,6 +108,8 @@
     <ClCompile Include="..\..\Sources\Common\Core\Math\Maths.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Math\Vector3F.cpp" />
+    <ClCompile Include="..\..\Sources\Common\DebugUI\ImGuiWrapper.cpp" />
+    <ClCompile Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.cpp" />
@@ -129,6 +137,9 @@
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp" />
+    <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui.cpp" />
+    <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui_draw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl" />
@@ -235,7 +246,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -254,7 +265,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -275,7 +286,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -296,7 +307,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

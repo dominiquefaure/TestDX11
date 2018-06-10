@@ -27,7 +27,7 @@ class GraphicContextDX11
 	friend class ConstantBufferDX11;
 
 public:
-
+	ID3D11DeviceContext* GetContext(){ return  m_deviceContext; }
 	/*
 	 * Get the VewrtexLayout currently in use
 	 */

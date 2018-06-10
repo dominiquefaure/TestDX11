@@ -9,6 +9,7 @@
 
 #include "../Common/Renderer/Importers/Fbx/FbxAssetImporter.h"
 
+
 //---------------------------------------------------------------------------------------------
 Sample::Sample()
 {
@@ -154,6 +155,8 @@ void Sample::OnDraw()
 
 	DrawTriangle( t_mainContext );
 
+
+	ImGui::ShowDemoWindow();
 }
 //---------------------------------------------------------------------------------------------
 

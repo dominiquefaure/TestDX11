@@ -39,6 +39,8 @@ public:
 	GraphicDeviceDX11();
 	~GraphicDeviceDX11();
 
+	ID3D11Device* GetD3DDevice(){ return m_d3dDevice;}
+
 	/*
 	* Get the Main Graphic Context sued to display on Screen
 	*/

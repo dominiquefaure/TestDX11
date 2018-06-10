@@ -8,4 +8,6 @@
 #include "Inputs/Includes.h"
 #include "Application/Includes.h"
 
+#include "DebugUI/Includes.h"
+
 #endif

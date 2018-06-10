@@ -67,6 +67,15 @@
     <Filter Include="Renderer\Scene">
       <UniqueIdentifier>{762289e0-0a55-4b77-bef9-033376761f48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Meshes">
+      <UniqueIdentifier>{1a4eccf0-7486-46c3-aa72-3c9f8d8fc075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DebugUI">
+      <UniqueIdentifier>{37c1858f-13e7-40f0-bba5-6c627603ea27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DebugUI\ImGui">
+      <UniqueIdentifier>{eeac1c9e-338c-4479-9c35-0d0bb64da7dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -277,6 +286,24 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.h">
       <Filter>Renderer\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imgui.h">
+      <Filter>DebugUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imconfig.h">
+      <Filter>DebugUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imgui_internal.h">
+      <Filter>DebugUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\DebugUI\Includes.h">
+      <Filter>DebugUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\DebugUI\ImGuiWrapper.h">
+      <Filter>DebugUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.h">
+      <Filter>DebugUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -392,6 +419,21 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.cpp">
       <Filter>Renderer\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui.cpp">
+      <Filter>DebugUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui_demo.cpp">
+      <Filter>DebugUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui_draw.cpp">
+      <Filter>DebugUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\DebugUI\ImGuiWrapper.cpp">
+      <Filter>DebugUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.cpp">
+      <Filter>DebugUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
