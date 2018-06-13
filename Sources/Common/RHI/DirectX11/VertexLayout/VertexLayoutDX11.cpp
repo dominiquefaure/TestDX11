@@ -36,6 +36,7 @@ VertexLayoutDX11::VertexLayoutDX11()
 	m_streamSizes											=	NULL;
 	
 	m_streamCount											=	0;
+	m_vertexSize											=	0;
 }
 //-----------------------------------------------------------------------------------------------
 
@@ -102,6 +103,9 @@ void VertexLayoutDX11::PushElement( TUint32 a_slot , RhiVertexElementType a_type
 
 	// increase the matching stream size
 	m_streamSizes[ a_slot ]									+=	t_element->GetSize();
+
+	// increase the total size
+	m_vertexSize											+=	t_element->GetSize();
 
 	// Add the Element to the List
 	m_elements.push_back( t_element );

@@ -29,6 +29,8 @@ public:
 	*/
 	FORCE_INLINE ID3D11RenderTargetView* GetRenderTargetView();
 
+	FORCE_INLINE ID3D11DepthStencilView* GetDepthStencilView();
+
 	/*
 	* Set the Viewport of the Swapchain
 	*/
@@ -60,7 +62,9 @@ private:
 	*/
 	void CreateRenderTargetView();
 
-	
+
+	void CreateDepthBuffer(  TUint32 a_width , TUint32 a_height  );
+
 
 // Fields
 private:
@@ -78,6 +82,10 @@ private:
 
 	// The default viewport of the SwapChain
 	D3D11_VIEWPORT			m_viewport;
+
+
+	ID3D11Texture2D*		m_depthTexture;
+	ID3D11DepthStencilView* m_depthStencilView;
 
 };
 

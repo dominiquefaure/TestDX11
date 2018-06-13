@@ -189,6 +189,8 @@ private:
 	*/
 	ID3D11InputLayout* CreateInputLayout( D3D11_INPUT_ELEMENT_DESC* a_descriptor , TUint32 a_elementcount , ShaderByteCodeDX11& a_byteCode );
 
+
+
 private:
 
 	// The Device representing the Graphic Card
@@ -217,6 +219,9 @@ private:
 	VertexLayoutManagerDX11*	m_vertexLayoutManager;
 
 	StateObjectsManagerDX11	m_stateObjectsManager;
+
+
+
 };
 
 // The inline is included in the Header only if not in debug mode

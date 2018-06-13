@@ -50,9 +50,10 @@ void GraphicContextDX11::OnBeginFrame()
 {
 	// Get the Render Target view of the Swapchain
 	ID3D11RenderTargetView* t_renderTargetView				=	m_swapchain->GetRenderTargetView();
+	ID3D11DepthStencilView* t_depthStenciView				=	m_swapchain->GetDepthStencilView();
 
 	//Set the Render Target
-	m_deviceContext->OMSetRenderTargets(1, &t_renderTargetView, nullptr);
+	m_deviceContext->OMSetRenderTargets(1, &t_renderTargetView, t_depthStenciView);
 	m_deviceContext->RSSetViewports( 1 , m_swapchain->GetViewport() );
 
 	ResetStates();
@@ -77,7 +78,12 @@ void GraphicContextDX11::Clear( TFloat32 r , TFloat32 g, TFloat32 b )
 	t_clearColor[ 3 ]										=	1.0f;
 
 	ID3D11RenderTargetView* t_renderTargetView				=	m_swapchain->GetRenderTargetView();
+	ID3D11DepthStencilView* t_depthStenciView				=	m_swapchain->GetDepthStencilView();
+
 	m_deviceContext->ClearRenderTargetView( t_renderTargetView , t_clearColor );
+
+	m_deviceContext->ClearDepthStencilView( t_depthStenciView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
+
 }
 //---------------------------------------------------------------------------------------------------------
 

@@ -49,6 +49,10 @@ public:
 	*/
 	FORCE_INLINE ID3D11InputLayout* GetInputLayout();
 
+	/*
+	* Get the Size in Bytes of 1 vertex
+	*/
+	FORCE_INLINE TUint32 GetVertexSize()const;
 
 	/*
 	* Build the Vertex Layout
@@ -108,6 +112,9 @@ private:
 
 	// Size of the Different vertex Stream used
 	TUint32*						m_streamSizes;
+
+	// Size of the Vertex
+	TUint32							m_vertexSize;
 
 	// The Vertex Elements Desc in DX format
 	D3D11_INPUT_ELEMENT_DESC*		m_inputElementDesc;

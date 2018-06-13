@@ -54,6 +54,7 @@ void GraphicDeviceDX11::Init( HWND a_handle , TUint32 a_width , TUint32 a_height
 	InitMainContext();
 
 	InitVertexLayouts();
+
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -386,3 +387,4 @@ ID3D11InputLayout* GraphicDeviceDX11::CreateInputLayout( D3D11_INPUT_ELEMENT_DES
 	return t_layout;
 }
 //-------------------------------------------------------------------------------------------------
+

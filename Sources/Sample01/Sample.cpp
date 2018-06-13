@@ -51,7 +51,7 @@ void Sample::OnInit( )
 	Matrix44 t_view;
 
 	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 10000.0f );
-	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -10.0f) , Vector3F( 0.0f , 0.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
+	t_view.SetLookAt( Vector3F( 0.0f , 2.0f , -5.0f) , Vector3F( 0.0f , 2.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
 
 	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 
@@ -59,6 +59,10 @@ void Sample::OnInit( )
 	m_scale.Set( 1.0f , 1.0f , 1.0f );
 	m_rotate.Set( 0 , 0 , 0 );
 
+	m_perFrameConstants.m_lightDirection.Set( 0.3 , 0.0 , 0.7 );
+	m_perFrameConstants.m_lightDiffuse.Set( 0.8 , 0.8 , 0.8 );
+
+	m_perDrawConstants.m_matDiffuse.Set( 1.0 , 1.0 , 1.0 );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -96,7 +100,8 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 void Sample::LoadShaders( )
 {
 	m_shader												=	new ShaderProgram();
-	m_shader->Load( "ShaderDef.json" );
+//	m_shader->Load( "ShaderDef.json" );
+	m_shader->Load( "PerVertexLighting.json" );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -139,6 +144,8 @@ void Sample::OnUpdate()
 		}
 	}
 
+	m_rotate.y+=0.0001f;
+
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
 }
@@ -156,7 +163,45 @@ void Sample::OnDraw()
 	DrawTriangle( t_mainContext );
 
 
-	ImGui::ShowDemoWindow();
+//	ImGui::ShowDemoWindow();
+
+	if( ImGui::CollapsingHeader( "Material") )
+	{
+		float t_matDiffuse[3];
+
+		t_matDiffuse[ 0 ]									=	m_perDrawConstants.m_matDiffuse.x;
+		t_matDiffuse[ 1 ]									=	m_perDrawConstants.m_matDiffuse.y;
+		t_matDiffuse[ 2 ]									=	m_perDrawConstants.m_matDiffuse.z;
+		if( ImGui::ColorEdit3( "Mat Diffuse" , t_matDiffuse ) )
+		{
+			m_perDrawConstants.m_matDiffuse.Set( t_matDiffuse[ 0 ] , t_matDiffuse[ 1 ] , t_matDiffuse[ 2 ] );
+		}
+	}
+
+	if( ImGui::CollapsingHeader( "Light") )
+	{
+		float t_dir[3];
+
+		t_dir[ 0 ]									=	m_perFrameConstants.m_lightDirection.x;
+		t_dir[ 1 ]									=	m_perFrameConstants.m_lightDirection.y;
+		t_dir[ 2 ]									=	m_perFrameConstants.m_lightDirection.z;
+
+		if( ImGui::InputFloat3( "Light Dir", t_dir) )
+		{
+			m_perFrameConstants.m_lightDirection.Set( t_dir[ 0 ] , t_dir[ 1 ] , t_dir[ 2 ] );
+		}
+
+
+		float t_values[3];
+
+		t_values[ 0 ]									=	m_perFrameConstants.m_lightDiffuse.x;
+		t_values[ 1 ]									=	m_perFrameConstants.m_lightDiffuse.y;
+		t_values[ 2 ]									=	m_perFrameConstants.m_lightDiffuse.z;
+		if( ImGui::ColorEdit3( "Diffuse" , t_values ) )
+		{
+			m_perFrameConstants.m_lightDiffuse.Set( t_values[ 0 ] , t_values[ 1 ] , t_values[ 2 ] );
+		}
+	}
 }
 //---------------------------------------------------------------------------------------------
 
@@ -171,7 +216,8 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 	m_perDrawConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 1 );
 
 	a_context->SetWireframe( false );
-	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
+//	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
+	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
 
 	m_geometry->Apply( a_context );
 	m_shader->Apply( a_context , 0 );

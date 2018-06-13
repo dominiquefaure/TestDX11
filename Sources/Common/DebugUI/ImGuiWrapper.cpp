@@ -30,8 +30,10 @@ ImGuiWrapper::~ImGuiWrapper()
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void ImGuiWrapper::InitImGUI( void* a_hwnd , int a_width , int a_height )
+void ImGuiWrapper::InitImGUI( HWND a_hwnd , int a_width , int a_height )
 {
+	m_screenHandle											=	a_hwnd;
+
 /*	ImGuiIO& t_io											=	ImGui::GetIO();
 
 	t_io.RenderDrawListsFn									=	ImGuiWrapper::DrawCallback;
@@ -130,14 +132,22 @@ void ImGuiWrapper::CreateFonts()
 }
 //-------------------------------------------------------------------------------------------------
 
-static bool IsAnyMouseButtonDown()
+//-------------------------------------------------------------------------------------------------
+TBool ImGuiWrapper::IsAnyMouseButtonDown()
 {
-    ImGuiIO& io = ImGui::GetIO();
-    for (int n = 0; n < IM_ARRAYSIZE(io.MouseDown); n++)
-        if (io.MouseDown[n])
-            return true;
-    return false;
+	ImGuiIO& io = ImGui::GetIO();
+	for (int n = 0; n < IM_ARRAYSIZE(io.MouseDown); n++)
+	{
+		if (io.MouseDown[n])
+		{
+			return true;
+		}
+	}
+	return false;
 }
+//-------------------------------------------------------------------------------------------------
+
+
 
 //-------------------------------------------------------------------------------------------------
 void ImGuiWrapper::ProcessWindowsMessages( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )

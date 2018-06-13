@@ -12,7 +12,7 @@ struct KeyboardKey
 	//Key State
 	InputState	m_state;
 
-	//keyboard ke code
+	//keyboard key code
 	int			m_keyCode;
 };
 

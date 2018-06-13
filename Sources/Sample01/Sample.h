@@ -9,11 +9,19 @@
 struct PerFrameConstants
 {
 	Matrix44	m_viewProjection;
+	Vector3F	m_lightDirection;
+	float		m_padding1;
+	Vector3F	m_lightDiffuse;
+	float		m_padding2;
+
 };
 
 struct PerDrawConstants
 {
 	Matrix44	m_worldTransform;
+	Vector3F	m_matDiffuse;
+	float		m_padding;
+
 };
 
 class Sample : public GameApplication
