@@ -76,6 +76,15 @@
     <Filter Include="DebugUI\ImGui">
       <UniqueIdentifier>{eeac1c9e-338c-4479-9c35-0d0bb64da7dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Platforms">
+      <UniqueIdentifier>{215ecc7a-2b3e-4162-9998-a181017f6593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Platforms\Windows">
+      <UniqueIdentifier>{957e6216-0672-4abd-9bda-64e84a604ccf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Utils">
+      <UniqueIdentifier>{a6b03efc-0c98-4df9-8796-cd0300637dbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -304,6 +313,24 @@
     <ClInclude Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.h">
       <Filter>DebugUI</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Utils\Timer.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Utils\Includes.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Platforms\PlatformWrapper.h">
+      <Filter>Core\Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.h">
+      <Filter>Core\Platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h">
+      <Filter>Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h">
+      <Filter>RHI\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -435,6 +462,12 @@
     <ClCompile Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.cpp">
       <Filter>DebugUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\Utils\Timer.cpp">
+      <Filter>Core\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.cpp">
+      <Filter>Core\Platforms\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -499,6 +532,15 @@
     </None>
     <None Include="..\..\Sources\Common\Core\Math\Maths.inl">
       <Filter>Core\Math</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Core\Utils\Timer.inl">
+      <Filter>Core\Utils</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.inl">
+      <Filter>Core\Platforms\Windows</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Application\GameApplication.inl">
+      <Filter>Application</Filter>
     </None>
   </ItemGroup>
 </Project>

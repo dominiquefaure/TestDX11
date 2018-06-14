@@ -114,11 +114,11 @@ void Sample::CreateConstantBuffer( RhiGraphicDevice* a_device )
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void Sample::OnUpdate()
+void Sample::OnUpdate( TFloat32 a_deltaTime )
 {
 	KeyboardDevice* t_keyboard								=	InputManager::GetInstance()->GetKeyboard();
 
-	float t_updateCoef										=	0.001f;
+	float t_updateCoef										=	1.0f * a_deltaTime;
 
 	if( t_keyboard->IsPressed( KEY_LEFT ) )
 	{
@@ -144,7 +144,7 @@ void Sample::OnUpdate()
 		}
 	}
 
-	m_rotate.y+=0.0001f;
+	m_rotate.y												+=	0.2f * a_deltaTime;
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
@@ -162,6 +162,42 @@ void Sample::OnDraw()
 
 	DrawTriangle( t_mainContext );
 
+
+}
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+void Sample::DrawTriangle( RhiGraphicContext* a_context )
+{
+/*	m_perFrameConstantBuffer->Update( (TUint8*)&m_perFrameConstants , 0 , sizeof( m_perFrameConstants) );
+	m_perDrawConstantBuffer->Update( (TUint8*)&m_perDrawConstants , 0 , sizeof( m_perDrawConstants) );
+
+	m_perFrameConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 0 );
+	m_perDrawConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 1 );
+*/
+	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 0 , &m_perFrameConstants.m_viewProjection );
+	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 64 , &m_perFrameConstants.m_lightDirection );
+	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 80 , &m_perFrameConstants.m_lightDiffuse );
+
+	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_DRAW , 0 , &m_perDrawConstants.m_worldTransform );
+	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_DRAW , 64 , &m_perDrawConstants.m_matDiffuse );
+
+	a_context->SetWireframe( false );
+//	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
+	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
+
+	m_geometry->Apply( a_context );
+	m_shader->Apply( a_context , 0 );
+
+	m_geometry->ProcessDraw( a_context );
+}
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+void Sample::DrawDebugUI()
+{
 
 //	ImGui::ShowDemoWindow();
 
@@ -201,27 +237,6 @@ void Sample::OnDraw()
 		{
 			m_perFrameConstants.m_lightDiffuse.Set( t_values[ 0 ] , t_values[ 1 ] , t_values[ 2 ] );
 		}
-	}
-}
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-void Sample::DrawTriangle( RhiGraphicContext* a_context )
-{
-	m_perFrameConstantBuffer->Update( (TUint8*)&m_perFrameConstants , 0 , sizeof( m_perFrameConstants) );
-	m_perDrawConstantBuffer->Update( (TUint8*)&m_perDrawConstants , 0 , sizeof( m_perDrawConstants) );
-
-	m_perFrameConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 0 );
-	m_perDrawConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 1 );
-
-	a_context->SetWireframe( false );
-//	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
-	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
-
-	m_geometry->Apply( a_context );
-	m_shader->Apply( a_context , 0 );
-
-	m_geometry->ProcessDraw( a_context );
+	}	
 }
 //---------------------------------------------------------------------------------------------

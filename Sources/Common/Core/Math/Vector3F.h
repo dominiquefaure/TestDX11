@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __VECTOR3F_H__
-#define __VECTOR3F_H__
+#ifndef __CORE_MATH_VECTOR3F_H__
+#define __CORE_MATH_VECTOR3F_H__
 
 #include "../CoreMacros.h"
 #include "MathMacros.h"

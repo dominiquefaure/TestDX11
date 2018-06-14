@@ -3,11 +3,15 @@
 
 #include <vector>
 #include <map>
-#include "Base/BaseDataTypes.h"
+#include "Base/Includes.h"
 
 #include "CoreMacros.h"
 #include "DesignPatterns/Singleton.h"
 #include "IO/Includes.h"
 #include "Math/includes.h"
+
+#include "Platforms/PlatformWrapper.h"
+
+#include "Utils/Includes.h"
 
 #endif

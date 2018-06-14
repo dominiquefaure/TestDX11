@@ -18,6 +18,12 @@ public:
 
 	int Run( GameApplication* a_application , HINSTANCE a_hInstance, int a_nCmdShow );
 
+
+	/*
+	 * process a windows messages
+	 */
+	void ProcessWindowsMessage( HWND a_hwnd, UINT a_msg, WPARAM a_wParam, LPARAM a_lParam );
+
 // MEthods
 private:
 

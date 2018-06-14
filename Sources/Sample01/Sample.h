@@ -49,14 +49,14 @@ protected:
 	/*
 	 * Called every ticks to perform the update operations
 	 */
-	virtual void OnUpdate();
+	virtual void OnUpdate( TFloat32 a_deltaTime );
 
 	/*
 	 *  called every ticks to perform the custom draw operations
 	 */
 	virtual void OnDraw();
 
-	
+	virtual void DrawDebugUI();	
 	/*
 	 * Configure the Windows Dialog
 	 */

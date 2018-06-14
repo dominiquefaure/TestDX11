@@ -3,6 +3,14 @@
 #include "../Inputs/Includes.h"
 
 #include "../Includes.h"
+#include "../Core/Platforms/PlatformWrapper.h"
+#include "../Core/Math/includes.h"
+
+#include "../Core/Utils//Includes.h"
+
+#ifdef _DEBUG
+#include "GameApplication.inl"
+#endif
 
 
 //---------------------------------------------------------------------------------------------
@@ -43,6 +51,8 @@ void GameApplication::SetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void GameApplication::Init( HWND a_handle )
 {
+	PlatformTime::Initialize();
+
 	RECT rc;
 	GetClientRect(a_handle, &rc);
 
@@ -51,11 +61,17 @@ void GameApplication::Init( HWND a_handle )
 
 	InputManager::CreateInstance();
 
+	ImGuiWrapper::CreateInstance();
+	ImGuiWrapper::GetInstance()->InitImGUI( a_handle , rc.right - rc.left , rc.bottom - rc.top );
+
+	// by default 60Fps
+	m_maxFPS												=	60;
+
 	// perform custom inits
 	OnInit( );
 
-	ImGuiWrapper::CreateInstance();
-	ImGuiWrapper::GetInstance()->InitImGUI( a_handle , rc.right - rc.left , rc.bottom - rc.top );
+	m_timer.Start();
+	m_lastFrameDuration										=	0;
 }
 //---------------------------------------------------------------------------------------------
 
@@ -82,11 +98,13 @@ void GameApplication::OnFrame()
 //---------------------------------------------------------------------------------------------
 void GameApplication::PerformUpdates()
 {
+	ProcessFPS();
+
 	InputManager::GetInstance()->Update();
 	ImGuiWrapper::GetInstance()->BeginFrame();
 
 	// Custom Updates	
-	OnUpdate();
+	OnUpdate( m_lastFrameDuration );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -97,6 +115,8 @@ void GameApplication::PerformDraw()
 
 	OnDraw();
 
+	DrawDebugUI();
+
 	ImGuiWrapper::GetInstance()->EndFrame();
 
 
@@ -105,8 +125,15 @@ void GameApplication::PerformDraw()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void GameApplication::ProcessWindowsMessages( HWND a_hwnd, UINT a_msg, WPARAM a_wParam, LPARAM a_lParam )
+void GameApplication::ProcessFPS()
 {
-	ImGuiWrapper::GetInstance()->ProcessWindowsMessages( a_hwnd , a_msg , a_wParam , a_lParam );
+	TFloat32 t_pulseTime									=	0.0f;
+	if( m_maxFPS > 0 )
+	{
+		t_pulseTime											=	( 1.0f / m_maxFPS );
+	}
+	m_timer.Pulse(t_pulseTime );
+
+	m_lastFrameDuration										=	m_timer.GetEleapsedSeconds();
 }
 //---------------------------------------------------------------------------------------------

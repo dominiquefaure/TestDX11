@@ -12,6 +12,9 @@
 
 #include "../Buffers/Includes.h"
 
+#include "../../Common/RhiShaderParameterCommon.h"
+
+
 class GraphicDeviceDX11;
 class SwapchainDX11;
 
@@ -20,14 +23,19 @@ class PixelShaderDX11;
 class VertexLayoutDX11;
 class ConstantBufferDX11;
 
+class ImGuiWrapper;
+
+
 class GraphicContextDX11
 {
 
 	friend class GraphicDeviceDX11;
 	friend class ConstantBufferDX11;
 
+	friend class ImGuiWrapper;
+
 public:
-	ID3D11DeviceContext* GetContext(){ return  m_deviceContext; }
+
 	/*
 	 * Get the VewrtexLayout currently in use
 	 */
@@ -112,6 +120,47 @@ public:
 
 	void DrawIndexedPrimitive( int a_indexCount , int a_startIndex = 0 , int a_startVertex = 0 );
 
+
+
+	//////
+	// VS ConstantBuffer Methods
+	//////
+
+	/*
+	 * Update a Parameter of one of the Cosntant Buffers
+	 */
+	void SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , TUint32 a_byteCount , const void* a_value );
+
+	/*
+	 * Set a VertexShader constant parameter of type Vector3
+	 */
+	void SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , const Vector3F* a_value );
+
+	/*
+	 * Set a VertexShader constant parameter of type Matrix44
+	 */
+	void SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , const Matrix44* a_value );
+
+
+	//////
+	// PS ConstantBuffer Methods
+	//////
+
+	/*
+	 * Update a Parameter of one of the Cosntant Buffers
+	 */
+	void SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , TUint32 a_byteCount , const void* a_value );
+
+	/*
+	 * Set a VertexShader constant parameter of type Vector3
+	 */
+	void SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , const Vector3F* a_value );
+
+	/*
+	 * Set a VertexShader constant parameter of type Matrix44
+	 */
+	void SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , const Matrix44* a_value );
+
 // Private Methods
 private:
 
@@ -146,6 +195,17 @@ private:
 	void CommitStates();
 
 	/*
+	 * Init tne Different Constant Buffers
+	 */
+	void InitConstantBuffers( GraphicDeviceDX11* a_device );
+
+	/*
+	 * Free the Different Constant Buffer allocated
+	 */
+	void ReleaseConstantBuffers();
+
+
+	/*
 	* Update the Content of a Constant Buffer using Map/Unmap
 	*/
 	TBool UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a_data , TUint32 a_size );
@@ -154,6 +214,11 @@ private:
 	* Set the Active constant buffer for the Given Slot
 	*/
 	void SetConstantBuffer( RhiShaderType a_type , int a_slot , ID3D11Buffer* a_buffer );
+
+	/*
+	 * Commit the ConstantBuffer updates
+	 */
+	void CommitConstantBuffers( );
 
 private:
 
@@ -168,6 +233,13 @@ private:
 
 	GeometryStatesDX11		m_geometryStates;
 	PipelineStatesDX11		m_pipelineStates;
+
+	// array of constant buffer for VS stage
+	ConstantBufferDX11*		m_vsConstantBuffers[ VS_PARAMETER_SLOT_COUNT ];
+
+	// array of constant buffer for PS stage
+	ConstantBufferDX11*		m_psConstantBuffers[ PS_PARAMETER_SLOT_COUNT ];
+
 };
 
 // The inline is included in the Header only if not in debug mode

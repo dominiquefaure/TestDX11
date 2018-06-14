@@ -18,12 +18,25 @@ GraphicContextDX11::GraphicContextDX11( )
 {
 	m_deviceContext											=	NULL;
 	m_swapchain												=	NULL;
+
+	for( int i = 0 ; i < VS_PARAMETER_SLOT_COUNT ; i ++ )
+	{
+		m_vsConstantBuffers[ i ]							=	nullptr;
+	}
+
+	for( int i = 0 ; i < PS_PARAMETER_SLOT_COUNT ; i ++ )
+	{
+		m_psConstantBuffers[ i ]							=	nullptr;
+	}
+
 }
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
 GraphicContextDX11::~GraphicContextDX11()
 {
+	ReleaseConstantBuffers();
+
 	SAFE_RELEASE( m_deviceContext );
 }
 //---------------------------------------------------------------------------------------------------------
@@ -42,6 +55,9 @@ void GraphicContextDX11::Init( GraphicDeviceDX11* a_owner ,  ID3D11DeviceContext
 	m_deviceContext											=	a_context;
 	
 	m_pipelineStates.SetStateObjectManager( a_owner->GetStateObjetManager() );
+
+	InitConstantBuffers( a_owner );
+
 }
 //---------------------------------------------------------------------------------------------------------
 
@@ -175,6 +191,8 @@ void GraphicContextDX11::CommitStates()
 {
 	m_pipelineStates.Commit( m_deviceContext );
 	m_geometryStates.Commit( m_deviceContext );
+
+	CommitConstantBuffers();
 }
 //---------------------------------------------------------------------------------------------------------
 
@@ -183,6 +201,34 @@ void GraphicContextDX11::CommitStates()
 // Constant Buffer Methods
 /////////
 
+
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::InitConstantBuffers( GraphicDeviceDX11* a_device )
+{
+	m_vsConstantBuffers[ VS_PARAMETER_SLOT_PER_FRAME ]		=	a_device->CreateConstantBuffer( VS_PER_FRAME_CONSTANT_BUFFER_SIZE );
+	m_vsConstantBuffers[ VS_PARAMETER_SLOT_PER_DRAW ]		=	a_device->CreateConstantBuffer( VS_PER_DRAW_CONSTANT_BUFFER_SIZE );
+
+	m_psConstantBuffers[ PS_PARAMETER_SLOT_MATERIAL ]		=	a_device->CreateConstantBuffer( PS_MATERIAL_CONSTANT_BUFFER_SIZE );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::ReleaseConstantBuffers()
+{
+	// releasee the different VS Constant Bufers
+	for( int i = 0 ; i < VS_PARAMETER_SLOT_COUNT ; i ++ )
+	{
+		SAFE_DELETE( m_vsConstantBuffers[ i ] );
+	}
+
+	// releasee the different PS Constant Bufers
+	for( int i = 0 ; i < PS_PARAMETER_SLOT_COUNT ; i ++ )
+	{
+		SAFE_DELETE( m_psConstantBuffers[ i ] );
+	}
+}
+//---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
 TBool GraphicContextDX11::UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a_data , TUint32 a_size )
@@ -197,7 +243,6 @@ TBool GraphicContextDX11::UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a
 		// copy the Datas
 		memcpy( t_subresource.pData , a_data , a_size );
 
-
 		// unmap it
 		m_deviceContext->Unmap( a_buffer , 0 );
 
@@ -205,6 +250,22 @@ TBool GraphicContextDX11::UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a
 	}
 
 	return false;
+}
+//---------------------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::CommitConstantBuffers( )
+{
+	for( int i = 0 ; i < VS_PARAMETER_SLOT_COUNT ; i ++ )
+	{
+		m_vsConstantBuffers[ i ]->Commit( this , RHI_SHADER_TYPE_VERTEX_SHADER , i );
+	}
+
+	for( int i = 0 ; i < PS_PARAMETER_SLOT_COUNT ; i ++ )
+	{
+		m_psConstantBuffers[ i ]->Commit( this , RHI_SHADER_TYPE_PIXEL_SHADER , i );
+	}
 }
 //---------------------------------------------------------------------------------------------------------
 
@@ -222,5 +283,60 @@ void GraphicContextDX11::SetConstantBuffer( RhiShaderType a_type , int a_slot , 
 			m_deviceContext->PSSetConstantBuffers( a_slot , 1 , &a_buffer );
 		break;
 	}
+}
+//---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+//////
+// PS ConstantBuffer Methods
+//////
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , TUint32 a_byteCount , const void* a_value )
+{
+	m_vsConstantBuffers[ a_slot ]->Update( a_index , a_byteCount , a_value );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , const Vector3F* a_value )
+{
+	m_vsConstantBuffers[ a_slot ]->Update( a_index , sizeof( Vector3F) , a_value );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , const Matrix44* a_value )
+{
+	m_vsConstantBuffers[ a_slot ]->Update( a_index , sizeof( Matrix44) , a_value );
+}
+//---------------------------------------------------------------------------------------------------------
+
+
+//////
+// PS ConstantBuffer Methods
+//////
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , TUint32 a_byteCount , const void* a_value )
+{
+	m_psConstantBuffers[ a_slot ]->Update( a_index , a_byteCount , a_value );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , const Vector3F* a_value )
+{
+	m_psConstantBuffers[ a_slot ]->Update( a_index , sizeof( Vector3F) , a_value );
+}
+//---------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , const Matrix44* a_value )
+{
+	m_psConstantBuffers[ a_slot ]->Update( a_index , sizeof( Matrix44) , a_value );
 }
 //---------------------------------------------------------------------------------------------------------

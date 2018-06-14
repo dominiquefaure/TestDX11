@@ -24,6 +24,7 @@
     <ClInclude Include="..\..\Sources\Common\Application\WindowsAppConfig.h" />
     <ClInclude Include="..\..\Sources\Common\Application\WinMainLauncher.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\BaseDataTypes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreIncludes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Core\DesignPatterns\Singleton.h" />
@@ -41,6 +42,10 @@
     <ClInclude Include="..\..\Sources\Common\Core\Math\Maths.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Math\Matrix44.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Math\Vector3F.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Platforms\PlatformWrapper.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Utils\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Utils\Timer.h" />
     <ClInclude Include="..\..\Sources\Common\DebugUI\ImGuiWrapper.h" />
     <ClInclude Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.h" />
     <ClInclude Include="..\..\Sources\Common\DebugUI\Includes.h" />
@@ -63,6 +68,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiVerteLayoutEnums.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.h" />
@@ -108,6 +114,8 @@
     <ClCompile Include="..\..\Sources\Common\Core\Math\Maths.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Math\Vector3F.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Utils\Timer.cpp" />
     <ClCompile Include="..\..\Sources\Common\DebugUI\ImGuiWrapper.cpp" />
     <ClCompile Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
@@ -142,11 +150,14 @@
     <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui_draw.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Sources\Common\Application\GameApplication.inl" />
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl" />
     <None Include="..\..\Sources\Common\Core\Math\Color.inl" />
     <None Include="..\..\Sources\Common\Core\Math\Maths.inl" />
     <None Include="..\..\Sources\Common\Core\Math\Matrix44.inl" />
     <None Include="..\..\Sources\Common\Core\Math\Vector3F.inl" />
+    <None Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.inl" />
+    <None Include="..\..\Sources\Common\Core\Utils\Timer.inl" />
     <None Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.inl" />
     <None Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.inl" />

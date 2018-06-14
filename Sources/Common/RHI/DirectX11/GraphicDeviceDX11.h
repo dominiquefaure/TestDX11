@@ -29,10 +29,15 @@ struct BufferUsageParams
 class VertexLayoutDX11;
 class VertexLayoutManagerDX11;
 
+class ImGuiWrapper;
+
 class GraphicDeviceDX11
 {
 	friend class SwapchainDX11;
 	friend class VertexLayoutDX11;
+
+
+	friend class ImGuiWrapper;
 
 public:
 

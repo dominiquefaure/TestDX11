@@ -43,9 +43,9 @@ void ImGuiWrapper::InitImGUI( HWND a_hwnd , int a_width , int a_height )
 
 	CreateFonts();
 */
-	ID3D11Device* t_d3dDevice	=	RhiManager::GetInstance()->GetGraphicDevice()->GetD3DDevice();
+	ID3D11Device* t_d3dDevice	=	RhiManager::GetInstance()->GetGraphicDevice()->m_d3dDevice;
 
-	ID3D11DeviceContext* t_context	=	RhiManager::GetInstance()->GetGraphicDevice()->GetMainContext()->GetContext();
+	ID3D11DeviceContext* t_context	=	RhiManager::GetInstance()->GetGraphicDevice()->GetMainContext()->m_deviceContext;
 
 	ImGui_ImplDX11_Init( a_hwnd ,t_d3dDevice , t_context );
 }

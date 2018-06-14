@@ -20,15 +20,17 @@ ConstantBufferDX11::~ConstantBufferDX11()
 void ConstantBufferDX11::OnInit()
 {
 	m_cpuBuffer												=	new TUint8[ m_size ];
+	memset( m_cpuBuffer , 0 , m_size );
+
 	m_isDirty												=	false;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void ConstantBufferDX11::Update( TUint8* a_datas , TUint32 a_offset , TUint32 a_size )
+void ConstantBufferDX11::Update( TUint32 a_index , TUint32 a_byteCount , const void* a_value )
 {
-	assert( ( a_offset + a_size) <= m_size );
-	memcpy( m_cpuBuffer + a_offset , a_datas , a_size );
+	assert( ( a_index + a_byteCount) <= m_size );
+	memcpy( m_cpuBuffer + a_index , a_value , a_byteCount );
 
 	m_isDirty												=	true;
 }

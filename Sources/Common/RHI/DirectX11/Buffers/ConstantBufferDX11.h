@@ -23,7 +23,7 @@ public:
 	/*
 	* Update the part of the Content of this Constant Buffer
 	*/
-	void Update( TUint8* a_datas , TUint32 a_offset , TUint32 a_size );
+	void Update( TUint32 a_index , TUint32 a_byteCount , const void* a_value );
 
 	/*
 	* Commit any updates and set this Constant Buffer as the one to use for the Given Slot

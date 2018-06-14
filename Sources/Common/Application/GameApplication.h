@@ -5,6 +5,8 @@
 
 #include "WindowsAppConfig.h"
 
+#include "../Core/CoreIncludes.h"
+
 class WinMainLauncher;
 
 class GameApplication
@@ -31,12 +33,6 @@ public:
  	 */
 	void OnFrame();
 
-	/*
-	* Process the custom windows messages
-	*/
-	void ProcessWindowsMessages( HWND a_hwnd, UINT a_msg, WPARAM a_wParam, LPARAM a_lParam );
-
-
 // pure Virtual methods to be overrided
 protected:
 
@@ -52,19 +48,28 @@ protected:
 
 	/*
 	 * Called every ticks to perform the update operations
+	 * 
+	 * @a_deltaTime	Time eleapsed since last frame
 	 */
-	virtual void OnUpdate(){}
+	virtual void OnUpdate( TFloat32 a_deltaTime ){}
 
 	/*
 	 *  called every ticks to perform the custom draw operations
 	 */
 	virtual void OnDraw(){}
 
+
+	virtual void DrawDebugUI(){}
+
 	/*
 	 * Allow custom config of the Windows creation
 	 */
 	virtual void OnSetWindowConfig( WinAppConfig& a_config ){}
 
+	/*
+	 * Set the max FPS, if 0 , no limit
+	 */
+	FORCE_INLINE void SetMaxFPS( TUint32 a_maxFps);
 
 // Methodss
 private:
@@ -85,9 +90,26 @@ private:
 	 */
 	void PerformDraw();
 
+	/*
+	 * Process the Frametime management
+	 */
+	void ProcessFPS();
 
 protected:
 
+	Timer		m_timer;
+
+	TFloat64	m_lastFrameDuration;
+
+	// number ax of FPS
+	TUint32		m_maxFPS;
+
 };
+
+// The inline is included in the Header only if not in debug mode
+#ifndef _DEBUG
+#include "GameApplication.inl"
+#endif
+
 
 #endif

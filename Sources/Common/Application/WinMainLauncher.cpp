@@ -1,7 +1,7 @@
 #include "WinMainLauncher.h"
 
-//#include "WinResources/Resource.h"
 
+#include "../DebugUI/ImGuiWrapper.h"
 
 
 #define MAX_LOADSTRING 100
@@ -9,7 +9,8 @@
 // Callback that will be Called to Handle Windows Messages
 LRESULT PASCAL AppWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-GameApplication* s_application;
+// Static poihter to the launcher , required to handle so windows events
+WinMainLauncher* s_launcher;
 
 
 //---------------------------------------------------------------------------------------------
@@ -104,12 +105,13 @@ BOOL WinMainLauncher::CreateWindowDlg( int a_nCmdShow )
 //---------------------------------------------------------------------------------------------
 BOOL WinMainLauncher::Init( GameApplication* a_application , HINSTANCE a_hInstance, int a_nCmdShow )
 {
+	s_launcher												=	this;
+
 	// save pointer to the Instance
 	m_hInst													=	a_hInstance;
 
 	// Save pointer to the Application
 	m_application											=	a_application;
-	s_application											=	a_application;
 
 	m_application->SetWindowConfig( m_config );
 
@@ -192,7 +194,12 @@ void WinMainLauncher::ProcessWindowsMessages()
 }
 //---------------------------------------------------------------------------------------------
 
-
+//---------------------------------------------------------------------------------------------
+void WinMainLauncher::ProcessWindowsMessage( HWND a_hwnd, UINT a_msg, WPARAM a_wParam, LPARAM a_lParam )
+{
+	ImGuiWrapper::GetInstance()->ProcessWindowsMessages( a_hwnd , a_msg , a_wParam , a_lParam );
+}
+//---------------------------------------------------------------------------------------------
 
 //
 //  FUNCTION: AppWindowProc(HWND, UINT, WPARAM, LPARAM)
@@ -241,7 +248,7 @@ LRESULT CALLBACK AppWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
         PostQuitMessage(0);
         break;
     default:
-		s_application->ProcessWindowsMessages( hWnd, message, wParam, lParam );
+		s_launcher->ProcessWindowsMessage( hWnd, message, wParam, lParam );
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;

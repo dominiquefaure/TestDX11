@@ -3,5 +3,6 @@
 
 #include "RhiVerteLayoutEnums.h"
 #include "RhiShaderCompilationParams.h"
+#include "RhiShaderParameterCommon.h"
 
 #endif
