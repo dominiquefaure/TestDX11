@@ -6,6 +6,7 @@
 
 #include "GeometryDataset.h"
 
+#include "../Shaders/ShaderProgram.h"
 
 //-------------------------------------------------------------------------------------------------
 StaticGeometry::StaticGeometry()
@@ -31,7 +32,16 @@ StaticGeometry::~StaticGeometry()
 }
 //-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+void StaticGeometry::Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags )
+{
+	Apply( a_context );
 
+	a_program->Apply( a_context , a_customFlags );
+
+	ProcessDraw( a_context );
+}
+//-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
 void StaticGeometry::Apply( RhiGraphicContext* a_context )

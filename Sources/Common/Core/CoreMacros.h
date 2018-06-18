@@ -26,6 +26,14 @@
 	X = NULL;\
 }
 
+#define SAFE_DELETE_OBJECT_ARRAY( Array , count ) \
+if( Array != NULL )\
+{\
+	for( int i = 0 ; i < count ; i++ )\
+		delete Array[ i ];\
+	delete[]Array;\
+	Array= nullptr;\
+}
 
 //-----------------------------
 // bitFields

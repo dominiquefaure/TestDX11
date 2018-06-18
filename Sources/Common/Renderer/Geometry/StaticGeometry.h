@@ -5,6 +5,7 @@
 #include "../../RHI/Includes.h"
 
 class GeometryDataset;
+class ShaderProgram;
 
 /*
 * Base class for the Different Geometry classes
@@ -49,19 +50,11 @@ public:
 	 */
 	void Build( RhiGraphicDevice* a_device , const GeometryDataset* a_datas );
 
-
 	/*
-	* Set to the Graphic the information's stored inside this Geometry
-	*
-	* @param a_context		The Graphic context that will draw this Geometry
+	* Draw the Geometry
 	*/
-	void Apply( RhiGraphicContext* a_context );
+	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
 
-	/*
-	 * Draw the Geometry , Apply has to be called before
-	 * Shader has to be set correctly before
-	 */
-	void ProcessDraw( RhiGraphicContext* a_context );
 
 
 // Methods
@@ -76,6 +69,21 @@ private:
 	 * Create the VertexBuffer according to the Geometry data
 	 */
 	void CreateVertexBuffer( RhiGraphicDevice* a_device , const GeometryDataset* a_datas );
+
+
+
+	/*
+	* Set to the Graphic the information's stored inside this Geometry
+	*
+	* @param a_context		The Graphic context that will draw this Geometry
+	*/
+	void Apply( RhiGraphicContext* a_context );
+
+	/*
+	 * Draw the Geometry , Apply has to be called before
+	 * Shader has to be set correctly before
+	 */
+	void ProcessDraw( RhiGraphicContext* a_context );
 
 // Fields
 private:

@@ -94,7 +94,7 @@ void GeometryDataset::LoadIndexBuffer( JSonNode& a_indexBufferNode )
 	m_isIndexed												=	true;
 
 	// Get the number of Index
-	m_indexCount											=	a_indexBufferNode.GetInt64Property( "IndexCount" );
+	m_indexCount											=	(TUint32)a_indexBufferNode.GetInt64Property( "IndexCount" );
 
 	// Get the Property that store the Index buffer datas
 	JSonProperty t_datas									=	a_indexBufferNode.GetProperty( "Datas" );
@@ -131,10 +131,10 @@ void GeometryDataset::LoadIndexBuffer( JSonNode& a_indexBufferNode )
 void GeometryDataset::LoadVertexBuffer( JSonNode& a_vertexBufferNode )
 {
 	// Get the size of 1 vertex
-	m_vertexSize											=	a_vertexBufferNode.GetInt64Property( "VertexSize" );
+	m_vertexSize											=	(TUint32)a_vertexBufferNode.GetInt64Property( "VertexSize" );
 
 	// Get the number of Vertex
-	m_vertexCount											=	a_vertexBufferNode.GetInt64Property( "VertexCount" );
+	m_vertexCount											=	(TUint32)a_vertexBufferNode.GetInt64Property( "VertexCount" );
 
 	// Get the Property that store the Vertex buffer datas
 	JSonProperty t_vertices									=	a_vertexBufferNode.GetProperty( "Datas" );
@@ -202,7 +202,7 @@ void GeometryDataset::SetIndiceAt( TUint32 a_index , TUint32 a_indice )
 {
 	if( m_indexType == INDEX_BUFFER_TYPE_16 )
 	{
-		m_indexBuffer16[ a_index ]							=	a_indice;
+		m_indexBuffer16[ a_index ]							=	(TUint16)a_indice;
 	}
 	else
 	{

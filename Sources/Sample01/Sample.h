@@ -75,7 +75,8 @@ private:
 // Fields
 private:
 
-	StaticGeometry*		m_geometry;
+	StaticMesh*			m_mesh;
+
 	ShaderProgram*		m_shader;
 
 

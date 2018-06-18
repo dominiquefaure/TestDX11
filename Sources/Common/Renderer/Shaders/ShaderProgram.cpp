@@ -6,7 +6,7 @@
 #endif
 
 #include "ShaderDefinition.h"
-
+#include "ShaderPermutation.h"
 
 
 // Array that store the permutationFlags to add in order to get valid shader that match the VertexLayout

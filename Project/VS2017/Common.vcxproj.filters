@@ -331,6 +331,18 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h">
       <Filter>RHI\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.h">
+      <Filter>Renderer\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\Includes.h">
+      <Filter>Renderer\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\StaticMesh.h">
+      <Filter>Renderer\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.h">
+      <Filter>Renderer\Meshes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -467,6 +479,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.cpp">
       <Filter>Core\Platforms\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.cpp">
+      <Filter>Renderer\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\StaticMesh.cpp">
+      <Filter>Renderer\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.cpp">
+      <Filter>Renderer\Meshes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

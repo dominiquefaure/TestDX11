@@ -13,7 +13,7 @@
 //---------------------------------------------------------------------------------------------
 Sample::Sample()
 {
-	m_geometry												=	NULL;
+	m_mesh													=	NULL;
 }
 //---------------------------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ void Sample::OnInit( )
 void Sample::OnClose()
 {
 	SAFE_DELETE( m_shader );
-	SAFE_DELETE( m_geometry );
+	SAFE_DELETE( m_mesh );
 
 	SAFE_DELETE( m_perFrameConstantBuffer );
 	SAFE_DELETE( m_perDrawConstantBuffer );
@@ -81,6 +81,7 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 {
+/*
 	FbxAssetImporter t_importer;
 	t_importer.LoadFBX( "grendizer.fbx" );
 
@@ -93,6 +94,13 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 	m_geometry->Build( a_device , t_data );
 
 	SAFE_DELETE( t_data );
+
+*/
+
+	m_mesh													=	new StaticMesh();
+	m_mesh->LoadFromJSon( "simpleMesh.mesh" );
+
+	m_mesh->BuildRenderData( a_device );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -100,8 +108,8 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 void Sample::LoadShaders( )
 {
 	m_shader												=	new ShaderProgram();
-//	m_shader->Load( "ShaderDef.json" );
-	m_shader->Load( "PerVertexLighting.json" );
+	m_shader->Load( "ShaderDef.json" );
+//	m_shader->Load( "PerVertexLighting.json" );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -170,12 +178,6 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-/*	m_perFrameConstantBuffer->Update( (TUint8*)&m_perFrameConstants , 0 , sizeof( m_perFrameConstants) );
-	m_perDrawConstantBuffer->Update( (TUint8*)&m_perDrawConstants , 0 , sizeof( m_perDrawConstants) );
-
-	m_perFrameConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 0 );
-	m_perDrawConstantBuffer->Commit( a_context , RHI_SHADER_TYPE_VERTEX_SHADER , 1 );
-*/
 	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 0 , &m_perFrameConstants.m_viewProjection );
 	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 64 , &m_perFrameConstants.m_lightDirection );
 	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 80 , &m_perFrameConstants.m_lightDiffuse );
@@ -187,10 +189,8 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 //	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
 
-	m_geometry->Apply( a_context );
-	m_shader->Apply( a_context , 0 );
+	m_mesh->Draw( a_context , m_shader , 0 );
 
-	m_geometry->ProcessDraw( a_context );
 }
 //---------------------------------------------------------------------------------------------
 

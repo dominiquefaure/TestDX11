@@ -8,7 +8,6 @@
 
 #include "../../Core/CoreIncludes.h"
 
-#include "../../Common/Includes.h"
 #include "../RhiEnums.h"
 
 #include "Buffers/Includes.h"
@@ -16,6 +15,8 @@
 
 #include "StateObjects/StateObjectsManagerDX11.h"
 #include "Shaders/Includes.h"
+
+#include"../Common/RhiVerteLayoutEnums.h"
 
 
 // Inernal structure to save DX parameters associed to a ShaderUsage enum
