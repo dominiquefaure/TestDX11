@@ -29,6 +29,11 @@ public:
 	FORCE_INLINE RhiPixelShader* GetPixelShader();
 
 	/*
+	 * Get the Reflection informations
+	 */
+	FORCE_INLINE const RhiShaderReflectionInfos* GetReflectionInfos()const;
+
+	/*
 	 * Init the Permutation
 	 */
 	void Init( RhiGraphicDevice* a_device , RhiShaderType a_type , RhiShaderByteCode& a_byteCode , TUint64 a_permitationID );
@@ -37,15 +42,17 @@ public:
 private:
 
 	// type of Shader generated for this Permutation
-	RhiShaderType		m_shaderType;
+	RhiShaderType				m_shaderType;
 
 	// Id of the Permutation
-	TUint64				m_permutationID;
+	TUint64						m_permutationID;
 
 	// Pointer to the generated Shader. only 1 is valid,matching the Shader type
-	RhiVertexShader*	m_vertexShader;
-	RhiPixelShader*		m_pixelShader;
+	RhiVertexShader*			m_vertexShader;
+	RhiPixelShader*				m_pixelShader;
 
+	// information's about the shader 
+	RhiShaderReflectionInfos*	m_relectionInfos;
 };
 
 // The inline is included in the Header only if not in debug mode

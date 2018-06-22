@@ -41,5 +41,8 @@ void ShaderPermutation::Init( RhiGraphicDevice* a_device , RhiShaderType a_type 
 			m_pixelShader									=	a_device->CreatePixelShader( a_byteCode );
 		break;
 	}
+
+	// generate the reflection info specifics to this Permutation
+	m_relectionInfos										=	a_byteCode.GenerateRelectionInfos();
 }
 //---------------------------------------------------------------------------------------------

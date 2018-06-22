@@ -10,6 +10,7 @@
 
 class GraphicDeviceDX11;
 class GraphicContextDX11;
+class RhiShaderParameterDesc;
 
 class ConstantBufferDX11 : public BaseBufferDX11
 {
@@ -24,6 +25,14 @@ public:
 	* Update the part of the Content of this Constant Buffer
 	*/
 	void Update( TUint32 a_index , TUint32 a_byteCount , const void* a_value );
+
+	/*
+	 * Update a parameter
+	 * 
+	 * @param a_param	Store info about the parameter to update inside the constant buffer
+	 * @param a_value	the Value to set
+	 */
+	void Update( RhiShaderParameterDesc& a_param , const void* a_value );
 
 	/*
 	* Commit any updates and set this Constant Buffer as the one to use for the Given Slot

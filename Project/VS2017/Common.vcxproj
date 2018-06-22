@@ -70,6 +70,10 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiVerteLayoutEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h" />
@@ -129,6 +133,9 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.cpp" />
@@ -163,6 +170,9 @@
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.inl" />
+    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.inl" />
+    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.inl" />
+    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.inl" />
     <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.inl" />

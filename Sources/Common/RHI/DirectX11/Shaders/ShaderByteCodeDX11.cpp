@@ -110,7 +110,6 @@ bool ShaderByteCodeDX11::Compile( const char* a_sourceCode , int a_size , RhiSha
 	}
 
 	return true;
-
 }
 //-----------------------------------------------------------------------------------------------
 
@@ -198,7 +197,6 @@ void ShaderByteCodeDX11::PushMacro( RhiShaderCompilationMacros a_macroID )
 }
 //-----------------------------------------------------------------------------------------------
 
-
 //-----------------------------------------------------------------------------------------------
 void ShaderByteCodeDX11::BuildMacroList( const TUint64 a_macro )
 {
@@ -210,6 +208,84 @@ void ShaderByteCodeDX11::BuildMacroList( const TUint64 a_macro )
 		{
 			PushMacro( (RhiShaderCompilationMacros)i );
 		}
+	}
+}
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+RhiShaderReflectionInfos* ShaderByteCodeDX11::GenerateRelectionInfos( )
+{
+	ID3D11ShaderReflection*	t_shaderReflection	=	NULL;
+	ID3D11ShaderReflectionConstantBuffer* t_shaderReflectionCB	=	NULL;
+
+	D3D11_SHADER_DESC		t_shaderDesc;
+
+	// Get the reflection info about the shader
+	D3DReflect( m_compiledBlob->GetBufferPointer(), m_compiledBlob->GetBufferSize(), IID_ID3D11ShaderReflection, (void**) &t_shaderReflection );
+
+	if( t_shaderReflection )
+	{
+		t_shaderReflection->GetDesc( &t_shaderDesc );
+
+		// Get the number of Resources bound( CB , Textures...)
+		TUint32 t_resourceBindCount							=	t_shaderDesc.BoundResources;
+
+		// Get the number of ConstantBuffer
+		TUint32 t_constantBufferCount						=	t_shaderDesc.ConstantBuffers;
+
+		// Create the Reflection info
+		RhiShaderReflectionInfos* t_reflectionInfos			=	new RhiShaderReflectionInfos();
+		t_reflectionInfos->Init( t_constantBufferCount );
+
+		TUint32 t_constantDescIndex							=	0;
+
+		// parse the different resources bound
+		for( TUint32 i = 0 ; i < t_resourceBindCount ; i ++ )
+		{
+			D3D11_SHADER_INPUT_BIND_DESC BindDesc;
+			t_shaderReflection->GetResourceBindingDesc( i , &BindDesc);
+
+			//if it's a constant buffer
+			if( BindDesc.Type == D3D10_SIT_CBUFFER )
+			{
+				SetupConstantBufferDesc( t_reflectionInfos->GetConstantBufferDesc( t_constantDescIndex ), BindDesc.BindPoint , t_shaderReflection->GetConstantBufferByName(BindDesc.Name) );
+				t_constantDescIndex ++;
+			}
+		}
+
+		return t_reflectionInfos;
+	}
+
+	return nullptr;
+}
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+void ShaderByteCodeDX11::SetupConstantBufferDesc( RhiShaderConstantBufferDesc* a_targetDesc , TUint32 a_registerSlot , ID3D11ShaderReflectionConstantBuffer* a_reclectionCB )
+{
+	ID3D11ShaderReflectionVariable*         t_constant		=	NULL;
+	ID3D11ShaderReflectionType*             t_constantType	=	NULL;
+	D3D11_SHADER_VARIABLE_DESC				t_constantDesc;
+	D3D11_SHADER_TYPE_DESC					t_constantTypeDesc;
+
+	D3D11_SHADER_BUFFER_DESC t_shaderBufferDesc;
+	a_reclectionCB->GetDesc( &t_shaderBufferDesc );
+
+	// Init the ConstantBuffer DEsc infos
+	a_targetDesc->Init( a_registerSlot , t_shaderBufferDesc.Name , t_shaderBufferDesc.Variables );
+
+	//parse all the variables defined for this constant buffer
+	for( int i = 0 ; i < t_shaderBufferDesc.Variables ; i ++ )
+	{
+		t_constant											=	a_reclectionCB->GetVariableByIndex( i );
+		t_constant->GetDesc( &t_constantDesc );
+
+		a_targetDesc->SetParameterDesc( i , t_constantDesc.Name , t_constantDesc.StartOffset , t_constantDesc.Size );
+
+		// TODO : to get the type of the constsnt ( float , float3 ....)
+//		t_constantType										=	t_constant->GetType();
+//		t_constantType->GetDesc( &t_constantTypeDesc );
+
 	}
 }
 //-----------------------------------------------------------------------------------------------
