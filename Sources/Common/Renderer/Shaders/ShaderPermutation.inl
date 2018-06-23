@@ -21,3 +21,9 @@ FORCE_INLINE RhiPixelShader* ShaderPermutation::GetPixelShader()
 }
 //---------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------
+FORCE_INLINE const RhiShaderReflectionInfos* ShaderPermutation::GetReflectionInfos()const
+{
+	return m_relectionInfos;
+}
+//---------------------------------------------------------------------------------------------

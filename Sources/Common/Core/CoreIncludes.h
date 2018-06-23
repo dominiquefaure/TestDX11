@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <map>
+#include <assert.h>
+
 #include "Base/Includes.h"
 
 #include "CoreMacros.h"

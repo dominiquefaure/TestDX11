@@ -9,21 +9,21 @@
 
 #define ALIGN(x) __declspec(align(n))
 
-#define SAFE_DELETE( X ) if( X != NULL )\
+#define SAFE_DELETE( X ) if( X != nullptr )\
 {\
 	delete X;\
-	X = NULL;\
+	X = nullptr;\
 }
-#define SAFE_DELETE_ARRAY( X ) if( X != NULL )\
+#define SAFE_DELETE_ARRAY( X ) if( X != nullptr )\
 {\
 	delete[] X;\
-	X = NULL;\
+	X = nullptr;\
 }
 
-#define SAFE_RELEASE( X ) if( X != NULL )\
+#define SAFE_RELEASE( X ) if( X != nullptr )\
 {\
 	X->Release();\
-	X = NULL;\
+	X = nullptr;\
 }
 
 #define SAFE_DELETE_OBJECT_ARRAY( Array , count ) \

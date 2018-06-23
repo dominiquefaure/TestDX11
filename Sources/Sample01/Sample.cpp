@@ -190,7 +190,7 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
 
 //	m_mesh->Draw( a_context , m_shader , 0 );
-	m_mesh->DrawPart( 1 , a_context , m_shader , 0 );
+	m_mesh->DrawPart( 0 , a_context , m_shader , 0 );
 
 }
 //---------------------------------------------------------------------------------------------

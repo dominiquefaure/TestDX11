@@ -85,6 +85,9 @@
     <Filter Include="Core\Utils">
       <UniqueIdentifier>{a6b03efc-0c98-4df9-8796-cd0300637dbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RHI\Common\ShaderReflection">
+      <UniqueIdentifier>{9f6dfa59-e971-435a-9b2d-f72d303a4860}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -343,6 +346,18 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.h">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.h">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.h">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\Includes.h">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -489,6 +504,15 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -565,6 +589,15 @@
     </None>
     <None Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.inl">
       <Filter>Renderer\Meshes</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.inl">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.inl">
+      <Filter>RHI\Common\ShaderReflection</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.inl">
+      <Filter>RHI\Common\ShaderReflection</Filter>
     </None>
   </ItemGroup>
 </Project>

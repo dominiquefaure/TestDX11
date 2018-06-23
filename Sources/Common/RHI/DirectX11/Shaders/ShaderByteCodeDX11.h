@@ -4,9 +4,11 @@
 #include <d3d11.h>
 #include <string>
 
+#include <d3dcompiler.h>
 #include "../../RhiEnums.h"
 #include "../../Common/RhiShaderCompilationParams.h"
 #include "../../../Core/CoreIncludes.h"
+#include "../../Common/ShaderReflection/Includes.h"
 
 
 class ShaderByteCodeDX11
@@ -60,6 +62,12 @@ public:
 	*/
 	bool LoadBinary( RhiShaderType a_type , const std::string& a_filePath );
 
+
+	/*
+	 * use the relection system, to get information's about the different parameters that can be passed to the shader
+	 */
+	RhiShaderReflectionInfos* GenerateRelectionInfos();
+
 // Methods
 private:
 
@@ -75,7 +83,10 @@ private:
 
 	void PushMacro( RhiShaderCompilationMacros a_macro );
 
-
+	/*
+	 * Setup a ConstantBufferDesc from the reflection system information's
+	 */
+	void SetupConstantBufferDesc( RhiShaderConstantBufferDesc* a_targetDesc , TUint32 a_registerSlot , ID3D11ShaderReflectionConstantBuffer* a_reclectionCB );
 
 // Fields
 private :

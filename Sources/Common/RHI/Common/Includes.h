@@ -5,4 +5,6 @@
 #include "RhiShaderCompilationParams.h"
 #include "RhiShaderParameterCommon.h"
 
+#include "ShaderReflection/Includes.h"
+
 #endif
