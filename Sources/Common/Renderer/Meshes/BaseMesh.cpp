@@ -1,11 +1,17 @@
 #include "BaseMesh.h"
 #include "MeshPart.h"
 
+#include "../Geometry/Geometrydataset.h"
+#include "../Geometry/StaticGeometry.h"
+
 
 //-------------------------------------------------------------------------------------------------
 BaseMesh::BaseMesh()
 {
-	m_partList												=	NULL;
+	m_partList												=	nullptr;
+	m_sourceData											=	nullptr;
+	m_renderGeometry										=	nullptr;
+
 	m_partCount												=	0;
 }
 //-------------------------------------------------------------------------------------------------
@@ -14,6 +20,9 @@ BaseMesh::BaseMesh()
 BaseMesh::~BaseMesh()
 {
 	SAFE_DELETE_ARRAY( m_partList );
+	SAFE_DELETE( m_sourceData );
+	SAFE_DELETE( m_renderGeometry );
+
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -21,9 +30,17 @@ BaseMesh::~BaseMesh()
 //-------------------------------------------------------------------------------------------------
 void BaseMesh::BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData  )
 {
-	for( TUint32 i = 0 ; i < m_partCount ; i ++ )
+	if( m_sourceData != nullptr )
 	{
-		m_partList[ i ].BuildRenderData( a_device , a_freeSourceData );
+		m_renderGeometry									=	new StaticGeometry();
+
+		m_renderGeometry->Build( a_device , m_sourceData );
+
+		// Free the Soruce data
+		if( a_freeSourceData )
+		{
+			SAFE_DELETE( m_sourceData );
+		}
 	}
 }
 //-------------------------------------------------------------------------------------------------
@@ -31,10 +48,23 @@ void BaseMesh::BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceDa
 //-------------------------------------------------------------------------------------------------
 void BaseMesh::Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags )
 {
-	for( TUint32 i = 0 ; i < m_partCount ; i ++ )
+	if( m_renderGeometry != NULL )
 	{
-		m_partList[ i ].Draw( a_context , a_program , a_customFlags );
+		m_renderGeometry->Draw( a_context , a_program , a_customFlags );
 	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags )
+{
+	if( m_renderGeometry != NULL )
+	{
+		MeshPart* t_part									=	&m_partList[ a_partIndex ];
+
+		m_renderGeometry->Draw( a_context , a_program , t_part->GetStartIndex() , t_part->GetIndexCount() ,a_customFlags );
+	}
+
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -59,6 +89,14 @@ void BaseMesh::LoadFromJSon( const char* a_filePath )
 //-------------------------------------------------------------------------------------------------
 void BaseMesh::LoadFromJSon( JSonNode& a_rootNode )
 {
+	LoadParts( a_rootNode );
+	LoadGeometryDatas( a_rootNode );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::LoadParts( JSonNode& a_rootNode )
+{
 	// Get the Property that store the MeshPartss
 	JSonProperty t_parts									=	a_rootNode.GetProperty( "MeshParts" );
 
@@ -77,12 +115,19 @@ void BaseMesh::LoadFromJSon( JSonNode& a_rootNode )
 			m_partList[ i ].LoadFromJSon( t_parts.GetSubNodeAt( i ) );
 		}
 	}
-
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadParts( JSonNode& a_rootNode )
+void BaseMesh::LoadGeometryDatas( JSonNode& a_rootNode )
 {
+
+	if( a_rootNode.Contains ("GeometryDatas" ) )
+	{
+		JSonNode t_geometryDatas							=	a_rootNode.GetNodeProperty( "GeometryDatas" );
+		m_sourceData										=	new GeometryDataset();
+
+		m_sourceData->LoadFromJSon( t_geometryDatas );
+	}
 }
 //-------------------------------------------------------------------------------------------------

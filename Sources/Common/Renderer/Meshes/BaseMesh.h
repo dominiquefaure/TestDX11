@@ -9,6 +9,9 @@
 class MeshPart;
 class ShaderProgram;
 
+class GeometryDataset;
+class StaticGeometry;
+
 /*
 * Base class for all meshes
 */
@@ -37,6 +40,11 @@ public:
 	*/
 	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
 
+	/*
+	* Draw on;ly 1 part of this Mesh
+	*/
+	void DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
+
 // Methods
 private:
 
@@ -45,15 +53,26 @@ private:
 	*/
 	void LoadParts( JSonNode& a_rootNode );
 
+	/*
+	* Load the Geometry data from JSon file
+	*/
+	void LoadGeometryDatas( JSonNode& a_rootNode );
 
 // Fields
 private:
 
 	// number of Parts that compose this mesh
-	TUint32		m_partCount;
+	TUint32				m_partCount;
 
 	// list of mesh part that compose this mesh
-	MeshPart*	m_partList;
+	MeshPart*			m_partList;
+
+
+	// object that store the raw data. in runime mode, used only during loading time
+	GeometryDataset*	m_sourceData;
+
+	// store the Vb and IB created from the raw data
+	StaticGeometry*		m_renderGeometry;
 
 };
 

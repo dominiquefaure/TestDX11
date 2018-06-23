@@ -59,7 +59,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\Includes.h" />
@@ -128,7 +128,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\StaticMesh.cpp" />
@@ -167,6 +167,7 @@
     <None Include="..\..\Sources\Common\Core\Utils\Timer.inl" />
     <None Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.inl" />
     <None Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.inl" />
     <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.inl" />

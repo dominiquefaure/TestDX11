@@ -1,6 +1,6 @@
 #include "FbxImporter_Imp.h"
 
-#include "FbxMeshPartDatas.h"
+#include "FbxMeshPartImporter.h"
 
 //---------------------------------------------------------------------------------------------
 FbxImporter_Imp::FbxImporter_Imp()
@@ -182,7 +182,7 @@ void FbxImporter_Imp::Parse( FbxNode* a_node )
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-GeometryDataset* FbxImporter_Imp::ImportMesh( )
+MeshPart* FbxImporter_Imp::ImportMesh( )
 {
 	FbxNode* t_node											=	m_meshNodes[ 0 ];
 
@@ -194,9 +194,9 @@ GeometryDataset* FbxImporter_Imp::ImportMesh( )
 
 	FbxMesh* t_mesh											=	(FbxMesh*)t_attribute;
 
-	FbxMeshPartDatas* t_part								=	new FbxMeshPartDatas();
+	FbxMeshPartImporter* t_part								=	new FbxMeshPartImporter();
 	t_part->Parse( t_mesh );
 
-	return t_part->BuildGeometry();
+	return t_part->GenerateMeshPart();
 }
 //---------------------------------------------------------------------------------------------

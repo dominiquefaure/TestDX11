@@ -39,7 +39,19 @@ void StaticGeometry::Draw( RhiGraphicContext* a_context  , ShaderProgram* a_prog
 
 	a_program->Apply( a_context , a_customFlags );
 
-	ProcessDraw( a_context );
+	ProcessDraw( a_context , 0 , GetIndiceCount() );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void StaticGeometry::Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint32 a_startIndex , TUint32 a_indexCount , TUint64 a_customFlags )
+{
+	Apply( a_context );
+
+	a_program->Apply( a_context , a_customFlags );
+
+	ProcessDraw( a_context , a_startIndex , a_indexCount );
+
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -56,11 +68,11 @@ void StaticGeometry::Apply( RhiGraphicContext* a_context )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void StaticGeometry::ProcessDraw( RhiGraphicContext* a_context )
+void StaticGeometry::ProcessDraw( RhiGraphicContext* a_context , TUint32 a_startIndex , TUint32 a_indexCount )
 {
 	if( IsIndexed() )
 	{
-		a_context->DrawIndexedPrimitive( GetIndiceCount() );
+		a_context->DrawIndexedPrimitive( a_indexCount , a_startIndex );
 	}
 	else
 	{

@@ -1,33 +1,29 @@
-#include "MeshPart.h"
-
-#include "../../RHI/Includes.h"
-
-#include "../Shaders/ShaderProgram.h"
-
-#ifdef _DEBUG
-#include "MeshPart.inl"
-#endif
 
 //-------------------------------------------------------------------------------------------------
-MeshPart::MeshPart()
+FORCE_INLINE TUint32 MeshPart::GetStartIndex()const
 {
+	return m_startIndex;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-MeshPart::~MeshPart()
+FORCE_INLINE TUint32 MeshPart::GetIndexCount()const
 {
+	return m_indexCount;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void MeshPart::LoadFromJSon( JSonNode& a_partNode )
+FORCE_INLINE TUint32 MeshPart::GetMaterialIndex()const
 {
-	m_startIndex											=	a_partNode.GetInt64Property( "StartIndex" );
-	m_indexCount											=	a_partNode.GetInt64Property( "IndexCount" );
+	return m_materialIndex;
+}
+//-------------------------------------------------------------------------------------------------
 
-	m_castShadow											=	a_partNode.GetInt64Property( "CastShadow" );
-	m_materialIndex											=	a_partNode.GetInt64Property( "MaterialIndex" );
+//-------------------------------------------------------------------------------------------------
+FORCE_INLINE TBool MeshPart::IsCastShadow()const
+{
+	return m_castShadow;
 }
 //-------------------------------------------------------------------------------------------------
 

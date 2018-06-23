@@ -55,6 +55,7 @@ public:
 	*/
 	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
 
+	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint32 a_startIndex , TUint32 a_indexCount , TUint64 a_customFlags );
 
 
 // Methods
@@ -83,7 +84,7 @@ private:
 	 * Draw the Geometry , Apply has to be called before
 	 * Shader has to be set correctly before
 	 */
-	void ProcessDraw( RhiGraphicContext* a_context );
+	void ProcessDraw( RhiGraphicContext* a_context , TUint32 a_startIndex , TUint32 a_indexCount );
 
 // Fields
 private:

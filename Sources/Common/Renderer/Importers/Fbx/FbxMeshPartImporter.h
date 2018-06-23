@@ -1,20 +1,26 @@
-#ifndef __ASSET_IMPORTERS_FBX_MESH_PART_DATAS_H__
-#define __ASSET_IMPORTERS_FBX_MESH_PART_DATAS_H__
+#ifndef __ASSET_IMPORTERS_FBX_MESH_PART_IMPORTER_H__
+#define __ASSET_IMPORTERS_FBX_MESH_PART_IMPORTER_H__
 
 #include "fbxsdk.h"
 
 #include "../../Geometry/Includes.h"
 
-class FbxMeshPartDatas
+class MeshPart;
+
+class FbxMeshPartImporter
 {
 	
 public:
 
-	FbxMeshPartDatas();
-	~FbxMeshPartDatas();
+	FbxMeshPartImporter();
+	~FbxMeshPartImporter();
 
 	void Parse( FbxMesh* a_meshPart );
 
+	/*
+	* Generate a Mesh Part
+	*/
+	MeshPart* GenerateMeshPart();
 
 	GeometryDataset* BuildGeometry();
 
@@ -50,7 +56,6 @@ private:
 private:
 
 	FbxMesh*		m_meshPart;
-	GeometryDataset	m_dataset;
 
 
 	bool				m_haveColor;

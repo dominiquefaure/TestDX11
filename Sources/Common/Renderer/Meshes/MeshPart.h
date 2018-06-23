@@ -6,28 +6,47 @@
 
 
 
-class GeometryDataset;
-class StaticGeometry;
 class ShaderProgram;
+
+class FbxMeshPartImporter;
 
 class MeshPart
 {
+	friend class FbxMeshPartImporter;
+
 public:
 
 	MeshPart();
 	~MeshPart();
 
+	/*
+	* Get the Start index of this part in the Mesh Geometry
+	*/
+	FORCE_INLINE TUint32 GetStartIndex()const;
+
+	/*
+	* Get the number of index that compose this part
+	*/
+	FORCE_INLINE TUint32 GetIndexCount()const;
+
+	/*
+	* Get the index of the Material to use
+	*/
+	FORCE_INLINE TUint32 GetMaterialIndex()const;
+
+	/*
+	* Does this Part cast shadow?
+	*/
+	FORCE_INLINE TBool IsCastShadow()const;
 
 
-	void LoadFromJSon( const char* a_path );
 
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
-	void LoadFromJSon( JSonNode& a_rootNode );
+	void LoadFromJSon( JSonNode& a_partNode );
 
 
-	void BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData = true );
 
 	/*
 	* Draw this Part
@@ -36,18 +55,25 @@ public:
 
 private:
 
+	// 1st index in the global index buffer of this part
+	TUint32				m_startIndex;
+
+	// number of Index representing this Part
+	TUint32				m_indexCount;
+
 	// index in the MaterialSet of the material to use
 	TUint32				m_materialIndex;
 
 	// does this part cast shadow?
 	TBool				m_castShadow;
 
-	// object that store the raw data. in runime mode, used only during loading time
-	GeometryDataset*	m_sourceData;
-
-	// store the Vb and IB created from the raw data
-	StaticGeometry*		m_renderGeometry;
 };
+
+
+// The inline is included in the Header only if not in debug mode
+#ifndef _DEBUG
+#include "MeshPart.inl"
+#endif
 
 
 #endif

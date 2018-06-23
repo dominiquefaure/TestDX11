@@ -1,22 +1,23 @@
-#include "FbxMeshPartDatas.h"
+#include "FbxMeshPartImporter.h"
 
+#include "../../Meshes/MeshPart.h"
 
 //---------------------------------------------------------------------------------------------
-FbxMeshPartDatas::FbxMeshPartDatas()
+FbxMeshPartImporter::FbxMeshPartImporter()
 {
 	m_vertexBuffer											=	nullptr;
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-FbxMeshPartDatas::~FbxMeshPartDatas()
+FbxMeshPartImporter::~FbxMeshPartImporter()
 {
 	SAFE_DELETE_ARRAY( m_vertexBuffer );
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::Parse( FbxMesh* a_meshPart )
+void FbxMeshPartImporter::Parse( FbxMesh* a_meshPart )
 {
 	m_meshPart												=	a_meshPart;
 
@@ -35,7 +36,7 @@ void FbxMeshPartDatas::Parse( FbxMesh* a_meshPart )
 
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::ComputeVertexFormat( )
+void FbxMeshPartImporter::ComputeVertexFormat( )
 {
 
 	TUint64 t_key											=	0;
@@ -68,7 +69,7 @@ void FbxMeshPartDatas::ComputeVertexFormat( )
 
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::CreateBuffers()
+void FbxMeshPartImporter::CreateBuffers()
 {
 	int t_polygonCount										=	m_meshPart->GetPolygonCount();
 
@@ -91,7 +92,7 @@ void FbxMeshPartDatas::CreateBuffers()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::PopulateBufferContents()
+void FbxMeshPartImporter::PopulateBufferContents()
 {
 	int t_polygonCount										=	m_meshPart->GetPolygonCount();
 
@@ -131,7 +132,7 @@ void FbxMeshPartDatas::PopulateBufferContents()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::ProcessVertex( TUint32 a_controlPointIndex , int t_polygonIndex , int t_edgeIndex )
+void FbxMeshPartImporter::ProcessVertex( TUint32 a_controlPointIndex , int t_polygonIndex , int t_edgeIndex )
 {
 	// conpute the vertex start offset
 	int t_offset											=	a_controlPointIndex * m_vertexFloatCount;
@@ -160,7 +161,7 @@ void FbxMeshPartDatas::ProcessVertex( TUint32 a_controlPointIndex , int t_polygo
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::SetVertexPosition( TUint32 a_controlPointIndex , TUint32 a_offset )
+void FbxMeshPartImporter::SetVertexPosition( TUint32 a_controlPointIndex , TUint32 a_offset )
 {
 	FbxVector4& t_position									=	m_meshPart->GetControlPointAt( a_controlPointIndex );
 
@@ -174,7 +175,7 @@ void FbxMeshPartDatas::SetVertexPosition( TUint32 a_controlPointIndex , TUint32 
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::SetVertexColor( TUint32 a_controlPointIndex , TUint32 a_offset )
+void FbxMeshPartImporter::SetVertexColor( TUint32 a_controlPointIndex , TUint32 a_offset )
 {
 /*
 	FbxGeometryElementVertexColor* t_vertexColor		=	m_meshPart->GetElementVertexColor( 0 );
@@ -189,7 +190,7 @@ void FbxMeshPartDatas::SetVertexColor( TUint32 a_controlPointIndex , TUint32 a_o
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void FbxMeshPartDatas::SetVertexNormal( TUint32 a_offset , TUint32 a_controlPointIndex , int t_polygonIndex , int t_edgeIndex )
+void FbxMeshPartImporter::SetVertexNormal( TUint32 a_offset , TUint32 a_controlPointIndex , int t_polygonIndex , int t_edgeIndex )
 {
 	FbxVector4 t_normal;
 	m_meshPart->GetPolygonVertexNormal( t_polygonIndex, t_edgeIndex, t_normal);
@@ -203,7 +204,7 @@ void FbxMeshPartDatas::SetVertexNormal( TUint32 a_offset , TUint32 a_controlPoin
 
 //---------------------------------------------------------------------------------------------
 
-GeometryDataset* FbxMeshPartDatas::BuildGeometry()
+GeometryDataset* FbxMeshPartImporter::BuildGeometry()
 {
 	
 	GeometryDataset* t_geometry								=	new GeometryDataset();
@@ -213,5 +214,23 @@ GeometryDataset* FbxMeshPartDatas::BuildGeometry()
 	t_geometry->CreateVertexBuffer( m_vertexLayout->GetLayoutType() , m_vertexSize , m_vertexCount , m_vertexBuffer );
 
 	return t_geometry;
+}
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+MeshPart* FbxMeshPartImporter::GenerateMeshPart()
+{
+	// Create a new MeshPart
+	MeshPart* t_meshPart									=	new MeshPart();
+
+	t_meshPart->m_castShadow								=	true;
+	t_meshPart->m_materialIndex								=	0;
+
+	// set the Geometry data
+//	t_meshPart->m_sourceData								=	BuildGeometry();
+
+	// return the Mesh part created
+	return t_meshPart;
 }
 //---------------------------------------------------------------------------------------------

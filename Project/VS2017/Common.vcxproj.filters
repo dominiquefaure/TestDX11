@@ -283,9 +283,6 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h">
       <Filter>RHI\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.h">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
@@ -342,6 +339,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.h">
       <Filter>Renderer\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h">
+      <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -447,9 +447,6 @@
     <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp">
       <Filter>Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartDatas.cpp">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
@@ -488,6 +485,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.cpp">
       <Filter>Renderer\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp">
+      <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -562,6 +562,9 @@
     </None>
     <None Include="..\..\Sources\Common\Application\GameApplication.inl">
       <Filter>Application</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.inl">
+      <Filter>Renderer\Meshes</Filter>
     </None>
   </ItemGroup>
 </Project>
