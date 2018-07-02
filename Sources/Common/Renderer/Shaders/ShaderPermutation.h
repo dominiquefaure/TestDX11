@@ -57,7 +57,7 @@ private:
 
 // The inline is included in the Header only if not in debug mode
 #ifndef _DEBUG
-#include "ShaderPermution.inl"
+#include "ShaderPermutation.inl"
 #endif
 
 

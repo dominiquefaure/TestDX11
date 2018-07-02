@@ -4,11 +4,11 @@
 #include "../../Core/CoreIncludes.h"
 #include "../../RHI/Includes.h"
 
-
+class FbxMeshPartImporter;
 
 class GeometryDataset
 {
-	
+	friend class FbxMeshPartImporter;
 
 public:
 
@@ -90,6 +90,11 @@ public:
 	 * Create the VertexBuffer
 	 */
 	void CreateVertexBuffer( RhiVertexLayoutType a_layout , TUint32 a_vetexSize , TUint32 a_vertexCount , TFloat32* a_initialDatas = NULL );
+
+	/*
+	 * Create the VertexBuffer
+	 */
+	void CreateVertexBuffer( RhiVertexLayout* a_layout , TUint32 a_vertexCount , TFloat32* a_initialDatas = NULL );
 
 	/*
 	 * Set a Vertice Content. the Array has to be at the same size of a Vertice

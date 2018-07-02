@@ -1,6 +1,5 @@
 #include "WindowsTime.h"
 
-#include <windows.h>
 
 
 TUint64	WindowsTime::s_cyclePerSeconds	=	0;

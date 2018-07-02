@@ -2,7 +2,7 @@
 #define __RHI_SHADER_REFLECTION_CONSTANT_BUFFER_DESC_H__
 
 #include "../../../Core/Base/Includes.h"
-#include "../../../Core/CoreMacros.h"
+#include "../../../Core/CoreIncludes.h"
 
 
 #include "RhiShaderParameterDesc.h"

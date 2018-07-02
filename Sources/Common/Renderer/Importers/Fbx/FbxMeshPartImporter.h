@@ -6,6 +6,8 @@
 #include "../../Geometry/Includes.h"
 
 class MeshPart;
+class FbxMeshVertex;
+
 
 class FbxMeshPartImporter
 {
@@ -15,14 +17,14 @@ public:
 	FbxMeshPartImporter();
 	~FbxMeshPartImporter();
 
+	TUint32 GetIndiceCount();
+	TUint32 GetVerticeCount();
+	RhiVertexLayout* GetVertexLayout();
+
 	void Parse( FbxMesh* a_meshPart );
 
-	/*
-	* Generate a Mesh Part
-	*/
-	MeshPart* GenerateMeshPart();
-
-	GeometryDataset* BuildGeometry();
+	void PopulateIndexBuffer( GeometryDataset* a_datas , int a_startIndex );
+	void PopulateVertexBuffer( GeometryDataset* a_datas , int a_startIndex );
 
 private:
 
@@ -43,32 +45,28 @@ private:
 
 	void GenerateVertexBuffer();
 
-	void ProcessVertex( TUint32 a_controlPointIndex , int t_polygonIndex , int t_edgeIndex );
 
-	/*
-	* Set the position values of 1 vertex
-	*/
-	void SetVertexPosition( TUint32 a_controlPointIndex , TUint32 a_offset );
-	void SetVertexColor( TUint32 a_controlPointIndex , TUint32 a_offset );
-	void SetVertexNormal( TUint32 a_offset , TUint32 a_controlPointIndex , int t_polygonIndex , int t_edgeIndex );
 
+
+	TUint32 AddVertex( TUint32 a_polygonIndex , TUint32 a_edgeIndex );
 
 private:
 
 	FbxMesh*		m_meshPart;
 
 
-	bool				m_haveColor;
-	bool				m_haveNormal;
-
 	TUint32				m_indexBufferSize;
 	TUint32*			m_indexBuffer;
 
+
 	RhiVertexLayout*	m_vertexLayout;
 	TUint32				m_vertexCount;
-	TUint32				m_vertexSize;
+/*	TUint32				m_vertexSize;
 	TUint32				m_vertexFloatCount;
 	float*				m_vertexBuffer;
+*/
+
+	std::vector<FbxMeshVertex*>m_vertexList;
 
 };
 

@@ -1,6 +1,8 @@
 #ifndef __CORE_PLATFORM_WINDOWS_TIME_H__
 #define __CORE_PLATFORM_WINDOWS_TIME_H__
 
+#include <windows.h>
+
 #include "../../Base/Includes.h"
 #include "../../CoreMacros.h"
 

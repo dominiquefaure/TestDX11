@@ -68,6 +68,17 @@ void BaseMesh::DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , S
 }
 //-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::CreateParts( TUint32 a_count )
+{
+	m_partCount												=	a_count;
+
+	// allocate the part aray
+	m_partList												=	new MeshPart[ m_partCount ];
+
+}
+//-------------------------------------------------------------------------------------------------
+
 
 /////////////
 // Loading Methods

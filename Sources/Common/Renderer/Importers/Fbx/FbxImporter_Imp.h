@@ -4,7 +4,7 @@
 #include "../../Geometry/Includes.h"
 #include "fbxsdk.h"
 
-class MeshPart;
+class StaticMesh;
 
 class FbxImporter_Imp
 {
@@ -20,7 +20,7 @@ public:
 	bool LoadFBX( const char* a_file );
 
 
-	MeshPart* ImportMesh( );
+	StaticMesh* ImportStaticMesh( );
 
 // MEthods
 private:

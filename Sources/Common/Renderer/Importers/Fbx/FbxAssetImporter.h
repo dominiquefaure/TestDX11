@@ -6,7 +6,7 @@
 
 class FbxImporter_Imp;
 
-class MeshPart;
+class StaticMesh;
 
 class FbxAssetImporter
 {
@@ -22,7 +22,7 @@ public:
 	bool LoadFBX( const char* a_file );
 
 
-	MeshPart* ImportMesh(  );
+	StaticMesh* ImportStaticMesh(  );
 
 // Fields
 private:

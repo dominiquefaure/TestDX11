@@ -4,6 +4,9 @@
 #include "../CoreMacros.h"
 #include "../Base/Includes.h"
 
+#include "../Platforms/PlatformWrapper.h"
+
+
 class Timer
 {
 public:

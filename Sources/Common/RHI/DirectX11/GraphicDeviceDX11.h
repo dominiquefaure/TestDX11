@@ -18,6 +18,7 @@
 
 #include"../Common/RhiVerteLayoutEnums.h"
 
+#include "VertexLayout/VertexLayoutManagerDX11.h"
 
 // Inernal structure to save DX parameters associed to a ShaderUsage enum
 struct BufferUsageParams
@@ -28,7 +29,6 @@ struct BufferUsageParams
 
 
 class VertexLayoutDX11;
-class VertexLayoutManagerDX11;
 
 class ImGuiWrapper;
 

@@ -1,6 +1,6 @@
 #include "FbxImporter_Imp.h"
 
-#include "FbxMeshPartImporter.h"
+#include "FbxMeshImporter.h"
 
 //---------------------------------------------------------------------------------------------
 FbxImporter_Imp::FbxImporter_Imp()
@@ -182,21 +182,15 @@ void FbxImporter_Imp::Parse( FbxNode* a_node )
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-MeshPart* FbxImporter_Imp::ImportMesh( )
+StaticMesh* FbxImporter_Imp::ImportStaticMesh( )
 {
 	FbxNode* t_node											=	m_meshNodes[ 0 ];
 
-	// Get the number of MeshParts
-	int t_count												=	t_node->GetNodeAttributeCount();
+	FbxMeshImporter t_meshImporter;
 
-	FbxNodeAttribute* t_attribute							=	t_node->GetNodeAttributeByIndex( 0 );
+	t_meshImporter.Parse( t_node );
 
 
-	FbxMesh* t_mesh											=	(FbxMesh*)t_attribute;
-
-	FbxMeshPartImporter* t_part								=	new FbxMeshPartImporter();
-	t_part->Parse( t_mesh );
-
-	return t_part->GenerateMeshPart();
+	return t_meshImporter.CreateStaticMesh();
 }
 //---------------------------------------------------------------------------------------------

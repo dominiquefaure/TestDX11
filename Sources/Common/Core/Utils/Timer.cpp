@@ -1,6 +1,5 @@
 #include "Timer.h"
 
-#include "../Platforms/PlatformWrapper.h"
 
 #include "../Math/includes.h"
 

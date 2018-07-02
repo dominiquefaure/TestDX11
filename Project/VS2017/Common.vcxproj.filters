@@ -358,6 +358,12 @@
     <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\Includes.h">
       <Filter>RHI\Common\ShaderReflection</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.h">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.h">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -512,6 +518,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp">
       <Filter>RHI\Common\ShaderReflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.cpp">
+      <Filter>Renderer\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.cpp">
+      <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

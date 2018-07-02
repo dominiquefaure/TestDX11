@@ -26,8 +26,8 @@ bool FbxAssetImporter::LoadFBX( const char* a_file )
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-MeshPart* FbxAssetImporter::ImportMesh( )
+StaticMesh* FbxAssetImporter::ImportStaticMesh( )
 {
-	return m_implementation->ImportMesh( );
+	return m_implementation->ImportStaticMesh( );
 }
 //---------------------------------------------------------------------------------------------

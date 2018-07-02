@@ -228,6 +228,23 @@ void GeometryDataset::CreateVertexBuffer( RhiVertexLayoutType a_layout , TUint32
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
+void GeometryDataset::CreateVertexBuffer( RhiVertexLayout* a_layout , TUint32 a_vertexCount , TFloat32* a_initialDatas )
+{
+	m_vertexLayoutType										=	a_layout->GetLayoutType();
+	m_vertexSize											=	a_layout->GetVertexSize();
+	m_vertexCount											=	a_vertexCount;
+
+	m_vertexBuffer											=	new float[ m_vertexCount * m_vertexSize ];
+
+	if( a_initialDatas != NULL )
+	{
+		memcpy( m_vertexBuffer , a_initialDatas , m_vertexCount * m_vertexSize );
+	}
+}
+//---------------------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------------------
 void GeometryDataset::SetVerticeAt( int a_vertice , float* a_data )
 {
 	assert( m_vertexBuffer != NULL );

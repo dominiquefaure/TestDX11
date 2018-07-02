@@ -39,14 +39,15 @@ public:
 	*/
 	FORCE_INLINE TBool IsCastShadow()const;
 
-
+	/*
+	* Set the Range of Index in the index buffer used to draw this Part
+	*/
+	void SetIndexRange( TUint32 a_startIndex , TUint32 a_count );
 
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
 	void LoadFromJSon( JSonNode& a_partNode );
-
-
 
 	/*
 	* Draw this Part

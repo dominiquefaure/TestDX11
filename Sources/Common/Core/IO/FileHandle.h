@@ -33,7 +33,7 @@ private:
 	/*
 	* Open the File, reutrn true if succeed
 	*/
-	FORCE_INLINE bool Open( const std::string& a_path , FileMode a_mode );
+	bool Open( const std::string& a_path , FileMode a_mode );
 
 public:
 
@@ -42,7 +42,7 @@ public:
 	/*
 	* Close the File
 	*/
-	FORCE_INLINE void Close();
+	void Close();
 
 	/*
 	* Get the Size of the File

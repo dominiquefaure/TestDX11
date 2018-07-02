@@ -12,12 +12,15 @@ class ShaderProgram;
 class GeometryDataset;
 class StaticGeometry;
 
+class FbxMeshImporter;
+
 /*
 * Base class for all meshes
 */
 
 class BaseMesh
 {
+	friend class FbxMeshImporter;
 
 public:
 
@@ -45,8 +48,16 @@ public:
 	*/
 	void DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
 
+
+
+
 // Methods
 private:
+
+	/*
+	* Create the Array that store the different parts
+	*/
+	void CreateParts( TUint32 a_count );
 
 	/*
 	* Load all the parts that define the mesh geometry

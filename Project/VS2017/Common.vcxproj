@@ -59,7 +59,9 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\Includes.h" />
@@ -132,7 +134,9 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\StaticMesh.cpp" />
@@ -323,7 +327,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;dxguid.lib;libfbxsdk.lib</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;D3DCompiler.lib;dxgi.lib;dxguid.lib;libfbxsdk.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/lib/vs2015/x86</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -345,7 +349,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x64;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/lib/vs2015/x64/release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;dxguid.lib;zlib.lib;libPng.lib;libfbxsdk.lib</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;D3DCompiler.lib;dxgi.lib;dxguid.lib;libfbxsdk.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
