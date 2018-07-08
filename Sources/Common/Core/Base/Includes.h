@@ -3,4 +3,8 @@
 
 #include "BaseDataTypes.h"
 
+#include <vector>
+#include <map>
+#include <assert.h>
+
 #endif

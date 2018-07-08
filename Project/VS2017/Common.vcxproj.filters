@@ -364,6 +364,39 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.h">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\AJSonProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonBoolProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonIntProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonFloatProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonStringProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeWriter.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonWriter.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonIntArrayProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonFloatArrayProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeArrayProperty.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -524,6 +557,39 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.cpp">
       <Filter>Renderer\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\AJSonProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonBoolProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonIntProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonFloatProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonStringProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeWriter.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonWriter.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonIntArrayProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonFloatArrayProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeArrayProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

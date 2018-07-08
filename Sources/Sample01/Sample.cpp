@@ -63,6 +63,8 @@ void Sample::OnInit( )
 	m_perFrameConstants.m_lightDiffuse.Set( 0.8 , 0.8 , 0.8 );
 
 	m_perDrawConstants.m_matDiffuse.Set( 1.0 , 1.0 , 1.0 );
+
+	TestWriter();
 }
 //---------------------------------------------------------------------------------------------
 
@@ -242,3 +244,33 @@ void Sample::DrawDebugUI()
 	}	
 }
 //---------------------------------------------------------------------------------------------
+
+void Sample::TestWriter()
+{
+	JSonWriter t_writer;
+
+	JSonNodeWriter* t_rootNode	=	t_writer.GetRootNode();
+
+	t_rootNode->AddStringProperty("TestString", "Hello world" );
+	t_rootNode->AddBoolProperty("TestBool" , true );
+
+
+	JSonNodeArrayProperty* t_nodeArray	=	t_rootNode->AddNodeArrayProperty("SubNodes");
+
+	for( int i = 0 ; i < 6 ; i ++ )
+	{
+		JSonNodeWriter* t_node			=	t_nodeArray->AddNode();
+
+		t_node->AddFloatProperty("Float" , 16.5 + i );
+		t_node->AddIntProperty("Int" , 5 + i );
+
+		TUint64 t_intArray[]={ 5 , 10 , 8 , 6 };
+		t_node->AddIntArray( "IntArray" , 4 , t_intArray );
+
+		TFloat64 t_floatArray[]={ 8.5 , 12.0 , 4.8 , 6.9 };
+		t_node->AddFloatArray( "FloatArray" , 4 , t_floatArray );
+	}
+
+
+	t_writer.Save("TestWriter.json");
+}
