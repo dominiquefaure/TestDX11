@@ -46,22 +46,22 @@ public:
 	/*
 	* Get the Bool property value
 	*/
-	TBool GetBoolProperty( const std::string& a_name );
+	TBool GetBoolProperty( const std::string& a_name )const;
 
 	/*
 	* Get the Bool property value
 	*/
-	TUint64 GetIntProperty( const std::string& a_name );
+	TUint64 GetIntProperty( const std::string& a_name , TUint64 a_defaultValue = 0 )const;
 
 	/*
 	* Get the Bool property value
 	*/
-	TFloat64 GetFloatProperty( const std::string& a_name );
+	TFloat64 GetFloatProperty( const std::string& a_name )const;
 
 	/*
 	* Get the Bool property value
 	*/
-	const std::string& GetStringProperty( const std::string& a_name );
+	const std::string& GetStringProperty( const std::string& a_name )const;
 
 	/*
 	* Get sub node property

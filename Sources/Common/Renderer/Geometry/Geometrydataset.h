@@ -70,7 +70,7 @@ public:
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
-	void LoadFromJSon( JSonNode& a_rootNode );
+	void LoadFromJSon( const JSonNodeWriter* a_rootNode );
 
 
 	/*
@@ -115,14 +115,14 @@ private:
 	*
 	* @param a_indexBufferNode	Node that store the indexbuffer informations
 	*/
-	void LoadIndexBuffer( JSonNode& a_indexBufferNode );
+	void LoadIndexBuffer( const JSonNodeWriter* a_indexBufferNode );
 
 	/*
 	* Load the VertexBuffer content from a JSon Node
 	*
 	* @param a_vertexBufferNode	Node that store the vertexBuffer informations
 	*/
-	void LoadVertexBuffer( JSonNode& a_vertexBufferNode );
+	void LoadVertexBuffer( const JSonNodeWriter* a_vertexBufferNode );
 
 
 

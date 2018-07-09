@@ -42,32 +42,33 @@ ShaderProgram::~ShaderProgram()
 void ShaderProgram::Load( const std::string& a_jsonFilePath )
 {
 	// Load the content of the JSon file
-	JsonDocument t_document;
-	t_document.Load( a_jsonFilePath );
+	JSonReader t_reader;
+	t_reader.Load( a_jsonFilePath );
 
-	m_vertexShader											=	LoadShaderDefinition( t_document.GetRootNode() , "VertexShader" );
-	m_pixelShader											=	LoadShaderDefinition( t_document.GetRootNode() , "PixelShader" );
+//	JsonDocument t_document;
+//	t_document.Load( a_jsonFilePath );
 
-	SetSupportedVertexLayouts( t_document.GetRootNode() );
+	m_vertexShader											=	LoadShaderDefinition( t_reader.GetRootNode() , "VertexShader" );
+	m_pixelShader											=	LoadShaderDefinition( t_reader.GetRootNode() , "PixelShader" );
+
+	SetSupportedVertexLayouts( t_reader.GetRootNode() );
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-ShaderDefinition* ShaderProgram::LoadShaderDefinition( JSonNode& a_rootNode , const std::string& a_propertyName )
+ShaderDefinition* ShaderProgram::LoadShaderDefinition( const JSonNodeWriter* a_rootNode , const std::string& a_propertyName )
 {
 	
 	// Get the requested property
-	JSonProperty t_property								=	a_rootNode.GetProperty( a_propertyName );
+	const JSonNodeWriter* t_node							=	a_rootNode->GetNodeProperty( a_propertyName );
 
 	// if the property is valid and is a JSON sub object
-	if( t_property.GetType() ==  JSON_PROPERTY_TYPE_NODE )
+	if( t_node != nullptr )
 	{
-		// Get the JSon Object
-		JSonNode t_obj									=	t_property.GetJSonObject();
 
 		// Create a ew DEfinition and load it's content from the JSOn node properties
 		ShaderDefinition* t_definition					=	new ShaderDefinition();
-		t_definition->LoadFromJSon( t_obj );
+		t_definition->LoadFromJSon( t_node );
 
 		//return the definition created
 		return t_definition;
@@ -90,22 +91,17 @@ void ShaderProgram::InitVertexLayoutSupport()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void ShaderProgram::SetSupportedVertexLayouts( JSonNode& a_rootNode )
+void ShaderProgram::SetSupportedVertexLayouts( const JSonNodeWriter* a_rootNode  )
 {
 	// Get the Property that store the list of supported VertexLayout
-	JSonProperty t_datas									=	a_rootNode.GetProperty( "SupportedLayouts" );
-	if( t_datas.IsArray() )
+	const JSonIntArrayProperty* t_jsonArray					=	a_rootNode->GetIntArray( "SupportedLayouts" );
+
+	if( t_jsonArray != nullptr )
 	{
-		int t_size											=	t_datas.GetArraySize();
-
-		TUint64* t_layouts									=	new TUint64[ t_size ];
-
-		// read the Datas
-		t_datas.GetInt64Array( t_layouts , t_size );
-
+		int t_size											=	t_jsonArray->GetCount();
 		for( int i = 0 ; i < t_size;  i ++ )
 		{
-			int t_index										=	t_layouts[ i ];
+			int t_index										=	t_jsonArray->GetValueAt( i );
 			m_vertexLayoutSupport[ t_index ]				=	true;
 		}
 	}

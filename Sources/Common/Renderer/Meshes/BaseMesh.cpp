@@ -89,16 +89,16 @@ void BaseMesh::CreateParts( TUint32 a_count )
 void BaseMesh::LoadFromJSon( const char* a_filePath )
 {
 	// Load the Json File
-	JsonDocument t_document;
-	t_document.Load(a_filePath);
+	JSonReader t_reader;
+	t_reader.Load( a_filePath );
 
-	LoadFromJSon( t_document.GetRootNode() );
+	LoadFromJSon( t_reader.GetRootNode() );
 
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadFromJSon( JSonNode& a_rootNode )
+void BaseMesh::LoadFromJSon( const JSonNodeWriter* a_rootNode )
 {
 	LoadParts( a_rootNode );
 	LoadGeometryDatas( a_rootNode );
@@ -106,16 +106,16 @@ void BaseMesh::LoadFromJSon( JSonNode& a_rootNode )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadParts( JSonNode& a_rootNode )
+void BaseMesh::LoadParts( const JSonNodeWriter* a_rootNode )
 {
 	// Get the Property that store the MeshPartss
-	JSonProperty t_parts									=	a_rootNode.GetProperty( "MeshParts" );
+	const JSonNodeArrayProperty* t_parts					=	a_rootNode->GetNodeArray( "MeshParts" );
 
 	// validate it's an Array
-	if( t_parts.IsArray() )
+	if( t_parts != nullptr )
 	{
 		// get the number of Parts
-		m_partCount											=	t_parts.GetArraySize();
+		m_partCount											=	t_parts->GetCount();
 
 		// allocate the part aray
 		m_partList											=	new MeshPart[ m_partCount ];
@@ -123,19 +123,19 @@ void BaseMesh::LoadParts( JSonNode& a_rootNode )
 		// Load all the parts contents
 		for( TUint32 i = 0 ; i < m_partCount ; i ++ )
 		{
-			m_partList[ i ].LoadFromJSon( t_parts.GetSubNodeAt( i ) );
+			m_partList[ i ].LoadFromJSon( t_parts->GetNodeAt( i ) );
 		}
 	}
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadGeometryDatas( JSonNode& a_rootNode )
+void BaseMesh::LoadGeometryDatas( const JSonNodeWriter* a_rootNode )
 {
+	const JSonNodeWriter* t_geometryDatas					=	a_rootNode->GetNodeProperty( "GeometryDatas" );
 
-	if( a_rootNode.Contains ("GeometryDatas" ) )
+	if( t_geometryDatas != nullptr )
 	{
-		JSonNode t_geometryDatas							=	a_rootNode.GetNodeProperty( "GeometryDatas" );
 		m_sourceData										=	new GeometryDataset();
 
 		m_sourceData->LoadFromJSon( t_geometryDatas );

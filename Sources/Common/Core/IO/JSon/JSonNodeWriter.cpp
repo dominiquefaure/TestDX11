@@ -59,7 +59,7 @@ AJsonProperty* JSonNodeWriter::GetProperty( const std::string& a_name )const
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-TBool JSonNodeWriter::GetBoolProperty( const std::string& a_name )
+TBool JSonNodeWriter::GetBoolProperty( const std::string& a_name )const
 {
 	AJsonProperty* t_property								=	GetProperty( a_name );
 
@@ -76,7 +76,7 @@ TBool JSonNodeWriter::GetBoolProperty( const std::string& a_name )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-TUint64 JSonNodeWriter::GetIntProperty( const std::string& a_name )
+TUint64 JSonNodeWriter::GetIntProperty( const std::string& a_name , TUint64 a_defaultValue )const
 {
 	AJsonProperty* t_property								=	GetProperty( a_name );
 
@@ -88,12 +88,12 @@ TUint64 JSonNodeWriter::GetIntProperty( const std::string& a_name )
 		}
 	}
 
-	return 0;
+	return a_defaultValue;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-TFloat64 JSonNodeWriter::GetFloatProperty( const std::string& a_name )
+TFloat64 JSonNodeWriter::GetFloatProperty( const std::string& a_name )const
 {
 	AJsonProperty* t_property								=	GetProperty( a_name );
 
@@ -109,7 +109,7 @@ TFloat64 JSonNodeWriter::GetFloatProperty( const std::string& a_name )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-const std::string& JSonNodeWriter::GetStringProperty( const std::string& a_name )
+const std::string& JSonNodeWriter::GetStringProperty( const std::string& a_name )const
 {
 	AJsonProperty* t_property								=	GetProperty( a_name );
 

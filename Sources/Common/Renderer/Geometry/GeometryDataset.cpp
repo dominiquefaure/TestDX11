@@ -36,28 +36,24 @@ GeometryDataset::~GeometryDataset()
 void GeometryDataset::LoadFromJSon(const char* a_filePath )
 {
 	// Load the Json File
-	JsonDocument t_document;
-	t_document.Load(a_filePath);
+	JSonReader t_reader;
+	t_reader.Load( a_filePath );
 
-	LoadFromJSon( t_document.GetRootNode() );
+	LoadFromJSon( t_reader.GetRootNode() );
 
 }
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
-void GeometryDataset::LoadFromJSon( JSonNode& a_rootNode )
+void GeometryDataset::LoadFromJSon( const JSonNodeWriter* a_rootNode )
 {
 	// check if there is a Vertex buffer property
-	JSonProperty t_vertexBufferProprty						=	a_rootNode.GetProperty( "VertexBuffer" );
-
+	const JSonNodeWriter* t_vertexBufferNode				=	a_rootNode->GetNodeProperty( "VertexBuffer" );
 
 	// check the property is valid
-	if( t_vertexBufferProprty.GetType() ==  JSON_PROPERTY_TYPE_NODE )
+	if( t_vertexBufferNode != nullptr )
 	{
-		// Get the JSon Object
-		JSonNode t_obj										=	t_vertexBufferProprty.GetJSonObject();
-
-		LoadVertexBuffer( t_obj );
+		LoadVertexBuffer( t_vertexBufferNode );
 	}
 	else
 	{
@@ -67,40 +63,37 @@ void GeometryDataset::LoadFromJSon( JSonNode& a_rootNode )
 	}
 
 	// check if there is an Index buffer property
-	JSonProperty t_indexBufferProprty						=	a_rootNode.GetProperty( "IndexBuffer" );
+	const JSonNodeWriter* t_indexBufferNode					=	a_rootNode->GetNodeProperty( "IndexBuffer" );
 
 	// if the property is valid
-	if( t_indexBufferProprty.GetType() ==  JSON_PROPERTY_TYPE_NODE )
+	if( t_indexBufferNode != nullptr )
 	{
-		// Get the JSon Object
-		JSonNode t_obj										=	t_indexBufferProprty.GetJSonObject();
-
-		LoadIndexBuffer( t_obj );
+		LoadIndexBuffer( t_indexBufferNode );
 	}
 
 	// get the primitive type. if not specified use Triangle List
-	m_primitiveType											=	(RhiPrimitiveType)a_rootNode.GetInt64Property("PrimitiveType" , (int) RHI_PRIMITIVE_TYPE_TRIANGLE_LIST );
+	m_primitiveType											=	(RhiPrimitiveType)a_rootNode->GetIntProperty("PrimitiveType" , (int) RHI_PRIMITIVE_TYPE_TRIANGLE_LIST );
 
 	// Get the Layout 
-	m_vertexLayoutType										=	(RhiVertexLayoutType)a_rootNode.GetInt64Property( "VertexLayout" );
+	m_vertexLayoutType										=	(RhiVertexLayoutType)a_rootNode->GetIntProperty( "VertexLayout" );
 }
 //---------------------------------------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------------------------------------
-void GeometryDataset::LoadIndexBuffer( JSonNode& a_indexBufferNode )
+void GeometryDataset::LoadIndexBuffer( const JSonNodeWriter* a_indexBufferNode )
 {
 	// we have an index buffer
 	m_isIndexed												=	true;
 
 	// Get the number of Index
-	m_indexCount											=	(TUint32)a_indexBufferNode.GetInt64Property( "IndexCount" );
+	m_indexCount											=	(TUint32)a_indexBufferNode->GetIntProperty( "IndexCount" );
 
 	// Get the Property that store the Index buffer datas
-	JSonProperty t_datas									=	a_indexBufferNode.GetProperty( "Datas" );
+	const JSonIntArrayProperty* t_datas					=	a_indexBufferNode->GetIntArray( "Datas" );
 
 
-	if( t_datas.IsArray() )
+	if( t_datas != nullptr )
 	{
 		if( m_indexCount < 65535 )
 		{
@@ -110,7 +103,7 @@ void GeometryDataset::LoadIndexBuffer( JSonNode& a_indexBufferNode )
 			m_indexBuffer16									=	new TUint16[ m_indexCount ];
 
 			// read the Datas
-			t_datas.GetShortArray( (int16_t*)m_indexBuffer16 , m_indexCount );
+			t_datas->GetValues16( m_indexBuffer16  );
 		}
 		else
 		{
@@ -120,7 +113,7 @@ void GeometryDataset::LoadIndexBuffer( JSonNode& a_indexBufferNode )
 			m_indexBuffer32									=	new TUint32[ m_indexCount ];
 			
 			// read the Datas
-			t_datas.GetInt32Array( (int*)m_indexBuffer32 , m_indexCount );
+			t_datas->GetValues32( m_indexBuffer32 );
 
 		}
 	}
@@ -128,25 +121,25 @@ void GeometryDataset::LoadIndexBuffer( JSonNode& a_indexBufferNode )
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
-void GeometryDataset::LoadVertexBuffer( JSonNode& a_vertexBufferNode )
+void GeometryDataset::LoadVertexBuffer( const JSonNodeWriter* a_vertexBufferNode )
 {
 	// Get the size of 1 vertex
-	m_vertexSize											=	(TUint32)a_vertexBufferNode.GetInt64Property( "VertexSize" );
+	m_vertexSize											=	(TUint32)a_vertexBufferNode->GetIntProperty( "VertexSize" );
 
 	// Get the number of Vertex
-	m_vertexCount											=	(TUint32)a_vertexBufferNode.GetInt64Property( "VertexCount" );
+	m_vertexCount											=	(TUint32)a_vertexBufferNode->GetIntProperty( "VertexCount" );
 
 	// Get the Property that store the Vertex buffer datas
-	JSonProperty t_vertices									=	a_vertexBufferNode.GetProperty( "Datas" );
-	if( t_vertices.IsArray() )
+	const JSonFloatArrayProperty* t_vertices				=	a_vertexBufferNode->GetFloatArray( "Datas" );
+	if( t_vertices != nullptr )
 	{
-		int t_size											=	t_vertices.GetArraySize();
+		int t_size											=	t_vertices->GetCount();
 
 		// allocate the VertexBuffer
 		m_vertexBuffer										=	new float[ t_size ];
 
 		// read the Datas
-		t_vertices.GetFloatArray( m_vertexBuffer , t_size );
+		t_vertices->GetValues32( m_vertexBuffer );
 	}
 }
 //---------------------------------------------------------------------------------------------------------

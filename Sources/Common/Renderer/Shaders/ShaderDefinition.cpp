@@ -82,18 +82,16 @@ void ShaderDefinition::LoadSourceCode( RhiShaderType a_type , const std::string&
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void ShaderDefinition::LoadFromJSon( JSonNode& a_rootNode )
+void ShaderDefinition::LoadFromJSon( const JSonNodeWriter* a_rootNode )
 {
 	// Get the Shader Type
-	m_type													=	static_cast<RhiShaderType>( a_rootNode.GetInt64Property("Type" ) );
+	m_type													=	static_cast<RhiShaderType>( a_rootNode->GetIntProperty("Type" ) );
 
-	m_permutationMask										=	a_rootNode.GetInt64Property("PermutationMask" );
+	m_permutationMask										=	a_rootNode->GetIntProperty("PermutationMask" );
 
-	m_entryPoint											=	a_rootNode.GetStringProperty( "EntryPoint" );
+	m_entryPoint											=	a_rootNode->GetStringProperty( "EntryPoint" );
 
-	std::string& t_filePath									=	a_rootNode.GetStringProperty( "SourcePath" );
-
-	LoadSourceCode( m_type , t_filePath );
+	LoadSourceCode( m_type , a_rootNode->GetStringProperty( "SourcePath" ) );
 }
 //---------------------------------------------------------------------------------------------
 

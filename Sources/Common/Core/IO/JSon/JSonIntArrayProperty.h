@@ -21,6 +21,11 @@ public:
 	TUint32 GetCount()const;
 
 	/*
+	* Get the Value present at the given index in the array
+	*/
+	TUint64 GetValueAt( TUint32 a_index )const;
+
+	/*
 	* Get the value in 64 bits
 	*/
 	void GetValues64( TUint64* a_array )const;

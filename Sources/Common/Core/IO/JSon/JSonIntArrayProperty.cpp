@@ -27,6 +27,15 @@ TUint32 JSonIntArrayProperty::GetCount()const
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
+TUint64 JSonIntArrayProperty::GetValueAt( TUint32 a_index )const
+{
+	assert( a_index < m_count );
+
+	return m_values[ a_index ];
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
 void JSonIntArrayProperty::GetValues64( TUint64* a_array )const
 {
 	memcpy( a_array , m_values , sizeof( TUint64) * m_count );

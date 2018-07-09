@@ -38,7 +38,7 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
-		TestWriter();
+//		TestWriter();
 
 
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
@@ -84,25 +84,16 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 {
-
+/*
 	FbxAssetImporter t_importer;
 	t_importer.LoadFBX( "grendizer.fbx" );
 
 	m_mesh	=	t_importer.ImportStaticMesh();
-//	GeometryDataset* t_data									=	t_importer.ImportMesh();
-/*
-//	GeometryDataset* t_data									=	new GeometryDataset();
-//	t_data->LoadFromJSon( "SolidCube.geo" );
-
-	m_geometry												=	new StaticGeometry();
-	m_geometry->Build( a_device , t_data );
-
-	SAFE_DELETE( t_data );
-
 */
 
-//	m_mesh													=	new StaticMesh();
-//	m_mesh->LoadFromJSon( "simpleMesh.mesh" );
+
+	m_mesh													=	new StaticMesh();
+	m_mesh->LoadFromJSon( "simpleMesh.mesh" );
 
 	m_mesh->BuildRenderData( a_device );
 }
@@ -112,8 +103,8 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 void Sample::LoadShaders( )
 {
 	m_shader												=	new ShaderProgram();
-//	m_shader->Load( "ShaderDef.json" );
-	m_shader->Load( "PerVertexLighting.json" );
+	m_shader->Load( "ShaderDef.json" );
+//	m_shader->Load( "PerVertexLighting.json" );
 }
 //---------------------------------------------------------------------------------------------
 
