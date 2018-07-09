@@ -4,14 +4,17 @@
 #include "AJSonProperty.h"
 #include "../../../Core/Base/BaseDataTypes.h"
 
-class JSonWriter;
 class JSonIntArrayProperty;
 class JSonFloatArrayProperty;
 class JSonNodeArrayProperty;
 class JSonNodeProperty;
 
+class JSonReader;
+class JSonWriter;
+
 class JSonNodeWriter
 {
+	friend class JSonReader;
 	friend class JSonWriter;
 	friend class JSonNodeProperty;
 	friend class JSonNodeArrayProperty;
@@ -145,6 +148,17 @@ public:
 	JSonNodeArrayProperty* AddNodeArrayProperty( const std::string& a_name );
 
 protected:
+
+
+	void Parse( const rapidjson::Value& a_value );
+
+	void ParseProperty( const std::string& a_name , const rapidjson::Value& a_property );
+
+	void ProcessArrayProperty( const std::string& a_name , const rapidjson::Value& a_property );
+
+	void ProcessNodeArrayProperty( const std::string& a_name , const rapidjson::Value& a_property );
+	void ProcessIntArrayProperty( const std::string& a_name , const rapidjson::Value& a_property );
+	void ProcessFloatArrayProperty( const std::string& a_name , const rapidjson::Value& a_property );
 
 	/*
 	* Serialize this Node content

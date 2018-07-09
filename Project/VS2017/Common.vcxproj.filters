@@ -397,6 +397,9 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeArrayProperty.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonReader.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -589,6 +592,9 @@
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeArrayProperty.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonReader.cpp">
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
   </ItemGroup>

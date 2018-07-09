@@ -45,6 +45,7 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeProperty.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeWriter.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonReader.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonStringProperty.h" />
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonWriter.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Math\Color.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeProperty.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeWriter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonReader.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonStringProperty.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonWriter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Math\Color.cpp" />

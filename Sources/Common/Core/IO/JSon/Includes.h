@@ -19,6 +19,7 @@
 #include "JSonNodeWriter.h"
 
 
+#include "JSonReader.h"
 #include "JSonWriter.h"
 
 #endif

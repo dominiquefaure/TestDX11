@@ -10,6 +10,7 @@
 #include "JSonFloatArrayProperty.h"
 #include "JSonNodeArrayProperty.h"
 
+#include "../../CoreMacros.h"
 
 //-------------------------------------------------------------------------------------------------
 JSonNodeWriter::JSonNodeWriter()
@@ -44,6 +45,16 @@ AJsonProperty* JSonNodeWriter::GetPropertyAt( TUint32 a_index )
 //-------------------------------------------------------------------------------------------------
 AJsonProperty* JSonNodeWriter::GetProperty( const std::string& a_name )const
 {
+	// Serialize all the properties
+	TUint32 t_count											=	GetPropertyCount();
+	for( int i = 0 ; i < t_count ; i ++ )
+	{
+		if( m_properties[ i ]->GetName() == a_name )
+		{
+			return m_properties[ i ];
+		}
+	}
+	return nullptr;
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -349,7 +360,149 @@ JSonNodeArrayProperty* JSonNodeWriter::AddNodeArrayProperty( const std::string& 
 }
 //-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+void JSonNodeWriter::Parse( const rapidjson::Value& a_value )
+{
+	int t_count	=	a_value.MemberCount();
 
+	for( rapidjson::Value::ConstMemberIterator itr = a_value.MemberBegin(); itr != a_value.MemberEnd(); ++itr )
+	{
+		ParseProperty( itr->name.GetString() , itr->value );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNodeWriter::ParseProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	if( a_property.IsBool() )
+	{
+		AddBoolProperty( a_name  , a_property.GetBool() );
+	}
+	else if( a_property.IsString() )
+	{
+		AddStringProperty( a_name  , a_property.GetString() );
+	}
+	else if( a_property.IsFloat() )
+	{
+		AddFloatProperty( a_name  , a_property.GetFloat() );
+	}
+	else if( a_property.IsDouble() )
+	{
+		AddFloatProperty( a_name  , a_property.GetDouble() );
+	}
+	else if( a_property.IsInt() )
+	{
+		AddIntProperty( a_name  , a_property.GetInt() );
+	}
+	else if( a_property.IsInt64() )
+	{
+		AddIntProperty( a_name  , a_property.GetInt64() );
+	}
+	else if( a_property.IsObject() )
+	{
+		JSonNodeWriter* t_node								=	AddNodeProperty( a_name );
+
+		t_node->Parse( a_property );
+	}
+	else if( a_property.IsArray() )
+	{
+		ProcessArrayProperty( a_name , a_property );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNodeWriter::ProcessArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+
+	const rapidjson::Value& t_firstElement					=	a_property[ 0 ];
+	
+	if( t_firstElement.IsObject() )
+	{
+		ProcessNodeArrayProperty( a_name , a_property );
+	}
+	else if( t_firstElement.IsInt() || t_firstElement.IsInt64() )
+	{
+		ProcessIntArrayProperty( a_name , a_property );
+	}
+	else
+	{
+		ProcessFloatArrayProperty( a_name , a_property );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNodeWriter::ProcessNodeArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	JSonNodeArrayProperty* t_array							=	AddNodeArrayProperty( a_name );
+
+	TUint32 t_arraySize										=	a_property.Size();
+	for(int i = 0 ; i < t_arraySize ; i ++ )
+	{
+		JSonNodeWriter* t_node								=	t_array->AddNode();
+
+		t_node->Parse( a_property[ i ] );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNodeWriter::ProcessIntArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	TUint32 t_arraySize										=	a_property.Size();
+
+	TUint64* t_array										=	new TUint64[ t_arraySize ];
+
+	if(a_property[ 0 ].IsInt64() )
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetInt64();
+		}
+	}
+	else
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetInt();
+		}
+	}
+
+	AddIntArray( a_name , t_arraySize , t_array );
+
+	SAFE_DELETE_ARRAY( t_array );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNodeWriter::ProcessFloatArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	TUint32 t_arraySize										=	a_property.Size();
+
+	TFloat64* t_array										=	new TFloat64[ t_arraySize ];
+
+	if(a_property[ 0 ].IsDouble() )
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetDouble();
+		}
+	}
+	else
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetFloat();
+		}
+	}
+
+	AddFloatArray( a_name , t_arraySize , t_array );
+
+	SAFE_DELETE_ARRAY( t_array );
+}
+//-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
 void JSonNodeWriter::Serialize( rapidjson::PrettyWriter<rapidjson::StringBuffer> & a_writer )

@@ -38,6 +38,8 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
+		TestWriter();
+
 
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
 
@@ -64,7 +66,6 @@ void Sample::OnInit( )
 
 	m_perDrawConstants.m_matDiffuse.Set( 1.0 , 1.0 , 1.0 );
 
-	TestWriter();
 }
 //---------------------------------------------------------------------------------------------
 
@@ -247,6 +248,7 @@ void Sample::DrawDebugUI()
 
 void Sample::TestWriter()
 {
+/*
 	JSonWriter t_writer;
 
 	JSonNodeWriter* t_rootNode	=	t_writer.GetRootNode();
@@ -273,4 +275,8 @@ void Sample::TestWriter()
 
 
 	t_writer.Save("TestWriter.json");
+*/
+	JSonReader t_reader;
+
+	t_reader.Load( "TestWriter.json");
 }
