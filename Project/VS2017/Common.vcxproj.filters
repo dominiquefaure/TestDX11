@@ -214,15 +214,6 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonNode.h">
-      <Filter>Core\IO\JSon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.h">
-      <Filter>Core\IO\JSon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonDocument.h">
-      <Filter>Core\IO\JSon</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\Includes.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
@@ -458,15 +449,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp">
       <Filter>Renderer\Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonNode.cpp">
-      <Filter>Core\IO\JSon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonProperty.cpp">
-      <Filter>Core\IO\JSon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonDocument.cpp">
-      <Filter>Core\IO\JSon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.cpp">
       <Filter>RHI\DirectX11\VertexLayout</Filter>

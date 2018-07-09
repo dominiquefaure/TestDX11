@@ -45,9 +45,6 @@ void ShaderProgram::Load( const std::string& a_jsonFilePath )
 	JSonReader t_reader;
 	t_reader.Load( a_jsonFilePath );
 
-//	JsonDocument t_document;
-//	t_document.Load( a_jsonFilePath );
-
 	m_vertexShader											=	LoadShaderDefinition( t_reader.GetRootNode() , "VertexShader" );
 	m_pixelShader											=	LoadShaderDefinition( t_reader.GetRootNode() , "PixelShader" );
 
