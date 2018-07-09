@@ -1,6 +1,6 @@
 #include "JSonWriter.h"
 
-#include "JSonNodeWriter.h"
+#include "JSonNode.h"
 
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
@@ -17,7 +17,7 @@ using namespace rapidjson;
 //-------------------------------------------------------------------------------------------------
 JSonWriter::JSonWriter()
 {
-	m_rootNode												=	new JSonNodeWriter();
+	m_rootNode												=	new JSonNode();
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ JSonWriter::~JSonWriter()
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-JSonNodeWriter* JSonWriter::GetRootNode()
+JSonNode* JSonWriter::GetRootNode()
 {
 	return m_rootNode;
 }

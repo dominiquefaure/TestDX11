@@ -4,21 +4,21 @@
 #include "AJSonProperty.h"
 #include "../../../Core/Base/BaseDataTypes.h"
 
-class JSonNodeWriter;
+class JSonNode;
 
 
 class JSonNodeProperty : public AJsonProperty
 {
-	friend class JSonNodeWriter;
+	friend class JSonNode;
 
 public:
 
 	JSonNodeProperty();
 	virtual ~JSonNodeProperty();
 
-	JSonNodeWriter* GetValue( )const;
+	JSonNode* GetValue( )const;
 
-	JSonNodeWriter* GetValue( );
+	JSonNode* GetValue( );
 
 protected:
 
@@ -29,7 +29,7 @@ protected:
 
 private:
 
-	JSonNodeWriter* m_value;
+	JSonNode* m_value;
 
 };
 

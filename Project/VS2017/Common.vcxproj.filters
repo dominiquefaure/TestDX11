@@ -373,9 +373,6 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeProperty.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeWriter.h">
-      <Filter>Core\IO\JSon</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonWriter.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
@@ -389,6 +386,9 @@
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonReader.h">
+      <Filter>Core\IO\JSon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNode.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
   </ItemGroup>
@@ -561,9 +561,6 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeProperty.cpp">
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNodeWriter.cpp">
-      <Filter>Core\IO\JSon</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonWriter.cpp">
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
@@ -577,6 +574,9 @@
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JsonReader.cpp">
+      <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNode.cpp">
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,11 +9,11 @@
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/prettywriter.h"
 
-class JSonNodeWriter;
+class JSonNode;
 
 class AJsonProperty
 {
-	friend class JSonNodeWriter;
+	friend class JSonNode;
 public:
 
 	AJsonProperty();

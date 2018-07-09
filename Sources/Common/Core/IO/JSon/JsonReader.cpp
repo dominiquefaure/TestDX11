@@ -2,7 +2,7 @@
 
 #include "../../../Core/CoreMacros.h"
 
-#include "JSonNodeWriter.h"
+#include "JSonNode.h"
 
 #include "../FileSystem.h"
 #include "../FileHandle.h"
@@ -26,7 +26,7 @@ JSonReader::~JSonReader()
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-const JSonNodeWriter* JSonReader::GetRootNode()
+const JSonNode* JSonReader::GetRootNode()
 {
 	return m_rootNode;
 }
@@ -50,7 +50,7 @@ void JSonReader::Load( const std::string& a_filePath )
 	t_jsonDocument.Parse( t_buffer , t_readCount );
 
 	// generate our runtime hierarchy
-	m_rootNode												=	new JSonNodeWriter();
+	m_rootNode												=	new JSonNode();
 	m_rootNode->Parse( t_jsonDocument );
 }
 //-------------------------------------------------------------------------------------------------

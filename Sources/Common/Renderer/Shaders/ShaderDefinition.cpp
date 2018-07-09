@@ -82,7 +82,7 @@ void ShaderDefinition::LoadSourceCode( RhiShaderType a_type , const std::string&
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void ShaderDefinition::LoadFromJSon( const JSonNodeWriter* a_rootNode )
+void ShaderDefinition::LoadFromJSon( const JSonNode* a_rootNode )
 {
 	// Get the Shader Type
 	m_type													=	static_cast<RhiShaderType>( a_rootNode->GetIntProperty("Type" ) );

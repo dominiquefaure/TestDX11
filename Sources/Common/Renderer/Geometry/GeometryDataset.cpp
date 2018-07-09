@@ -45,10 +45,10 @@ void GeometryDataset::LoadFromJSon(const char* a_filePath )
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
-void GeometryDataset::LoadFromJSon( const JSonNodeWriter* a_rootNode )
+void GeometryDataset::LoadFromJSon( const JSonNode* a_rootNode )
 {
 	// check if there is a Vertex buffer property
-	const JSonNodeWriter* t_vertexBufferNode				=	a_rootNode->GetNodeProperty( "VertexBuffer" );
+	const JSonNode* t_vertexBufferNode						=	a_rootNode->GetNodeProperty( "VertexBuffer" );
 
 	// check the property is valid
 	if( t_vertexBufferNode != nullptr )
@@ -63,7 +63,7 @@ void GeometryDataset::LoadFromJSon( const JSonNodeWriter* a_rootNode )
 	}
 
 	// check if there is an Index buffer property
-	const JSonNodeWriter* t_indexBufferNode					=	a_rootNode->GetNodeProperty( "IndexBuffer" );
+	const JSonNode* t_indexBufferNode						=	a_rootNode->GetNodeProperty( "IndexBuffer" );
 
 	// if the property is valid
 	if( t_indexBufferNode != nullptr )
@@ -81,7 +81,7 @@ void GeometryDataset::LoadFromJSon( const JSonNodeWriter* a_rootNode )
 
 
 //---------------------------------------------------------------------------------------------------------
-void GeometryDataset::LoadIndexBuffer( const JSonNodeWriter* a_indexBufferNode )
+void GeometryDataset::LoadIndexBuffer( const JSonNode* a_indexBufferNode )
 {
 	// we have an index buffer
 	m_isIndexed												=	true;
@@ -121,7 +121,7 @@ void GeometryDataset::LoadIndexBuffer( const JSonNodeWriter* a_indexBufferNode )
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
-void GeometryDataset::LoadVertexBuffer( const JSonNodeWriter* a_vertexBufferNode )
+void GeometryDataset::LoadVertexBuffer( const JSonNode* a_vertexBufferNode )
 {
 	// Get the size of 1 vertex
 	m_vertexSize											=	(TUint32)a_vertexBufferNode->GetIntProperty( "VertexSize" );

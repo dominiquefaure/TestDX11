@@ -47,7 +47,7 @@ public:
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
-	void LoadFromJSon( const JSonNodeWriter* a_partNode );
+	void LoadFromJSon( const JSonNode* a_partNode );
 
 	/*
 	* Draw this Part

@@ -1,0 +1,521 @@
+#include "JSonNode.h"
+
+#include "JSonBoolProperty.h"
+#include "JSonIntProperty.h"
+#include "JSonFloatProperty.h"
+#include "JSonStringProperty.h"
+#include "JSonNodeProperty.h"
+
+#include "JSonIntArrayProperty.h"
+#include "JSonFloatArrayProperty.h"
+#include "JSonNodeArrayProperty.h"
+
+#include "../../CoreMacros.h"
+
+//-------------------------------------------------------------------------------------------------
+JSonNode::JSonNode()
+{
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+JSonNode::~JSonNode()
+{
+}
+//-------------------------------------------------------------------------------------------------
+
+/////////
+// Accessors
+////////
+
+//-------------------------------------------------------------------------------------------------
+TUint32 JSonNode::GetPropertyCount()const
+{
+	return m_properties.size();
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+AJsonProperty* JSonNode::GetPropertyAt( TUint32 a_index )
+{
+	return m_properties[ a_index ];
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+AJsonProperty* JSonNode::GetProperty( const std::string& a_name )const
+{
+	// Serialize all the properties
+	TUint32 t_count											=	GetPropertyCount();
+	for( int i = 0 ; i < t_count ; i ++ )
+	{
+		if( m_properties[ i ]->GetName() == a_name )
+		{
+			return m_properties[ i ];
+		}
+	}
+	return nullptr;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+TBool JSonNode::GetBoolProperty( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_BOOL )
+		{
+			return static_cast<JSonBoolProperty*>(t_property)->GetValue();
+		}
+	}
+
+	return false;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+TUint64 JSonNode::GetIntProperty( const std::string& a_name , TUint64 a_defaultValue )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_INT )
+		{
+			return static_cast<JSonIntProperty*>(t_property)->GetValue();
+		}
+	}
+
+	return a_defaultValue;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+TFloat64 JSonNode::GetFloatProperty( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_FLOAT )
+		{
+			return static_cast<JSonFloatProperty*>(t_property)->GetValue();
+		}
+	}
+	return 0.0f;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+const std::string& JSonNode::GetStringProperty( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_STRING )
+		{
+			return static_cast<JSonStringProperty*>(t_property)->GetValue();
+		}
+	}
+	return "";
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+const JSonNode* JSonNode::GetNodeProperty( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_NODE )
+		{
+			return static_cast<JSonNodeProperty*>(t_property)->GetValue();
+		}
+	}
+	return nullptr;
+
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+const JSonIntArrayProperty* JSonNode::GetIntArray( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_INT_ARRAY )
+		{
+			return static_cast<JSonIntArrayProperty*>(t_property);
+		}
+	}
+	return nullptr;
+
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+const JSonFloatArrayProperty* JSonNode::GetFloatArray( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_FLOAT_ARRAY )
+		{
+			return static_cast<JSonFloatArrayProperty*>(t_property);
+		}
+	}
+	return nullptr;
+
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+const JSonNodeArrayProperty* JSonNode::GetNodeArray( const std::string& a_name )const
+{
+	AJsonProperty* t_property								=	GetProperty( a_name );
+
+	if( t_property != nullptr )
+	{
+		if( t_property->GetType() == JSON_PROPERTY_TYPE_NODE_ARRAY )
+		{
+			return static_cast<JSonNodeArrayProperty*>(t_property);
+		}
+	}
+	return nullptr;
+
+}
+//-------------------------------------------------------------------------------------------------
+
+
+
+/////////
+// Modificators
+////////
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddBoolProperty( const std::string& a_name , TBool a_value )
+{
+	JSonBoolProperty* t_property							=	new  JSonBoolProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+	t_property->SetValue( a_value );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddIntProperty( const std::string& a_name , TUint64 a_value )
+{
+	JSonIntProperty* t_property							=	new  JSonIntProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+	t_property->SetValue( a_value );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddFloatProperty( const std::string& a_name , TFloat64 a_value )
+{
+	JSonFloatProperty* t_property							=	new  JSonFloatProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+	t_property->SetValue( a_value );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddStringProperty( const std::string& a_name , const std::string& a_value )
+{
+	JSonStringProperty* t_property							=	new  JSonStringProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+	t_property->SetValue( a_value );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddIntArray( const std::string& a_name , TUint32 a_count , const TUint64* a_values )
+{
+	JSonIntArrayProperty* t_property						=	new JSonIntArrayProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	t_property->SetValues( a_count , a_values );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddIntArray( const std::string& a_name , TUint32 a_count , const TUint32* a_values )
+{
+	JSonIntArrayProperty* t_property						=	new JSonIntArrayProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	t_property->SetValues( a_count , a_values );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddIntArray( const std::string& a_name , TUint32 a_count , const TUint16* a_values )
+{
+	JSonIntArrayProperty* t_property						=	new JSonIntArrayProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	t_property->SetValues( a_count , a_values );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddFloatArray( const std::string& a_name , TUint32 a_count , const TFloat64* a_values )
+{
+	JSonFloatArrayProperty* t_property						=	new JSonFloatArrayProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	t_property->SetValues( a_count , a_values );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::AddFloatArray( const std::string& a_name , TUint32 a_count , const TFloat32* a_values )
+{
+	JSonFloatArrayProperty* t_property						=	new JSonFloatArrayProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	t_property->SetValues( a_count , a_values );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+}
+//-------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------------------------
+JSonNode* JSonNode::AddNodeProperty( const std::string& a_name )
+{
+	JSonNodeProperty* t_property							=	new  JSonNodeProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+
+	return t_property->GetValue();
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+JSonNodeArrayProperty* JSonNode::AddNodeArrayProperty( const std::string& a_name )
+{
+	JSonNodeArrayProperty* t_property						=	new  JSonNodeArrayProperty();
+
+	// Set the property values
+	t_property->SetName( a_name );
+
+	// Add the property to the vector
+	m_properties.push_back( t_property );
+
+	return t_property;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::Parse( const rapidjson::Value& a_value )
+{
+	int t_count	=	a_value.MemberCount();
+
+	for( rapidjson::Value::ConstMemberIterator itr = a_value.MemberBegin(); itr != a_value.MemberEnd(); ++itr )
+	{
+		ParseProperty( itr->name.GetString() , itr->value );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::ParseProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	if( a_property.IsBool() )
+	{
+		AddBoolProperty( a_name  , a_property.GetBool() );
+	}
+	else if( a_property.IsString() )
+	{
+		AddStringProperty( a_name  , a_property.GetString() );
+	}
+	else if( a_property.IsFloat() )
+	{
+		AddFloatProperty( a_name  , a_property.GetFloat() );
+	}
+	else if( a_property.IsDouble() )
+	{
+		AddFloatProperty( a_name  , a_property.GetDouble() );
+	}
+	else if( a_property.IsInt() )
+	{
+		AddIntProperty( a_name  , a_property.GetInt() );
+	}
+	else if( a_property.IsInt64() )
+	{
+		AddIntProperty( a_name  , a_property.GetInt64() );
+	}
+	else if( a_property.IsObject() )
+	{
+		JSonNode* t_node									=	AddNodeProperty( a_name );
+
+		t_node->Parse( a_property );
+	}
+	else if( a_property.IsArray() )
+	{
+		ProcessArrayProperty( a_name , a_property );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::ProcessArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+
+	const rapidjson::Value& t_firstElement					=	a_property[ 0 ];
+	
+	if( t_firstElement.IsObject() )
+	{
+		ProcessNodeArrayProperty( a_name , a_property );
+	}
+	else if( t_firstElement.IsInt() || t_firstElement.IsInt64() )
+	{
+		ProcessIntArrayProperty( a_name , a_property );
+	}
+	else
+	{
+		ProcessFloatArrayProperty( a_name , a_property );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::ProcessNodeArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	JSonNodeArrayProperty* t_array							=	AddNodeArrayProperty( a_name );
+
+	TUint32 t_arraySize										=	a_property.Size();
+	for(int i = 0 ; i < t_arraySize ; i ++ )
+	{
+		JSonNode* t_node									=	t_array->AddNode();
+
+		t_node->Parse( a_property[ i ] );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::ProcessIntArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	TUint32 t_arraySize										=	a_property.Size();
+
+	TUint64* t_array										=	new TUint64[ t_arraySize ];
+
+	if(a_property[ 0 ].IsInt64() )
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetInt64();
+		}
+	}
+	else
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetInt();
+		}
+	}
+
+	AddIntArray( a_name , t_arraySize , t_array );
+
+	SAFE_DELETE_ARRAY( t_array );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::ProcessFloatArrayProperty( const std::string& a_name , const rapidjson::Value& a_property )
+{
+	TUint32 t_arraySize										=	a_property.Size();
+
+	TFloat64* t_array										=	new TFloat64[ t_arraySize ];
+
+	if(a_property[ 0 ].IsDouble() )
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetDouble();
+		}
+	}
+	else
+	{
+		for( int i = 0 ; i < t_arraySize ; i ++ )
+		{
+			t_array[ i ]									=	a_property[ i ].GetFloat();
+		}
+	}
+
+	AddFloatArray( a_name , t_arraySize , t_array );
+
+	SAFE_DELETE_ARRAY( t_array );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void JSonNode::Serialize( rapidjson::PrettyWriter<rapidjson::StringBuffer> & a_writer )
+{
+	a_writer.StartObject();
+
+	// Serialize all the properties
+	TUint32 t_count											=	GetPropertyCount();
+	for( int i = 0 ; i < t_count ; i ++ )
+	{
+		m_properties[ i ]->Serialize( a_writer );
+	}
+
+	a_writer.EndObject();
+}
+//-------------------------------------------------------------------------------------------------

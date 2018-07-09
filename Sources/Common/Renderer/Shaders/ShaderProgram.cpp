@@ -53,11 +53,11 @@ void ShaderProgram::Load( const std::string& a_jsonFilePath )
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-ShaderDefinition* ShaderProgram::LoadShaderDefinition( const JSonNodeWriter* a_rootNode , const std::string& a_propertyName )
+ShaderDefinition* ShaderProgram::LoadShaderDefinition( const JSonNode* a_rootNode , const std::string& a_propertyName )
 {
 	
 	// Get the requested property
-	const JSonNodeWriter* t_node							=	a_rootNode->GetNodeProperty( a_propertyName );
+	const JSonNode* t_node									=	a_rootNode->GetNodeProperty( a_propertyName );
 
 	// if the property is valid and is a JSON sub object
 	if( t_node != nullptr )
@@ -88,7 +88,7 @@ void ShaderProgram::InitVertexLayoutSupport()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void ShaderProgram::SetSupportedVertexLayouts( const JSonNodeWriter* a_rootNode  )
+void ShaderProgram::SetSupportedVertexLayouts( const JSonNode* a_rootNode  )
 {
 	// Get the Property that store the list of supported VertexLayout
 	const JSonIntArrayProperty* t_jsonArray					=	a_rootNode->GetIntArray( "SupportedLayouts" );

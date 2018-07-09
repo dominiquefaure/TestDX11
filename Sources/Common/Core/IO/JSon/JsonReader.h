@@ -3,7 +3,7 @@
 
 #include "../../../Core/Base/Includes.h"
 
-class JSonNodeWriter;
+class JSonNode;
 
 class JSonReader
 {
@@ -14,7 +14,7 @@ public:
 	/*
 	* Get the root node of the JSon document loaded
 	*/
-	const JSonNodeWriter* GetRootNode();
+	const JSonNode* GetRootNode();
 
 	/*
 	* Load a Json file
@@ -23,7 +23,7 @@ public:
 
 private:
 
-	JSonNodeWriter*	m_rootNode;
+	JSonNode*	m_rootNode;
 };
 
 #endif

@@ -33,7 +33,7 @@ public:
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
-	void LoadFromJSon( const JSonNodeWriter* a_rootNode );
+	void LoadFromJSon( const JSonNode* a_rootNode );
 
 
 	void BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData = true );
@@ -62,12 +62,12 @@ private:
 	/*
 	* Load all the parts that define the mesh geometry
 	*/
-	void LoadParts( const JSonNodeWriter* a_rootNode );
+	void LoadParts( const JSonNode* a_rootNode );
 
 	/*
 	* Load the Geometry data from JSon file
 	*/
-	void LoadGeometryDatas( const JSonNodeWriter* a_rootNode );
+	void LoadGeometryDatas( const JSonNode* a_rootNode );
 
 // Fields
 private:

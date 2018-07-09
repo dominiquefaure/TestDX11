@@ -4,11 +4,11 @@
 #include "AJSonProperty.h"
 #include "../../../Core/Base/BaseDataTypes.h"
 
-class JSonNodeWriter;
+class JSonNode;
 
 class JSonBoolProperty : public AJsonProperty
 {
-	friend class JSonNodeWriter;
+	friend class JSonNode;
 
 public:
 

@@ -1,7 +1,7 @@
 #ifndef __CORE_IO_JSON_WRITER_H__
 #define __CORE_IO_JSON_WRITER_H__
 
-class JSonNodeWriter;
+class JSonNode;
 
 class JSonWriter
 {
@@ -13,7 +13,7 @@ public:
 	/*
 	* Get an empty root ndoe to populate it
 	*/
-	JSonNodeWriter* GetRootNode();
+	JSonNode* GetRootNode();
 
 	/*
 	* Save the data to a file
@@ -22,7 +22,7 @@ public:
 
 private:
 
-	JSonNodeWriter* m_rootNode;
+	JSonNode* m_rootNode;
 };
 
 #endif

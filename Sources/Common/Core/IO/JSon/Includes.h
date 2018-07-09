@@ -13,7 +13,7 @@
 #include "JSonFloatArrayProperty.h"
 #include "JSonNodeArrayProperty.h"
 
-#include "JSonNodeWriter.h"
+#include "JSonNode.h"
 
 
 #include "JSonReader.h"

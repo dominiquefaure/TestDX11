@@ -47,13 +47,13 @@ private:
 	/*
 	 * Get from the JSon node the different vertexLayuout supported
 	 */
-	void SetSupportedVertexLayouts(const JSonNodeWriter* a_rootNode );
+	void SetSupportedVertexLayouts(const JSonNode* a_rootNode );
 
 	/*
 	 * Try to load a Shader Definition from the JSon file
 	 * return NULL, if the property is not defined
 	 */
-	ShaderDefinition* LoadShaderDefinition( const JSonNodeWriter* a_rootNode , const std::string& a_propertyName );
+	ShaderDefinition* LoadShaderDefinition( const JSonNode* a_rootNode , const std::string& a_propertyName );
 
 // Fields
 private:

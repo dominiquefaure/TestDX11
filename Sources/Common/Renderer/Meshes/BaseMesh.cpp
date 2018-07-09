@@ -98,7 +98,7 @@ void BaseMesh::LoadFromJSon( const char* a_filePath )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadFromJSon( const JSonNodeWriter* a_rootNode )
+void BaseMesh::LoadFromJSon( const JSonNode* a_rootNode )
 {
 	LoadParts( a_rootNode );
 	LoadGeometryDatas( a_rootNode );
@@ -106,7 +106,7 @@ void BaseMesh::LoadFromJSon( const JSonNodeWriter* a_rootNode )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadParts( const JSonNodeWriter* a_rootNode )
+void BaseMesh::LoadParts( const JSonNode* a_rootNode )
 {
 	// Get the Property that store the MeshPartss
 	const JSonNodeArrayProperty* t_parts					=	a_rootNode->GetNodeArray( "MeshParts" );
@@ -130,9 +130,9 @@ void BaseMesh::LoadParts( const JSonNodeWriter* a_rootNode )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadGeometryDatas( const JSonNodeWriter* a_rootNode )
+void BaseMesh::LoadGeometryDatas( const JSonNode* a_rootNode )
 {
-	const JSonNodeWriter* t_geometryDatas					=	a_rootNode->GetNodeProperty( "GeometryDatas" );
+	const JSonNode* t_geometryDatas							=	a_rootNode->GetNodeProperty( "GeometryDatas" );
 
 	if( t_geometryDatas != nullptr )
 	{

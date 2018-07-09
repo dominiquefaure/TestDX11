@@ -242,7 +242,7 @@ void Sample::TestWriter()
 /*
 	JSonWriter t_writer;
 
-	JSonNodeWriter* t_rootNode	=	t_writer.GetRootNode();
+	JSonNode* t_rootNode	=	t_writer.GetRootNode();
 
 	t_rootNode->AddStringProperty("TestString", "Hello world" );
 	t_rootNode->AddBoolProperty("TestBool" , true );
@@ -252,7 +252,7 @@ void Sample::TestWriter()
 
 	for( int i = 0 ; i < 6 ; i ++ )
 	{
-		JSonNodeWriter* t_node			=	t_nodeArray->AddNode();
+		JSonNode* t_node			=	t_nodeArray->AddNode();
 
 		t_node->AddFloatProperty("Float" , 16.5 + i );
 		t_node->AddIntProperty("Int" , 5 + i );

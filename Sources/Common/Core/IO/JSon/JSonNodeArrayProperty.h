@@ -4,11 +4,11 @@
 #include "AJSonProperty.h"
 #include "../../../Core/Base/BaseDataTypes.h"
 
-class JSonNodeWriter;
+class JSonNode;
 
 class JSonNodeArrayProperty : public AJsonProperty
 {
-	friend class JSonNodeWriter;
+	friend class JSonNode;
 
 public:
 
@@ -23,12 +23,12 @@ public:
 	/*
 	* Get the node present at the given index
 	*/
-	const JSonNodeWriter* GetNodeAt( TUint32 a_index )const;
+	const JSonNode* GetNodeAt( TUint32 a_index )const;
 
 	/*
 	* Add a new node and return pointer to it
 	*/
-	JSonNodeWriter* AddNode();
+	JSonNode* AddNode();
 
 protected:
 
@@ -41,7 +41,7 @@ protected:
 
 private:
 
-	std::vector<JSonNodeWriter*>	m_subNodes;
+	std::vector<JSonNode*>	m_subNodes;
 
 };
 #endif

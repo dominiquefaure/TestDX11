@@ -1,7 +1,7 @@
 #include "JSonNodeArrayProperty.h"
 #include "../../../Core/CoreMacros.h"
 
-#include "JSonNodeWriter.h"
+#include "JSonNode.h"
 
 //-------------------------------------------------------------------------------------------------
 JSonNodeArrayProperty::JSonNodeArrayProperty()
@@ -31,7 +31,7 @@ TUint32 JSonNodeArrayProperty::GetCount()const
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-const JSonNodeWriter* JSonNodeArrayProperty::GetNodeAt( TUint32 a_index )const
+const JSonNode* JSonNodeArrayProperty::GetNodeAt( TUint32 a_index )const
 {
 	assert( a_index < m_subNodes.size() );
 
@@ -40,9 +40,9 @@ const JSonNodeWriter* JSonNodeArrayProperty::GetNodeAt( TUint32 a_index )const
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-JSonNodeWriter* JSonNodeArrayProperty::AddNode()
+JSonNode* JSonNodeArrayProperty::AddNode()
 {
-	JSonNodeWriter* t_node									=	new JSonNodeWriter();
+	JSonNode* t_node										=	new JSonNode();
 
 	m_subNodes.push_back( t_node );
 

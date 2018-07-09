@@ -44,7 +44,7 @@ public:
 	/*
 	 * Load all the Shader information's from a JSon node
 	 */
-	void LoadFromJSon( const JSonNodeWriter* a_rootNode );
+	void LoadFromJSon( const JSonNode* a_rootNode );
 
 // Methods
 private:

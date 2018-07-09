@@ -1,13 +1,13 @@
 #include "JSonNodeProperty.h"
 
-#include "JSonNodeWriter.h"
+#include "JSonNode.h"
 #include "../../../Core/CoreMacros.h"
 
 //-------------------------------------------------------------------------------------------------
 JSonNodeProperty::JSonNodeProperty()
 {
 	m_type													=	JSON_PROPERTY_TYPE_NODE;
-	m_value													=	new JSonNodeWriter();
+	m_value													=	new JSonNode();
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -19,14 +19,14 @@ JSonNodeProperty::~JSonNodeProperty()
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-JSonNodeWriter* JSonNodeProperty::GetValue( )const
+JSonNode* JSonNodeProperty::GetValue( )const
 {
 	return m_value;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-JSonNodeWriter* JSonNodeProperty::GetValue( )
+JSonNode* JSonNodeProperty::GetValue( )
 {
 	return m_value;
 }

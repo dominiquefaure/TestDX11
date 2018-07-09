@@ -29,7 +29,7 @@ void MeshPart::SetIndexRange( TUint32 a_startIndex , TUint32 a_count )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void MeshPart::LoadFromJSon( const JSonNodeWriter* a_partNode )
+void MeshPart::LoadFromJSon( const JSonNode* a_partNode )
 {
 	m_startIndex											=	a_partNode->GetIntProperty( "StartIndex" );
 	m_indexCount											=	a_partNode->GetIntProperty( "IndexCount" );
