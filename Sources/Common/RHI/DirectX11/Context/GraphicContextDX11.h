@@ -18,10 +18,14 @@
 class GraphicDeviceDX11;
 class SwapchainDX11;
 
+class VertexBufferDX11;
+class IndexBufferDX11;
+class ConstantBufferDX11;
+
 class VertexShaderDX11;
 class PixelShaderDX11;
 class VertexLayoutDX11;
-class ConstantBufferDX11;
+
 
 class ImGuiWrapper;
 
@@ -45,23 +49,8 @@ public:
 	* Clear the Screen
 	*/
 	void Clear( TFloat32 r , TFloat32 g, TFloat32 b );
-
-	/*
-	* Set one off the Vertex Streams to use
-	*
-	* @param a_index		:	Index the Stream will be binded at
-	* @param a_streamBuffer	:	The Stream storing vertices information's
-	* @param a_startOffset	:	Start offset in the Stream
-	*/
-	void SetVertexStream( int a_index , VertexBufferDX11* a_streamBuffer , TUint32 a_startOffset = 0 );
-
-	/*
-	 *Set the Index buffer to use for Indexed Geometry
-	 *
-	 *@param a_indexbuffer	The index buffer to use
-	 */
-	void SetIndexBuffer( IndexBufferDX11* a_indexBuffer , TUint32 a_startOffset = 0 );
-
+	
+	
 	/*
 	* Set the Type of primitive the Vertex Streams represent
 	*
@@ -70,23 +59,60 @@ public:
 	void SetPrimitiveType( RhiPrimitiveType a_type );
 
 	/*
-	* set the VertexShader to use
+	* Set the VertexLayout to use
+	*/
+	void SetVertexLayout( VertexLayoutDX11* a_layout );
+
+	/*
+	* Set one off the Vertex Streams to use
 	*
-	* @param a_shader	The vertexShader to use
+	* @param a_index		:	Index the Stream will be binded at
+	* @param a_streamBuffer	:	The Stream storing vertices information's
+	* @param a_startOffset	:	Start offset in the Stream
+	*/
+	void SetVertexStream( TUint32 a_index , VertexBufferDX11* a_streamBuffer , TUint32 a_startOffset = 0 );
+
+	/*
+	 *Set the Index buffer to use for Indexed Geometry
+	 *
+	 *@param a_indexbuffer	The index buffer to use
+	 */
+	void SetIndexBuffer( IndexBufferDX11* a_indexBuffer , TUint32 a_startOffset = 0 );
+
+
+	//////
+	// Shader Methods
+	//////
+
+	/*
+	* Bind the Vertex Shader we want to use
+	*
+	* @param a_shader			the vertex shader to use
 	*/
 	void SetVertexShader( VertexShaderDX11* a_shader );
 
 	/*
-	* set the PixelShader to use
+	* Set the Pixel Shader we want to use
 	*
-	* @param a_shader	The PixelShader to use
+	* @param a_shader			the pixel shader to use
 	*/
 	void SetPixelShader( PixelShaderDX11* a_shader );
 
+
+
+	//////
+	// CB Methods
+	//////
+
 	/*
-	* Set the Vertx Layout to use
+	* Update the Content of a Constant Buffer using Map/Unmap
 	*/
-	void SetVertexLayout( VertexLayoutDX11* a_layout );
+	TBool UpdateConstantBuffer( ConstantBufferDX11* a_buffer , void* a_data , TUint32 a_size );
+
+	/*
+	* Set the Active constant buffer for the Given Slot
+	*/
+	void SetConstantBuffer( RhiShaderType a_type , int a_slot , ConstantBufferDX11* a_buffer );
 
 
 
@@ -113,53 +139,22 @@ public:
 	/*
 	* Draw a Primitive, using the Different Buffer binded
 	*
-	* @a_primitiveCount	=	Number of Vertex to display
-	* @a_startIndex		=	index of the 1st vertex inside the vertexBuffer
+	* @param a_primitiveCount	=	Number of Vertex to display
+	* @param a_startIndex		=	index of the 1st vertex inside the vertexBuffer
 	*/
-	void DrawPrimitive( int a_primitiveCount , int a_startIndex = 0 );
-
-	void DrawIndexedPrimitive( int a_indexCount , int a_startIndex = 0 , int a_startVertex = 0 );
-
-
-
-	//////
-	// VS ConstantBuffer Methods
-	//////
+	void DrawPrimitive( TUint32 a_primitiveCount , TUint32 a_startIndex = 0 );
 
 	/*
-	 * Update a Parameter of one of the Cosntant Buffers
+	 * Draw an Indexed Primitive
+	 * 
+	 * @param a_indexCount	number of Indices to use from the index buffer
+	 * @param a_startIndex	Start index in side hte index buffer
+	 * @param a_startVertex	index of the 1st Vertex to use
 	 */
-	void SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , TUint32 a_byteCount , const void* a_value );
-
-	/*
-	 * Set a VertexShader constant parameter of type Vector3
-	 */
-	void SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , const Vector3F* a_value );
-
-	/*
-	 * Set a VertexShader constant parameter of type Matrix44
-	 */
-	void SetVSShaderParameter( VSParameterSlot a_slot , TUint32 a_index , const Matrix44* a_value );
+	void DrawIndexedPrimitive( TUint32 a_indexCount , TUint32 a_startIndex = 0 , TUint32 a_startVertex = 0 );
 
 
-	//////
-	// PS ConstantBuffer Methods
-	//////
 
-	/*
-	 * Update a Parameter of one of the Cosntant Buffers
-	 */
-	void SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , TUint32 a_byteCount , const void* a_value );
-
-	/*
-	 * Set a VertexShader constant parameter of type Vector3
-	 */
-	void SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , const Vector3F* a_value );
-
-	/*
-	 * Set a VertexShader constant parameter of type Matrix44
-	 */
-	void SetPSShaderParameter( PSParameterSlot a_slot , TUint32 a_index , const Matrix44* a_value );
 
 // Private Methods
 private:
@@ -194,31 +189,7 @@ private:
 	*/
 	void CommitStates();
 
-	/*
-	 * Init tne Different Constant Buffers
-	 */
-	void InitConstantBuffers( GraphicDeviceDX11* a_device );
 
-	/*
-	 * Free the Different Constant Buffer allocated
-	 */
-	void ReleaseConstantBuffers();
-
-
-	/*
-	* Update the Content of a Constant Buffer using Map/Unmap
-	*/
-	TBool UpdateConstantBuffer( ID3D11Buffer* a_buffer , void* a_data , TUint32 a_size );
-
-	/*
-	* Set the Active constant buffer for the Given Slot
-	*/
-	void SetConstantBuffer( RhiShaderType a_type , int a_slot , ID3D11Buffer* a_buffer );
-
-	/*
-	 * Commit the ConstantBuffer updates
-	 */
-	void CommitConstantBuffers( );
 
 private:
 
@@ -233,12 +204,6 @@ private:
 
 	GeometryStatesDX11		m_geometryStates;
 	PipelineStatesDX11		m_pipelineStates;
-
-	// array of constant buffer for VS stage
-	ConstantBufferDX11*		m_vsConstantBuffers[ VS_PARAMETER_SLOT_COUNT ];
-
-	// array of constant buffer for PS stage
-	ConstantBufferDX11*		m_psConstantBuffers[ PS_PARAMETER_SLOT_COUNT ];
 
 };
 

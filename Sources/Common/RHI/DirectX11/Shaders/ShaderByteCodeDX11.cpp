@@ -215,9 +215,7 @@ void ShaderByteCodeDX11::BuildMacroList( const TUint64 a_macro )
 //-----------------------------------------------------------------------------------------------
 RhiShaderReflectionInfos* ShaderByteCodeDX11::GenerateRelectionInfos( )
 {
-	ID3D11ShaderReflection*	t_shaderReflection	=	NULL;
-	ID3D11ShaderReflectionConstantBuffer* t_shaderReflectionCB	=	NULL;
-
+	ID3D11ShaderReflection*	t_shaderReflection					=	NULL;
 	D3D11_SHADER_DESC		t_shaderDesc;
 
 	// Get the reflection info about the shader
@@ -263,28 +261,29 @@ RhiShaderReflectionInfos* ShaderByteCodeDX11::GenerateRelectionInfos( )
 //-----------------------------------------------------------------------------------------------
 void ShaderByteCodeDX11::SetupConstantBufferDesc( RhiShaderConstantBufferDesc* a_targetDesc , TUint32 a_registerSlot , ID3D11ShaderReflectionConstantBuffer* a_reclectionCB )
 {
-	ID3D11ShaderReflectionVariable*         t_constant		=	NULL;
-	ID3D11ShaderReflectionType*             t_constantType	=	NULL;
-	D3D11_SHADER_VARIABLE_DESC				t_constantDesc;
-	D3D11_SHADER_TYPE_DESC					t_constantTypeDesc;
+	ID3D11ShaderReflectionVariable*         t_variable		=	NULL;
+	D3D11_SHADER_VARIABLE_DESC				t_variableDesc;
+
+	ID3D11ShaderReflectionType*             t_variableType	=	NULL;
+	D3D11_SHADER_TYPE_DESC					t_variableTypeDesc;
 
 	D3D11_SHADER_BUFFER_DESC t_shaderBufferDesc;
 	a_reclectionCB->GetDesc( &t_shaderBufferDesc );
 
 	// Init the ConstantBuffer DEsc infos
-	a_targetDesc->Init( a_registerSlot , t_shaderBufferDesc.Name , t_shaderBufferDesc.Variables );
+	a_targetDesc->Init( a_registerSlot , t_shaderBufferDesc.Name , t_shaderBufferDesc.Size ,t_shaderBufferDesc.Variables );
 
 	//parse all the variables defined for this constant buffer
 	for( int i = 0 ; i < t_shaderBufferDesc.Variables ; i ++ )
 	{
-		t_constant											=	a_reclectionCB->GetVariableByIndex( i );
-		t_constant->GetDesc( &t_constantDesc );
+		t_variable											=	a_reclectionCB->GetVariableByIndex( i );
+		t_variable->GetDesc( &t_variableDesc );
 
-		a_targetDesc->SetParameterDesc( i , t_constantDesc.Name , t_constantDesc.StartOffset , t_constantDesc.Size );
+		a_targetDesc->SetParameterDesc( i , t_variableDesc.Name , t_variableDesc.StartOffset , t_variableDesc.Size );
 
 		// TODO : to get the type of the constsnt ( float , float3 ....)
-//		t_constantType										=	t_constant->GetType();
-//		t_constantType->GetDesc( &t_constantTypeDesc );
+//		t_variableType										=	t_variable->GetType();
+//		t_variableType->GetDesc( &t_constantTypeDesc );
 
 	}
 }

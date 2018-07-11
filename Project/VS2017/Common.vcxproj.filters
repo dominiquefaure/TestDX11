@@ -88,6 +88,9 @@
     <Filter Include="RHI\Common\ShaderReflection">
       <UniqueIdentifier>{9f6dfa59-e971-435a-9b2d-f72d303a4860}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\ConstantBuffers">
+      <UniqueIdentifier>{a1e971e8-3cde-41b3-b2c1-659d1812be06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -391,6 +394,15 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JSonNode.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\Includes.h">
+      <Filter>Renderer\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\SConstantBuffer.h">
+      <Filter>Renderer\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\ConstantBuffer.h">
+      <Filter>Renderer\ConstantBuffers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -578,6 +590,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNode.cpp">
       <Filter>Core\IO\JSon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\ConstantBuffers\ConstantBuffer.cpp">
+      <Filter>Renderer\ConstantBuffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

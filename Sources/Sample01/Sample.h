@@ -87,7 +87,8 @@ private:
 	PerFrameConstants	m_perFrameConstants;
 	PerDrawConstants	m_perDrawConstants;
 
-	RhiConstantBuffer*	m_perFrameConstantBuffer;
-	RhiConstantBuffer*	m_perDrawConstantBuffer;
+	SConstantBuffer<PerFrameConstants>	m_perFrameConstantBuffer;
+	SConstantBuffer<PerDrawConstants>	m_perDrawConstantBuffer;
+
 
 };

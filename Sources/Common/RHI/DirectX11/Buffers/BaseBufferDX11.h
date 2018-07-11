@@ -5,6 +5,7 @@
 #include <d3d11.h>
 
 #include "../../../Core/CoreMacros.h"
+#include "../../../Core/Base/BaseDataTypes.h"
 
 class GraphicDeviceDX11;
 class GraphicContextDX11;
@@ -40,8 +41,6 @@ protected:
 	void Init( ID3D11Buffer* a_buffer , int a_size );
 
 
-	virtual void OnInit(){}
-
 // Fields
 protected:
 
@@ -49,7 +48,7 @@ protected:
 	ID3D11Buffer*	m_buffer;
 
 	// Size of the Buffer in Bytes
-	int				m_size;
+	TUint32			m_size;
 };
 
 

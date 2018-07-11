@@ -1,5 +1,5 @@
 #include "BaseBufferDX11.h"
-#include "../Context/GraphicContextDX11.h"
+
 
 #ifdef _DEBUG
 #include "BaseBufferDX11.inl"
@@ -25,8 +25,6 @@ void BaseBufferDX11::Init( ID3D11Buffer* a_buffer , int a_size )
 {
 	m_buffer												=	a_buffer;
 	m_size													=	a_size;
-
-	OnInit();
 }
 //-------------------------------------------------------------------------------------------------
 

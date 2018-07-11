@@ -26,7 +26,7 @@ RhiShaderConstantBufferDesc::~RhiShaderConstantBufferDesc()
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
-void RhiShaderConstantBufferDesc::Init( TUint8 a_registerSlot , const char* a_name , TUint8 a_parameterCount )
+void RhiShaderConstantBufferDesc::Init( TUint8 a_registerSlot , const char* a_name , TUint32 a_size , TUint8 a_parameterCount )
 {
 	assert( a_name != nullptr );
 	assert( strlen( a_name) < 32 );
@@ -34,6 +34,7 @@ void RhiShaderConstantBufferDesc::Init( TUint8 a_registerSlot , const char* a_na
 	strcpy_s( m_name , a_name );
 
 	m_slotIndex												=	a_registerSlot;
+	m_size													=	a_size;
 
 	m_parameterCount										=	a_parameterCount;
 	m_parameterList											=	new RhiShaderParameterDesc[ a_parameterCount ];

@@ -63,6 +63,9 @@
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputManager.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\KeyboardDevice.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\ConstantBuffer.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\SConstantBuffer.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Geometrydataset.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h" />
@@ -148,6 +151,7 @@
     <ClCompile Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\ConstantBuffers\ConstantBuffer.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp" />

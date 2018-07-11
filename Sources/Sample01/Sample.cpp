@@ -75,8 +75,8 @@ void Sample::OnClose()
 	SAFE_DELETE( m_shader );
 	SAFE_DELETE( m_mesh );
 
-	SAFE_DELETE( m_perFrameConstantBuffer );
-	SAFE_DELETE( m_perDrawConstantBuffer );
+//	SAFE_DELETE( m_perFrameConstantBuffer );
+//	SAFE_DELETE( m_perDrawConstantBuffer );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -84,18 +84,20 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 {
-/*
+
 	FbxAssetImporter t_importer;
 	t_importer.LoadFBX( "grendizer.fbx" );
 
 	m_mesh	=	t_importer.ImportStaticMesh();
-*/
+	m_mesh->BuildRenderData( a_device );
 
 
+/*
 	m_mesh													=	new StaticMesh();
 	m_mesh->LoadFromJSon( "simpleMesh.mesh" );
 
 	m_mesh->BuildRenderData( a_device );
+*/
 }
 //---------------------------------------------------------------------------------------------
 
@@ -103,16 +105,16 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 void Sample::LoadShaders( )
 {
 	m_shader												=	new ShaderProgram();
-	m_shader->Load( "ShaderDef.json" );
-//	m_shader->Load( "PerVertexLighting.json" );
+//	m_shader->Load( "ShaderDef.json" );
+	m_shader->Load( "PerVertexLighting.json" );
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
 void Sample::CreateConstantBuffer( RhiGraphicDevice* a_device )
 {
-	m_perFrameConstantBuffer								=	a_device->CreateConstantBuffer( sizeof( PerFrameConstants) );
-	m_perDrawConstantBuffer									=	a_device->CreateConstantBuffer( sizeof( PerDrawConstants) );
+	m_perFrameConstantBuffer.Init( a_device );
+	m_perDrawConstantBuffer.Init( a_device );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -173,12 +175,12 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 0 , &m_perFrameConstants.m_viewProjection );
-	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 64 , &m_perFrameConstants.m_lightDirection );
-	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_FRAME , 80 , &m_perFrameConstants.m_lightDiffuse );
+	m_perFrameConstantBuffer.Update( a_context , &m_perFrameConstants );
+	m_perDrawConstantBuffer.Update( a_context , &m_perDrawConstants );
 
-	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_DRAW , 0 , &m_perDrawConstants.m_worldTransform );
-	a_context->SetVSShaderParameter( VS_PARAMETER_SLOT_PER_DRAW , 64 , &m_perDrawConstants.m_matDiffuse );
+	m_perFrameConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
+	m_perDrawConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_DRAW );
+
 
 	a_context->SetWireframe( false );
 //	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );

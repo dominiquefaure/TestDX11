@@ -5,9 +5,10 @@
 #include <string>
 
 #include <d3dcompiler.h>
+
+#include "../../../Core/Base/Includes.h"
 #include "../../RhiEnums.h"
 #include "../../Common/RhiShaderCompilationParams.h"
-#include "../../../Core/CoreIncludes.h"
 #include "../../Common/ShaderReflection/Includes.h"
 
 
