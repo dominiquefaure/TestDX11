@@ -11,6 +11,10 @@
 //-------------------------------------------------------------------------------------------------
 MeshPart::MeshPart()
 {
+	m_startIndex											=	0;
+	m_indexCount											=	0;
+	m_materialIndex											=	0;
+	m_castShadow											=	true;
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -34,8 +38,18 @@ void MeshPart::LoadFromJSon( const JSonNode* a_partNode )
 	m_startIndex											=	a_partNode->GetIntProperty( "StartIndex" );
 	m_indexCount											=	a_partNode->GetIntProperty( "IndexCount" );
 
-	m_castShadow											=	a_partNode->GetIntProperty( "CastShadow" );
+	m_castShadow											=	a_partNode->GetBoolProperty( "CastShadow" );
 	m_materialIndex											=	a_partNode->GetIntProperty( "MaterialIndex" );
 }
 //-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+void MeshPart::Serialize( JSonNode* a_partNode )
+{
+	a_partNode->AddIntProperty( "StartIndex" , m_startIndex );
+	a_partNode->AddIntProperty( "IndexCount" , m_indexCount );
+	a_partNode->AddIntProperty( "MaterialIndex" , m_materialIndex );
+
+	a_partNode->AddBoolProperty( "CastShadow" , m_castShadow );
+}
+//-------------------------------------------------------------------------------------------------

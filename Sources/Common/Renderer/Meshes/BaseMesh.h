@@ -49,7 +49,10 @@ public:
 	void DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
 
 
-
+	/*
+	* Serialize this Mesh to a JSON file
+	*/
+	void SerializeToJSon( const char* a_path );
 
 // Methods
 private:
@@ -68,6 +71,18 @@ private:
 	* Load the Geometry data from JSon file
 	*/
 	void LoadGeometryDatas( const JSonNode* a_rootNode );
+
+
+	/*
+	* Serialize all the Parts to a Root Node
+	*/
+	void SerializeParts( JSonNode* a_rootNode );
+
+	/*
+	* Serialize the Geometry datas
+	*/
+	void SerializeGeometryDatas( JSonNode* a_rootNode );
+
 
 // Fields
 private:

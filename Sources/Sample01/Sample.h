@@ -71,7 +71,6 @@ private:
 
 	void CreateConstantBuffer( RhiGraphicDevice* a_device );
 
-	void TestWriter();
 // Fields
 private:
 

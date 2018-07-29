@@ -5,10 +5,12 @@
 #include "../../RHI/Includes.h"
 
 class FbxMeshPartImporter;
+class BaseMesh;
 
 class GeometryDataset
 {
 	friend class FbxMeshPartImporter;
+	friend class BaseMesh;
 
 public:
 
@@ -124,6 +126,20 @@ private:
 	*/
 	void LoadVertexBuffer( const JSonNode* a_vertexBufferNode );
 
+	/*
+	* Serialize the data to the given JSon node
+	*/
+	void Serialize( JSonNode* a_partNode );
+
+	/*
+	* Serialize the IndexBuffer content to the JSonNode
+	*/
+	void SerializeIndexBuffer( JSonNode* a_node );
+
+	/*
+	* Serialize the VertexBuffer content to the JSonNode
+	*/
+	void SerializeVertexBuffer( JSonNode* a_node );
 
 
 // Fields

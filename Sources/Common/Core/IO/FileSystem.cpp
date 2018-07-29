@@ -3,6 +3,19 @@
 
 #include <windows.h>
 
+#ifdef _WIN32
+   #include <io.h> 
+   #define access    _access_s
+#else
+   #include <unistd.h>
+#endif
+
+//-------------------------------------------------------------------------------
+TBool FileSystem::Exist( const std::string& a_path )
+{
+	return access( a_path.c_str(), 0 ) == 0;
+}
+//-------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------
 FileHandle* FileSystem::OpenRead( const std::string& a_path, bool a_binaryMode )

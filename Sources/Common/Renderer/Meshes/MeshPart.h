@@ -9,11 +9,12 @@
 class ShaderProgram;
 
 class FbxMeshPartImporter;
+class BaseMesh;
 
 class MeshPart
 {
 	friend class FbxMeshPartImporter;
-
+	friend class BaseMesh;
 public:
 
 	MeshPart();
@@ -44,15 +45,24 @@ public:
 	*/
 	void SetIndexRange( TUint32 a_startIndex , TUint32 a_count );
 
+
+	/*
+	* Draw this Part
+	*/
+	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
+
+
+protected:
+
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
 	void LoadFromJSon( const JSonNode* a_partNode );
 
 	/*
-	* Draw this Part
+	* Serialize this Part data to the given JSon node
 	*/
-	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
+	void Serialize( JSonNode* a_partNode );
 
 private:
 

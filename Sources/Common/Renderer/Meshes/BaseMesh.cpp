@@ -142,3 +142,54 @@ void BaseMesh::LoadGeometryDatas( const JSonNode* a_rootNode )
 	}
 }
 //-------------------------------------------------------------------------------------------------
+
+
+
+/////////////
+// Serialization Methods
+/////////////
+
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::SerializeToJSon( const char* a_path )
+{
+	// Create the Writer
+	JSonWriter t_writer;
+
+	JSonNode* t_rootNode									=	t_writer.GetRootNode();
+
+	// Serialize the Mesh content
+	SerializeParts( t_rootNode );
+	SerializeGeometryDatas( t_rootNode );
+
+	// Write to File
+	t_writer.Save( a_path );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::SerializeParts( JSonNode* a_rootNode )
+{
+	// Create the sub node that store all the parts
+	JSonNodeArrayProperty* t_parts							=	a_rootNode->AddNodeArrayProperty("MeshParts");
+
+	for( int i = 0 ; i < m_partCount ; i ++ )
+	{
+		// add a new json node
+		JSonNode* t_node									=	t_parts->AddNode();
+
+		m_partList[ i ].Serialize( t_node );
+	}
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::SerializeGeometryDatas( JSonNode* a_rootNode )
+{
+	JSonNode* t_node										=	a_rootNode->AddNodeProperty( "GeometryDatas" );
+
+	if( m_sourceData != nullptr )
+	{
+		m_sourceData->Serialize( t_node );
+	}
+}
+//-------------------------------------------------------------------------------------------------

@@ -38,9 +38,6 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
-//		TestWriter();
-
-
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
 
 	LoadGoemetry( t_device );
@@ -84,20 +81,21 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 {
+	if( FileSystem::GetInstance()->Exist( "grendizer.mesh" ) )
+	{
+		m_mesh												=	new StaticMesh();
+		m_mesh->LoadFromJSon( "grendizer.mesh" );
+	}
+	else
+	{
+		FbxAssetImporter t_importer;
+		t_importer.LoadFBX( "grendizer.fbx" );
 
-	FbxAssetImporter t_importer;
-	t_importer.LoadFBX( "grendizer.fbx" );
+		m_mesh	=	t_importer.ImportStaticMesh();
+		m_mesh->SerializeToJSon( "grendizer.mesh" );
+	}
 
-	m_mesh	=	t_importer.ImportStaticMesh();
 	m_mesh->BuildRenderData( a_device );
-
-
-/*
-	m_mesh													=	new StaticMesh();
-	m_mesh->LoadFromJSon( "simpleMesh.mesh" );
-
-	m_mesh->BuildRenderData( a_device );
-*/
 }
 //---------------------------------------------------------------------------------------------
 
@@ -239,37 +237,3 @@ void Sample::DrawDebugUI()
 }
 //---------------------------------------------------------------------------------------------
 
-void Sample::TestWriter()
-{
-/*
-	JSonWriter t_writer;
-
-	JSonNode* t_rootNode	=	t_writer.GetRootNode();
-
-	t_rootNode->AddStringProperty("TestString", "Hello world" );
-	t_rootNode->AddBoolProperty("TestBool" , true );
-
-
-	JSonNodeArrayProperty* t_nodeArray	=	t_rootNode->AddNodeArrayProperty("SubNodes");
-
-	for( int i = 0 ; i < 6 ; i ++ )
-	{
-		JSonNode* t_node			=	t_nodeArray->AddNode();
-
-		t_node->AddFloatProperty("Float" , 16.5 + i );
-		t_node->AddIntProperty("Int" , 5 + i );
-
-		TUint64 t_intArray[]={ 5 , 10 , 8 , 6 };
-		t_node->AddIntArray( "IntArray" , 4 , t_intArray );
-
-		TFloat64 t_floatArray[]={ 8.5 , 12.0 , 4.8 , 6.9 };
-		t_node->AddFloatArray( "FloatArray" , 4 , t_floatArray );
-	}
-
-
-	t_writer.Save("TestWriter.json");
-*/
-	JSonReader t_reader;
-
-	t_reader.Load( "TestWriter.json");
-}

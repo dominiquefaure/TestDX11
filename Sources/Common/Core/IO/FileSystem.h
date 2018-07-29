@@ -6,6 +6,8 @@
 
 #include <vector>
 
+#include "../Base/BaseDataTypes.h"
+
 class FileHandle;
 
 class FileSystem : public Singleton<FileSystem>
@@ -21,6 +23,10 @@ public:
 	*/
 	FileHandle* OpenRead( const std::string& a_path , bool a_binaryMode = true );
 
+	/*
+	* Evaluate if the given file exist
+	*/
+	TBool Exist( const std::string& a_path );
 
 protected:
 
