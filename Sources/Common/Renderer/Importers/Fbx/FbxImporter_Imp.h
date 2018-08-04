@@ -1,7 +1,7 @@
 #ifndef __ASSET_IMPORTERS_FBX_IMPORTER_IMP_H__
 #define __ASSET_IMPORTERS_FBX_IMPORTER_IMP_H__
 
-#include "../../Geometry/Includes.h"
+#include "../../Resources/Geometry/Includes.h"
 #include "fbxsdk.h"
 
 class StaticMesh;

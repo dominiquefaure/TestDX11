@@ -5,7 +5,7 @@
 
 #include "FbxMeshPartImporter.h"
 
-#include "../../Meshes/BaseMesh.h"
+#include "../../Resources/Meshes/BaseMesh.h"
 
 class StaticMesh;
 

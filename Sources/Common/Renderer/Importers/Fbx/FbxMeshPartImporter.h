@@ -3,7 +3,7 @@
 
 #include "fbxsdk.h"
 
-#include "../../Geometry/Includes.h"
+#include "../../Resources/Geometry/Includes.h"
 
 class MeshPart;
 class FbxMeshVertex;

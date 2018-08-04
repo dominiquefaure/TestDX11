@@ -1,6 +1,6 @@
 #include "FbxMeshPartImporter.h"
 
-#include "../../Meshes/MeshPart.h"
+#include "../../Resources/Meshes/MeshPart.h"
 
 #include "FbxMeshVertex.h"
 

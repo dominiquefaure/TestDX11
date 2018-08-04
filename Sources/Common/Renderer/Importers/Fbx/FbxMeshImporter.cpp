@@ -1,5 +1,5 @@
 #include "FbxMeshImporter.h"
-#include "../../Meshes/Includes.h"
+#include "../../Resources/Meshes/Includes.h"
 
 //---------------------------------------------------------------------------------------------
 FbxMeshImporter::FbxMeshImporter()

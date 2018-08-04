@@ -25,6 +25,8 @@
     <ClInclude Include="..\..\Sources\Common\Application\WinMainLauncher.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\BaseDataTypes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Base\ReferenceCounted.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Base\ReferenceCountedPtr.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreIncludes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Core\DesignPatterns\Singleton.h" />
@@ -63,27 +65,34 @@
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputManager.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\KeyboardDevice.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\ConstantBuffer.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\Includes.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\ConstantBuffers\SConstantBuffer.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Geometrydataset.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\Includes.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Includes.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\Includes.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Meshes\StaticMesh.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\Includes.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.h" />
-    <ClInclude Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\ConstantBuffer.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\SConstantBuffer.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\Geometrydataset.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\StaticMesh.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticMeshInstance.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderScene.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h" />
@@ -151,21 +160,24 @@
     <ClCompile Include="..\..\Sources\Common\DebugUI\imgui_impl_dx11.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\ConstantBuffers\ConstantBuffer.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\BaseMesh.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Meshes\StaticMesh.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderSceneElement.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.cpp" />
-    <ClCompile Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\ConstantBuffer.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\StaticMesh.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticMeshInstance.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderScene.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp" />
@@ -198,12 +210,12 @@
     <None Include="..\..\Sources\Common\Core\Math\Vector3F.inl" />
     <None Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.inl" />
     <None Include="..\..\Sources\Common\Core\Utils\Timer.inl" />
-    <None Include="..\..\Sources\Common\Renderer\Geometry\GeometryDataset.inl" />
-    <None Include="..\..\Sources\Common\Renderer\Geometry\StaticGeometry.inl" />
-    <None Include="..\..\Sources\Common\Renderer\Meshes\MeshPart.inl" />
-    <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderDefinition.inl" />
-    <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderPermutation.inl" />
-    <None Include="..\..\Sources\Common\Renderer\Shaders\ShaderProgram.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.inl" />
     <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.inl" />
     <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.inl" />
     <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.inl" />
@@ -320,7 +332,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Common;$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -362,7 +374,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Common;$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

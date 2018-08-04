@@ -89,5 +89,7 @@ private:
 	SConstantBuffer<PerFrameConstants>	m_perFrameConstantBuffer;
 	SConstantBuffer<PerDrawConstants>	m_perDrawConstantBuffer;
 
-
+	RenderScene			m_renderScene;
+	StaticMeshInstance*	m_meshInstance;
+	Material*			m_material;
 };

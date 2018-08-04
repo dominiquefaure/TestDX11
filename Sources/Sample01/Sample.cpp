@@ -40,8 +40,8 @@ void Sample::OnInit( )
 {
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
 
-	LoadGoemetry( t_device );
 	LoadShaders( );
+	LoadGoemetry( t_device );
 
 	CreateConstantBuffer( t_device );
 
@@ -71,7 +71,7 @@ void Sample::OnClose()
 {
 	SAFE_DELETE( m_shader );
 	SAFE_DELETE( m_mesh );
-
+	SAFE_DELETE( m_meshInstance );
 //	SAFE_DELETE( m_perFrameConstantBuffer );
 //	SAFE_DELETE( m_perDrawConstantBuffer );
 
@@ -96,15 +96,20 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 	}
 
 	m_mesh->BuildRenderData( a_device );
+
+
+	m_meshInstance											=	new StaticMeshInstance();
+	m_meshInstance->Init( a_device , m_mesh );
+	m_meshInstance->SetMaterial( m_material );
+	m_renderScene.AddElement( m_meshInstance );
 }
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
 void Sample::LoadShaders( )
 {
-	m_shader												=	new ShaderProgram();
-//	m_shader->Load( "ShaderDef.json" );
-	m_shader->Load( "PerVertexLighting.json" );
+	m_material												=	new Material();
+	m_material->Load( "DummyMaterial.mat" );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -151,6 +156,8 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
+
+	m_meshInstance->SetTransform( m_translate , m_perDrawConstants.m_worldTransform );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -163,8 +170,16 @@ void Sample::OnDraw()
 	// Clear the RenderTarget
 	t_mainContext->Clear( 0.25f , 0.5f , 1.0f );
 
+	m_perFrameConstantBuffer.Update( t_mainContext , &m_perFrameConstants );
+	m_perFrameConstantBuffer.Bind( t_mainContext , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
+
 	DrawTriangle( t_mainContext );
 
+	t_mainContext->SetWireframe( false );
+//	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
+	t_mainContext->SetCullingMode( RHI_CULLING_MODE_FRONT );
+
+	m_renderScene.Draw( t_mainContext );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -173,10 +188,8 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	m_perFrameConstantBuffer.Update( a_context , &m_perFrameConstants );
 	m_perDrawConstantBuffer.Update( a_context , &m_perDrawConstants );
 
-	m_perFrameConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
 	m_perDrawConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_DRAW );
 
 
@@ -185,7 +198,7 @@ void Sample::DrawTriangle( RhiGraphicContext* a_context )
 	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
 
 //	m_mesh->Draw( a_context , m_shader , 0 );
-	m_mesh->DrawPart( 0 , a_context , m_shader , 0 );
+//	m_mesh->DrawPart( 0 , a_context , m_material->GetShaderProgram() , 0 );
 
 }
 //---------------------------------------------------------------------------------------------
