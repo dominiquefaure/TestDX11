@@ -439,6 +439,18 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h">
       <Filter>Renderer\Resources\Materials</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.h">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\TMatrerialParameter.h">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialParameterScalar.h">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialParameterVector3.h">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -639,6 +651,9 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp">
       <Filter>Renderer\Resources\Materials</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.cpp">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -724,6 +739,9 @@
     </None>
     <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.inl">
       <Filter>Renderer\Resources\Shaders</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.inl">
+      <Filter>Renderer\Resources\Materials</Filter>
     </None>
   </ItemGroup>
 </Project>

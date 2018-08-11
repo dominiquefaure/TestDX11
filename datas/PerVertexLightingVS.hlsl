@@ -42,14 +42,16 @@ Output main(Input input)
 
 	float3 lightVec =	-m_lightDir;
 
+	// compute the normal in model view
 	float3 t_normal	=	mul( m_meshTransform , input.normal );
+
 
 	float t_diffuseFactor	=	dot( lightVec , t_normal );
 
 
 	if(t_diffuseFactor > 0 )
 	{
-		diffuse = t_diffuseFactor * m_matDiffuse * m_lightDiffuse; 
+		diffuse = t_diffuseFactor * m_lightDiffuse; 
 	}
 	
 	output.color	=	float4( diffuse , 1.0 );

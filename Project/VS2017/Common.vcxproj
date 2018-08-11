@@ -78,8 +78,12 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialParameterScalar.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialParameterVector3.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\TMatrerialParameter.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.h" />
@@ -168,6 +172,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\ConstantBuffer.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.cpp" />
@@ -212,6 +217,7 @@
     <None Include="..\..\Sources\Common\Core\Utils\Timer.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.inl" />
@@ -313,7 +319,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Common;$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -322,7 +328,7 @@
       <AdditionalDependencies>d3d11.lib;D3DCompiler.lib;dxgi.lib;dxguid.lib;libfbxsdk.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/lib/vs2015/x86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/lib/vs2015/x86/release</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -353,7 +359,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Sources/Common;$(SolutionDir)../Sources/Thirdparty;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -362,7 +368,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>d3d11.lib;D3DCompiler.lib;dxgi.lib;dxguid.lib;libfbxsdk.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/lib/vs2015/x86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;$(SolutionDir)../Sources/Thirdparty/Fbx/2019.0/lib/vs2015/x86/release</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

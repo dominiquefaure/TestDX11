@@ -5,6 +5,14 @@
 Material::Material()
 {
 	m_shaderProgram											=	nullptr;
+
+	m_vectorParam.Init( "Color" , 0 );
+	m_vectorParam.SetValue( Vector3F( 0.5 , 0.8 , 0.02 ) );
+
+	m_parameterConstants.Init( RhiManager::GetInstance()->GetGraphicDevice() , 256 );
+
+	m_vectorParam.Apply( &m_parameterConstants );
+
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -34,5 +42,13 @@ void Material::LoadFromJSon( const JSonNode* a_rootNode )
 
 	m_shaderProgram											=	new ShaderProgram();
 	m_shaderProgram->Load( t_path );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void Material::Apply( RhiGraphicContext* a_context )
+{
+	m_parameterConstants.Commit( a_context , RHI_SHADER_TYPE_PIXEL_SHADER , 0 );
+	m_parameterConstants.Bind( a_context , RHI_SHADER_TYPE_PIXEL_SHADER , 0 );
 }
 //-------------------------------------------------------------------------------------------------

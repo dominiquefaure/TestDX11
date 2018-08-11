@@ -34,10 +34,10 @@ void ConstantBuffer::Init( RhiGraphicDevice* a_device , TUint32 a_size )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void ConstantBuffer::Update( TUint32 a_index , TUint32 a_byteCount , const void* a_value )
+void ConstantBuffer::Update( TUint32 a_offset , TUint32 a_byteCount , const void* a_value )
 {
-	assert( ( a_index + a_byteCount) <= m_size );
-	memcpy( m_internalBuffer + a_index , a_value , a_byteCount );
+	assert( ( a_offset + a_byteCount) <= m_size );
+	memcpy( m_internalBuffer + a_offset , a_value , a_byteCount );
 
 	m_isDirty												=	true;
 }

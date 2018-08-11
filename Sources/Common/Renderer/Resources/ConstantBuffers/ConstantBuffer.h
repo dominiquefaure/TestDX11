@@ -24,7 +24,7 @@ public:
 	/*
 	* Update the part of the Content of this Constant Buffer
 	*/
-	void Update( TUint32 a_index , TUint32 a_byteCount , const void* a_value );
+	void Update( TUint32 a_offset , TUint32 a_byteCount , const void* a_value );
 
 	/*
 	 * Update a parameter

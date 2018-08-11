@@ -12,6 +12,6 @@
         "Type":1,
         "PermutationMask":1,
 		"EntryPoint":"main",
-        "SourcePath":"SimplePS.hlsl"
+        "SourcePath":"PerVertexLightingPS.hlsl"
     }
 }

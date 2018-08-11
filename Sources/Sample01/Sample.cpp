@@ -173,7 +173,7 @@ void Sample::OnDraw()
 	m_perFrameConstantBuffer.Update( t_mainContext , &m_perFrameConstants );
 	m_perFrameConstantBuffer.Bind( t_mainContext , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
 
-	DrawTriangle( t_mainContext );
+//	DrawTriangle( t_mainContext );
 
 	t_mainContext->SetWireframe( false );
 //	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
