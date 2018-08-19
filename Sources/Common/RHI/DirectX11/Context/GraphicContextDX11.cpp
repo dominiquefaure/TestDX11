@@ -190,7 +190,7 @@ void GraphicContextDX11::CommitStates()
 /////////
 
 //---------------------------------------------------------------------------------------------------------
-TBool GraphicContextDX11::UpdateConstantBuffer( ConstantBufferDX11* a_buffer , void* a_data , TUint32 a_size )
+TBool GraphicContextDX11::UpdateConstantBuffer( ConstantBufferDX11* a_buffer , const void* a_data , TUint32 a_size )
 {
 	// Get the GPU Buffer
 	ID3D11Buffer* t_buffer									=	a_buffer->m_buffer;

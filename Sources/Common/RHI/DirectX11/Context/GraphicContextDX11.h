@@ -107,7 +107,7 @@ public:
 	/*
 	* Update the Content of a Constant Buffer using Map/Unmap
 	*/
-	TBool UpdateConstantBuffer( ConstantBufferDX11* a_buffer , void* a_data , TUint32 a_size );
+	TBool UpdateConstantBuffer( ConstantBufferDX11* a_buffer , const void* a_data , TUint32 a_size );
 
 	/*
 	* Set the Active constant buffer for the Given Slot

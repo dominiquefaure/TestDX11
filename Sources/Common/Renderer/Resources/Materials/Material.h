@@ -43,7 +43,7 @@ private:
 	// Constant Buffer used to provide all the Material parameters
 	ConstantBuffer				m_parameterConstants;
 
-	MaterialParameterVector3	m_vectorParam;
+//	MaterialParameterVector3	m_vectorParam;
 };
 
 #endif

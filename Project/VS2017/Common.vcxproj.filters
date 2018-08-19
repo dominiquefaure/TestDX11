@@ -100,6 +100,9 @@
     <Filter Include="Renderer\Resources\Materials">
       <UniqueIdentifier>{738c39a4-9cf0-4e0a-864d-915807f194aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Containers">
+      <UniqueIdentifier>{d906c1fb-94fc-4c6f-8295-adb2cc942412}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -439,17 +442,11 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h">
       <Filter>Renderer\Resources\Materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.h">
-      <Filter>Renderer\Resources\Materials</Filter>
+    <ClInclude Include="..\..\Sources\Common\Core\Containers\TFixedArray.h">
+      <Filter>Core\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\TMatrerialParameter.h">
-      <Filter>Renderer\Resources\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialParameterScalar.h">
-      <Filter>Renderer\Resources\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialParameterVector3.h">
-      <Filter>Renderer\Resources\Materials</Filter>
+    <ClInclude Include="..\..\Sources\Common\Core\Math\Vector4F.h">
+      <Filter>Core\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -651,8 +648,8 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp">
       <Filter>Renderer\Resources\Materials</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.cpp">
-      <Filter>Renderer\Resources\Materials</Filter>
+    <ClCompile Include="..\..\Sources\Common\Core\Math\Vector4F.cpp">
+      <Filter>Core\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -740,8 +737,8 @@
     <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.inl">
       <Filter>Renderer\Resources\Shaders</Filter>
     </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\BaseMaterialParameter.inl">
-      <Filter>Renderer\Resources\Materials</Filter>
+    <None Include="..\..\Sources\Common\Core\Math\Vector4F.inl">
+      <Filter>Core\Math</Filter>
     </None>
   </ItemGroup>
 </Project>

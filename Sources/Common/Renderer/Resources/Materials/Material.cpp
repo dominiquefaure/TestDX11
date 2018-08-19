@@ -6,12 +6,14 @@ Material::Material()
 {
 	m_shaderProgram											=	nullptr;
 
-	m_vectorParam.Init( "Color" , 0 );
-	m_vectorParam.SetValue( Vector3F( 0.5 , 0.8 , 0.02 ) );
+//	m_vectorParam.Init( "Color" , 0 );
+//	m_vectorParam.SetValue( Vector3F( 0.5 , 0.8 , 0.02 ) );
 
 	m_parameterConstants.Init( RhiManager::GetInstance()->GetGraphicDevice() , 256 );
 
-	m_vectorParam.Apply( &m_parameterConstants );
+	m_parameterConstants.SetValue( 0 , Vector4F( 0.5 , 0.8 , 0.02 ) );
+
+//	m_vectorParam.Apply( &m_parameterConstants );
 
 }
 //-------------------------------------------------------------------------------------------------

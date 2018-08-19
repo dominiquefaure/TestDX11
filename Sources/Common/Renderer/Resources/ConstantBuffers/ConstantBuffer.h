@@ -18,21 +18,23 @@ public:
 	/*
 	 * Create the Contant Buffer
 	 */
-	void Init( RhiGraphicDevice* a_device , TUint32 a_size );
+	void Init( RhiGraphicDevice* a_device , TUint32 a_registerCount );
 
+
+	Vector4F GetValue( TUint32 a_registerIndex )const;
+
+
+	TFloat32 GetValue( TUint32 a_registerIndex , TUint32 a_componentIndex )const;
 
 	/*
-	* Update the part of the Content of this Constant Buffer
+	* Update a Full register
 	*/
-	void Update( TUint32 a_offset , TUint32 a_byteCount , const void* a_value );
+	void SetValue( TUint32 a_registerIndex , const Vector4F& a_value );
 
 	/*
-	 * Update a parameter
-	 * 
-	 * @param a_param	Store info about the parameter to update inside the constant buffer
-	 * @param a_value	the Value to set
-	 */
-	void Update( const RhiShaderParameterDesc* a_param , const void* a_value );
+	* Update a register component
+	*/
+	void SetValue( TUint32 a_registerIndex , TUint32 a_componentIndex , const TFloat32& a_value );
 
 	/*
 	* Commit any updates made, into the Rhi version
@@ -47,16 +49,16 @@ public:
 private:
 
 	// The Low level API constantBuffer
-	RhiConstantBuffer*	m_constantBuffer;
+	RhiConstantBuffer*		m_constantBuffer;
 
 	// Sizeof the Constant Buffer
-	TUint32				m_size;
+	TUint32					m_size;
 
 	// buffer used to store the data to commit to GPU
-	TUint8*				m_internalBuffer;
+	TFixedArray<Vector4F>	m_internalBuffer;
 
 	// flag used to know if there is data updates that need to be send to GPU
-	TBool				m_isDirty;
+	TBool					m_isDirty;
 };
 
 #endif

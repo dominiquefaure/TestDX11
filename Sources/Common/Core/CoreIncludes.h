@@ -4,8 +4,11 @@
 
 
 #include "Base/Includes.h"
-
 #include "CoreMacros.h"
+
+#include "Containers/TFixedArray.h"
+
+
 #include "DesignPatterns/Singleton.h"
 #include "IO/Includes.h"
 #include "Math/includes.h"

@@ -6,6 +6,16 @@
 
 class MaterialParameterScalar : public TMaterialParameter<TUint32>
 {
+public:
+
+	MaterialParameterScalar()
+	{
+		SetType( BaseMaterialParameter::SCALAR_PARAMETER );
+	}
+
+	~MaterialParameterScalar()
+	{
+	}
 };
 
 #endif
