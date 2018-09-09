@@ -1,47 +1,28 @@
-#include "BaseMaterialParameter.h"
-
-//In debug configuration, the inlline methods need to be include inside a cpp file, to avoid function redefinition errors
-#ifdef _DEBUG
-#include "BaseMaterialParameter.inl"
-#endif
 
 //-------------------------------------------------------------------------------------------------
-BaseMaterialParameter::BaseMaterialParameter( )
+FORCE_INLINE MaterialParameterDescriptor::ParameterType MaterialParameterDescriptor::GetType()const
 {
+	return m_type;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMaterialParameter::SetType( ParameterType a_type )
+FORCE_INLINE const std::string& MaterialParameterDescriptor::GetName()const
 {
-	m_type													=	a_type;
-
-	switch( m_type )
-	{
-		case SCALAR_PARAMETER:
-			m_byteCount										=	4;
-		break;
-
-		case VECTOR_PARAMETER:
-			m_byteCount										=	24;
-		break;
-
-		default:
-		break;
-	}
+	return m_name;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-BaseMaterialParameter::~BaseMaterialParameter()
+FORCE_INLINE TUint16 MaterialParameterDescriptor::GetRegisterIndex()const
 {
+	return m_registerIndex;
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMaterialParameter::Init( const std::string& a_name , TUint16 a_startOffset )
+FORCE_INLINE TUint16 MaterialParameterDescriptor::GetComponentIndex()const
 {
-	m_name													=	a_name;
-	m_startOffset											=	a_startOffset;
+	return m_componentIndex;
 }
 //-------------------------------------------------------------------------------------------------

@@ -32,6 +32,11 @@ public:
 	void SetValue( TUint32 a_registerIndex , const Vector4F& a_value );
 
 	/*
+	* Update a register components
+	*/
+	void SetValue( TUint32 a_registerIndex , const Vector3F& a_value );
+
+	/*
 	* Update a register component
 	*/
 	void SetValue( TUint32 a_registerIndex , TUint32 a_componentIndex , const TFloat32& a_value );
@@ -39,7 +44,7 @@ public:
 	/*
 	* Commit any updates made, into the Rhi version
 	*/
-	void Commit( RhiGraphicContext* a_context , RhiShaderType a_type , TUint32 a_slot );
+	void Commit( RhiGraphicContext* a_context );
 
 	/*
 	 * Bind the RHI constant Buffer to the context. If any updates have been made, commit them 1st

@@ -35,6 +35,16 @@ if( Array != NULL )\
 	Array= nullptr;\
 }
 
+#define SAFE_DELETE_OBJECT_VECTOR_ARRAY( Array  ) \
+int t_count = Array.size();\
+for( int i = 0 ; i < t_count ; i ++ )\
+{\
+	SAFE_DELETE( Array[ i ] );\
+}\
+Array.clear();
+
+
+
 //-----------------------------
 // bitFields
 //-----------------------------

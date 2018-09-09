@@ -6,14 +6,11 @@ Material::Material()
 {
 	m_shaderProgram											=	nullptr;
 
-//	m_vectorParam.Init( "Color" , 0 );
-//	m_vectorParam.SetValue( Vector3F( 0.5 , 0.8 , 0.02 ) );
+	m_sharedParametersDesc.AddParameter( "Color" , MaterialParameterDescriptor::MATERIAL_PARAMETER_VECTOR3 , 0 , 0 );
 
-	m_parameterConstants.Init( RhiManager::GetInstance()->GetGraphicDevice() , 256 );
-
-	m_parameterConstants.SetValue( 0 , Vector4F( 0.5 , 0.8 , 0.02 ) );
-
-//	m_vectorParam.Apply( &m_parameterConstants );
+	m_defaultSharedValues.Init( RhiManager::GetInstance()->GetGraphicDevice() , &m_sharedParametersDesc );
+	m_defaultSharedValues.SetValue( "Color" ,  Vector4F( 0.9 , 0.8 , 0.02 ) );
+	m_defaultSharedValues.Bind( 0 );
 
 }
 //-------------------------------------------------------------------------------------------------
@@ -50,7 +47,6 @@ void Material::LoadFromJSon( const JSonNode* a_rootNode )
 //-------------------------------------------------------------------------------------------------
 void Material::Apply( RhiGraphicContext* a_context )
 {
-	m_parameterConstants.Commit( a_context , RHI_SHADER_TYPE_PIXEL_SHADER , 0 );
-	m_parameterConstants.Bind( a_context , RHI_SHADER_TYPE_PIXEL_SHADER , 0 );
+	m_defaultSharedValues.Apply( a_context );
 }
 //-------------------------------------------------------------------------------------------------

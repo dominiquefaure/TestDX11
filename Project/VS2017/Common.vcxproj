@@ -82,6 +82,10 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialSharedParametersCollection.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.h" />
@@ -172,6 +176,9 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialSharedParametersCollection.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\StaticMesh.cpp" />
@@ -216,6 +223,8 @@
     <None Include="..\..\Sources\Common\Core\Utils\Timer.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.inl" />

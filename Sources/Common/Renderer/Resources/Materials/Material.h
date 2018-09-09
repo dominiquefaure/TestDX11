@@ -3,8 +3,9 @@
 
 #include "Core/CoreIncludes.h"
 #include "RHI/Includes.h"
+#include "../ConstantBuffers/Includes.h"
 
-#include "MaterialParameterVector3.h"
+#include "Parameters/Includes.h"
 
 class ShaderProgram;
 
@@ -39,11 +40,11 @@ private:
 	// Program that Store the Shaders needed for this Material
 	ShaderProgram*	m_shaderProgram;
 
+	// Describe all the Shared parameters
+	MaterialParameterDescriptorCollection	m_sharedParametersDesc;
 
-	// Constant Buffer used to provide all the Material parameters
-	ConstantBuffer				m_parameterConstants;
-
-//	MaterialParameterVector3	m_vectorParam;
+	//default SharedParameters to use
+	MaterialSharedParametersCollection		m_defaultSharedValues;
 };
 
 #endif

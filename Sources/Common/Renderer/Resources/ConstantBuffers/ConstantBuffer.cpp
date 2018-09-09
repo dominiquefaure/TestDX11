@@ -55,6 +55,17 @@ void ConstantBuffer::SetValue( TUint32 a_registerIndex , const Vector4F& a_value
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
+void ConstantBuffer::SetValue( TUint32 a_registerIndex , const Vector3F& a_value )
+{
+	m_internalBuffer[ a_registerIndex ].x					=	a_value.x;
+	m_internalBuffer[ a_registerIndex ].y					=	a_value.y;
+	m_internalBuffer[ a_registerIndex ].z					=	a_value.z;
+
+	m_isDirty												=	true;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
 void ConstantBuffer::SetValue( TUint32 a_registerIndex , TUint32 a_componentIndex , const TFloat32& a_value )
 {
 	assert( a_componentIndex < 4 );
@@ -64,29 +75,8 @@ void ConstantBuffer::SetValue( TUint32 a_registerIndex , TUint32 a_componentInde
 }
 //-------------------------------------------------------------------------------------------------
 
-/*
 //-------------------------------------------------------------------------------------------------
-void ConstantBuffer::Update( TUint32 a_offset , TUint32 a_byteCount , const void* a_value )
-{
-	assert( ( a_offset + a_byteCount) <= m_size );
-	memcpy( m_internalBuffer + a_offset , a_value , a_byteCount );
-
-	m_isDirty												=	true;
-}
-//-------------------------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------------------------
-void ConstantBuffer::Update( const RhiShaderParameterDesc* a_param , const void* a_value )
-{
-	assert( ( a_param->GetBufferOffset() + a_param->GetByteCount() ) <= m_size );
-	memcpy( m_internalBuffer + a_param->GetBufferOffset() , a_value , a_param->GetByteCount() );
-
-	m_isDirty												=	true;
-}
-//-------------------------------------------------------------------------------------------------
-*/
-//-------------------------------------------------------------------------------------------------
-void ConstantBuffer::Commit( RhiGraphicContext* a_context , RhiShaderType a_type , TUint32 a_slot )
+void ConstantBuffer::Commit( RhiGraphicContext* a_context )
 {
 	// Update the Rhi buffer is needed
 	if( m_isDirty )
@@ -105,7 +95,7 @@ void ConstantBuffer::Bind( RhiGraphicContext* a_context , RhiShaderType a_type ,
 {
 	if( m_isDirty )
 	{
-		Commit( a_context , a_type , a_slot );
+		Commit( a_context );
 	}
 
 	// set the Buffer as the active one for the given Shader- Slot
