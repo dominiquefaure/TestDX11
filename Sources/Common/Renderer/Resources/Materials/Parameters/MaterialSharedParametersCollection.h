@@ -27,6 +27,49 @@ public:
 	void Bind( TUint32 a_slot );
 
 	/*
+	* Get the Current Scalar value of the Given Parameter
+	*/
+	TFloat32 GetScalar( const std::string& a_paramName )const;
+
+	/*
+	* Get the Current Vector3 value of the Given Parameter
+	*/
+	Vector3F GetVector3( const std::string& a_paramName )const;
+
+	/*
+	* Get the Current Vector4 value of the Given Parameter
+	*/
+	Vector4F GetVector4( const std::string& a_paramName )const;
+
+	/*
+	* Get the Scalar value of the given parameter
+	*
+	* @param a_paramName	name of the parameter we want to get the value
+	* @param a_value		out parameter that receive the value
+	* @return false if no parameter found or invlid type
+	*/
+	bool GetValue( const std::string& a_paramName , TFloat32& a_value )const;
+
+	/*
+	* Get the Vector value of the given parameter
+	*
+	* @param a_paramName	name of the parameter we want to get the value
+	* @param a_value		out parameter that receive the value
+	* @return false if no parameter found or invlid type
+	*/
+	bool GetValue( const std::string& a_paramName , Vector3F& a_value )const;
+
+	/*
+	* Get the Vector value of the given parameter
+	*
+	* @param a_paramName	name of the parameter we want to get the value
+	* @param a_value		out parameter that receive the value
+	* @return false if no parameter found or invlid type
+	*/
+	bool GetValue( const std::string& a_paramName , Vector4F& a_value )const;
+
+
+	/*
 	* Set Scalar value
 	*
 	* @param a_paramName	name of the parameter we want to set the value

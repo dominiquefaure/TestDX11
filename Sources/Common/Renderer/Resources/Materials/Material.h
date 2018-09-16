@@ -29,6 +29,37 @@ public:
 	void Apply( RhiGraphicContext* a_context );
 
 
+	/*
+	* Get a Scalar parameter current value
+	*/
+	TFloat32 GetScalarParameter( const std::string& a_paramName )const;
+
+	/*
+	* Get a Scalar parameter current value
+	*/
+	Vector3F GetVector3Parameter( const std::string& a_paramName )const;
+
+	/*
+	* Get a Scalar parameter current value
+	*/
+	Vector4F GetVector4Parameter( const std::string& a_paramName )const;
+
+	/*
+	* Set a Scalar value
+	*/
+	void SetParameter( const std::string& a_paramName , const TFloat32 a_value );
+
+	/*
+	* Set a Vector3 value
+	*/
+	void SetParameter( const std::string& a_paramName , const Vector3F& a_value );
+
+	/*
+	* Set a Vector4 value
+	*/
+	void SetParameter( const std::string& a_paramName , const Vector4F& a_value );
+
+
 // Methods
 private:
 

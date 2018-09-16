@@ -106,6 +106,9 @@
     <Filter Include="Renderer\Resources\Materials\Parameters">
       <UniqueIdentifier>{331a7e6a-b7b3-401c-beac-c3a21d9ba9ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Resources\Models">
+      <UniqueIdentifier>{371f64d3-2140-439a-893b-1bfcf2673262}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -382,9 +385,6 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.h">
       <Filter>Renderer\Scene\Elements</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticMeshInstance.h">
-      <Filter>Renderer\Scene\Elements</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderScene.h">
       <Filter>Renderer\Scene</Filter>
     </ClInclude>
@@ -462,6 +462,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\Includes.h">
       <Filter>Renderer\Resources\Materials\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Models\Model.h">
+      <Filter>Renderer\Resources\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.h">
+      <Filter>Renderer\Scene\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -624,9 +630,6 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\JSonNode.cpp">
       <Filter>Core\IO\JSon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticMeshInstance.cpp">
-      <Filter>Renderer\Scene\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.cpp">
       <Filter>Renderer\Scene\Elements</Filter>
     </ClCompile>
@@ -674,6 +677,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialSharedParametersCollection.cpp">
       <Filter>Renderer\Resources\Materials\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Models\Model.cpp">
+      <Filter>Renderer\Resources\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.cpp">
+      <Filter>Renderer\Scene\Elements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -50,3 +50,67 @@ void Material::Apply( RhiGraphicContext* a_context )
 	m_defaultSharedValues.Apply( a_context );
 }
 //-------------------------------------------------------------------------------------------------
+
+
+//////////
+// Get parameters
+/////////
+
+//-------------------------------------------------------------------------------------------------
+TFloat32 Material::GetScalarParameter( const std::string& a_paramName )const
+{
+	TFloat32 t_value										=	0.0f;
+
+	m_defaultSharedValues.GetValue( a_paramName , t_value );
+
+	return t_value;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+Vector3F Material::GetVector3Parameter( const std::string& a_paramName )const
+{
+	Vector3F t_value;
+
+	m_defaultSharedValues.GetValue( a_paramName , t_value );
+
+	return t_value;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+Vector4F Material::GetVector4Parameter( const std::string& a_paramName )const
+{
+	Vector4F t_value;
+
+	m_defaultSharedValues.GetValue( a_paramName , t_value );
+
+	return t_value;
+}
+//-------------------------------------------------------------------------------------------------
+
+
+//////////
+// Set parameters
+/////////
+
+//-------------------------------------------------------------------------------------------------
+void Material::SetParameter( const std::string& a_paramName , const TFloat32 a_value )
+{
+	m_defaultSharedValues.SetValue( a_paramName , a_value );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void Material::SetParameter( const std::string& a_paramName , const Vector3F& a_value )
+{
+	m_defaultSharedValues.SetValue( a_paramName , a_value );
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void Material::SetParameter( const std::string& a_paramName , const Vector4F& a_value )
+{
+	m_defaultSharedValues.SetValue( a_paramName , a_value );
+}
+//-------------------------------------------------------------------------------------------------

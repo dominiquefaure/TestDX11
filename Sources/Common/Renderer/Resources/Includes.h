@@ -7,4 +7,6 @@
 #include "Shaders/Includes.h"
 #include "Materials/Includes.h"
 
+#include "Models/Model.h"
+
 #endif

@@ -38,6 +38,9 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
+	m_scale.Set( 1.0f , 1.0f , 1.0f );
+	m_rotate.Set( 0 , 0 , 0 );
+	m_translate.Set( 2.0f , 0.0f , 0.0f );
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
 
 	LoadShaders( );
@@ -55,13 +58,13 @@ void Sample::OnInit( )
 	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 
 
-	m_scale.Set( 1.0f , 1.0f , 1.0f );
-	m_rotate.Set( 0 , 0 , 0 );
 
 	m_perFrameConstants.m_lightDirection.Set( 0.3 , 0.0 , 0.7 );
 	m_perFrameConstants.m_lightDiffuse.Set( 0.8 , 0.8 , 0.8 );
 
 	m_perDrawConstants.m_matDiffuse.Set( 1.0 , 1.0 , 1.0 );
+
+	m_translate.Set( 0.0f , 0.0f , 0.0f );
 
 }
 //---------------------------------------------------------------------------------------------
@@ -71,10 +74,8 @@ void Sample::OnClose()
 {
 	SAFE_DELETE( m_shader );
 	SAFE_DELETE( m_mesh );
-	SAFE_DELETE( m_meshInstance );
-//	SAFE_DELETE( m_perFrameConstantBuffer );
-//	SAFE_DELETE( m_perDrawConstantBuffer );
-
+	SAFE_DELETE( m_meshInstance1 );
+	SAFE_DELETE( m_meshInstance2 );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -97,11 +98,22 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 
 	m_mesh->BuildRenderData( a_device );
 
+	m_model													=	new Model();
+	m_model->SetMesh( m_mesh );
+	m_model->SetMaterial( m_material );
 
-	m_meshInstance											=	new StaticMeshInstance();
-	m_meshInstance->Init( a_device , m_mesh );
-	m_meshInstance->SetMaterial( m_material );
-	m_renderScene.AddElement( m_meshInstance );
+	m_meshInstance1											=	new StaticModelInstance();
+	m_meshInstance1->Init( a_device , m_model );
+	m_renderScene.AddElement( m_meshInstance1 );
+
+	m_meshInstance2											=	new StaticModelInstance();
+	m_meshInstance2->Init( a_device , m_model );
+	m_renderScene.AddElement( m_meshInstance2 );
+
+	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
+
+	m_meshInstance2->SetTransform( m_translate  , m_perDrawConstants.m_worldTransform );
+
 }
 //---------------------------------------------------------------------------------------------
 
@@ -157,7 +169,7 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
 
-	m_meshInstance->SetTransform( m_translate , m_perDrawConstants.m_worldTransform );
+	m_meshInstance1->SetTransform( m_translate , m_perDrawConstants.m_worldTransform );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -220,6 +232,7 @@ void Sample::DrawDebugUI()
 		if( ImGui::ColorEdit3( "Mat Diffuse" , t_matDiffuse ) )
 		{
 			m_perDrawConstants.m_matDiffuse.Set( t_matDiffuse[ 0 ] , t_matDiffuse[ 1 ] , t_matDiffuse[ 2 ] );
+			m_material->SetParameter( "Color" , Vector3F( t_matDiffuse[ 0 ] , t_matDiffuse[ 1 ] , t_matDiffuse[ 2 ] ) );
 		}
 	}
 

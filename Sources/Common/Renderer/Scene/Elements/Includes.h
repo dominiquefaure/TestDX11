@@ -2,6 +2,6 @@
 #define __RENDERER_SCENE_ELEMENTS_INCLUDES_H__
 
 #include "RenderSceneElement.h"
-#include "StaticMeshInstance.h"
+#include "StaticModelInstance.h"
 
 #endif
