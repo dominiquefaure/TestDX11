@@ -5,11 +5,6 @@
 #include "../../Resources/Includes.h"
 #include "../../../Core/CoreIncludes.h"
 
-struct StaticModelVertexConstants
-{
-	// The Mesh World Transform
-	Matrix44	m_worldTransform;
-};
 
 class StaticModelInstance : public RenderSceneElement
 {

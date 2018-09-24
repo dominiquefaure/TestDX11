@@ -107,9 +107,9 @@ void ShaderProgram::SetSupportedVertexLayouts( const JSonNode* a_rootNode  )
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-TBool ShaderProgram::Apply( RhiGraphicContext* a_context, const TUint64 a_permutationID )
+TBool ShaderProgram::Apply( RhiGraphicContext* a_context, const RhiVertexLayoutType a_layoutType , const TUint64 a_permutationID )
 {
-	TUint64 t_layoutIndex									=	(TUint64)a_context->GetVertexLayout()->GetLayoutType();
+	TUint64 t_layoutIndex									=	(TUint64)a_layoutType;
 	if( m_vertexLayoutSupport[ t_layoutIndex ] )
 	{
 		// add the permutations flags related to the VertexLayout

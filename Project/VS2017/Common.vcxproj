@@ -82,6 +82,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.h" />
@@ -99,6 +100,8 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderScene.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h" />
@@ -177,6 +180,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialSharedParametersCollection.cpp" />
@@ -189,6 +193,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderScene.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp" />
@@ -225,6 +230,7 @@
     <None Include="..\..\Sources\Common\Core\Utils\Timer.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.inl" />
+    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.inl" />
     <None Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.inl" />

@@ -6,6 +6,12 @@
 #include "../Meshes/Includes.h"
 #include"../Materials/Includes.h"
 
+struct StaticModelVertexConstants
+{
+	// The Mesh World Transform
+	Matrix44	m_worldTransform;
+};
+
 
 /*
 * Resource that represent a Model( Meshes + Materials )
@@ -28,7 +34,7 @@ public:
 	/*
 	* Draw this Model
 	*/
-	virtual void Draw( RhiGraphicContext* a_context );
+	virtual void Draw( RhiGraphicContext* a_context , SConstantBuffer<StaticModelVertexConstants>* a_instanceCB );
 
 
 private:
@@ -36,9 +42,8 @@ private:
 	// the Mesh to use
 	ReferenceCountedPtr<BaseMesh>	m_mesh;
 
-	// reference to the Material to use
-	ReferenceCountedPtr<Material>	m_material;
-
+	// Instance of a Material
+	MaterialInstance				m_material;
 };
 
 #endif

@@ -217,7 +217,7 @@ TBool GraphicContextDX11::UpdateConstantBuffer( ConstantBufferDX11* a_buffer , c
 //---------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------------
-void GraphicContextDX11::SetConstantBuffer( RhiShaderType a_type , int a_slot , ConstantBufferDX11* a_buffer )
+void GraphicContextDX11::SetConstantBuffer( RhiShaderType a_type , int a_slot , const ConstantBufferDX11* a_buffer )
 {
 	// Get the GPU Buffer
 	ID3D11Buffer* t_buffer									=	a_buffer->m_buffer;

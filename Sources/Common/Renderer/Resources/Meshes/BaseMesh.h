@@ -14,6 +14,8 @@ class StaticGeometry;
 
 class FbxMeshImporter;
 
+class GeometryRenderElement;
+
 /*
 * Base class for all meshes
 */
@@ -41,13 +43,18 @@ public:
 	/*
 	* Draw this Part
 	*/
-	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
+	void Draw( RhiGraphicContext* a_context );
 
 	/*
 	* Draw on;ly 1 part of this Mesh
 	*/
-	void DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
+	void DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context );
 
+
+	/*
+	* Setup the RenderElement
+	*/
+	void Setup( GeometryRenderElement* a_element );
 
 	/*
 	* Serialize this Mesh to a JSON file

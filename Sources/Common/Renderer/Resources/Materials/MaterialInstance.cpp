@@ -1,49 +1,44 @@
-#include "Model.h"
+#include "MaterialInstance.h"
 
-#include "Renderer/Scene/Rendering/GeometryRenderElement.h"
+#include "Renderer/Scene/Rendering/Includes.h"
+
+#ifdef _DEBUG
+#include "MaterialInstance.inl"
+#endif
+
 
 //------------------------------------------------------------------------------------
-Model::Model()
+MaterialInstance::MaterialInstance()
 {
-	m_mesh													=	nullptr;
 }
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
-Model::~Model()
+MaterialInstance::~MaterialInstance()
 {
-	m_mesh													=	nullptr;
-	m_material.SetMaterial( nullptr );
 }
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
-void Model::SetMesh( const ReferenceCountedPtr<BaseMesh>& a_mesh )
+void MaterialInstance::SetMaterial( const ReferenceCountedPtr<Material>& a_material )
 {
-	m_mesh													=	a_mesh;
+	m_material												=	a_material;
 }
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
-void Model::SetMaterial( const ReferenceCountedPtr<Material>& a_material )
+void MaterialInstance::Apply( RhiGraphicContext* a_context , RhiVertexLayoutType a_layoutType , TUint64 a_customFlags )
 {
-	m_material.SetMaterial( a_material );
-}
-//------------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------------
-void Model::Draw( RhiGraphicContext* a_context , SConstantBuffer<StaticModelVertexConstants>* a_instanceCB )
-{
-	if( ( m_material.IsMaterialSet() ) && ( m_mesh != nullptr ) )
+	if( m_material != nullptr )
 	{
-		GeometryRenderElement t_element;
-		m_material.Setup( &t_element );
-		m_mesh->Setup( &t_element );
-
-		t_element.SetVertexParameters( a_instanceCB->GetRhiConstantBuffer() );
-
-		t_element.Render( a_context );
+		m_material->Apply( a_context ,  a_layoutType , a_customFlags );
 	}
+}
+//------------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------------
+void MaterialInstance::Setup( GeometryRenderElement* a_element )
+{
+	a_element->SetupMaterial( m_material , 0 );
 }
 //------------------------------------------------------------------------------------

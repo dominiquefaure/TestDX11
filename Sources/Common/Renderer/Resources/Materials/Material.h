@@ -26,7 +26,7 @@ public:
 	/*
 	* Apply the Material to the Context
 	*/
-	void Apply( RhiGraphicContext* a_context );
+	void Apply( RhiGraphicContext* a_context , RhiVertexLayoutType a_layoutType , TUint64 a_customFlags );
 
 
 	/*

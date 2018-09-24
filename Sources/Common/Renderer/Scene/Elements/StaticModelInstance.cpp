@@ -33,9 +33,8 @@ void StaticModelInstance::Draw( RhiGraphicContext* a_context )
 	{
 		m_vertexConstants.m_worldTransform	=	m_worldTransform;
 		m_vertexConstantBuffer.Update( a_context , &m_vertexConstants );
-		m_vertexConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_DRAW );
 
-		m_model->Draw( a_context );
+		m_model->Draw( a_context , &m_vertexConstantBuffer );
 	}
 }
 //------------------------------------------------------------------------------------

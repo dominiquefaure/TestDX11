@@ -32,7 +32,7 @@ public:
 	 * Apply the correct shaders to the Context
 	 * return false if there is no permutation available for the actual VertexLayout
 	 */
-	TBool Apply( RhiGraphicContext* a_context, const TUint64 a_permutationID );
+	TBool Apply( RhiGraphicContext* a_context, const RhiVertexLayoutType a_layoutType , const TUint64 a_permutationID );
 
 // Methods
 private:

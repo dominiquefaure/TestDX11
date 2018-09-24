@@ -45,9 +45,11 @@ void Material::LoadFromJSon( const JSonNode* a_rootNode )
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void Material::Apply( RhiGraphicContext* a_context )
+void Material::Apply( RhiGraphicContext* a_context , RhiVertexLayoutType a_layoutType , TUint64 a_customFlags )
 {
 	m_defaultSharedValues.Apply( a_context );
+
+	m_shaderProgram->Apply( a_context , a_layoutType , a_customFlags );
 }
 //-------------------------------------------------------------------------------------------------
 

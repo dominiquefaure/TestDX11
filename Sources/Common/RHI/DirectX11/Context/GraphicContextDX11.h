@@ -112,7 +112,7 @@ public:
 	/*
 	* Set the Active constant buffer for the Given Slot
 	*/
-	void SetConstantBuffer( RhiShaderType a_type , int a_slot , ConstantBufferDX11* a_buffer );
+	void SetConstantBuffer( RhiShaderType a_type , int a_slot , const ConstantBufferDX11* a_buffer );
 
 
 

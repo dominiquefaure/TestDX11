@@ -4,6 +4,8 @@
 #include "../Geometry/Geometrydataset.h"
 #include "../Geometry/StaticGeometry.h"
 
+#include "Renderer/Scene/Rendering/Includes.h"
+
 
 //-------------------------------------------------------------------------------------------------
 BaseMesh::BaseMesh()
@@ -46,25 +48,32 @@ void BaseMesh::BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceDa
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags )
+void BaseMesh::Draw( RhiGraphicContext* a_context )
 {
 	if( m_renderGeometry != NULL )
 	{
-		m_renderGeometry->Draw( a_context , a_program , a_customFlags );
+		m_renderGeometry->Draw( a_context );
 	}
 }
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags )
+void BaseMesh::DrawPart( TUint32 a_partIndex , RhiGraphicContext* a_context   )
 {
 	if( m_renderGeometry != NULL )
 	{
 		MeshPart* t_part									=	&m_partList[ a_partIndex ];
 
-		m_renderGeometry->Draw( a_context , a_program , t_part->GetStartIndex() , t_part->GetIndexCount() ,a_customFlags );
+		m_renderGeometry->Draw( a_context , t_part->GetStartIndex() , t_part->GetIndexCount() );
 	}
 
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+void BaseMesh::Setup( GeometryRenderElement* a_element )
+{
+	a_element->SetupGeometry( m_renderGeometry , m_partList[ 0 ].GetStartIndex() , m_partList[ 0 ].GetIndexCount() );
 }
 //-------------------------------------------------------------------------------------------------
 

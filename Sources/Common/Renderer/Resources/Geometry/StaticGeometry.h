@@ -53,9 +53,9 @@ public:
 	/*
 	* Draw the Geometry
 	*/
-	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint64 a_customFlags );
+	void Draw( RhiGraphicContext* a_context  );
 
-	void Draw( RhiGraphicContext* a_context  , ShaderProgram* a_program , TUint32 a_startIndex , TUint32 a_indexCount , TUint64 a_customFlags );
+	void Draw( RhiGraphicContext* a_context  , TUint32 a_startIndex , TUint32 a_indexCount );
 
 
 // Methods

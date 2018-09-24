@@ -109,6 +109,9 @@
     <Filter Include="Renderer\Resources\Models">
       <UniqueIdentifier>{371f64d3-2140-439a-893b-1bfcf2673262}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer\Scene\Rendering">
+      <UniqueIdentifier>{fc0fab15-3f8b-4d8c-9c2d-cbe1c1eff7fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -469,6 +472,15 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.h">
       <Filter>Renderer\Scene\Elements</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.h">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.h">
+      <Filter>Renderer\Scene\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\Includes.h">
+      <Filter>Renderer\Scene\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -684,6 +696,12 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.cpp">
       <Filter>Renderer\Scene\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.cpp">
+      <Filter>Renderer\Resources\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.cpp">
+      <Filter>Renderer\Scene\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
@@ -778,6 +796,9 @@
     </None>
     <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.inl">
       <Filter>Renderer\Resources\Materials\Parameters</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.inl">
+      <Filter>Renderer\Resources\Materials</Filter>
     </None>
   </ItemGroup>
 </Project>
