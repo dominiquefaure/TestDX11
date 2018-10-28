@@ -26,15 +26,18 @@ void StaticModelInstance::Init( RhiGraphicDevice* a_device , const ReferenceCoun
 }
 //------------------------------------------------------------------------------------
 
+
 //------------------------------------------------------------------------------------
-void StaticModelInstance::Draw( RhiGraphicContext* a_context )
+void StaticModelInstance::AddToRenderList( RhiGraphicContext* a_context , GeometryRenderList* a_renderList )
 {
 	if( m_model != nullptr )
 	{
 		m_vertexConstants.m_worldTransform	=	m_worldTransform;
-		m_vertexConstantBuffer.Update( a_context , &m_vertexConstants );
+		m_vertexConstantBuffer.Update( &m_vertexConstants );
 
-		m_model->Draw( a_context , &m_vertexConstantBuffer );
+		m_vertexConstantBuffer.Flush( a_context );
+
+		m_model->SetupDraw( a_renderList , &m_vertexConstantBuffer );
 	}
 }
 //------------------------------------------------------------------------------------

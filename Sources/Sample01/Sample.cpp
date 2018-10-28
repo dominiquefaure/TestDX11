@@ -182,7 +182,7 @@ void Sample::OnDraw()
 	// Clear the RenderTarget
 	t_mainContext->Clear( 0.25f , 0.5f , 1.0f );
 
-	m_perFrameConstantBuffer.Update( t_mainContext , &m_perFrameConstants );
+	m_perFrameConstantBuffer.Update( &m_perFrameConstants );
 	m_perFrameConstantBuffer.Bind( t_mainContext , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
 
 //	DrawTriangle( t_mainContext );
@@ -200,7 +200,7 @@ void Sample::OnDraw()
 //---------------------------------------------------------------------------------------------
 void Sample::DrawTriangle( RhiGraphicContext* a_context )
 {
-	m_perDrawConstantBuffer.Update( a_context , &m_perDrawConstants );
+	m_perDrawConstantBuffer.Update( &m_perDrawConstants );
 
 	m_perDrawConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_DRAW );
 

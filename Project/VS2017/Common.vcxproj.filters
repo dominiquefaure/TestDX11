@@ -481,6 +481,9 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\Includes.h">
       <Filter>Renderer\Scene\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.h">
+      <Filter>Renderer\Scene\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -700,6 +703,9 @@
       <Filter>Renderer\Resources\Materials</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.cpp">
+      <Filter>Renderer\Scene\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.cpp">
       <Filter>Renderer\Scene\Rendering</Filter>
     </ClCompile>
   </ItemGroup>

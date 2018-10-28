@@ -1,6 +1,7 @@
 #include "Model.h"
 
 #include "Renderer/Scene/Rendering/GeometryRenderElement.h"
+#include "Renderer/Scene/Rendering/GeometryRenderList.h"
 
 //------------------------------------------------------------------------------------
 Model::Model()
@@ -32,18 +33,18 @@ void Model::SetMaterial( const ReferenceCountedPtr<Material>& a_material )
 //------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------
-void Model::Draw( RhiGraphicContext* a_context , SConstantBuffer<StaticModelVertexConstants>* a_instanceCB )
+void Model::SetupDraw( GeometryRenderList* a_renderList , SConstantBuffer<StaticModelVertexConstants>* a_instanceCB )
 {
 	if( ( m_material.IsMaterialSet() ) && ( m_mesh != nullptr ) )
 	{
-		GeometryRenderElement t_element;
-		m_material.Setup( &t_element );
-		m_mesh->Setup( &t_element );
+		GeometryRenderElement* t_element					=	new GeometryRenderElement();
+		m_material.Setup( t_element );
+		m_mesh->Setup( t_element );
 
-		t_element.SetVertexParameters( a_instanceCB->GetRhiConstantBuffer() );
+		t_element->SetVertexParameters( a_instanceCB->GetRhiConstantBuffer() );
 
-		t_element.Render( a_context );
+
+		a_renderList->AddElement( t_element );
 	}
-
 }
 //------------------------------------------------------------------------------------

@@ -4,6 +4,8 @@
 #include "../../../Core/CoreIncludes.h"
 #include "../../../RHI/Includes.h"
 
+class GeometryRenderList;
+
 class RenderSceneElement
 {
 
@@ -19,10 +21,9 @@ public:
 	void SetTransform( Vector3F a_position , Matrix44 a_worldTransform );
 
 	/*
-	* Draw this Element
+	* Add the Element to a Render List
 	*/
-	virtual void Draw( RhiGraphicContext* a_context ){}
-
+	virtual void AddToRenderList( RhiGraphicContext* a_context , GeometryRenderList* a_renderList ){}
 
 protected:
 

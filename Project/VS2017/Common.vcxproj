@@ -101,6 +101,7 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.h" />
+    <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderScene.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderScene.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp" />

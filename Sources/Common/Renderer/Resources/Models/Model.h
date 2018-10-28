@@ -6,6 +6,9 @@
 #include "../Meshes/Includes.h"
 #include"../Materials/Includes.h"
 
+class GeometryRenderList;
+
+
 struct StaticModelVertexConstants
 {
 	// The Mesh World Transform
@@ -30,12 +33,10 @@ public:
 
 	void SetMaterial( const ReferenceCountedPtr<Material>& a_material );
 
-
 	/*
-	* Draw this Model
+	* Prepare a 
 	*/
-	virtual void Draw( RhiGraphicContext* a_context , SConstantBuffer<StaticModelVertexConstants>* a_instanceCB );
-
+	virtual void SetupDraw( GeometryRenderList* a_renderList , SConstantBuffer<StaticModelVertexConstants>* a_instanceCB );
 
 private:
 

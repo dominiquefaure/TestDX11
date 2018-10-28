@@ -18,10 +18,8 @@ public:
 	*/
 	void Init( RhiGraphicDevice* a_device , const ReferenceCountedPtr<Model>& a_model );
 
-	/*
-	* Draw this Object
-	*/
-	virtual void Draw( RhiGraphicContext* a_context );
+
+	virtual void AddToRenderList( RhiGraphicContext* a_context , GeometryRenderList* a_renderList );
 
 private:
 

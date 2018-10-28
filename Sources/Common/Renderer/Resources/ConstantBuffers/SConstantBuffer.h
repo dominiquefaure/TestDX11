@@ -44,11 +44,27 @@ public:
 
 	//-------------------------------------------------------------------------------------------------
 	/*
-	 * Update the Rhi Constant Buffer with struct data
+	 * Update the internal data structure
 	 */
-	void Update( RhiGraphicContext* a_context , ConstantStruct* a_values )
+	void Update( ConstantStruct* a_values )
 	{
-		a_context->UpdateConstantBuffer( m_constantBuffer , a_values , sizeof( ConstantStruct ) );
+		memcpy( &m_content , a_values , sizeof( ConstantStruct ) );
+		m_isDirty											=	true;
+	}
+	//-------------------------------------------------------------------------------------------------
+
+	//-------------------------------------------------------------------------------------------------
+	/*
+	* flush the internal data to the RHI ConstantBuffer
+	*/
+	void Flush( RhiGraphicContext* a_context )
+	{
+		// update the Constant Buffer if needed
+		if( m_isDirty )
+		{
+			a_context->UpdateConstantBuffer( m_constantBuffer , &m_content , sizeof( ConstantStruct ) );
+			m_isDirty										=	false;
+		}
 	}
 	//-------------------------------------------------------------------------------------------------
 
@@ -58,6 +74,8 @@ public:
 	 */
 	void Bind( RhiGraphicContext* a_context , RhiShaderType a_type , TUint32 a_slot )
 	{
+		Flush( a_context );
+
 		a_context->SetConstantBuffer( a_type , a_slot , m_constantBuffer );
 	}
 	//-------------------------------------------------------------------------------------------------
@@ -67,6 +85,11 @@ private:
 	// The Low level API constantBuffer
 	RhiConstantBuffer*	m_constantBuffer;
 
+	// Internal copy of the Struct. allow
+	ConstantStruct		m_content;
+
+	// does the ConstantBuffer need to be updated
+	TBool				m_isDirty;
 };
 
 #endif
