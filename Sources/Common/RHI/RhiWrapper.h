@@ -21,6 +21,7 @@ class PixelShaderDX11;
 class VertexLayoutDX11;
 
 class ConstantBufferDX11;
+class Texture2DDX11;
 
 typedef GraphicDeviceDX11	RhiGraphicDevice;
 typedef GraphicContextDX11	RhiGraphicContext;
@@ -36,6 +37,7 @@ typedef PixelShaderDX11		RhiPixelShader;
 
 
 typedef ConstantBufferDX11	RhiConstantBuffer;
+typedef Texture2DDX11		RhiTexture2D;
 
 #include "DirectX11/IncludesDX11.h"
 

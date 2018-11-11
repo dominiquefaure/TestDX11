@@ -11,4 +11,6 @@
 #include "Shaders/Includes.h"
 #include "VertexLayout/Includes.h"
 
+#include "Textures/Includes.h"
+
 #endif

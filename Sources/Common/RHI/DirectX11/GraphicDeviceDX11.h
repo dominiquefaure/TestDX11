@@ -16,9 +16,11 @@
 #include "StateObjects/StateObjectsManagerDX11.h"
 #include "Shaders/Includes.h"
 
-#include"../Common/RhiVerteLayoutEnums.h"
+#include"../Common/Enums/RhiVertexLayoutEnums.h"
 
 #include "VertexLayout/VertexLayoutManagerDX11.h"
+#include "Textures/Includes.h"
+
 
 // Inernal structure to save DX parameters associed to a ShaderUsage enum
 struct BufferUsageParams
@@ -36,7 +38,7 @@ class GraphicDeviceDX11
 {
 	friend class SwapchainDX11;
 	friend class VertexLayoutDX11;
-
+	friend class Texture2DDX11;
 
 	friend class ImGuiWrapper;
 
@@ -134,6 +136,11 @@ public:
 	ConstantBufferDX11* CreateConstantBuffer( int a_size );
 
 
+	/*
+	* Create a new Texture2D
+	*/
+	Texture2DDX11* CreateTexture2D( const RhiTextureDescriptor& a_descriptor , void* a_data = NULL );
+
 private:
 
 	/*
@@ -196,36 +203,52 @@ private:
 	ID3D11InputLayout* CreateInputLayout( D3D11_INPUT_ELEMENT_DESC* a_descriptor , TUint32 a_elementcount , ShaderByteCodeDX11& a_byteCode );
 
 
+	/*
+	* Init the Array used to convert custom defined TextureFormat to DX TextureFormat
+	*/
+	void InitTextureFormatArray();
+
+	/*
+	* Setup correctly the DX11 Texture Descriptor according to the usage we will have
+	*/
+	void SetTextureDescriptor(  D3D11_TEXTURE2D_DESC& a_dxDescriptor , const RhiTextureDescriptor& a_descriptor );
+
+	/*
+	* Create a REsource view 
+	*/
+	ID3D11ShaderResourceView* CreateShaderResourceView( ID3D11Texture2D* a_texture );
+
 
 private:
 
 	// The Device representing the Graphic Card
-	ID3D11Device*			m_d3dDevice;
+	ID3D11Device*				m_d3dDevice;
 
 	// Context that send commands directly to the Gpu
-	ID3D11DeviceContext*	m_immediateContext;
+	ID3D11DeviceContext*		m_immediateContext;
 
 	// DirectX feature available
-	D3D_FEATURE_LEVEL		m_selectedFeatureLevel;
+	D3D_FEATURE_LEVEL			m_selectedFeatureLevel;
 
-	SwapchainDX11*			m_swapchain;
+	SwapchainDX11*				m_swapchain;
 
 	// the Main context, using the D3D Immediate Context
-	GraphicContextDX11*		m_mainContext;
+	GraphicContextDX11*			m_mainContext;
 
 
 	// store the DX BindFlag associed to a RhiResourceBindType
-	UINT					m_BufferBindFlags[ RHI_RESOURCE_BIND_COUNT ];
+	UINT						m_BufferBindFlags[ RHI_RESOURCE_BIND_COUNT ];
 
 	// Store the different properties matching a RhiBufferUsage
-	BufferUsageParams		m_bufferUsages[ RHI_BUFFER_USAGE_COUNT ];
+	BufferUsageParams			m_bufferUsages[ RHI_BUFFER_USAGE_COUNT ];
 
 
 
 	VertexLayoutManagerDX11*	m_vertexLayoutManager;
 
-	StateObjectsManagerDX11	m_stateObjectsManager;
+	StateObjectsManagerDX11		m_stateObjectsManager;
 
+	DXGI_FORMAT					m_textureFormat[ TEXTURE_FORMAT_COUNT ];
 
 
 };

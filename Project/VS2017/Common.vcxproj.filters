@@ -112,6 +112,12 @@
     <Filter Include="Renderer\Scene\Rendering">
       <UniqueIdentifier>{fc0fab15-3f8b-4d8c-9c2d-cbe1c1eff7fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RHI\Common\Enums">
+      <UniqueIdentifier>{0b3c98bb-930a-4242-a4de-e1239b881a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RHI\DirectX11\Textures">
+      <UniqueIdentifier>{8ee7ac6e-2861-4721-874b-842bca96f9c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -272,9 +278,6 @@
       <Filter>Core\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h">
-      <Filter>RHI\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiVerteLayoutEnums.h">
       <Filter>RHI\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h">
@@ -483,6 +486,27 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.h">
       <Filter>Renderer\Scene\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiTextureDescriptor.h">
+      <Filter>RHI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiTextureEnums.h">
+      <Filter>RHI\Common\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiResourcesEnums.h">
+      <Filter>RHI\Common\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\Includes.h">
+      <Filter>RHI\Common\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiVertexLayoutEnums.h">
+      <Filter>RHI\Common\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Textures\Texture2DDX11.h">
+      <Filter>RHI\DirectX11\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Textures\Includes.h">
+      <Filter>RHI\DirectX11\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -707,6 +731,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.cpp">
       <Filter>Renderer\Scene\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Textures\Texture2DDX11.cpp">
+      <Filter>RHI\DirectX11\Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

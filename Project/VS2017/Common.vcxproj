@@ -104,10 +104,14 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderScene.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiResourcesEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiTextureEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiVertexLayoutEnums.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h" />
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiVerteLayoutEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiTextureDescriptor.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.h" />
@@ -132,6 +136,8 @@
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Textures\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Textures\Texture2DDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.h" />
     <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.h" />
@@ -212,6 +218,7 @@
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp" />
+    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Textures\Texture2DDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.cpp" />

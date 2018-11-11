@@ -4,8 +4,11 @@
 #include <d3d11.h>
 #include "BaseBufferDX11.h"
 
-#include "../../RhiEnums.h"
 #include "../../../Core/CoreIncludes.h"
+
+#include "../../RhiEnums.h"
+#include "../../Common/Enums/Includes.h"
+
 
 class GraphicDeviceDX11;
 

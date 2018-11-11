@@ -10,6 +10,8 @@
 
 #include "../../RhiEnums.h"
 
+#include "../../Common/Enums/Includes.h"
+
 class GeometryStatesDX11
 {
 
