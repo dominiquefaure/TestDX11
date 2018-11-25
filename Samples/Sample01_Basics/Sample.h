@@ -64,10 +64,8 @@ protected:
 
 private:
 
-	void LoadShaders(  );
-	void LoadGoemetry( RhiGraphicDevice* a_device );
-
-	void DrawTriangle( RhiGraphicContext* a_context );
+	void LoadModel( RhiGraphicDevice* a_device );
+	void InitInstances( RhiGraphicDevice* a_device );
 
 	void CreateConstantBuffer( RhiGraphicDevice* a_device );
 

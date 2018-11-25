@@ -19,23 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Samples\Sample01_Basics\Sample.h" />
-    <ClInclude Include="..\..\Samples\Sample01_Basics\WinResources\Resource.h" />
-    <ClInclude Include="..\..\Samples\Sample01_Basics\WinResources\targetver.h" />
+    <ClInclude Include="..\..\Samples\Sample02_Sprites\Sample.h" />
+    <ClInclude Include="..\..\Samples\Sample02_Sprites\WinResources\Resource.h" />
+    <ClInclude Include="..\..\Samples\Sample02_Sprites\WinResources\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Samples\Sample01_Basics\main.cpp" />
-    <ClCompile Include="..\..\Samples\Sample01_Basics\Sample.cpp" />
+    <ClCompile Include="..\..\Samples\Sample02_Sprites\main.cpp" />
+    <ClCompile Include="..\..\Samples\Sample02_Sprites\Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\Samples\Sample01_Basics\WinResources\Sample1.rc" />
+    <ResourceCompile Include="..\..\Samples\Sample02_Sprites\WinResources\Sample1.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\Samples\Sample01_Basics\WinResources\Sample1.ico" />
-    <Image Include="..\..\Samples\Sample01_Basics\WinResources\small.ico" />
+    <Image Include="..\..\Samples\Sample02_Sprites\WinResources\Sample1.ico" />
+    <Image Include="..\..\Samples\Sample02_Sprites\WinResources\small.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A851A585-3A74-4D80-A803-9D309BFAE941}</ProjectGuid>
+    <ProjectGuid>{3FD51494-550E-48C6-B65E-542D8119CA7E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>HelloTriangle</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>

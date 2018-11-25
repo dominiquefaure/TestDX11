@@ -1,0 +1,17 @@
+{
+	"SupportedLayouts": [ 1 , 2 ],
+    "VertexShader":
+    {
+        "Type":0,
+        "PermutationMask":0,
+		"EntryPoint":"main",
+        "SourcePath":"SimpleVS.hlsl"
+    },
+    "PixelShader":
+    {
+        "Type":1,
+        "PermutationMask":1,
+		"EntryPoint":"main",
+        "SourcePath":"SimplePS.hlsl"
+    }
+}

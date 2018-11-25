@@ -1,0 +1,40 @@
+{
+	"GeometryDatas":
+	{
+		"PrimitiveType": 3,
+		"VertexLayout" : 2,
+		"IndexBuffer" : 
+		{
+			"IndexCount" : 6 ,
+			"Datas" :
+			[
+				0 , 1 , 2,
+				1 , 3 , 2
+			]
+		},
+		"VertexBuffer" :
+		{
+			"VertexFormat" : 7 ,
+			"VertexSize": 36 ,
+			"VertexCount" : 4 ,
+			"Datas" : 
+			[
+				-0.5 , 0.5 , 0.0, 1.0 , 1.0 , 1.0 , 1.0 , 0.0, 0.0,
+				0.5 , 0.5 , 0.0, 1.0 , 1.0 , 1.0 , 1.0 , 1.0 , 0.0 ,
+				-0.5 , -0.5 , 0.0, 1.0 , 1.0 , 1.0 , 1.0 , 0.0, 1.0,
+				0.5 , -0.5 , 0.0, 1.0 , 1.0 , 1.0 , 1.0 , 1.0 , 1.0 
+			]
+		}
+	},
+
+
+	"MeshParts" :
+	[
+		{
+			"CastShadow" : true,
+			"MaterialIndex" : 0 ,
+			"StartIndex" : 0 ,
+			"IndexCount" : 6
+		}
+	]
+}

@@ -6,28 +6,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Samples\Sample01_Basics\WinResources\targetver.h">
+    <ClInclude Include="..\..\Samples\Sample02_Sprites\WinResources\targetver.h">
       <Filter>WinResources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Samples\Sample01_Basics\WinResources\Resource.h">
+    <ClInclude Include="..\..\Samples\Sample02_Sprites\WinResources\Resource.h">
       <Filter>WinResources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Samples\Sample01_Basics\Sample.h" />
+    <ClInclude Include="..\..\Samples\Sample02_Sprites\Sample.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Samples\Sample01_Basics\main.cpp" />
-    <ClCompile Include="..\..\Samples\Sample01_Basics\Sample.cpp" />
+    <ClCompile Include="..\..\Samples\Sample02_Sprites\main.cpp" />
+    <ClCompile Include="..\..\Samples\Sample02_Sprites\Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\Samples\Sample01_Basics\WinResources\Sample1.rc">
+    <ResourceCompile Include="..\..\Samples\Sample02_Sprites\WinResources\Sample1.rc">
       <Filter>WinResources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\Samples\Sample01_Basics\WinResources\small.ico">
+    <Image Include="..\..\Samples\Sample02_Sprites\WinResources\small.ico">
       <Filter>WinResources</Filter>
     </Image>
-    <Image Include="..\..\Samples\Sample01_Basics\WinResources\Sample1.ico">
+    <Image Include="..\..\Samples\Sample02_Sprites\WinResources\Sample1.ico">
       <Filter>WinResources</Filter>
     </Image>
   </ItemGroup>

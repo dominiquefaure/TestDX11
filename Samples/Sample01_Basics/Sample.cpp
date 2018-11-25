@@ -26,7 +26,7 @@ Sample::~Sample()
 //---------------------------------------------------------------------------------------------
 void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 {
-	a_config.m_captionText									=	L"Sample01_HelloWorld";
+	a_config.m_captionText									=	L"Sample01_Basics";
 
 	a_config.m_iconResID									=	IDI_HELLOTRIANGLE;
 	a_config.m_smallIconResID								=	IDI_SMALL;
@@ -41,10 +41,12 @@ void Sample::OnInit( )
 	m_scale.Set( 1.0f , 1.0f , 1.0f );
 	m_rotate.Set( 0 , 0 , 0 );
 	m_translate.Set( 2.0f , 0.0f , 0.0f );
+	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
+
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
 
-	LoadShaders( );
-	LoadGoemetry( t_device );
+	LoadModel( t_device );
+	InitInstances( t_device );
 
 	CreateConstantBuffer( t_device );
 
@@ -65,7 +67,6 @@ void Sample::OnInit( )
 	m_perDrawConstants.m_matDiffuse.Set( 1.0 , 1.0 , 1.0 );
 
 	m_translate.Set( 0.0f , 0.0f , 0.0f );
-
 }
 //---------------------------------------------------------------------------------------------
 
@@ -80,8 +81,11 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
+void Sample::LoadModel( RhiGraphicDevice* a_device )
 {
+	m_material												=	new Material();
+	m_material->Load( "DummyMaterial.mat" );
+
 	if( FileSystem::GetInstance()->Exist( "grendizer.mesh" ) )
 	{
 		m_mesh												=	new StaticMesh();
@@ -95,12 +99,19 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 		m_mesh	=	t_importer.ImportStaticMesh();
 		m_mesh->SerializeToJSon( "grendizer.mesh" );
 	}
-
 	m_mesh->BuildRenderData( a_device );
 
 	m_model													=	new Model();
 	m_model->SetMesh( m_mesh );
 	m_model->SetMaterial( m_material );
+
+
+}
+//---------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+void Sample::InitInstances( RhiGraphicDevice* a_device )
+{
 
 	m_meshInstance1											=	new StaticModelInstance();
 	m_meshInstance1->Init( a_device , m_model );
@@ -110,18 +121,9 @@ void Sample::LoadGoemetry( RhiGraphicDevice* a_device )
 	m_meshInstance2->Init( a_device , m_model );
 	m_renderScene.AddElement( m_meshInstance2 );
 
-	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
 	m_meshInstance2->SetTransform( m_translate  , m_perDrawConstants.m_worldTransform );
 
-}
-//---------------------------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------------------------
-void Sample::LoadShaders( )
-{
-	m_material												=	new Material();
-	m_material->Load( "DummyMaterial.mat" );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -185,32 +187,11 @@ void Sample::OnDraw()
 	m_perFrameConstantBuffer.Update( &m_perFrameConstants );
 	m_perFrameConstantBuffer.Bind( t_mainContext , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
 
-//	DrawTriangle( t_mainContext );
-
 	t_mainContext->SetWireframe( false );
-//	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
+//	t_mainContext->SetCullingMode( RHI_CULLING_MODE_BACK );
 	t_mainContext->SetCullingMode( RHI_CULLING_MODE_FRONT );
 
 	m_renderScene.Draw( t_mainContext );
-
-}
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-void Sample::DrawTriangle( RhiGraphicContext* a_context )
-{
-	m_perDrawConstantBuffer.Update( &m_perDrawConstants );
-
-	m_perDrawConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_DRAW );
-
-
-	a_context->SetWireframe( false );
-//	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
-	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
-
-//	m_mesh->Draw( a_context , m_shader , 0 );
-//	m_mesh->DrawPart( 0 , a_context , m_material->GetShaderProgram() , 0 );
 
 }
 //---------------------------------------------------------------------------------------------
