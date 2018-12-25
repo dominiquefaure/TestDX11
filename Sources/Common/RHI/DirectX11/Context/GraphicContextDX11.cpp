@@ -7,6 +7,7 @@
 #include "../Shaders/Includes.h"
 
 #include "../VertexLayout/Includes.h"
+#include "../Textures/Includes.h"
 
 #ifdef _DEBUG
 #include "GraphicContextDX11.inl"
@@ -48,6 +49,7 @@ void GraphicContextDX11::Init( GraphicDeviceDX11* a_owner ,  ID3D11DeviceContext
 	m_pipelineStates.SetStateObjectManager( a_owner->GetStateObjetManager() );
 
 
+	m_defaultSamplerState									=	m_owner->CreateSamplerState( D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR , D3D11_TEXTURE_ADDRESS_WRAP , D3D11_TEXTURE_ADDRESS_WRAP , D3D11_TEXTURE_ADDRESS_WRAP );
 }
 //---------------------------------------------------------------------------------------------------------
 
@@ -236,3 +238,13 @@ void GraphicContextDX11::SetConstantBuffer( RhiShaderType a_type , int a_slot , 
 }
 //---------------------------------------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------------------------------------
+void GraphicContextDX11::SetTexture( TUint32 a_index , Texture2DDX11* a_texture )
+{
+	ID3D11ShaderResourceView* t_resourceView	=	 a_texture->GetResourceView() ;
+	m_deviceContext->PSSetShaderResources( a_index , 1 , &t_resourceView );
+
+	
+	m_deviceContext->PSSetSamplers( a_index , 1 , &m_defaultSamplerState );
+}
+//---------------------------------------------------------------------------------------------------------

@@ -25,7 +25,7 @@ class ConstantBufferDX11;
 class VertexShaderDX11;
 class PixelShaderDX11;
 class VertexLayoutDX11;
-
+class Texture2DDX11;
 
 class ImGuiWrapper;
 
@@ -116,6 +116,17 @@ public:
 
 
 
+	//////
+	// Textures Methods
+	//////
+
+	/*
+	* Set the Texture to use
+	*
+	* @param a_index	Texture Slot
+	* @param a_texture	Poitner to the Texture to use
+	*/
+	void SetTexture( TUint32 a_index , Texture2DDX11* a_texture );
 
 
 	//////
@@ -205,6 +216,7 @@ private:
 	GeometryStatesDX11		m_geometryStates;
 	PipelineStatesDX11		m_pipelineStates;
 
+	ID3D11SamplerState*		m_defaultSamplerState;
 };
 
 // The inline is included in the Header only if not in debug mode

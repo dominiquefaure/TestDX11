@@ -55,7 +55,24 @@ void GraphicDeviceDX11::Init( HWND a_handle , TUint32 a_width , TUint32 a_height
 	InitMainContext();
 
 	InitVertexLayouts();
+}
+//-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+ID3D11SamplerState* GraphicDeviceDX11::CreateSamplerState( D3D11_FILTER a_filterType , D3D11_TEXTURE_ADDRESS_MODE a_addressU , D3D11_TEXTURE_ADDRESS_MODE a_addressV , D3D11_TEXTURE_ADDRESS_MODE a_addressW )
+{
+	D3D11_SAMPLER_DESC t_desc;
+	ZeroMemory(&t_desc,sizeof(D3D11_SAMPLER_DESC));
+	t_desc.Filter											=	a_filterType;
+	t_desc.AddressU											=	a_addressU;
+	t_desc.AddressV											=	a_addressV;
+	t_desc.AddressW											=	a_addressW;
+
+	ID3D11SamplerState* t_sampler							=	NULL;
+
+	m_d3dDevice->CreateSamplerState( &t_desc ,  &t_sampler);
+
+	return t_sampler;
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -422,8 +439,10 @@ Texture2DDX11* GraphicDeviceDX11::CreateTexture2D( const RhiTextureDescriptor& a
 
 		// set the data to full the buffer with
 		t_resourceData.pSysMem								=	a_data;
-		t_resourceData.SysMemPitch							=	a_descriptor.m_width * 4;
-		t_resourceData.SysMemSlicePitch						=	a_descriptor.m_width * a_descriptor.m_height * 4;
+//		t_resourceData.SysMemPitch							=	a_descriptor.m_width * 4;
+//		t_resourceData.SysMemSlicePitch						=	a_descriptor.m_width * a_descriptor.m_height * 4;
+		t_resourceData.SysMemPitch							=	a_descriptor.m_width;
+		t_resourceData.SysMemSlicePitch						=	a_descriptor.m_width * a_descriptor.m_height;
 
 		t_result											=	m_d3dDevice->CreateTexture2D( &t_desc , &t_resourceData , &t_dxTexture );
 	}

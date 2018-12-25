@@ -36,6 +36,7 @@ class ImGuiWrapper;
 
 class GraphicDeviceDX11
 {
+	friend class GraphicContextDX11;
 	friend class SwapchainDX11;
 	friend class VertexLayoutDX11;
 	friend class Texture2DDX11;
@@ -217,6 +218,11 @@ private:
 	* Create a REsource view 
 	*/
 	ID3D11ShaderResourceView* CreateShaderResourceView( ID3D11Texture2D* a_texture );
+
+	/*
+	* Create the Sampler State Matching the given params
+	*/
+	ID3D11SamplerState* CreateSamplerState( D3D11_FILTER a_filterType , D3D11_TEXTURE_ADDRESS_MODE a_addressU , D3D11_TEXTURE_ADDRESS_MODE a_addressV , D3D11_TEXTURE_ADDRESS_MODE a_addressW );
 
 
 private:

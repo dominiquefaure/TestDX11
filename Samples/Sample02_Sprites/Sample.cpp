@@ -76,15 +76,15 @@ void Sample::OnInit( )
 	t_desc.m_usage											=	RHI_BUFFER_USAGE_IMMUTABLE;
 	t_desc.m_format											=	TEXTURE_FORMAT_R8G8B8A8;
 	t_desc.m_shaderUsage									=	SHADER_USAGE_RESOURCE_READ;
-	float t_buffer[ 8*8*4];
+	char t_buffer[ 8*8*4];
 	int t_offset=0;
 	for( int j = 0 ; j < 8 ; j ++ )
 	{
 		for( int i = 0 ; i < 8 ; i ++ )
 		{
-			t_buffer[ t_offset++ ]							=	j << 3;
-			t_buffer[ t_offset++ ]							=	i << 3;
-			t_buffer[ t_offset++ ]							=	(j << 1 ) + (i << 2 );
+			t_buffer[ t_offset++ ]							=	j << 4;
+			t_buffer[ t_offset++ ]							=	i << 5 ;
+			t_buffer[ t_offset++ ]							=	0;
 			t_buffer[ t_offset++ ]							=	255;
 		}
 	}
@@ -161,7 +161,7 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 		}
 	}
 
-	m_rotate.y												+=	0.2f * a_deltaTime;
+//	m_rotate.y												+=	0.2f * a_deltaTime;
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
@@ -187,6 +187,8 @@ void Sample::OnDraw()
 	t_mainContext->SetWireframe( false );
 //	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 	t_mainContext->SetCullingMode( RHI_CULLING_MODE_FRONT );
+
+	t_mainContext->SetTexture( 0 , m_testTexture );
 
 	m_renderScene.Draw( t_mainContext );
 
