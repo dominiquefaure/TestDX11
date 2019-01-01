@@ -1,7 +1,7 @@
 #ifndef __RENDERER_STRUCT_CONSTANT_BUFFER_H__
 #define __RENDERER_STRUCT_CONSTANT_BUFFER_H__
 
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 /*
  */

@@ -2,7 +2,7 @@
 #define __RENDERER_AMESH_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 //#include "MeshPart.h"
 

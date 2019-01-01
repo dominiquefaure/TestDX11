@@ -2,7 +2,7 @@
 #define __RENDERER_GEOMETRY_DATASET_H__
 
 #include "../../../Core/CoreIncludes.h"
-#include "../../../RHI/Includes.h"
+#include "../../../Graphics/RHI/Includes.h"
 
 class FbxMeshPartImporter;
 class BaseMesh;

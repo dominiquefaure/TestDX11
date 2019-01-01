@@ -2,7 +2,7 @@
 #define __RENDERER_GEOMETRY_RENDER_ELEMENT_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 #include "Renderer/Resources/Includes.h"
 

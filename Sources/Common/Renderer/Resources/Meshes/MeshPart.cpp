@@ -1,6 +1,6 @@
 #include "MeshPart.h"
 
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 #include "../Shaders/ShaderProgram.h"
 

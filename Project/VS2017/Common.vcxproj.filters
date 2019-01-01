@@ -16,24 +16,6 @@
     <Filter Include="Inputs">
       <UniqueIdentifier>{22f5a35d-d935-4243-9ea6-8a83d3b6e9f5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RHI">
-      <UniqueIdentifier>{5d1192e4-7544-47f7-abff-502c83eddd9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\DirectX11">
-      <UniqueIdentifier>{2a64781d-bfaf-44fd-9b1c-35e9bcce2180}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\DirectX11\Buffers">
-      <UniqueIdentifier>{5c119605-2d2e-4c70-91a9-0a0c05a7c003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\DirectX11\Context">
-      <UniqueIdentifier>{9d00a3ec-ad09-4c8a-8bfa-88eb356e861f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\DirectX11\StateObjects">
-      <UniqueIdentifier>{84d98df0-a1d4-4ea3-b65c-1c50a7514979}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\DirectX11\Shaders">
-      <UniqueIdentifier>{80c48978-d8b3-4957-bc19-f45b35132f92}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\IO">
       <UniqueIdentifier>{4de39819-ca2b-450f-b54f-3416d0a68bfa}</UniqueIdentifier>
     </Filter>
@@ -42,12 +24,6 @@
     </Filter>
     <Filter Include="Core\IO\JSon">
       <UniqueIdentifier>{6606e780-f19b-43a8-9492-d475124ee8f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\DirectX11\VertexLayout">
-      <UniqueIdentifier>{ad004644-506d-48d4-b082-02a9d80b6191}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\Common">
-      <UniqueIdentifier>{67055bdf-fbe1-43a5-b9ca-b48fe56bac3f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Math">
       <UniqueIdentifier>{5eb73dfd-c8e2-43ad-be78-abd9a7efee2c}</UniqueIdentifier>
@@ -75,9 +51,6 @@
     </Filter>
     <Filter Include="Core\Utils">
       <UniqueIdentifier>{a6b03efc-0c98-4df9-8796-cd0300637dbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RHI\Common\ShaderReflection">
-      <UniqueIdentifier>{9f6dfa59-e971-435a-9b2d-f72d303a4860}</UniqueIdentifier>
     </Filter>
     <Filter Include="Renderer\Scene\Elements">
       <UniqueIdentifier>{53ac3b6c-6ab7-4f18-a3f5-a42261ce38a1}</UniqueIdentifier>
@@ -112,11 +85,41 @@
     <Filter Include="Renderer\Scene\Rendering">
       <UniqueIdentifier>{fc0fab15-3f8b-4d8c-9c2d-cbe1c1eff7fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RHI\Common\Enums">
-      <UniqueIdentifier>{0b3c98bb-930a-4242-a4de-e1239b881a49}</UniqueIdentifier>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{bb46a605-c81a-44cc-895a-5566e59f275e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RHI\DirectX11\Textures">
+    <Filter Include="Graphics\RHI">
+      <UniqueIdentifier>{5d1192e4-7544-47f7-abff-502c83eddd9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11">
+      <UniqueIdentifier>{2a64781d-bfaf-44fd-9b1c-35e9bcce2180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11\Buffers">
+      <UniqueIdentifier>{5c119605-2d2e-4c70-91a9-0a0c05a7c003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11\Context">
+      <UniqueIdentifier>{9d00a3ec-ad09-4c8a-8bfa-88eb356e861f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11\StateObjects">
+      <UniqueIdentifier>{84d98df0-a1d4-4ea3-b65c-1c50a7514979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11\Shaders">
+      <UniqueIdentifier>{80c48978-d8b3-4957-bc19-f45b35132f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11\VertexLayout">
+      <UniqueIdentifier>{ad004644-506d-48d4-b082-02a9d80b6191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\DirectX11\Textures">
       <UniqueIdentifier>{8ee7ac6e-2861-4721-874b-842bca96f9c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\Common">
+      <UniqueIdentifier>{67055bdf-fbe1-43a5-b9ca-b48fe56bac3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\Common\ShaderReflection">
+      <UniqueIdentifier>{9f6dfa59-e971-435a-9b2d-f72d303a4860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RHI\Common\Enums">
+      <UniqueIdentifier>{0b3c98bb-930a-4242-a4de-e1239b881a49}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -157,74 +160,74 @@
       <Filter>Inputs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Includes.h" />
-    <ClInclude Include="..\..\Sources\Common\RHI\RhiManager.h">
-      <Filter>RHI</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\RhiManager.h">
+      <Filter>Graphics\RHI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\RhiWrapper.h">
-      <Filter>RHI</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\RhiWrapper.h">
+      <Filter>Graphics\RHI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\RhiEnums.h">
-      <Filter>RHI</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\RhiEnums.h">
+      <Filter>Graphics\RHI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.h">
-      <Filter>RHI\DirectX11</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\GraphicDeviceDX11.h">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\IncludesDX11.h">
-      <Filter>RHI\DirectX11</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\IncludesDX11.h">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.h">
-      <Filter>RHI\DirectX11</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\SwapchainDX11.h">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.h">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\BaseBufferDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\Includes.h">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\Includes.h">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.h">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\IndexBufferDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.h">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\VertexBufferDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.h">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\GeometryStatesDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.h">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\GraphicContextDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\Includes.h">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\Includes.h">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.h">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\PipelineStatesDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h">
-      <Filter>RHI\DirectX11\StateObjects</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.h">
+      <Filter>Graphics\RHI\DirectX11\StateObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h">
-      <Filter>RHI\DirectX11\StateObjects</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.h">
+      <Filter>Graphics\RHI\DirectX11\StateObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\Includes.h">
-      <Filter>RHI\DirectX11\StateObjects</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\StateObjects\Includes.h">
+      <Filter>Graphics\RHI\DirectX11\StateObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Includes.h">
-      <Filter>RHI</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Includes.h">
+      <Filter>Graphics\RHI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\BaseShaderDX11.h">
-      <Filter>RHI\DirectX11\Shaders</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Shaders\BaseShaderDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\VertexShaderDX11.h">
-      <Filter>RHI\DirectX11\Shaders</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Shaders\VertexShaderDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\PixelShaderDX11.h">
-      <Filter>RHI\DirectX11\Shaders</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Shaders\PixelShaderDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\ShaderByteCodeDX11.h">
-      <Filter>RHI\DirectX11\Shaders</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Shaders\ShaderByteCodeDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Shaders\Includes.h">
-      <Filter>RHI\DirectX11\Shaders</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Shaders\Includes.h">
+      <Filter>Graphics\RHI\DirectX11\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\IO\FileSystem.h">
       <Filter>Core\IO</Filter>
@@ -244,20 +247,20 @@
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\JsonEnums.h">
       <Filter>Core\IO\JSon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.h">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexElementDX11.h">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.h">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexLayoutDX11.h">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\Includes.h">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\Includes.h">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.h">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.h">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.h">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\ConstantBufferDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\Math\Vector3F.h">
       <Filter>Core\Math</Filter>
@@ -277,11 +280,11 @@
     <ClInclude Include="..\..\Sources\Common\Core\Math\Matrix44.h">
       <Filter>Core\Math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderCompilationParams.h">
-      <Filter>RHI\Common</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiShaderCompilationParams.h">
+      <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\Includes.h">
-      <Filter>RHI\Common</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Includes.h">
+      <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h">
       <Filter>Renderer\Importers\Fbx</Filter>
@@ -322,23 +325,23 @@
     <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h">
       <Filter>Core\Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiShaderParameterCommon.h">
-      <Filter>RHI\Common</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiShaderParameterCommon.h">
+      <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.h">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.h">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.h">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderParameterDesc.h">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.h">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.h">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\ShaderReflection\Includes.h">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\Includes.h">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.h">
       <Filter>Renderer\Importers\Fbx</Filter>
@@ -487,26 +490,26 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.h">
       <Filter>Renderer\Scene\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\RhiTextureDescriptor.h">
-      <Filter>RHI\Common</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiTextureDescriptor.h">
+      <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiTextureEnums.h">
-      <Filter>RHI\Common\Enums</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiTextureEnums.h">
+      <Filter>Graphics\RHI\Common\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiResourcesEnums.h">
-      <Filter>RHI\Common\Enums</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiResourcesEnums.h">
+      <Filter>Graphics\RHI\Common\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\Includes.h">
-      <Filter>RHI\Common\Enums</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\Includes.h">
+      <Filter>Graphics\RHI\Common\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\Common\Enums\RhiVertexLayoutEnums.h">
-      <Filter>RHI\Common\Enums</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiVertexLayoutEnums.h">
+      <Filter>Graphics\RHI\Common\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Textures\Texture2DDX11.h">
-      <Filter>RHI\DirectX11\Textures</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\Texture2DDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\RHI\DirectX11\Textures\Includes.h">
-      <Filter>RHI\DirectX11\Textures</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\Includes.h">
+      <Filter>Graphics\RHI\DirectX11\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -522,41 +525,41 @@
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp">
       <Filter>Inputs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\RhiManager.cpp">
-      <Filter>RHI</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\RhiManager.cpp">
+      <Filter>Graphics\RHI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.cpp">
-      <Filter>RHI\DirectX11</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\SwapchainDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.cpp">
-      <Filter>RHI\DirectX11</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\GraphicDeviceDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.cpp">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\IndexBufferDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.cpp">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\VertexBufferDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.cpp">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\BaseBufferDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.cpp">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\GraphicContextDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.cpp">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\PipelineStatesDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Context\GeometryStatesDX11.cpp">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\GeometryStatesDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp">
-      <Filter>RHI\DirectX11\StateObjects</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\StateObjects\StateObjectsManagerDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\StateObjects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp">
-      <Filter>RHI\DirectX11\StateObjects</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\StateObjects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Shaders\ShaderByteCodeDX11.cpp">
-      <Filter>RHI\DirectX11\Shaders</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Shaders\ShaderByteCodeDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp">
       <Filter>Core\IO</Filter>
@@ -564,17 +567,17 @@
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp">
       <Filter>Core\IO</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.cpp">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexElementDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexLayoutDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.cpp">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexLayoutManagerDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Buffers\ConstantBufferDX11.cpp">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\ConstantBufferDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Math\Vector3F.cpp">
       <Filter>Core\Math</Filter>
@@ -618,14 +621,14 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp">
       <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderParameterDesc.cpp">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.cpp">
       <Filter>Renderer\Importers\Fbx</Filter>
@@ -732,46 +735,46 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderList.cpp">
       <Filter>Renderer\Scene\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\RHI\DirectX11\Textures\Texture2DDX11.cpp">
-      <Filter>RHI\DirectX11\Textures</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\Texture2DDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Sources\Common\RHI\RhiManager.inl">
-      <Filter>RHI</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\RhiManager.inl">
+      <Filter>Graphics\RHI</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\GraphicDeviceDX11.inl">
-      <Filter>RHI\DirectX11</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\GraphicDeviceDX11.inl">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\SwapchainDX11.inl">
-      <Filter>RHI\DirectX11</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\SwapchainDX11.inl">
+      <Filter>Graphics\RHI\DirectX11</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\BaseBufferDX11.inl">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\BaseBufferDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\IndexBufferDX11.inl">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\IndexBufferDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\Buffers\VertexBufferDX11.inl">
-      <Filter>RHI\DirectX11\Buffers</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Buffers\VertexBufferDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\Buffers</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\Context\GraphicContextDX11.inl">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\GraphicContextDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\Context\PipelineStatesDX11.inl">
-      <Filter>RHI\DirectX11\Context</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Context\PipelineStatesDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\Context</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.inl">
-      <Filter>RHI\DirectX11\StateObjects</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\StateObjects\RasterizerStateDescriptorDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\StateObjects</Filter>
     </None>
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl">
       <Filter>Core\IO</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexElementDX11.inl">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexElementDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\DirectX11\VertexLayout\VertexLayoutDX11.inl">
-      <Filter>RHI\DirectX11\VertexLayout</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\DirectX11\VertexLayout\VertexLayoutDX11.inl">
+      <Filter>Graphics\RHI\DirectX11\VertexLayout</Filter>
     </None>
     <None Include="..\..\Sources\Common\Core\Math\Matrix44.inl">
       <Filter>Core\Math</Filter>
@@ -794,14 +797,14 @@
     <None Include="..\..\Sources\Common\Application\GameApplication.inl">
       <Filter>Application</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.inl">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.inl">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderParameterDesc.inl">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderParameterDesc.inl">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </None>
-    <None Include="..\..\Sources\Common\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.inl">
-      <Filter>RHI\Common\ShaderReflection</Filter>
+    <None Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.inl">
+      <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </None>
     <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.inl">
       <Filter>Renderer\Resources\Geometry</Filter>

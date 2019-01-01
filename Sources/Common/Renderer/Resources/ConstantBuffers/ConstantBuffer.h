@@ -2,7 +2,7 @@
 #define __RENDERER_CONSTANT_BUFFER_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 /*
  * Platform independant version of ConstantBuffer

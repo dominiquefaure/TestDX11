@@ -2,7 +2,7 @@
 #define __RENDERER_GEOMETRY_STATIC_GEOMETRY_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 class GeometryDataset;
 class ShaderProgram;

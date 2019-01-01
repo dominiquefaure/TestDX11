@@ -3,7 +3,7 @@
 
 #include "Core/CoreIncludes.h"
 
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 class ShaderPermutation;
 

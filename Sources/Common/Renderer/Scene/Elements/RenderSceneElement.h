@@ -2,7 +2,7 @@
 #define __RENDER_SCENE_ELEMENT_H__
 
 #include "../../../Core/CoreIncludes.h"
-#include "../../../RHI/Includes.h"
+#include "../../../Graphics/RHI/Includes.h"
 
 class GeometryRenderList;
 

@@ -2,7 +2,7 @@
 #define __RENDERER_MATERIAL_PARAMETER_DESCRIPTOR_COLLECTION_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 #include "MaterialParameterDescriptor.h"
 

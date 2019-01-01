@@ -2,7 +2,7 @@
 #define __RENDEREDER_MESH_PART_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 
 
 

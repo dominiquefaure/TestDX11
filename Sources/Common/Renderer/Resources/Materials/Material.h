@@ -2,7 +2,7 @@
 #define __RENDERER_RESOURCES_MATERIALS_H__
 
 #include "Core/CoreIncludes.h"
-#include "RHI/Includes.h"
+#include "Graphics/RHI/Includes.h"
 #include "../ConstantBuffers/Includes.h"
 
 #include "Parameters/Includes.h"

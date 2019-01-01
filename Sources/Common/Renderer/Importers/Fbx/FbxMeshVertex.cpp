@@ -1,6 +1,6 @@
 #include "FbxMeshVertex.h"
 
-#include "../../../RHI/Includes.h"
+#include "../../../Graphics/RHI/Includes.h"
 
 //---------------------------------------------------------------------------------------------
 FbxMeshVertex::FbxMeshVertex()
