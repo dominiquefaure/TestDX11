@@ -166,7 +166,9 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 		}
 	}
 
-	m_rotate.y												+=	0.2f * a_deltaTime;
+	m_rotate.x += 0.2f * a_deltaTime;
+	m_rotate.y += 0.2f * a_deltaTime;
+	m_rotate.z												+=	0.2f * a_deltaTime;
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
@@ -241,6 +243,8 @@ void Sample::DrawDebugUI()
 			m_perFrameConstants.m_lightDiffuse.Set( t_values[ 0 ] , t_values[ 1 ] , t_values[ 2 ] );
 		}
 	}	
+
+	ImGui::Checkbox("combine", &Matrix44::s_useCompose );
 }
 //---------------------------------------------------------------------------------------------
 

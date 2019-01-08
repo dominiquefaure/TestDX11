@@ -347,6 +347,9 @@ public:
 		};
 #endif
 	};
+
+public:
+	static bool s_useCompose;
 };
 
 // The inline is included in the Header only if not in debug mode

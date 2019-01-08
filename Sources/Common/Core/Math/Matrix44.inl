@@ -420,24 +420,28 @@ FORCE_INLINE void Matrix44::SetRotate( float a_pitch , float a_yaw , float a_rol
 	float t_cosPitch										=	Maths::Cos( a_pitch );
 	float t_sinPitch										=	Maths::Sin( a_pitch );
 
+
+	float t_sinPitchSinYaw									=	t_sinPitch * t_sinYaw;
+	float t_cosPitchSinYaw									=	t_cosPitch * t_sinYaw;
+
 	_m00													=	t_cosYaw * t_cosRoll;
-	_m01													=	t_cosYaw * t_sinRoll;
-	_m02													=	t_sinYaw;
-	_m03													=	0.f;
-
-	_m10													=	t_sinPitch * t_sinYaw * t_cosRoll - t_cosPitch * t_sinRoll;
-	_m11													=	t_sinPitch * t_sinYaw * t_sinRoll + t_cosPitch * t_cosRoll;
-	_m12													=	-t_sinPitch * t_cosYaw;
-	_m13													= 0.f;
-
-	_m20													=	-( t_cosPitch * t_sinYaw * t_cosRoll + t_sinPitch * t_sinRoll );
-	_m21													=	t_cosRoll * t_sinPitch - t_cosPitch * t_sinYaw * t_sinRoll;
-	_m22													=	t_cosPitch * t_cosYaw;
-	_m23													=	0.f;
-
+	_m10													=	t_cosYaw * t_sinRoll;
+	_m20													=	-t_sinYaw;
 	_m30													=	0.0f;
+
+	_m01													=	( t_sinPitchSinYaw * t_cosRoll ) - ( t_cosPitch * t_sinRoll );
+	_m11													=	( t_sinPitchSinYaw * t_sinRoll ) + ( t_cosPitch * t_cosRoll );
+	_m21													=	t_sinPitch * t_cosYaw;
 	_m31													=	0.0f;
+
+	_m02													=	( t_cosPitchSinYaw * t_cosRoll ) + ( t_sinPitch * t_sinRoll );
+	_m12													=	( t_cosPitchSinYaw * t_sinRoll ) - ( t_sinPitch * t_cosRoll );
+	_m22													=	t_cosPitch * t_cosYaw;
 	_m32													=	0.0f;
+
+	_m03													=	0.0f;
+	_m13													=	0.0f;
+	_m23													=	0.0f;
 	_m33													=	1.0f;
 
 }
@@ -446,7 +450,22 @@ FORCE_INLINE void Matrix44::SetRotate( float a_pitch , float a_yaw , float a_rol
 //-----------------------------------------------------------------------------------------
 FORCE_INLINE void Matrix44::SetRotate( const Vector3F& a_rotation )
 {
-	SetRotate( a_rotation.x , a_rotation.y , a_rotation.z );
+	if (s_useCompose)
+	{
+		SetRotate( a_rotation.x , a_rotation.y , a_rotation.z );
+	}
+	else
+	{
+		Matrix44 t_rotX;
+		Matrix44 t_rotY;
+		Matrix44 t_rotZ;
+
+		t_rotX.SetRotateX(a_rotation.x);
+		t_rotY.SetRotateY(a_rotation.y);
+		t_rotZ.SetRotateZ(a_rotation.z);
+
+		*this = t_rotX * t_rotY * t_rotZ;
+	}
 }
 //-----------------------------------------------------------------------------------------
 
