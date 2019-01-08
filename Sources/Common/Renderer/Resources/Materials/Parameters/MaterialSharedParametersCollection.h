@@ -64,7 +64,7 @@ public:
 	*
 	* @param a_paramName	name of the parameter we want to get the value
 	* @param a_value		out parameter that receive the value
-	* @return false if no parameter found or invlid type
+	* @return false if no parameter found or invalid type
 	*/
 	bool GetValue( const std::string& a_paramName , Vector4F& a_value )const;
 
