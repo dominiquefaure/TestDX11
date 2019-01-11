@@ -43,10 +43,10 @@ FORCE_INLINE Matrix44::Matrix44( const Matrix44& a_other )
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE Matrix44::Matrix44(	float m00 , float m01 , float m02 ,float m03 ,
-									float m10 , float m11 , float m12 ,float m13 ,
-									float m20 , float m21 , float m22 ,float m23 ,
-									float m30 , float m31 , float m32 ,float m33 )
+FORCE_INLINE Matrix44::Matrix44(	TFloat32 m00 , TFloat32 m01 , TFloat32 m02 ,TFloat32 m03 ,
+									TFloat32 m10 , TFloat32 m11 , TFloat32 m12 ,TFloat32 m13 ,
+									TFloat32 m20 , TFloat32 m21 , TFloat32 m22 ,TFloat32 m23 ,
+									TFloat32 m30 , TFloat32 m31 , TFloat32 m32 ,TFloat32 m33 )
 {
 	M[ 0 ][ 0 ]												=	m00;
 	M[ 0 ][ 1 ]												=	m01;
@@ -70,6 +70,30 @@ FORCE_INLINE Matrix44::Matrix44(	float m00 , float m01 , float m02 ,float m03 ,
 
 }
 //-----------------------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------------------
+FORCE_INLINE void Matrix44::SetValues(	TFloat32 m00 , TFloat32 m01 , TFloat32 m02 , TFloat32 m03 ,
+										TFloat32 m10 , TFloat32 m11 , TFloat32 m12 , TFloat32 m13 ,
+										TFloat32 m20 , TFloat32 m21 , TFloat32 m22 , TFloat32 m23 ,
+										TFloat32 m30 , TFloat32 m31 , TFloat32 m32 , TFloat32 m33 )
+{
+
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+	Rows[ 0 ].Set( m00 , m01 , m02 , m03 );
+	Rows[ 1 ].Set( m10 , m11 , m12 , m13 );
+	Rows[ 2 ].Set( m20 , m21 , m22 , m23 );
+	Rows[ 3 ].Set( m30 , m31 , m32 , m33 );
+#else
+	Columns[ 0 ].Set( m00 , m01 , m02 , m03 );
+	Columns[ 1 ].Set( m10 , m11 , m12 , m13 );
+	Columns[ 2 ].Set( m20 , m21 , m22 , m23 );
+	Columns[ 3 ].Set( m30 , m31 , m32 , m33 );
+#endif
+
+}
+//-----------------------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------------------
 FORCE_INLINE void Matrix44::SetIdentity()
@@ -97,28 +121,28 @@ FORCE_INLINE void Matrix44::SetIdentity()
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE float Matrix44::GetDeterminant()const
+FORCE_INLINE TFloat32 Matrix44::GetDeterminant()const
 {
-	float t00												=	( M[ 2 ][ 2 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 2 ] );
-	float t01												=	( M[ 2 ][ 3 ] * M[ 3 ][ 1 ] ) - ( M[ 2 ][ 1 ] * M[ 3 ][ 3 ] );
-	float t02												=	( M[ 2 ][ 1 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 1 ] );
+	TFloat32 t00											=	( M[ 2 ][ 2 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 2 ] );
+	TFloat32 t01											=	( M[ 2 ][ 3 ] * M[ 3 ][ 1 ] ) - ( M[ 2 ][ 1 ] * M[ 3 ][ 3 ] );
+	TFloat32 t02											=	( M[ 2 ][ 1 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 1 ] );
 
-	float t10												=	t00;
-	float t11												=	( M[ 2 ][ 3 ] * M[ 3 ][ 0 ] ) - ( M[ 2 ][ 0 ] * M[ 3 ][ 3 ] );
-	float t12												=	( M[ 2 ][ 0 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 0 ] );
+	TFloat32 t10											=	t00;
+	TFloat32 t11											=	( M[ 2 ][ 3 ] * M[ 3 ][ 0 ] ) - ( M[ 2 ][ 0 ] * M[ 3 ][ 3 ] );
+	TFloat32 t12											=	( M[ 2 ][ 0 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 0 ] );
 
-	float t20												=	( M[ 2 ][ 1 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 1 ] );
-	float t21												=	t11;
-	float t22												=	( M[ 2 ][ 0 ] * M[ 3 ][ 1 ] ) - ( M[ 2 ][ 1 ] * M[ 3 ][ 0 ] );
+	TFloat32 t20											=	( M[ 2 ][ 1 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 1 ] );
+	TFloat32 t21											=	t11;
+	TFloat32 t22											=	( M[ 2 ][ 0 ] * M[ 3 ][ 1 ] ) - ( M[ 2 ][ 1 ] * M[ 3 ][ 0 ] );
 
-	float t30												=	t02;
-	float t31												=	( M[ 2 ][ 2 ] * M[ 3 ][ 0 ] ) - ( M[ 2 ][ 0 ] * M[ 3 ][ 2 ] );
-	float t32												=	t22;
+	TFloat32 t30											=	t02;
+	TFloat32 t31											=	( M[ 2 ][ 2 ] * M[ 3 ][ 0 ] ) - ( M[ 2 ][ 0 ] * M[ 3 ][ 2 ] );
+	TFloat32 t32											=	t22;
 
-	float t0												=	( M[ 1 ][ 1 ] * t00 ) + ( M[ 1 ][ 2 ] * t01 ) + ( M[ 1 ][ 3 ] * t02 );
-	float t1												=	( M[ 1 ][ 0 ] * t10 ) + ( M[ 1 ][ 2 ] * t11 ) + ( M[ 1 ][ 3 ] * t12 );
-	float t2												=	( M[ 1 ][ 0 ] * t20 ) + ( M[ 1 ][ 1 ] * t21 ) + ( M[ 1 ][ 3 ] * t22 );
-	float t3												=	( M[ 1 ][ 0 ] * t30 ) + ( M[ 1 ][ 1 ] * t31 ) + ( M[ 1 ][ 2 ] * t32 );
+	TFloat32 t0												=	( M[ 1 ][ 1 ] * t00 ) + ( M[ 1 ][ 2 ] * t01 ) + ( M[ 1 ][ 3 ] * t02 );
+	TFloat32 t1												=	( M[ 1 ][ 0 ] * t10 ) + ( M[ 1 ][ 2 ] * t11 ) + ( M[ 1 ][ 3 ] * t12 );
+	TFloat32 t2												=	( M[ 1 ][ 0 ] * t20 ) + ( M[ 1 ][ 1 ] * t21 ) + ( M[ 1 ][ 3 ] * t22 );
+	TFloat32 t3												=	( M[ 1 ][ 0 ] * t30 ) + ( M[ 1 ][ 1 ] * t31 ) + ( M[ 1 ][ 2 ] * t32 );
 
 	return ( ( M[ 0 ][ 0 ] * t0 ) - ( M[ 0 ][ 1 ] * t1 ) + ( M[ 0 ][ 2 ] * t2 ) - ( M[ 0 ][ 3 ] * t3 ) );
 }
@@ -137,29 +161,29 @@ FORCE_INLINE void Matrix44::Inverse()
 		Matrix44 t_temp;
 
 		// copy the different cross product components
-		float t_1201										=	( M[ 1 ][ 0 ] * M[ 2 ][ 1 ] ) - ( M[ 1 ][ 1 ] * M[ 2 ][ 0 ] );
-		float t_1202										=	( M[ 1 ][ 0 ] * M[ 2 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 2 ][ 0 ] );
-		float t_1203										=	( M[ 1 ][ 0 ] * M[ 2 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 2 ][ 0 ] );
+		TFloat32 t_1201										=	( M[ 1 ][ 0 ] * M[ 2 ][ 1 ] ) - ( M[ 1 ][ 1 ] * M[ 2 ][ 0 ] );
+		TFloat32 t_1202										=	( M[ 1 ][ 0 ] * M[ 2 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 2 ][ 0 ] );
+		TFloat32 t_1203										=	( M[ 1 ][ 0 ] * M[ 2 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 2 ][ 0 ] );
 
-		float t_1212										=	( M[ 1 ][ 1 ] * M[ 2 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 2 ][ 1 ] );
-		float t_1213										=	( M[ 1 ][ 1 ] * M[ 2 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 2 ][ 1 ] );
-		float t_1223										=	( M[ 1 ][ 2 ] * M[ 2 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 2 ][ 2 ] );
+		TFloat32 t_1212										=	( M[ 1 ][ 1 ] * M[ 2 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 2 ][ 1 ] );
+		TFloat32 t_1213										=	( M[ 1 ][ 1 ] * M[ 2 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 2 ][ 1 ] );
+		TFloat32 t_1223										=	( M[ 1 ][ 2 ] * M[ 2 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 2 ][ 2 ] );
 
-		float t_1301										=	( M[ 1 ][ 0 ] * M[ 3 ][ 1 ] ) - ( M[ 1 ][ 1 ] * M[ 3 ][ 0 ] );
-		float t_1302										=	( M[ 1 ][ 0 ] * M[ 3 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 3 ][ 0 ] );
-		float t_1303										=	( M[ 1 ][ 0 ] * M[ 3 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 3 ][ 0 ] );
+		TFloat32 t_1301										=	( M[ 1 ][ 0 ] * M[ 3 ][ 1 ] ) - ( M[ 1 ][ 1 ] * M[ 3 ][ 0 ] );
+		TFloat32 t_1302										=	( M[ 1 ][ 0 ] * M[ 3 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 3 ][ 0 ] );
+		TFloat32 t_1303										=	( M[ 1 ][ 0 ] * M[ 3 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 3 ][ 0 ] );
 
-		float t_1312										=	( M[ 1 ][ 1 ] * M[ 3 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 3 ][ 1 ] );
-		float t_1313										=	( M[ 1 ][ 1 ] * M[ 3 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 3 ][ 1 ] );
-		float t_1323										=	( M[ 1 ][ 2 ] * M[ 3 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 3 ][ 2 ] );
+		TFloat32 t_1312										=	( M[ 1 ][ 1 ] * M[ 3 ][ 2 ] ) - ( M[ 1 ][ 2 ] * M[ 3 ][ 1 ] );
+		TFloat32 t_1313										=	( M[ 1 ][ 1 ] * M[ 3 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 3 ][ 1 ] );
+		TFloat32 t_1323										=	( M[ 1 ][ 2 ] * M[ 3 ][ 3 ] ) - ( M[ 1 ][ 3 ] * M[ 3 ][ 2 ] );
 
-		float t_2301										=	( M[ 2 ][ 0 ] * M[ 3 ][ 1 ] ) - ( M[ 2 ][ 1 ] * M[ 3 ][ 0 ] );
-		float t_2302										=	( M[ 2 ][ 0 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 0 ] );
-		float t_2303										=	( M[ 2 ][ 0 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 0 ] );
+		TFloat32 t_2301										=	( M[ 2 ][ 0 ] * M[ 3 ][ 1 ] ) - ( M[ 2 ][ 1 ] * M[ 3 ][ 0 ] );
+		TFloat32 t_2302										=	( M[ 2 ][ 0 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 0 ] );
+		TFloat32 t_2303										=	( M[ 2 ][ 0 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 0 ] );
 
-		float t_2312										=	( M[ 2 ][ 1 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 1 ] );
-		float t_2313										=	( M[ 2 ][ 1 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 1 ] );
-		float t_2323										=	( M[ 2 ][ 2 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 2 ] );
+		TFloat32 t_2312										=	( M[ 2 ][ 1 ] * M[ 3 ][ 2 ] ) - ( M[ 2 ][ 2 ] * M[ 3 ][ 1 ] );
+		TFloat32 t_2313										=	( M[ 2 ][ 1 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 1 ] );
+		TFloat32 t_2323										=	( M[ 2 ][ 2 ] * M[ 3 ][ 3 ] ) - ( M[ 2 ][ 3 ] * M[ 3 ][ 2 ] );
 
 		// Set the Temp Matrix value
 		t_temp.M[ 0 ][ 0 ]									=	( M[ 1 ] [ 1 ] * t_2323 ) - ( M[ 1 ] [ 2 ] * t_2313 ) + ( M[ 1 ][ 3 ] * t_2312 );
@@ -183,12 +207,12 @@ FORCE_INLINE void Matrix44::Inverse()
 		t_temp.M[ 3 ][ 3 ]									=	( M[ 0 ] [ 0 ] * t_1212 ) - ( M[ 0 ] [ 1 ] * t_1202 ) + ( M[ 0 ][ 2 ] * t_1201 );
 
 		//compute the determinant
-		float t_determinant									=	( M[ 0 ][ 0 ] * t_temp.M[ 0 ][ 0 ] ) +( M[ 1 ][ 0 ] * t_temp.M[ 0 ][ 1 ] ) + ( M[ 0 ][ 2 ] * t_temp.M[ 3 ][ 0 ] ) + ( M[ 3 ][ 0 ] * t_temp.M[ 0 ][ 3 ] );
+		TFloat32 t_determinant								=	( M[ 0 ][ 0 ] * t_temp.M[ 0 ][ 0 ] ) +( M[ 1 ][ 0 ] * t_temp.M[ 0 ][ 1 ] ) + ( M[ 0 ][ 2 ] * t_temp.M[ 3 ][ 0 ] ) + ( M[ 3 ][ 0 ] * t_temp.M[ 0 ][ 3 ] );
 
 		// if big enough
 		if( t_determinant > 1.0e-16f )
 		{
-			float t_scale									=	1.0f / t_determinant;
+			TFloat32 t_scale								=	1.0f / t_determinant;
 
 			*this											=	t_temp * t_scale;
 		}
@@ -271,7 +295,7 @@ FORCE_INLINE Matrix44 Matrix44::GetTranspose()const
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE bool Matrix44::IsEqual( const Matrix44& a_other , float a_tolerance )
+FORCE_INLINE bool Matrix44::IsEqual( const Matrix44& a_other , TFloat32 a_tolerance )
 {
 	for( int j = 0 ; j < 4 ; j ++ )
 	{
@@ -300,15 +324,12 @@ FORCE_INLINE void Matrix44::SetTranslate( const Vector3F& a_translation )
 	//reset the Matrix to identity
 	SetIdentity();
 
-	_m30													=	a_translation.x;
-	_m31													=	a_translation.y;
-	_m32													=	a_translation.z;
+	// Set the Translation to column 3
+	SetColumn( 3 , a_translation );
 }
 //-----------------------------------------------------------------------------------------
 
-//	FORCE_INLINE void Translate( const Vector3F& a_translation );
 
-//	FORCE_INLINE void PostTranslate( const Vector3F& a_translation );
 
 
 ////////////
@@ -318,36 +339,30 @@ FORCE_INLINE void Matrix44::SetTranslate( const Vector3F& a_translation )
 //-----------------------------------------------------------------------------------------
 FORCE_INLINE void Matrix44::SetScale( const Vector3F& a_scale )
 {
-	//reset the Matrix to identity
-	SetIdentity();
-
-	_m00													=	a_scale.x;
-	_m11													=	a_scale.y;
-	_m22													=	a_scale.z;
+	SetValues(	a_scale.x	, 0.0f		, 0.0f		, 0.0f ,
+				0.0f		, a_scale.y , 0.0f		, 0.0f ,
+				0.0f		, 0.0f		, a_scale.z	, 0.0f ,
+				0.0f		, 0.0f		, 0.0f		, 1.0f );
 }
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetScale( float a_scale )
+FORCE_INLINE void Matrix44::SetScale( TFloat32 a_scale )
 {
-	//reset the Matrix to identity
-	SetIdentity();
-
-	_m00													=	a_scale;
-	_m11													=	a_scale;
-	_m22													=	a_scale;
+	SetValues(	a_scale	, 0.0f		, 0.0f		, 0.0f ,
+				0.0f	, a_scale	, 0.0f		, 0.0f ,
+				0.0f	, 0.0f		, a_scale	, 0.0f ,
+				0.0f	, 0.0f		, 0.0f		, 1.0f );
 }
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetScale( float a_scaleX , float a_scaleY , float a_scaleZ )
+FORCE_INLINE void Matrix44::SetScale( TFloat32 a_scaleX , TFloat32 a_scaleY , TFloat32 a_scaleZ )
 {
-	//reset the Matrix to identity
-	SetIdentity();
-
-	_m00													=	a_scaleX;
-	_m11													=	a_scaleY;
-	_m22													=	a_scaleZ;
+	SetValues(	a_scaleX, 0.0f		, 0.0f		, 0.0f ,
+				0.0f	, a_scaleY	, 0.0f		, 0.0f ,
+				0.0f	, 0.0f		, a_scaleZ	, 0.0f ,
+				0.0f	, 0.0f		, 0.0f		, 1.0f );
 }
 //-----------------------------------------------------------------------------------------
 
@@ -356,73 +371,65 @@ FORCE_INLINE void Matrix44::SetScale( float a_scaleX , float a_scaleY , float a_
 // Rotate Methods
 /////////////
 
-
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetRotateX( float a_angle )
+FORCE_INLINE void Matrix44::SetRotateX( TFloat32 a_angle )
 {
 	// compute cos and sin
-	float t_cos												=	Maths::Cos( a_angle );
-	float t_sin												=	Maths::Sin( a_angle );
+	TFloat32 t_cos											=	Maths::Cos( a_angle );
+	TFloat32 t_sin											=	Maths::Sin( a_angle );
 
-	// reset the Matrix to Identity
-	SetIdentity();
+	SetValues(	1.0f	, 0.0f		, 0.0f		, 0.0f ,
+				0.0f	, t_cos		, -t_sin	, 0.0f ,
+				0.0f	, t_sin		, t_cos		, 0.0f ,
+				0.0f	, 0.0f		, 0.0f		, 1.0f );
 
-	_m11													=	t_cos;
-	_m12													=	-t_sin;
-	_m21													=	t_sin;
-	_m22													=	t_cos;
 }
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetRotateY( float a_angle )
+FORCE_INLINE void Matrix44::SetRotateY( TFloat32 a_angle )
 {
 	// compute cos and sin
-	float t_cos												=	Maths::Cos( a_angle );
-	float t_sin												=	Maths::Sin( a_angle );
+	TFloat32 t_cos											=	Maths::Cos( a_angle );
+	TFloat32 t_sin											=	Maths::Sin( a_angle );
 
-	// reset the Matrix to Identity
-	SetIdentity();
+	SetValues(	t_cos	, 0.0f		, t_sin		, 0.0f ,
+				0.0f	, 1.0f		, 0.0f		, 0.0f ,
+				-t_sin	, 0.0f		, t_cos		, 0.0f ,
+				0.0f	, 0.0f		, 0.0f		, 1.0f );
 
-	_m00													=	t_cos;
-	_m02													=	t_sin;
-	_m20													=	-t_sin;
-	_m22													=	t_cos;
 }
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetRotateZ( float a_angle )
+FORCE_INLINE void Matrix44::SetRotateZ( TFloat32 a_angle )
 {
 	// compute cos and sin
-	float t_cos												=	Maths::Cos( a_angle );
-	float t_sin												=	Maths::Sin( a_angle );
+	TFloat32 t_cos											=	Maths::Cos( a_angle );
+	TFloat32 t_sin											=	Maths::Sin( a_angle );
 
-	// reset the Matrix to Identity
-	SetIdentity();
+	SetValues(	t_cos	, -t_sin	, 0.0f		, 0.0f ,
+				t_sin	, t_cos		, 0.0f		, 0.0f ,
+				0.0f	, 0.0f		, 1.0f		, 0.0f ,
+				0.0f	, 0.0f		, 0.0f		, 1.0f );
 
-	_m00													=	t_cos;
-	_m01													=	-t_sin;
-	_m10													=	t_sin;
-	_m11													=	t_cos;
 }
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetRotate( float a_pitch , float a_yaw , float a_roll )
+FORCE_INLINE void Matrix44::SetRotate( TFloat32 a_pitch , TFloat32 a_yaw , TFloat32 a_roll )
 {
 	// compute Sin and cos for the 3 angles
 
-	float t_cosYaw											=	Maths::Cos( a_yaw );
-	float t_sinYaw											=	Maths::Sin( a_yaw );
-	float t_cosRoll											=	Maths::Cos( a_roll );
-	float t_sinRoll											=	Maths::Sin( a_roll );
-	float t_cosPitch										=	Maths::Cos( a_pitch );
-	float t_sinPitch										=	Maths::Sin( a_pitch );
+	TFloat32 t_cosPitch										=	Maths::Cos( a_pitch );
+	TFloat32 t_sinPitch										=	Maths::Sin( a_pitch );
+	TFloat32 t_cosYaw										=	Maths::Cos( a_yaw );
+	TFloat32 t_sinYaw										=	Maths::Sin( a_yaw );
+	TFloat32 t_cosRoll										=	Maths::Cos( a_roll );
+	TFloat32 t_sinRoll										=	Maths::Sin( a_roll );
 
-
-	float t_sinPitchSinYaw									=	t_sinPitch * t_sinYaw;
-	float t_cosPitchSinYaw									=	t_cosPitch * t_sinYaw;
+	TFloat32 t_sinPitchSinYaw								=	t_sinPitch * t_sinYaw;
+	TFloat32 t_cosPitchSinYaw								=	t_cosPitch * t_sinYaw;
 
 	_m00													=	t_cosYaw * t_cosRoll;
 	_m10													=	t_cosYaw * t_sinRoll;
@@ -470,10 +477,6 @@ FORCE_INLINE void Matrix44::SetRotate( const Vector3F& a_rotation )
 //-----------------------------------------------------------------------------------------
 
 
-
-//	FORCE_INLINE void SetRotate( const Vector3F&a_axi , float a_angle );
-
-
 //-----------------------------------------------------------------------------------------
 FORCE_INLINE void Matrix44::SetTransScaleRot( Vector3F a_translation , Vector3F a_scale , Vector3F a_rot )
 {
@@ -486,8 +489,12 @@ FORCE_INLINE void Matrix44::SetTransScaleRot( Vector3F a_translation , Vector3F 
 	t_scale.SetScale( a_scale );
 	t_rot.SetRotate( a_rot );
 
-//	*this													=	t_rot * t_scale * t_translation;
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
 	*this													=	t_translation * t_scale * t_rot;
+#else
+	*this													=	t_rot * t_scale * t_translation;
+#endif
+
 }
 //-----------------------------------------------------------------------------------------
 
@@ -496,11 +503,11 @@ FORCE_INLINE void Matrix44::SetTransScaleRot( Vector3F a_translation , Vector3F 
 //////////////////////////
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetOrthoProjection( float a_left , float a_right , float a_top , float a_bottom , float a_zNear , float a_zFar )
+FORCE_INLINE void Matrix44::SetOrthoProjection( TFloat32 a_left , TFloat32 a_right , TFloat32 a_top , TFloat32 a_bottom , TFloat32 a_zNear , TFloat32 a_zFar )
 {
-    float sx												=	1.0f / ( a_right - a_left );
-    float sy												=	1.0f / ( a_top - a_bottom );
-    float sz												=	1.0f / ( a_zFar - a_zNear );
+    TFloat32 sx												=	1.0f / ( a_right - a_left );
+    TFloat32 sy												=	1.0f / ( a_top - a_bottom );
+    TFloat32 sz												=	1.0f / ( a_zFar - a_zNear );
 
 	_m00													=	2.0f * sx;
 	_m01													=	0.0f;
@@ -526,33 +533,17 @@ FORCE_INLINE void Matrix44::SetOrthoProjection( float a_left , float a_right , f
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetPerpectiveProjection( float a_fov , float a_aspectRatio , float a_zNear , float a_zFar )
+FORCE_INLINE void Matrix44::SetPerpectiveProjection( TFloat32 a_fov , TFloat32 a_aspectRatio , TFloat32 a_zNear , TFloat32 a_zFar )
 {
 	//todo add asserts
 
-	float t_yScale											=	1.0f / Maths::Tan( a_fov * 0.5f );
-	float t_xScale											=	t_yScale / a_aspectRatio;
+	TFloat32 t_yScale										=	1.0f / Maths::Tan( a_fov * 0.5f );
+	TFloat32 t_xScale										=	t_yScale / a_aspectRatio;
 
-	_m00													=	t_xScale;
-	_m01													=	0.0f;
-	_m02													=	0.0f;
-	_m03													=	0.0f;
-
-	_m10													=	0.0f;
-	_m11													=	t_yScale;
-	_m12													=	0.0f;
-	_m13													=	0.0f;
-
-	_m20													=	0.0f;
-	_m21													=	0.0f;
-	_m22													=	a_zFar / ( a_zFar - a_zNear );
-	_m23													=	1.0f;
-
-	_m30													=	0;
-	_m31													=	0;
-	_m32													=	-( a_zNear * a_zFar ) / ( a_zFar - a_zNear );
-	_m33													=	0.0f;
-
+	SetValues(	t_xScale	, 0.0f		, 0.0f											, 0.0f ,
+				0.0f		, t_yScale	, 0.0f											, 0.0f ,
+				0.0f		, 0.0f		, a_zFar / ( a_zFar - a_zNear )					, 1.0f ,
+				0.0f		, 0.0f		, -( a_zNear * a_zFar ) / ( a_zFar - a_zNear )	, 0.0f );
 
 }
 //-----------------------------------------------------------------------------------------
@@ -572,25 +563,10 @@ FORCE_INLINE void Matrix44::SetLookAt( const Vector3F& a_position , const Vector
 	Vector3F t_yAxis										=	Vector3F::Cross( t_zAxis , t_xAxis );
 	t_yAxis.Normalize();
 
-	_m00													=	t_xAxis.x;
-	_m01													=	t_yAxis.x;
-	_m02													=	t_zAxis.x;
-	_m03													=	0.0f;
-
-	_m10													=	t_xAxis.y;
-	_m11													=	t_yAxis.y;
-	_m12													=	t_zAxis.y;
-	_m13													=	0.0f;
-
-	_m20													=	t_xAxis.z;
-	_m21													=	t_yAxis.z;
-	_m22													=	t_zAxis.z;
-	_m23													=	0.0f;
-
-	_m30													=	-t_xAxis.Dot( a_position );
-	_m31													=	-t_yAxis.Dot( a_position );
-	_m32													=	-t_zAxis.Dot( a_position );
-	_m33													=	1.0f;
+	SetValues(	t_xAxis.x					, t_yAxis.x					, t_zAxis.x					, 0.0f ,
+				t_xAxis.y					, t_yAxis.y					, t_zAxis.y					, 0.0f ,
+				t_xAxis.z					, t_yAxis.z					, t_zAxis.z					, 0.0f ,
+				-t_xAxis.Dot( a_position )	, -t_yAxis.Dot( a_position ), -t_zAxis.Dot( a_position ), 1.0f );
 }
 //-----------------------------------------------------------------------------------------
 
@@ -629,45 +605,7 @@ FORCE_INLINE Matrix44 Matrix44::operator-( const Matrix44& a_other )const
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE Matrix44 Matrix44::operator*( const Matrix44& a_other )const
-{
-	
-#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-	const Matrix44& Mat1									=	a_other;
-	const Matrix44& Mat2									=	*this;
-#else
-	const Matrix44& Mat1									=	*this;
-	const Matrix44& Mat2									=	a_other;
-#endif
-
-	Matrix44 t_result;
-
-	t_result.M[ 0 ][ 0 ]									=	( Mat1.M[0][0] * Mat2.M[0][0] ) + ( Mat1.M[0][1] * Mat2.M[1][0] ) + ( Mat1.M[0][2] * Mat2.M[2][0] ) + ( Mat1.M[0][3] * Mat2.M[3][0] );
-	t_result.M[ 0 ][ 1 ]									=	( Mat1.M[0][0] * Mat2.M[0][1] ) + ( Mat1.M[0][1] * Mat2.M[1][1] ) + ( Mat1.M[0][2] * Mat2.M[2][1] ) + ( Mat1.M[0][3] * Mat2.M[3][1] );
-	t_result.M[ 0 ][ 2 ]									=	( Mat1.M[0][0] * Mat2.M[0][2] ) + ( Mat1.M[0][1] * Mat2.M[1][2] ) + ( Mat1.M[0][2] * Mat2.M[2][2] ) + ( Mat1.M[0][3] * Mat2.M[3][2] );
-	t_result.M[ 0 ][ 3 ]									=	( Mat1.M[0][0] * Mat2.M[0][3] ) + ( Mat1.M[0][1] * Mat2.M[1][3] ) + ( Mat1.M[0][2] * Mat2.M[2][3] ) + ( Mat1.M[0][3] * Mat2.M[3][3] );
-
-	t_result.M[ 1 ][ 0 ]									=	( Mat1.M[1][0] * Mat2.M[0][0] ) + ( Mat1.M[1][1] * Mat2.M[1][0] ) + ( Mat1.M[1][2] * Mat2.M[2][0] ) + ( Mat1.M[1][3] * Mat2.M[3][0] );
-	t_result.M[ 1 ][ 1 ]									=	( Mat1.M[1][0] * Mat2.M[0][1] ) + ( Mat1.M[1][1] * Mat2.M[1][1] ) + ( Mat1.M[1][2] * Mat2.M[2][1] ) + ( Mat1.M[1][3] * Mat2.M[3][1] );
-	t_result.M[ 1 ][ 2 ]									=	( Mat1.M[1][0] * Mat2.M[0][2] ) + ( Mat1.M[1][1] * Mat2.M[1][2] ) + ( Mat1.M[1][2] * Mat2.M[2][2] ) + ( Mat1.M[1][3] * Mat2.M[3][2] );
-	t_result.M[ 1 ][ 3 ]									=	( Mat1.M[1][0] * Mat2.M[0][3] ) + ( Mat1.M[1][1] * Mat2.M[1][3] ) + ( Mat1.M[1][2] * Mat2.M[2][3] ) + ( Mat1.M[1][3] * Mat2.M[3][3] );
-
-	t_result.M[ 2 ][ 0 ]									=	( Mat1.M[2][0] * Mat2.M[0][0] ) + ( Mat1.M[2][1] * Mat2.M[1][0] ) + ( Mat1.M[2][2] * Mat2.M[2][0] ) + ( Mat1.M[2][3] * Mat2.M[3][0] );
-	t_result.M[ 2 ][ 1 ]									=	( Mat1.M[2][0] * Mat2.M[0][1] ) + ( Mat1.M[2][1] * Mat2.M[1][1] ) + ( Mat1.M[2][2] * Mat2.M[2][1] ) + ( Mat1.M[2][3] * Mat2.M[3][1] );
-	t_result.M[ 2 ][ 2 ]									=	( Mat1.M[2][0] * Mat2.M[0][2] ) + ( Mat1.M[2][1] * Mat2.M[1][2] ) + ( Mat1.M[2][2] * Mat2.M[2][2] ) + ( Mat1.M[2][3] * Mat2.M[3][2] );
-	t_result.M[ 2 ][ 3 ]									=	( Mat1.M[2][0] * Mat2.M[0][3] ) + ( Mat1.M[2][1] * Mat2.M[1][3] ) + ( Mat1.M[2][2] * Mat2.M[2][3] ) + ( Mat1.M[2][3] * Mat2.M[3][3] );
-
-	t_result.M[ 3 ][ 0 ]									=	( Mat1.M[3][0] * Mat2.M[0][0] ) + ( Mat1.M[3][1] * Mat2.M[1][0] ) + ( Mat1.M[3][2] * Mat2.M[2][0] ) + ( Mat1.M[3][3] * Mat2.M[3][0] );
-	t_result.M[ 3 ][ 1 ]									=	( Mat1.M[3][0] * Mat2.M[0][1] ) + ( Mat1.M[3][1] * Mat2.M[1][1] ) + ( Mat1.M[3][2] * Mat2.M[2][1] ) + ( Mat1.M[3][3] * Mat2.M[3][1] );
-	t_result.M[ 3 ][ 2 ]									=	( Mat1.M[3][0] * Mat2.M[0][2] ) + ( Mat1.M[3][1] * Mat2.M[1][2] ) + ( Mat1.M[3][2] * Mat2.M[2][2] ) + ( Mat1.M[3][3] * Mat2.M[3][2] );
-	t_result.M[ 3 ][ 3 ]									=	( Mat1.M[3][0] * Mat2.M[0][3] ) + ( Mat1.M[3][1] * Mat2.M[1][3] ) + ( Mat1.M[3][2] * Mat2.M[2][3] ) + ( Mat1.M[3][3] * Mat2.M[3][3] );
-
-	return t_result;
-}
-//-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-FORCE_INLINE Matrix44 Matrix44::operator*( float a_scale )const
+FORCE_INLINE Matrix44 Matrix44::operator*( TFloat32 a_scale )const
 {
 	// Create a Copy of this Matrix
 	Matrix44 t_result( *this );
@@ -681,7 +619,7 @@ FORCE_INLINE Matrix44 Matrix44::operator*( float a_scale )const
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE Matrix44 Matrix44::operator/( float a_divider )const
+FORCE_INLINE Matrix44 Matrix44::operator/( TFloat32 a_divider )const
 {
 	// Create a Copy of this Matrix
 	Matrix44 t_result( *this );
@@ -741,16 +679,38 @@ FORCE_INLINE Matrix44& Matrix44::operator-=( const Matrix44& a_other )
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
+FORCE_INLINE Matrix44 Matrix44::operator*( const Matrix44& a_other )const
+{
+	Matrix44 t_result;
+
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+//	Multiply( &t_result , a_other , *this );
+		Multiply( &t_result , *this , a_other );
+#else
+	Multiply( &t_result , *this , a_other );
+#endif
+
+	return t_result;
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
 FORCE_INLINE Matrix44& Matrix44::operator*=( const Matrix44& a_other )
 {
-	*this													=	( *this ) * a_other;
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+//	Multiply( this , a_other , *this );
+	Multiply( this , *this , a_other );
+
+#else
+	Multiply( this , *this , a_other );
+#endif
 
 	return *this;
 }
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE Matrix44& Matrix44::operator*=( float a_scale )
+FORCE_INLINE Matrix44& Matrix44::operator*=( TFloat32 a_scale )
 {
 	for( int j = 0 ; j < 4 ; j ++ )
 	{
@@ -764,9 +724,9 @@ FORCE_INLINE Matrix44& Matrix44::operator*=( float a_scale )
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE Matrix44& Matrix44::operator/=( float a_divider )
+FORCE_INLINE Matrix44& Matrix44::operator/=( TFloat32 a_divider )
 {
-	float t_scale											=	1.0f / a_divider;
+	TFloat32 t_scale										=	1.0f / a_divider;
 
 	for( int j = 0 ; j < 4 ; j ++ )
 	{
@@ -802,5 +762,105 @@ FORCE_INLINE bool Matrix44::operator==(const Matrix44& a_other)const
 FORCE_INLINE bool Matrix44::operator!=(const Matrix44& a_other)const
 {
 	return !(*this == a_other);
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+FORCE_INLINE Vector4F Matrix44::TransformVector( const Vector4F& a_vector )const
+{
+	Vector4F t_result;
+
+	t_result.x												=	( a_vector.x * _m00 ) + ( a_vector.y * _m10 ) + ( a_vector.z * _m20 ) + ( a_vector.w * _m30 );
+	t_result.y												=	( a_vector.x * _m01 ) + ( a_vector.y * _m11 ) + ( a_vector.z * _m21 ) + ( a_vector.w * _m31 );
+	t_result.z												=	( a_vector.x * _m02 ) + ( a_vector.y * _m12 ) + ( a_vector.z * _m22 ) + ( a_vector.w * _m32 );
+	t_result.w												=	( a_vector.x * _m03 ) + ( a_vector.y * _m13 ) + ( a_vector.z * _m23 ) + ( a_vector.w * _m33 );
+	return t_result;
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+FORCE_INLINE void Matrix44::Multiply( Matrix44* a_Result , const Matrix44& a_left , const Matrix44& a_right )
+{
+/*
+	//todo use get row
+	Vector4F t_result0									=	Mat2.TransformVector( Mat1.Rows[ 0 ] );
+	Vector4F t_result1									=	Mat2.TransformVector( Mat1.Rows[ 1 ] );
+	Vector4F t_result2									=	Mat2.TransformVector( Mat1.Rows[ 2 ] );
+	Vector4F t_result3									=	Mat2.TransformVector( Mat1.Rows[ 3 ] );
+
+	a_Result->SetRow( 0 , t_result0 );
+	a_Result->SetRow( 1 , t_result1 );
+	a_Result->SetRow( 2 , t_result2 );
+	a_Result->SetRow( 3 , t_result3 );
+*/
+
+
+	a_Result->M[ 0 ][ 0 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 0 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 0 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 0 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 0 ] );
+	a_Result->M[ 0 ][ 1 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 1 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 1 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 1 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 1 ] );
+	a_Result->M[ 0 ][ 2 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 2 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 2 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 2 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 2 ] );
+	a_Result->M[ 0 ][ 3 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 3 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 3 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 3 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 3 ] );
+
+	a_Result->M[ 1 ][ 0 ]	=	( a_left.M[ 1 ][ 0 ] * a_right.M[ 0 ][ 0 ] ) + ( a_left.M[ 1 ][ 1 ] * a_right.M[ 1 ][ 0 ] ) + ( a_left.M[ 1 ][ 2 ] * a_right.M[ 2 ][ 0 ] ) + ( a_left.M[ 1 ][ 3 ] * a_right.M[ 3 ][ 0 ] );
+	a_Result->M[ 1 ][ 1 ]	=	( a_left.M[ 1 ][ 0 ] * a_right.M[ 0 ][ 1 ] ) + ( a_left.M[ 1 ][ 1 ] * a_right.M[ 1 ][ 1 ] ) + ( a_left.M[ 1 ][ 2 ] * a_right.M[ 2 ][ 1 ] ) + ( a_left.M[ 1 ][ 3 ] * a_right.M[ 3 ][ 1 ] );
+	a_Result->M[ 1 ][ 2 ]	=	( a_left.M[ 1 ][ 0 ] * a_right.M[ 0 ][ 2 ] ) + ( a_left.M[ 1 ][ 1 ] * a_right.M[ 1 ][ 2 ] ) + ( a_left.M[ 1 ][ 2 ] * a_right.M[ 2 ][ 2 ] ) + ( a_left.M[ 1 ][ 3 ] * a_right.M[ 3 ][ 2 ] );
+	a_Result->M[ 1 ][ 3 ]	=	( a_left.M[ 1 ][ 0 ] * a_right.M[ 0 ][ 3 ] ) + ( a_left.M[ 1 ][ 1 ] * a_right.M[ 1 ][ 3 ] ) + ( a_left.M[ 1 ][ 2 ] * a_right.M[ 2 ][ 3 ] ) + ( a_left.M[ 1 ][ 3 ] * a_right.M[ 3 ][ 3 ] );
+
+	a_Result->M[ 2 ][ 0 ]	=	( a_left.M[ 2 ][ 0 ] * a_right.M[ 0 ][ 0 ] ) + ( a_left.M[ 2 ][ 1 ] * a_right.M[ 1 ][ 0 ] ) + ( a_left.M[ 2 ][ 2 ] * a_right.M[ 2 ][ 0 ] ) + ( a_left.M[ 2 ][ 3 ] * a_right.M[ 3 ][ 0 ] );
+	a_Result->M[ 2 ][ 1 ]	=	( a_left.M[ 2 ][ 0 ] * a_right.M[ 0 ][ 1 ] ) + ( a_left.M[ 2 ][ 1 ] * a_right.M[ 1 ][ 1 ] ) + ( a_left.M[ 2 ][ 2 ] * a_right.M[ 2 ][ 1 ] ) + ( a_left.M[ 2 ][ 3 ] * a_right.M[ 3 ][ 1 ] );
+	a_Result->M[ 2 ][ 2 ]	=	( a_left.M[ 2 ][ 0 ] * a_right.M[ 0 ][ 2 ] ) + ( a_left.M[ 2 ][ 1 ] * a_right.M[ 1 ][ 2 ] ) + ( a_left.M[ 2 ][ 2 ] * a_right.M[ 2 ][ 2 ] ) + ( a_left.M[ 2 ][ 3 ] * a_right.M[ 3 ][ 2 ] );
+	a_Result->M[ 2 ][ 3 ]	=	( a_left.M[ 2 ][ 0 ] * a_right.M[ 0 ][ 3 ] ) + ( a_left.M[ 2 ][ 1 ] * a_right.M[ 1 ][ 3 ] ) + ( a_left.M[ 2 ][ 2 ] * a_right.M[ 2 ][ 3 ] ) + ( a_left.M[ 2 ][ 3 ] * a_right.M[ 3 ][ 3 ] );
+
+
+	a_Result->M[ 3 ][ 0 ]	=	( a_left.M[ 3 ][ 0 ] * a_right.M[ 0 ][ 0 ] ) + ( a_left.M[ 3 ][ 1 ] * a_right.M[ 1 ][ 0 ] ) + ( a_left.M[ 3 ][ 2 ] * a_right.M[ 2 ][ 0 ] ) + ( a_left.M[ 3 ][ 3 ] * a_right.M[ 3 ][ 0 ] );
+	a_Result->M[ 3 ][ 1 ]	=	( a_left.M[ 3 ][ 0 ] * a_right.M[ 0 ][ 1 ] ) + ( a_left.M[ 3 ][ 1 ] * a_right.M[ 1 ][ 1 ] ) + ( a_left.M[ 3 ][ 2 ] * a_right.M[ 2 ][ 1 ] ) + ( a_left.M[ 3 ][ 3 ] * a_right.M[ 3 ][ 1 ] );
+	a_Result->M[ 3 ][ 2 ]	=	( a_left.M[ 3 ][ 0 ] * a_right.M[ 0 ][ 2 ] ) + ( a_left.M[ 3 ][ 1 ] * a_right.M[ 1 ][ 2 ] ) + ( a_left.M[ 3 ][ 2 ] * a_right.M[ 2 ][ 2 ] ) + ( a_left.M[ 3 ][ 3 ] * a_right.M[ 3 ][ 2 ] );
+	a_Result->M[ 3 ][ 3 ]	=	( a_left.M[ 3 ][ 0 ] * a_right.M[ 0 ][ 3 ] ) + ( a_left.M[ 3 ][ 1 ] * a_right.M[ 1 ][ 3 ] ) + ( a_left.M[ 3 ][ 2 ] * a_right.M[ 2 ][ 3 ] ) + ( a_left.M[ 3 ][ 3 ] * a_right.M[ 3 ][ 3 ] );
+
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+FORCE_INLINE TFloat32 Matrix44::GetValue( TUint32 a_row , TUint32 a_column )
+{
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+	return Rows[ a_row ][ a_column ];
+#else
+	return Columns[ a_column ][ a_row ];
+#endif
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+FORCE_INLINE void Matrix44::SetRow( const TUint32& a_index , const Vector4F& a_values )
+{
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+	M[a_index][0]										=	a_values.x;
+	M[a_index][1]										=	a_values.y;
+	M[a_index][2]										=	a_values.z;
+	M[a_index][3]										=	a_values.w;
+#else
+	M[0][a_index]										=	a_values.x;
+	M[1][a_index]										=	a_values.y;
+	M[2][a_index]										=	a_values.z;
+	M[3][a_index]										=	a_values.w;
+#endif
+
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+FORCE_INLINE void Matrix44::SetColumn( const TUint32& a_index , const Vector4F& a_values )
+{
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+	M[0][a_index]										=	a_values.x;
+	M[1][a_index]										=	a_values.y;
+	M[2][a_index]										=	a_values.z;
+	M[3][a_index]										=	a_values.w;
+#else
+	M[a_index][0]										=	a_values.x;
+	M[a_index][1]										=	a_values.y;
+	M[a_index][2]										=	a_values.z;
+	M[a_index][3]										=	a_values.w;
+#endif
 }
 //-----------------------------------------------------------------------------------------

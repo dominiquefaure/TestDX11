@@ -23,7 +23,7 @@ struct Vector4F
 	* @param a_z		z component
 	* @param a_w		w component
 	*/
-	explicit FORCE_INLINE Vector4F( float a_x = 0.0f , float a_y = 0.0f  , float a_z = 0.0f  , float a_w = 1.0f );
+	explicit FORCE_INLINE Vector4F( TFloat32 a_x = 0.0f , TFloat32 a_y = 0.0f  , TFloat32 a_z = 0.0f  , TFloat32 a_w = 1.0f );
 
 	/*
 	* Constructor That generate a Vector3 from a Vector3
@@ -31,7 +31,7 @@ struct Vector4F
 	* @param a_vector3	initial vector 3
 	* @param a_w		w component
 	*/
-	FORCE_INLINE Vector4F( const Vector3F& a_vector3 , float a_w = 1.0f );
+	FORCE_INLINE Vector4F( const Vector3F& a_vector3 , TFloat32 a_w = 1.0f );
 
 
 	/**
@@ -40,7 +40,7 @@ struct Vector4F
 	 * @param a_index The index of the component.
 	 * @return Reference to the desired component.
 	 */
-	FORCE_INLINE float& operator[]( TUint32 a_index );
+	FORCE_INLINE TFloat32& operator[]( TUint32 a_index );
 
 	/**
 	 * Access a specific component of the vector.
@@ -48,9 +48,35 @@ struct Vector4F
 	 * @param a_index The index of the component.
 	 * @return Reference to the desired component.
 	 */
-	FORCE_INLINE float operator[]( TUint32 a_index ) const;
+	FORCE_INLINE TFloat32 operator[]( TUint32 a_index ) const;
 
 
+	/*
+	* Set the Different components of the Vector
+	*
+	* @param a_x		x component
+	* @param a_y		y component
+	* @param a_z		z component
+	* @param a_w		w component
+	*/
+	FORCE_INLINE void Set( TFloat32 a_x , TFloat32 a_y , TFloat32 a_z  , TFloat32 a_w );
+
+	/*
+	* Compute the Dot product between this vector and another one
+	*
+	* @param a_vector	2nd Vector
+	* @return			the Dot Product
+	*/
+	FORCE_INLINE TFloat32 Dot( const Vector4F& a_vector )const;
+
+	/*
+	* Compute the Dot product between 2 Vectors
+	*
+	* @param a_v1		1st Vector
+	* @param a_v2		2nd Vector
+	* @return			the Dot Product
+	*/
+	FORCE_INLINE static TFloat32 Dot( const Vector4F& a_v1 , const Vector4F& a_v2 );
 
 // Operators
 public:
@@ -93,7 +119,7 @@ public:
 	* @param a_scale	Scale coeficient to apply to each component of the vector
 	* @return			The scaled vector
 	*/
-	FORCE_INLINE Vector4F operator*( float a_scale )const;
+	FORCE_INLINE Vector4F operator*( TFloat32 a_scale )const;
 
 
 	/*
@@ -110,7 +136,7 @@ public:
 	* @param a_scale	Scale coeficient to apply to each component of the vector
 	* @return			The scaled vector
 	*/
-	FORCE_INLINE Vector4F operator/( float a_scale )const;
+	FORCE_INLINE Vector4F operator/( TFloat32 a_scale )const;
 
 
 	/*
@@ -143,7 +169,7 @@ public:
 	* @param a_scale	The scale coefficient to apply
 	* @param copy of this vector after multiplication
 	*/
-	FORCE_INLINE Vector4F operator*=( float a_scale );
+	FORCE_INLINE Vector4F operator*=( TFloat32 a_scale );
 
 	/*
 	* Divide this vector by another one, component wise
@@ -159,7 +185,7 @@ public:
 	* @param a_scale	The divide coefficient to apply
 	* @param copy of this vector after multiplication
 	*/
-	FORCE_INLINE Vector4F operator/=( float a_scale );
+	FORCE_INLINE Vector4F operator/=( TFloat32 a_scale );
 
 	/*
 	* Compare if the 2 Vectors store the same values
@@ -183,14 +209,14 @@ public:
 public:
 	union
 	{
-		float m_components[4];
+		TFloat32 m_components[4];
 		struct
 		{
 			// Vector Components
-			float	x;
-			float	y;
-			float	z;
-			float	w;
+			TFloat32	x;
+			TFloat32	y;
+			TFloat32	z;
+			TFloat32	w;
 		};
 	};
 

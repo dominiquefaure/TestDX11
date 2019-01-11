@@ -38,7 +38,8 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
-	m_scale.Set( 1.0f , 1.0f , 1.0f );
+//	m_scale.Set( 1.0f , 1.0f , 1.0f );
+	m_scale.Set( 0.5f , 0.5f , 0.5f );
 	m_rotate.Set( 0 , 0 , 0 );
 	m_translate.Set( 2.0f , 0.0f , 0.0f );
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
@@ -57,9 +58,15 @@ void Sample::OnInit( )
 	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 10000.0f );
 	t_view.SetLookAt( Vector3F( 0.0f , 2.0f , -5.0f) , Vector3F( 0.0f , 2.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
 
-	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
+//	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 
-
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+//	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
+	m_perFrameConstants.m_viewProjection					=	t_view *t_projection;
+	m_perFrameConstants.m_viewProjection.Transpose();
+#else
+	m_perFrameConstants.m_viewProjection					=	t_view *t_projection;
+#endif
 
 	m_perFrameConstants.m_lightDirection.Set( 0.3 , 0.0 , 0.7 );
 	m_perFrameConstants.m_lightDiffuse.Set( 0.8 , 0.8 , 0.8 );
@@ -166,14 +173,32 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 		}
 	}
 
-	m_rotate.x += 0.2f * a_deltaTime;
+//	m_rotate.x += 0.2f * a_deltaTime;
 	m_rotate.y += 0.2f * a_deltaTime;
-	m_rotate.z												+=	0.2f * a_deltaTime;
+//	m_rotate.z												+=	0.2f * a_deltaTime;
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
 
 	m_meshInstance1->SetTransform( m_translate , m_perDrawConstants.m_worldTransform );
+
+	Matrix44 tmp1;
+	Matrix44 tmp2;
+	Matrix44 tmp3;
+
+	tmp1.SetTranslate( Vector3F( 1.2f , 0.0f , 0.0f ) );
+	tmp2.SetRotateX( m_rotate.y * 2 );
+
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+
+	tmp3 = m_perDrawConstants.m_worldTransform  * tmp1 * tmp2;
+
+#else
+	tmp3 = tmp2 *  tmp1 * m_perDrawConstants.m_worldTransform;
+#endif
+
+	m_meshInstance2->SetTransform( m_translate , tmp3 );
+
 }
 //---------------------------------------------------------------------------------------------
 

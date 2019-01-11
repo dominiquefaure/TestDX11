@@ -26,13 +26,26 @@ struct Output
 
 };
 
+#define USE_PREMULTIPLICATION
 
 Output main(Input input)
 {
 	Output output;
 
+
+#ifdef USE_PREMULTIPLICATION
+	// Pre-multiplication
+	matrix t_mvp	=	mul( m_meshTransform , m_viewProjection );
+	output.position	=	mul( float4( input.position , 1 ) , t_mvp );
+//	output.position	=	mul( float4( input.position , 1 ) , m_meshTransform );
+#else
+	// Post Multiplication
 	matrix t_mvp	=	mul( m_viewProjection , m_meshTransform );
 	output.position	=	mul( t_mvp , float4( input.position , 1 ) );
+//	output.position	=	mul( m_viewProjection , float4( input.position , 1 ) );
+//	output.position	=	mul( m_meshTransform , float4( input.position , 1 ) );
+#endif
+
 
 	float3 diffuse = float3(0.0f, 0.0f, 0.0f); 
 

@@ -4,6 +4,7 @@
 
 #include "Maths.h"
 #include "Vector3F.h"
+#include "Vector4F.h"
 
 struct Matrix44
 {
@@ -27,10 +28,16 @@ public:
 	* constructor
 	*
 	*/
-	FORCE_INLINE Matrix44(	float m00 , float m01 , float m02 ,float m03 ,
-							float m10 , float m11 , float m12 ,float m13 ,
-							float m20 , float m21 , float m22 ,float m23 ,
-							float m30 , float m31 , float m32 ,float m33 );
+	FORCE_INLINE Matrix44(	TFloat32 m00 , TFloat32 m01 , TFloat32 m02 ,TFloat32 m03 ,
+							TFloat32 m10 , TFloat32 m11 , TFloat32 m12 ,TFloat32 m13 ,
+							TFloat32 m20 , TFloat32 m21 , TFloat32 m22 ,TFloat32 m23 ,
+							TFloat32 m30 , TFloat32 m31 , TFloat32 m32 ,TFloat32 m33 );
+
+
+	/*
+	* Get Cell Value
+	*/
+	FORCE_INLINE TFloat32 GetValue( TUint32 a_row , TUint32 a_column );
 
 	/*
 	* Set the Matrix as Identity
@@ -42,7 +49,7 @@ public:
 	*
 	* @return The determinant of this Matrix
 	*/
-	FORCE_INLINE float GetDeterminant()const;
+	FORCE_INLINE TFloat32 GetDeterminant()const;
 
 	/*
 	* Inverse this Matrix
@@ -64,7 +71,7 @@ public:
 	* @param a_tolerance	tolerance allowed
 	* @return				true if they are almost the same
 	*/
-	FORCE_INLINE bool IsEqual( const Matrix44& a_other , float a_tolerance = DEFAULT_TOLEARANCE_VALUE );
+	FORCE_INLINE bool IsEqual( const Matrix44& a_other , TFloat32 a_tolerance = DEFAULT_TOLEARANCE_VALUE );
 
 
 	/*
@@ -115,12 +122,12 @@ public:
 	/*
 	* Set this Matrix a s Scale Matrix. all the others components are reset
 	*/
-	FORCE_INLINE void SetScale( float a_scale );
+	FORCE_INLINE void SetScale( TFloat32 a_scale );
 
 	/*
 	* Set this Matrix a s Scale Matrix. all the others components are reset
 	*/
-	FORCE_INLINE void SetScale( float a_scaleX , float a_scaleY , float a_scaleZ );
+	FORCE_INLINE void SetScale( TFloat32 a_scaleX , TFloat32 a_scaleY , TFloat32 a_scaleZ );
 
 
 	////////////
@@ -130,17 +137,17 @@ public:
 	/*
 	* Set this Matrix as a Rotation Matrix around X axis. all others components are reset
 	*/
-	FORCE_INLINE void SetRotateX( float a_angle );
+	FORCE_INLINE void SetRotateX( TFloat32 a_angle );
 
 	/*
 	* Set this Matrix as a Rotation Matrix around Y axis. all others components are reset
 	*/
-	FORCE_INLINE void SetRotateY( float a_angle );
+	FORCE_INLINE void SetRotateY( TFloat32 a_angle );
 
 	/*
 	* Set this Matrix as a Rotation Matrix around Z axis. all others components are reset
 	*/
-	FORCE_INLINE void SetRotateZ( float a_angle );
+	FORCE_INLINE void SetRotateZ( TFloat32 a_angle );
 
 	/*
 	* Set this MAtrix as a Matrix that perform rotation around the 3 axis
@@ -149,7 +156,7 @@ public:
 	* @param a_yaw			Angle around the Y Axis
 	* @param a_roll			Angle around the Z Axis
 	*/
-	FORCE_INLINE void SetRotate( float a_pitch , float a_yaw , float a_roll );
+	FORCE_INLINE void SetRotate( TFloat32 a_pitch , TFloat32 a_yaw , TFloat32 a_roll );
 
 	/*
 	* Set this MAtrix as a Matrix that perform rotation around the 3 axis
@@ -189,7 +196,7 @@ public:
 	* @param a_near		Z value representing the closest element that can be seen
 	* @param a_far		Z value representing the fartest element that can be seen
 	*/
-	FORCE_INLINE void SetOrthoProjection( float a_left , float a_right , float a_top , float a_bottom , float a_near , float a_far );
+	FORCE_INLINE void SetOrthoProjection( TFloat32 a_left , TFloat32 a_right , TFloat32 a_top , TFloat32 a_bottom , TFloat32 a_near , TFloat32 a_far );
 
 	/*
 	* Set thi Matrix as a Perspective Projection Matrix
@@ -199,7 +206,7 @@ public:
 	* @param a_zNear		Min Z visible
 	* @param a_zFar			Max Z visible
 	*/
-	FORCE_INLINE void SetPerpectiveProjection( float a_fov , float a_aspectRatio , float a_zNear , float a_zFar );
+	FORCE_INLINE void SetPerpectiveProjection( TFloat32 a_fov , TFloat32 a_aspectRatio , TFloat32 a_zNear , TFloat32 a_zFar );
 
 	/*
 	* Set thi Matrix as a View Matrix
@@ -209,6 +216,16 @@ public:
 	* @param a_up			That is the up
 	*/
 	FORCE_INLINE void SetLookAt( const Vector3F& a_Position , const Vector3F& a_target , const Vector3F& a_up );
+
+
+	///////////////////////////
+	// Vector transformation
+	//////////////////////////
+
+	/*
+	* Apply this matrix to the given Vector
+	*/
+	FORCE_INLINE Vector4F TransformVector( const Vector4F& a_vector )const;
 
 //Operators
 public:
@@ -244,7 +261,7 @@ public:
 	* @param a_scale	Scale to apply
 	* @return			The result Matrix
 	*/
-	FORCE_INLINE Matrix44 operator*( float a_scale )const;
+	FORCE_INLINE Matrix44 operator*( TFloat32 a_scale )const;
 
 	/*
 	* Uniform Divide this Matrix
@@ -252,7 +269,7 @@ public:
 	* @param a_scale	Divide to apply
 	* @return			The result Matrix
 	*/
-	FORCE_INLINE Matrix44 operator/( float a_divider )const;
+	FORCE_INLINE Matrix44 operator/( TFloat32 a_divider )const;
 
 
 	/*
@@ -291,7 +308,7 @@ public:
 	* @param a_scale	The scale to apply
 	* @return			referecne to this Matrix
 	*/
-	FORCE_INLINE Matrix44& operator*=( float a_scale );
+	FORCE_INLINE Matrix44& operator*=( TFloat32 a_scale );
 
 	/*
 	* Divide this MAtrix
@@ -299,7 +316,7 @@ public:
 	* @param a_divider	The divider to apply
 	* @return			referecne to this Matrix
 	*/
-	FORCE_INLINE Matrix44& operator/=( float a_divider );
+	FORCE_INLINE Matrix44& operator/=( TFloat32 a_divider );
 
 
 	/*
@@ -319,6 +336,29 @@ public:
 	FORCE_INLINE bool operator!=(const Matrix44& a_other)const;
 
 
+private:
+
+	/*
+	* Set all the Elements of the Matrix
+	*/
+	FORCE_INLINE void SetValues(	TFloat32 m00 , TFloat32 m01 , TFloat32 m02 , TFloat32 m03 ,
+									TFloat32 m10 , TFloat32 m11 , TFloat32 m12 , TFloat32 m13 ,
+									TFloat32 m20 , TFloat32 m21 , TFloat32 m22 , TFloat32 m23 ,
+									TFloat32 m30 , TFloat32 m31 , TFloat32 m32 , TFloat32 m33 );
+
+	/*
+	* Set a Row values
+	*/
+	FORCE_INLINE void SetRow( const TUint32& a_index , const Vector4F& a_values );
+
+	/*
+	* Set a Column values
+	*/
+	FORCE_INLINE void SetColumn( const TUint32& a_index , const Vector4F& a_values );
+
+
+
+	FORCE_INLINE static void Multiply( Matrix44* a_Result , const Matrix44& a_m1 , const Matrix44& a_m2 );
 
 
 //Field
@@ -326,25 +366,20 @@ public:
 
 	union
 	{
-		float M[4][4];
+		TFloat32 M[4][4];
+
+		struct
+		{
+			TFloat32 _m00 , _m01 , _m02 , _m03;
+			TFloat32 _m10 , _m11 , _m12 , _m13;
+			TFloat32 _m20 , _m21 , _m22 , _m23;
+			TFloat32 _m30 , _m31 , _m32 , _m33;
+		};
 
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-		struct
-		{
-			float _m00 , _m01 , _m02 , _m03;
-			float _m10 , _m11 , _m12 , _m13;
-			float _m20 , _m21 , _m22 , _m23;
-			float _m30 , _m31 , _m32 , _m33;
-		};
+		Vector4F	Rows[ 4 ];
 #else
-		struct
-		{
-			float _m00 , _m10 , _m20 , _m30;
-			float _m01 , _m11 , _m21 , _m31;
-			float _m02 , _m12 , _m22 , _m32;
-			float _m03 , _m13 , _m23 , _m33;
-
-		};
+		Vector4F	Columns[4];
 #endif
 	};
 
