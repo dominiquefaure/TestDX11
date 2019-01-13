@@ -417,7 +417,7 @@ FORCE_INLINE void Matrix44::SetRotateZ( TFloat32 a_angle )
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetRotate( TFloat32 a_pitch , TFloat32 a_yaw , TFloat32 a_roll )
+FORCE_INLINE void Matrix44::SetRotateZYX( TFloat32 a_pitch , TFloat32 a_yaw , TFloat32 a_roll )
 {
 	// compute Sin and cos for the 3 angles
 
@@ -431,35 +431,21 @@ FORCE_INLINE void Matrix44::SetRotate( TFloat32 a_pitch , TFloat32 a_yaw , TFloa
 	TFloat32 t_sinPitchSinYaw								=	t_sinPitch * t_sinYaw;
 	TFloat32 t_cosPitchSinYaw								=	t_cosPitch * t_sinYaw;
 
-	_m00													=	t_cosYaw * t_cosRoll;
-	_m10													=	t_cosYaw * t_sinRoll;
-	_m20													=	-t_sinYaw;
-	_m30													=	0.0f;
-
-	_m01													=	( t_sinPitchSinYaw * t_cosRoll ) - ( t_cosPitch * t_sinRoll );
-	_m11													=	( t_sinPitchSinYaw * t_sinRoll ) + ( t_cosPitch * t_cosRoll );
-	_m21													=	t_sinPitch * t_cosYaw;
-	_m31													=	0.0f;
-
-	_m02													=	( t_cosPitchSinYaw * t_cosRoll ) + ( t_sinPitch * t_sinRoll );
-	_m12													=	( t_cosPitchSinYaw * t_sinRoll ) - ( t_sinPitch * t_cosRoll );
-	_m22													=	t_cosPitch * t_cosYaw;
-	_m32													=	0.0f;
-
-	_m03													=	0.0f;
-	_m13													=	0.0f;
-	_m23													=	0.0f;
-	_m33													=	1.0f;
+	SetValues(	t_cosYaw * t_cosRoll	, ( t_sinPitchSinYaw * t_cosRoll ) - ( t_cosPitch * t_sinRoll )	, ( t_cosPitchSinYaw * t_cosRoll ) + ( t_sinPitch * t_sinRoll )	, 0.0f ,
+				t_cosYaw * t_sinRoll	, ( t_sinPitchSinYaw * t_sinRoll ) + ( t_cosPitch * t_cosRoll )	, ( t_cosPitchSinYaw * t_sinRoll ) - ( t_sinPitch * t_cosRoll )	, 0.0f ,
+				-t_sinYaw				, t_sinPitch * t_cosYaw											, t_cosPitch * t_cosYaw											, 0.0f ,
+				0.0f					, 0.0f															, 0.0f															, 1.0f );
 
 }
 //-----------------------------------------------------------------------------------------
 
+
 //-----------------------------------------------------------------------------------------
-FORCE_INLINE void Matrix44::SetRotate( const Vector3F& a_rotation )
+FORCE_INLINE void Matrix44::SetRotateZYX( const Vector3F& a_rotation )
 {
 	if (s_useCompose)
 	{
-		SetRotate( a_rotation.x , a_rotation.y , a_rotation.z );
+		SetRotateZYX( a_rotation.x , a_rotation.y , a_rotation.z );
 	}
 	else
 	{
@@ -471,7 +457,13 @@ FORCE_INLINE void Matrix44::SetRotate( const Vector3F& a_rotation )
 		t_rotY.SetRotateY(a_rotation.y);
 		t_rotZ.SetRotateZ(a_rotation.z);
 
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
+//		*this = t_rotZ * t_rotY * t_rotX;
 		*this = t_rotX * t_rotY * t_rotZ;
+#else
+		*this = t_rotZ * t_rotY * t_rotX;
+//		*this = t_rotX * t_rotY * t_rotZ;
+#endif
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -487,7 +479,7 @@ FORCE_INLINE void Matrix44::SetTransScaleRot( Vector3F a_translation , Vector3F 
 	// Set the different intermediates Matrix
 	t_translation.SetTranslate( a_translation );
 	t_scale.SetScale( a_scale );
-	t_rot.SetRotate( a_rot );
+	t_rot.SetRotateZYX( a_rot );
 
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
 	*this													=	t_translation * t_scale * t_rot;
@@ -509,26 +501,13 @@ FORCE_INLINE void Matrix44::SetOrthoProjection( TFloat32 a_left , TFloat32 a_rig
     TFloat32 sy												=	1.0f / ( a_top - a_bottom );
     TFloat32 sz												=	1.0f / ( a_zFar - a_zNear );
 
-	_m00													=	2.0f * sx;
-	_m01													=	0.0f;
-	_m02													=	0.0f;
-	_m03													=	0.0f;
-
-	_m10													=	0.0f;
-	_m11													=	2.0f * sy;
-	_m12													=	0.0f;
-	_m13													=	0.0f;
-
-	_m20													=	0.0f;
-	_m21													=	0.0f;
-	_m22													=	sz;
-	_m23													=	0.0f;
 
 
-	_m30													=	( a_right + a_left ) / ( a_left - a_right );
-	_m31													=	( a_top + a_bottom ) / ( a_bottom - a_top );
-	_m32													=	a_zNear / ( a_zNear - a_zFar );
-	_m33													=	1.0f;
+	SetValues(	2.0f * sx	, 0.0f		, 0.0f	, ( a_right + a_left ) / ( a_left - a_right ) ,
+				0.0f		, 2.0f * sy	, 0.0f	, ( a_top + a_bottom ) / ( a_bottom - a_top ) ,
+				0.0f		, 0.0f		, sz	, a_zNear / ( a_zNear - a_zFar ) ,
+				0.0f		, 0.0f		, 0.0f	, 1.0f );
+
 }
 //-----------------------------------------------------------------------------------------
 
@@ -682,14 +661,7 @@ FORCE_INLINE Matrix44& Matrix44::operator-=( const Matrix44& a_other )
 FORCE_INLINE Matrix44 Matrix44::operator*( const Matrix44& a_other )const
 {
 	Matrix44 t_result;
-
-#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-//	Multiply( &t_result , a_other , *this );
-		Multiply( &t_result , *this , a_other );
-#else
 	Multiply( &t_result , *this , a_other );
-#endif
-
 	return t_result;
 }
 //-----------------------------------------------------------------------------------------
@@ -697,13 +669,7 @@ FORCE_INLINE Matrix44 Matrix44::operator*( const Matrix44& a_other )const
 //-----------------------------------------------------------------------------------------
 FORCE_INLINE Matrix44& Matrix44::operator*=( const Matrix44& a_other )
 {
-#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-//	Multiply( this , a_other , *this );
 	Multiply( this , *this , a_other );
-
-#else
-	Multiply( this , *this , a_other );
-#endif
 
 	return *this;
 }
@@ -781,20 +747,6 @@ FORCE_INLINE Vector4F Matrix44::TransformVector( const Vector4F& a_vector )const
 //-----------------------------------------------------------------------------------------
 FORCE_INLINE void Matrix44::Multiply( Matrix44* a_Result , const Matrix44& a_left , const Matrix44& a_right )
 {
-/*
-	//todo use get row
-	Vector4F t_result0									=	Mat2.TransformVector( Mat1.Rows[ 0 ] );
-	Vector4F t_result1									=	Mat2.TransformVector( Mat1.Rows[ 1 ] );
-	Vector4F t_result2									=	Mat2.TransformVector( Mat1.Rows[ 2 ] );
-	Vector4F t_result3									=	Mat2.TransformVector( Mat1.Rows[ 3 ] );
-
-	a_Result->SetRow( 0 , t_result0 );
-	a_Result->SetRow( 1 , t_result1 );
-	a_Result->SetRow( 2 , t_result2 );
-	a_Result->SetRow( 3 , t_result3 );
-*/
-
-
 	a_Result->M[ 0 ][ 0 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 0 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 0 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 0 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 0 ] );
 	a_Result->M[ 0 ][ 1 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 1 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 1 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 1 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 1 ] );
 	a_Result->M[ 0 ][ 2 ]	=	( a_left.M[ 0 ][ 0 ] * a_right.M[ 0 ][ 2 ] ) + ( a_left.M[ 0 ][ 1 ] * a_right.M[ 1 ][ 2 ] ) + ( a_left.M[ 0 ][ 2 ] * a_right.M[ 2 ][ 2 ] ) + ( a_left.M[ 0 ][ 3 ] * a_right.M[ 3 ][ 2 ] );
@@ -834,15 +786,12 @@ FORCE_INLINE TFloat32 Matrix44::GetValue( TUint32 a_row , TUint32 a_column )
 FORCE_INLINE void Matrix44::SetRow( const TUint32& a_index , const Vector4F& a_values )
 {
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-	M[a_index][0]										=	a_values.x;
-	M[a_index][1]										=	a_values.y;
-	M[a_index][2]										=	a_values.z;
-	M[a_index][3]										=	a_values.w;
+	Rows[a_index]										=	a_values;
 #else
-	M[0][a_index]										=	a_values.x;
-	M[1][a_index]										=	a_values.y;
-	M[2][a_index]										=	a_values.z;
-	M[3][a_index]										=	a_values.w;
+	Columns[0][a_index]									=	a_values.x;
+	Columns[1][a_index]									=	a_values.y;
+	Columns[2][a_index]									=	a_values.z;
+	Columns[3][a_index]									=	a_values.w;
 #endif
 
 }
@@ -852,15 +801,12 @@ FORCE_INLINE void Matrix44::SetRow( const TUint32& a_index , const Vector4F& a_v
 FORCE_INLINE void Matrix44::SetColumn( const TUint32& a_index , const Vector4F& a_values )
 {
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-	M[0][a_index]										=	a_values.x;
-	M[1][a_index]										=	a_values.y;
-	M[2][a_index]										=	a_values.z;
-	M[3][a_index]										=	a_values.w;
+	Rows[0][a_index]									=	a_values.x;
+	Rows[1][a_index]									=	a_values.y;
+	Rows[2][a_index]									=	a_values.z;
+	Rows[3][a_index]									=	a_values.w;
 #else
-	M[a_index][0]										=	a_values.x;
-	M[a_index][1]										=	a_values.y;
-	M[a_index][2]										=	a_values.z;
-	M[a_index][3]										=	a_values.w;
+	Columns[a_index]									=	a_values;
 #endif
 }
 //-----------------------------------------------------------------------------------------

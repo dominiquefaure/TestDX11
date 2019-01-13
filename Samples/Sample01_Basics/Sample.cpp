@@ -56,9 +56,10 @@ void Sample::OnInit( )
 	Matrix44 t_view;
 
 	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 10000.0f );
+
+	t_projection.SetOrthoProjection( -12 , 12 , 7 , -7 , 0.0f , 100.0f );
 	t_view.SetLookAt( Vector3F( 0.0f , 2.0f , -5.0f) , Vector3F( 0.0f , 2.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
 
-//	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
 //	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
@@ -173,9 +174,9 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 		}
 	}
 
-//	m_rotate.x += 0.2f * a_deltaTime;
+	m_rotate.x += 0.2f * a_deltaTime;
 	m_rotate.y += 0.2f * a_deltaTime;
-//	m_rotate.z												+=	0.2f * a_deltaTime;
+	m_rotate.z												+=	0.2f * a_deltaTime;
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
@@ -192,7 +193,6 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
 
 	tmp3 = m_perDrawConstants.m_worldTransform  * tmp1 * tmp2;
-
 #else
 	tmp3 = tmp2 *  tmp1 * m_perDrawConstants.m_worldTransform;
 #endif

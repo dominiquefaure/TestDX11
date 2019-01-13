@@ -156,14 +156,14 @@ public:
 	* @param a_yaw			Angle around the Y Axis
 	* @param a_roll			Angle around the Z Axis
 	*/
-	FORCE_INLINE void SetRotate( TFloat32 a_pitch , TFloat32 a_yaw , TFloat32 a_roll );
+	FORCE_INLINE void SetRotateZYX( TFloat32 a_pitch , TFloat32 a_yaw , TFloat32 a_roll );
 
 	/*
 	* Set this MAtrix as a Matrix that perform rotation around the 3 axis
 	*
 	* @param a_rotation		Vector that store the angles around the 3 Axis
 	*/
-	FORCE_INLINE void SetRotate( const Vector3F& a_rotation );
+	FORCE_INLINE void SetRotateZYX( const Vector3F& a_rotation );
 
 
 	/*

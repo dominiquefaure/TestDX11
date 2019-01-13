@@ -211,6 +211,14 @@ void ShaderByteCodeDX11::BuildMacroList( const TUint64 a_macro )
 			PushMacro( (RhiShaderCompilationMacros)i );
 		}
 	}
+
+#if PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR 
+	m_macroList[ m_macroCount ].Name						=	"USE_PREMULTIPLICATION";
+	m_macroList[ m_macroCount ].Definition					=	"";
+
+	m_macroCount ++;
+
+#endif
 }
 //-----------------------------------------------------------------------------------------------
 
