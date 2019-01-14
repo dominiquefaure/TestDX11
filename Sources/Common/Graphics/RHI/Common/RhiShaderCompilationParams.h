@@ -15,7 +15,7 @@ enum RhiShaderCompilationMacros
 
 	// start of Engine options
 	SHADER_MACRO_DUMMY_COLOR =8,
-
+	SHADER_MACRO_USE_PRE_MULTIPLY	=	9,
 	SHADER_MACRO_COUNT
 };
 

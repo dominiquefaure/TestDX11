@@ -85,10 +85,10 @@ FORCE_INLINE void Matrix44::SetValues(	TFloat32 m00 , TFloat32 m01 , TFloat32 m0
 	Rows[ 2 ].Set( m20 , m21 , m22 , m23 );
 	Rows[ 3 ].Set( m30 , m31 , m32 , m33 );
 #else
-	Columns[ 0 ].Set( m00 , m01 , m02 , m03 );
-	Columns[ 1 ].Set( m10 , m11 , m12 , m13 );
-	Columns[ 2 ].Set( m20 , m21 , m22 , m23 );
-	Columns[ 3 ].Set( m30 , m31 , m32 , m33 );
+	Columns[ 0 ].Set( m00 , m10 , m20 , m30 );
+	Columns[ 1 ].Set( m01 , m11 , m21 , m31 );
+	Columns[ 2 ].Set( m02 , m12 , m22 , m32 );
+	Columns[ 3 ].Set( m03 , m13 , m23 , m33 );
 #endif
 
 }
@@ -458,11 +458,11 @@ FORCE_INLINE void Matrix44::SetRotateZYX( const Vector3F& a_rotation )
 		t_rotZ.SetRotateZ(a_rotation.z);
 
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-//		*this = t_rotZ * t_rotY * t_rotX;
-		*this = t_rotX * t_rotY * t_rotZ;
-#else
 		*this = t_rotZ * t_rotY * t_rotX;
 //		*this = t_rotX * t_rotY * t_rotZ;
+#else
+//		*this = t_rotZ * t_rotY * t_rotX;
+		*this = t_rotX * t_rotY * t_rotZ;
 #endif
 	}
 }
@@ -519,10 +519,10 @@ FORCE_INLINE void Matrix44::SetPerpectiveProjection( TFloat32 a_fov , TFloat32 a
 	TFloat32 t_yScale										=	1.0f / Maths::Tan( a_fov * 0.5f );
 	TFloat32 t_xScale										=	t_yScale / a_aspectRatio;
 
-	SetValues(	t_xScale	, 0.0f		, 0.0f											, 0.0f ,
-				0.0f		, t_yScale	, 0.0f											, 0.0f ,
-				0.0f		, 0.0f		, a_zFar / ( a_zFar - a_zNear )					, 1.0f ,
-				0.0f		, 0.0f		, -( a_zNear * a_zFar ) / ( a_zFar - a_zNear )	, 0.0f );
+	SetValues(	t_xScale	, 0.0f		, 0.0f							, 0.0f ,
+				0.0f		, t_yScale	, 0.0f							, 0.0f ,
+				0.0f		, 0.0f		, a_zFar / ( a_zFar - a_zNear )	, -( a_zNear * a_zFar ) / ( a_zFar - a_zNear ) ,
+				0.0f		, 0.0f		, 1.0f							, 0.0f );
 
 }
 //-----------------------------------------------------------------------------------------
@@ -542,10 +542,10 @@ FORCE_INLINE void Matrix44::SetLookAt( const Vector3F& a_position , const Vector
 	Vector3F t_yAxis										=	Vector3F::Cross( t_zAxis , t_xAxis );
 	t_yAxis.Normalize();
 
-	SetValues(	t_xAxis.x					, t_yAxis.x					, t_zAxis.x					, 0.0f ,
-				t_xAxis.y					, t_yAxis.y					, t_zAxis.y					, 0.0f ,
-				t_xAxis.z					, t_yAxis.z					, t_zAxis.z					, 0.0f ,
-				-t_xAxis.Dot( a_position )	, -t_yAxis.Dot( a_position ), -t_zAxis.Dot( a_position ), 1.0f );
+	SetValues(	t_xAxis.x	, t_xAxis.y	, t_xAxis.z	, -t_xAxis.Dot( a_position ) ,
+				t_yAxis.x	, t_yAxis.y	, t_yAxis.z	, -t_yAxis.Dot( a_position ) ,
+				t_zAxis.x	, t_zAxis.y	, t_zAxis.z	, -t_zAxis.Dot( a_position ) ,
+				0.0f		, 0.0f		, 0.0f		, 1.0f );
 }
 //-----------------------------------------------------------------------------------------
 

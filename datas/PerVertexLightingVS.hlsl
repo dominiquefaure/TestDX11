@@ -26,11 +26,23 @@ struct Output
 
 };
 
+#ifdef USE_PREMULTIPLICATION
+
+#define Multiply( b , a )	mul( a , b )
+#else
+
+#define Multiply( b , a )	mul( b , a )
+#endif
+
 Output main(Input input)
 {
 	Output output;
 
+	// Post Multiplication
+	matrix t_mvp	=	Multiply( m_viewProjection , m_meshTransform );
+	output.position	=	Multiply( t_mvp , float4( input.position , 1 ) );
 
+/*	
 #ifdef USE_PREMULTIPLICATION
 	// Pre-multiplication
 	matrix t_mvp	=	mul( m_meshTransform , m_viewProjection );
@@ -40,7 +52,7 @@ Output main(Input input)
 	matrix t_mvp	=	mul( m_viewProjection , m_meshTransform );
 	output.position	=	mul( t_mvp , float4( input.position , 1 ) );
 #endif
-
+*/
 
 	float3 diffuse = float3(0.0f, 0.0f, 0.0f); 
 
@@ -51,7 +63,7 @@ Output main(Input input)
 	float3 lightVec =	-m_lightDir;
 
 	// compute the normal in model view
-	float3 t_normal	=	mul( m_meshTransform , input.normal );
+	float3 t_normal	=	Multiply( m_meshTransform , input.normal );
 
 
 	float t_diffuseFactor	=	dot( lightVec , t_normal );

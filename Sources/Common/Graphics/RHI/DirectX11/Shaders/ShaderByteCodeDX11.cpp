@@ -27,7 +27,8 @@ LPCSTR g_shaderMacroList[]=
 	"",
 	"",
 	"",
-	"DUMMY_COLOR"
+	"DUMMY_COLOR",
+	"USE_PREMULTIPLICATION"
 };
 
 
@@ -213,11 +214,7 @@ void ShaderByteCodeDX11::BuildMacroList( const TUint64 a_macro )
 	}
 
 #if PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR 
-	m_macroList[ m_macroCount ].Name						=	"USE_PREMULTIPLICATION";
-	m_macroList[ m_macroCount ].Definition					=	"";
-
-	m_macroCount ++;
-
+	PushMacro( SHADER_MACRO_USE_PRE_MULTIPLY );
 #endif
 }
 //-----------------------------------------------------------------------------------------------

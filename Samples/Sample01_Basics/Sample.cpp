@@ -57,14 +57,12 @@ void Sample::OnInit( )
 
 	t_projection.SetPerpectiveProjection( 45.0f , 1280 / 720.0f , 0.1f , 10000.0f );
 
-	t_projection.SetOrthoProjection( -12 , 12 , 7 , -7 , 0.0f , 100.0f );
+//	t_projection.SetOrthoProjection( -12 , 12 , 7 , -7 , 0.0f , 100.0f );
 	t_view.SetLookAt( Vector3F( 0.0f , 2.0f , -5.0f) , Vector3F( 0.0f , 2.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
 
 
 #if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
-//	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
-	m_perFrameConstants.m_viewProjection					=	t_view *t_projection;
-	m_perFrameConstants.m_viewProjection.Transpose();
+	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
 #else
 	m_perFrameConstants.m_viewProjection					=	t_view *t_projection;
 #endif
@@ -174,9 +172,9 @@ void Sample::OnUpdate( TFloat32 a_deltaTime )
 		}
 	}
 
-	m_rotate.x += 0.2f * a_deltaTime;
+//	m_rotate.x += 0.2f * a_deltaTime;
 	m_rotate.y += 0.2f * a_deltaTime;
-	m_rotate.z												+=	0.2f * a_deltaTime;
+//	m_rotate.z												+=	0.2f * a_deltaTime;
 
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
 
