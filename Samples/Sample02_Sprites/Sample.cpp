@@ -54,11 +54,17 @@ void Sample::OnInit( )
 	Matrix44 t_projection;
 	Matrix44 t_view;
 
-	t_projection.SetOrthoProjection( -6.4 , 6.4 , 3.6 , -3.6 , 1.0 , 100.0f );
-	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -5.0f) , Vector3F( 0.0f , 0.0f , 0.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
+	t_projection.SetPerpectiveProjection( 0.45f , 1280 / 720.0f , 0.1f , 10000.0f );
 
+//	t_projection.SetOrthoProjection( -6.4 , 6.4 , 3.6 , -3.6 , 1.0 , 100.0f );
+	t_view.SetLookAt( Vector3F( 0.0f , 0.0f , -15.0f) , Vector3F( 0.0f , 0.0f , 10.0f) , Vector3F( 0.0f , 1.0f , 0.0f) );
+
+
+#if ( PLATFORM_CONFIG_MATRIX_ORDER == MATRIX_ORDER_ROW_MAJOR )
 	m_perFrameConstants.m_viewProjection					=	t_projection * t_view;
-
+#else
+	m_perFrameConstants.m_viewProjection					=	t_view *t_projection;
+#endif
 
 
 	m_perFrameConstants.m_lightDirection.Set( 0.3 , 0.0 , 0.7 );
@@ -89,6 +95,7 @@ void Sample::OnInit( )
 		}
 	}
 	m_testTexture											=	RhiManager::GetInstance()->GetGraphicDevice()->CreateTexture2D( t_desc , &t_buffer );
+
 }
 //---------------------------------------------------------------------------------------------
 

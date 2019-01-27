@@ -121,6 +121,12 @@
     <Filter Include="Graphics\Importers\Fbx">
       <UniqueIdentifier>{44a89253-b48a-44e7-a040-9db4410e495a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Resources\Textures">
+      <UniqueIdentifier>{54651fe9-6c12-48ad-9b05-675ab1b3135f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Textures\Loaders">
+      <UniqueIdentifier>{194027ed-dd66-45ca-b682-849ba4997323}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -517,6 +523,18 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxImporter_Imp.h">
       <Filter>Graphics\Importers\Fbx</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Texture2D.h">
+      <Filter>Graphics\Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Loaders\DDSTextureLoader.h">
+      <Filter>Graphics\Resources\Textures\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Includes.h">
+      <Filter>Graphics\Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Loaders\Includes.h">
+      <Filter>Graphics\Resources\Textures\Loaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -746,6 +764,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshImporter.cpp">
       <Filter>Graphics\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Textures\Texture2D.cpp">
+      <Filter>Graphics\Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Textures\Loaders\DDSTextureLoeader.cpp">
+      <Filter>Graphics\Resources\Textures\Loaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

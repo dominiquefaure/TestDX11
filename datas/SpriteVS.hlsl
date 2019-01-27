@@ -23,6 +23,16 @@ struct Output
 	float2 uv : TEXCOORD0;
 };
 
+
+#ifdef USE_PREMULTIPLICATION
+
+#define Multiply( b , a )	mul( a , b )
+#else
+
+#define Multiply( b , a )	mul( b , a )
+#endif
+
+
 Output main(Input input)
 {
 	Output output;

@@ -38,8 +38,8 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
-//	m_scale.Set( 1.0f , 1.0f , 1.0f );
-	m_scale.Set( 0.5f , 0.5f , 0.5f );
+	m_scale.Set( 1.0f , 1.0f , 1.0f );
+//	m_scale.Set( 0.5f , 0.5f , 0.5f );
 	m_rotate.Set( 0 , 0 , 0 );
 	m_translate.Set( 2.0f , 0.0f , 0.0f );
 	m_perDrawConstants.m_worldTransform.SetTransScaleRot( m_translate , m_scale , m_rotate );
