@@ -2,7 +2,7 @@
 #define __RENDERER_MATERIAL_SHARED_PARAMETERS_COLLECTION_H__
 
 #include "Core/CoreIncludes.h"
-#include "Renderer/Resources/ConstantBuffers/Includes.h"
+#include "../../ConstantBuffers/Includes.h"
 
 #include "MaterialParameterDescriptorCollection.h"
 

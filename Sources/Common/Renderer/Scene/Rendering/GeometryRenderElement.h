@@ -4,7 +4,7 @@
 #include "Core/CoreIncludes.h"
 #include "Graphics/RHI/Includes.h"
 
-#include "Renderer/Resources/Includes.h"
+#include "Graphics/Resources/Includes.h"
 
 
 /*

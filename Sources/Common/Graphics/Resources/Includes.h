@@ -1,5 +1,5 @@
-#ifndef __RENDERER_RESOURCES_INCLUDES_H__
-#define __RENDERER_RESOURCES_INCLUDES_H__
+#ifndef __GRAPHICS_RESOURCES_INCLUDES_H__
+#define __GRAPHICS_RESOURCES_INCLUDES_H__
 
 #include "ConstantBuffers/Includes.h"
 #include "Geometry/Includes.h"

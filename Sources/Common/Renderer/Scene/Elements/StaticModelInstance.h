@@ -2,7 +2,7 @@
 #define __STATIC_MODEL_INSTANCE_H__
 
 #include "RenderSceneElement.h"
-#include "../../Resources/Includes.h"
+#include "../../../Graphics/Includes.h"
 #include "../../../Core/CoreIncludes.h"
 
 

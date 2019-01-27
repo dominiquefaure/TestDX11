@@ -7,7 +7,7 @@
 
 #include "WinResources/Resource.h"
 
-#include "../Common/Renderer/Importers/Fbx/FbxAssetImporter.h"
+#include "../Common/Graphics/Importers/Fbx/FbxAssetImporter.h"
 
 
 //---------------------------------------------------------------------------------------------

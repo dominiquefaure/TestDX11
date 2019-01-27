@@ -28,12 +28,6 @@
     <Filter Include="Core\Math">
       <UniqueIdentifier>{5eb73dfd-c8e2-43ad-be78-abd9a7efee2c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\Importers">
-      <UniqueIdentifier>{8a208bda-1b37-4ca2-8a10-0d8a7a92c2eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Importers\Fbx">
-      <UniqueIdentifier>{44a89253-b48a-44e7-a040-9db4410e495a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Renderer\Scene">
       <UniqueIdentifier>{762289e0-0a55-4b77-bef9-033376761f48}</UniqueIdentifier>
     </Filter>
@@ -55,32 +49,8 @@
     <Filter Include="Renderer\Scene\Elements">
       <UniqueIdentifier>{53ac3b6c-6ab7-4f18-a3f5-a42261ce38a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\Resources">
-      <UniqueIdentifier>{ac458ce5-85a5-4e3b-a709-bd767de31382}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\ConstantBuffers">
-      <UniqueIdentifier>{29da6e10-6b89-4526-b989-7cb97594d922}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\Geometry">
-      <UniqueIdentifier>{9474987a-de34-4e59-b383-04bd999832a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\Meshes">
-      <UniqueIdentifier>{96c7ca7d-9614-4037-9b72-236c64ec974f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\Shaders">
-      <UniqueIdentifier>{ae3af012-8549-4b64-9a3d-391258c2b75d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\Materials">
-      <UniqueIdentifier>{738c39a4-9cf0-4e0a-864d-915807f194aa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Containers">
       <UniqueIdentifier>{d906c1fb-94fc-4c6f-8295-adb2cc942412}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\Materials\Parameters">
-      <UniqueIdentifier>{331a7e6a-b7b3-401c-beac-c3a21d9ba9ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Resources\Models">
-      <UniqueIdentifier>{371f64d3-2140-439a-893b-1bfcf2673262}</UniqueIdentifier>
     </Filter>
     <Filter Include="Renderer\Scene\Rendering">
       <UniqueIdentifier>{fc0fab15-3f8b-4d8c-9c2d-cbe1c1eff7fc}</UniqueIdentifier>
@@ -120,6 +90,36 @@
     </Filter>
     <Filter Include="Graphics\RHI\Common\Enums">
       <UniqueIdentifier>{0b3c98bb-930a-4242-a4de-e1239b881a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources">
+      <UniqueIdentifier>{c94c187a-d71b-44c5-81fc-5dedef325d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Shaders">
+      <UniqueIdentifier>{ae3af012-8549-4b64-9a3d-391258c2b75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Models">
+      <UniqueIdentifier>{371f64d3-2140-439a-893b-1bfcf2673262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\ConstantBuffers">
+      <UniqueIdentifier>{29da6e10-6b89-4526-b989-7cb97594d922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Geometry">
+      <UniqueIdentifier>{9474987a-de34-4e59-b383-04bd999832a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Materials">
+      <UniqueIdentifier>{738c39a4-9cf0-4e0a-864d-915807f194aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Materials\Parameters">
+      <UniqueIdentifier>{331a7e6a-b7b3-401c-beac-c3a21d9ba9ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Resources\Meshes">
+      <UniqueIdentifier>{96c7ca7d-9614-4037-9b72-236c64ec974f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Importers">
+      <UniqueIdentifier>{8a208bda-1b37-4ca2-8a10-0d8a7a92c2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Importers\Fbx">
+      <UniqueIdentifier>{44a89253-b48a-44e7-a040-9db4410e495a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -286,12 +286,6 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Includes.h">
       <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssetImporter.h">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.h">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Thirdparty\ImGui\imgui.h">
       <Filter>DebugUI\ImGui</Filter>
     </ClInclude>
@@ -328,9 +322,6 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiShaderParameterCommon.h">
       <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.h">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.h">
       <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClInclude>
@@ -342,12 +333,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\Includes.h">
       <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.h">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.h">
-      <Filter>Renderer\Importers\Fbx</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\IO\JSon\AJSonProperty.h">
       <Filter>Core\IO\JSon</Filter>
@@ -403,83 +388,14 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Includes.h">
       <Filter>Renderer\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\ConstantBuffer.h">
-      <Filter>Renderer\Resources\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\Includes.h">
-      <Filter>Renderer\Resources\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\SConstantBuffer.h">
-      <Filter>Renderer\Resources\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\Geometrydataset.h">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\Includes.h">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.h">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.h">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\Includes.h">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.h">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Meshes\StaticMesh.h">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Includes.h">
-      <Filter>Renderer\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.h">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.h">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\Includes.h">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.h">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Includes.h">
-      <Filter>Renderer\Resources\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.h">
-      <Filter>Renderer\Resources\Materials</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\Containers\TFixedArray.h">
       <Filter>Core\Containers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Core\Math\Vector4F.h">
       <Filter>Core\Math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.h">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.h">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialSharedParametersCollection.h">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\Includes.h">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Models\Model.h">
-      <Filter>Renderer\Resources\Models</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.h">
       <Filter>Renderer\Scene\Elements</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.h">
-      <Filter>Renderer\Resources\Materials</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.h">
       <Filter>Renderer\Scene\Rendering</Filter>
@@ -510,6 +426,96 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\Includes.h">
       <Filter>Graphics\RHI\DirectX11\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderPermutation.h">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderProgram.h">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Shaders\Includes.h">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderDefinition.h">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Includes.h">
+      <Filter>Graphics\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Includes.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\MaterialManager.h">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Includes.h">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Material.h">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\MaterialInstance.h">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.h">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialSharedParametersCollection.h">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\Includes.h">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptor.h">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\ConstantBuffers\ConstantBuffer.h">
+      <Filter>Graphics\Resources\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\ConstantBuffers\Includes.h">
+      <Filter>Graphics\Resources\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\ConstantBuffers\SConstantBuffer.h">
+      <Filter>Graphics\Resources\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Geometry\Geometrydataset.h">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Geometry\Includes.h">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Geometry\StaticGeometry.h">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\StaticMesh.h">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\BaseMesh.h">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\Includes.h">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.h">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Models\Model.h">
+      <Filter>Graphics\Resources\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshImporter.h">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshPartImporter.h">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshVertex.h">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxAssetImporter.h">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxImporter_Imp.h">
+      <Filter>Graphics\Importers\Fbx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -591,12 +597,6 @@
     <ClCompile Include="..\..\Sources\Common\Core\Math\Matrix44.cpp">
       <Filter>Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxAssertImporter.cpp">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxImporter_Imp.cpp">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Thirdparty\ImGui\imgui.cpp">
       <Filter>DebugUI\ImGui</Filter>
     </ClCompile>
@@ -618,9 +618,6 @@
     <ClCompile Include="..\..\Sources\Common\Core\Platforms\Windows\WindowsTime.cpp">
       <Filter>Core\Platforms\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshPartImporter.cpp">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderConstantBufferDesc.cpp">
       <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </ClCompile>
@@ -629,12 +626,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.cpp">
       <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshVertex.cpp">
-      <Filter>Renderer\Importers\Fbx</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Importers\Fbx\FbxMeshImporter.cpp">
-      <Filter>Renderer\Importers\Fbx</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\AJSonProperty.cpp">
       <Filter>Core\IO\JSon</Filter>
@@ -678,56 +669,11 @@
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\RenderScene.cpp">
       <Filter>Renderer\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\ConstantBuffers\ConstantBuffer.cpp">
-      <Filter>Renderer\Resources\ConstantBuffers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.cpp">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.cpp">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\BaseMesh.cpp">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.cpp">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Meshes\StaticMesh.cpp">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.cpp">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.cpp">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.cpp">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Material.cpp">
-      <Filter>Renderer\Resources\Materials</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Math\Vector4F.cpp">
       <Filter>Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.cpp">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.cpp">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialSharedParametersCollection.cpp">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Models\Model.cpp">
-      <Filter>Renderer\Resources\Models</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\StaticModelInstance.cpp">
       <Filter>Renderer\Scene\Elements</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.cpp">
-      <Filter>Renderer\Resources\Materials</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Rendering\GeometryRenderElement.cpp">
       <Filter>Renderer\Scene\Rendering</Filter>
@@ -737,6 +683,69 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\Texture2DDX11.cpp">
       <Filter>Graphics\RHI\DirectX11\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderPermutation.cpp">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderProgram.cpp">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderDefinition.cpp">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\MaterialManager.cpp">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Material.cpp">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\MaterialInstance.cpp">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialSharedParametersCollection.cpp">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptor.cpp">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.cpp">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\ConstantBuffers\ConstantBuffer.cpp">
+      <Filter>Graphics\Resources\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Geometry\GeometryDataset.cpp">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Geometry\StaticGeometry.cpp">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Meshes\StaticMesh.cpp">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Meshes\BaseMesh.cpp">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.cpp">
+      <Filter>Graphics\Resources\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Models\Model.cpp">
+      <Filter>Graphics\Resources\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshPartImporter.cpp">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshVertex.cpp">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxAssertImporter.cpp">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxImporter_Imp.cpp">
+      <Filter>Graphics\Importers\Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\Fbx\FbxMeshImporter.cpp">
+      <Filter>Graphics\Importers\Fbx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -806,35 +815,35 @@
     <None Include="..\..\Sources\Common\Graphics\RHI\Common\ShaderReflection\RhiShaderReflectionInfos.inl">
       <Filter>Graphics\RHI\Common\ShaderReflection</Filter>
     </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\GeometryDataset.inl">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Geometry\StaticGeometry.inl">
-      <Filter>Renderer\Resources\Geometry</Filter>
-    </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Meshes\MeshPart.inl">
-      <Filter>Renderer\Resources\Meshes</Filter>
-    </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderDefinition.inl">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderPermutation.inl">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Shaders\ShaderProgram.inl">
-      <Filter>Renderer\Resources\Shaders</Filter>
-    </None>
     <None Include="..\..\Sources\Common\Core\Math\Vector4F.inl">
       <Filter>Core\Math</Filter>
     </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptor.inl">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderDefinition.inl">
+      <Filter>Graphics\Resources\Shaders</Filter>
     </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.inl">
-      <Filter>Renderer\Resources\Materials\Parameters</Filter>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderPermutation.inl">
+      <Filter>Graphics\Resources\Shaders</Filter>
     </None>
-    <None Include="..\..\Sources\Common\Renderer\Resources\Materials\MaterialInstance.inl">
-      <Filter>Renderer\Resources\Materials</Filter>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderProgram.inl">
+      <Filter>Graphics\Resources\Shaders</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Materials\MaterialInstance.inl">
+      <Filter>Graphics\Resources\Materials</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.inl">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptor.inl">
+      <Filter>Graphics\Resources\Materials\Parameters</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Geometry\GeometryDataset.inl">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Geometry\StaticGeometry.inl">
+      <Filter>Graphics\Resources\Geometry</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.inl">
+      <Filter>Graphics\Resources\Meshes</Filter>
     </None>
   </ItemGroup>
 </Project>

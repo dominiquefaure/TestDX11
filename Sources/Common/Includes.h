@@ -3,7 +3,7 @@
 
 #include "Core/CoreIncludes.h"
 
-#include "Graphics/RHI/Includes.h"
+#include "Graphics/Includes.h"
 #include "Renderer/Includes.h"
 #include "Inputs/Includes.h"
 #include "Application/Includes.h"
