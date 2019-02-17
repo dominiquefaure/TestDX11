@@ -24,7 +24,7 @@ public:
 	/*
 	* Init the Texture using the Given Parameters
 	*/
-	void Init( int a_width , int a_height , void* a_datas );
+	void Init( const RhiTextureDescriptor& a_descriptor , const TUint8* a_datas );
 
 
 	//void Load

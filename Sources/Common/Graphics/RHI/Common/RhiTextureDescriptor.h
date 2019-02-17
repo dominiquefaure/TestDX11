@@ -11,7 +11,9 @@
 struct RhiTextureDescriptor
 {
 	TUint32				m_width;		// Width of the Texture
-	TUint32				m_height;			// Height of the Texture
+	TUint32				m_height;		// Height of the Texture
+	TUint32				m_mipmapCount;
+
 	RhiTextureFormat	m_format;		// Pixel Format
 
 	RhiBufferUsage		m_usage;		// intended usage of the Texture, how much time it will be updated. Selecting the most appropriate mode can increase performances a lot

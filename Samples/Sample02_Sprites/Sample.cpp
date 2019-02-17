@@ -41,7 +41,8 @@ void Sample::OnSetWindowConfig( WinAppConfig& a_config )
 //---------------------------------------------------------------------------------------------
 void Sample::OnInit( )
 {
-	m_scale.Set( 1.0f , 1.0f , 1.0f );
+//	m_scale.Set( 1.0f , 1.0f , 1.0f );
+	m_scale.Set( 10.0f , 10.0f , 1.0f );
 	m_rotate.Set( 0 , 0 , 0 );
 	m_translate.Set( 2.0f , 0.0f , 0.0f );
 	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
@@ -74,28 +75,7 @@ void Sample::OnInit( )
 
 	m_translate.Set( 0.0f , 0.0f , 0.0f );
 
-
-	RhiTextureDescriptor t_desc;
-
-	t_desc.m_width											=	8;
-	t_desc.m_height											=	8;
-	t_desc.m_usage											=	RHI_BUFFER_USAGE_IMMUTABLE;
-	t_desc.m_format											=	TEXTURE_FORMAT_R8G8B8A8;
-	t_desc.m_shaderUsage									=	SHADER_USAGE_RESOURCE_READ;
-	char t_buffer[ 8*8*4];
-	int t_offset=0;
-	for( int j = 0 ; j < 8 ; j ++ )
-	{
-		for( int i = 0 ; i < 8 ; i ++ )
-		{
-			t_buffer[ t_offset++ ]							=	j << 4;
-			t_buffer[ t_offset++ ]							=	i << 5 ;
-			t_buffer[ t_offset++ ]							=	0;
-			t_buffer[ t_offset++ ]							=	255;
-		}
-	}
-	m_testTexture											=	RhiManager::GetInstance()->GetGraphicDevice()->CreateTexture2D( t_desc , &t_buffer );
-
+	m_testTexture	=	DDSTextureLoader::CreateTexture( RhiManager::GetInstance()->GetGraphicDevice() ,"armor.dds" );
 }
 //---------------------------------------------------------------------------------------------
 
@@ -195,7 +175,7 @@ void Sample::OnDraw()
 //	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 	t_mainContext->SetCullingMode( RHI_CULLING_MODE_FRONT );
 
-	t_mainContext->SetTexture( 0 , m_testTexture );
+	t_mainContext->SetTexture( 0 , m_testTexture->GetRhiTexture() );
 
 	m_renderScene.Draw( t_mainContext );
 

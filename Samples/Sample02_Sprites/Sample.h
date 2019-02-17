@@ -85,7 +85,8 @@ private:
 
 	RenderScene			m_renderScene;
 
-	RhiTexture2D*			m_testTexture;
+//	RhiTexture2D*			m_testTexture;
+	Texture2D*				m_testTexture;
 
 	StaticMesh*				m_spriteMesh;
 	Material*				m_spriteMaterial;

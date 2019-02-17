@@ -29,6 +29,14 @@ struct BufferUsageParams
 	UINT		CpuAccessFlag;
 };
 
+struct TextureFormat
+{
+	TUint8		m_blockWidth;
+	TUint8		m_blockHeight;
+	TUint16		m_blockSize;
+
+	DXGI_FORMAT	m_DXFormat;
+};
 
 class VertexLayoutDX11;
 
@@ -140,7 +148,7 @@ public:
 	/*
 	* Create a new Texture2D
 	*/
-	Texture2DDX11* CreateTexture2D( const RhiTextureDescriptor& a_descriptor , void* a_data = NULL );
+	Texture2DDX11* CreateTexture2D( const RhiTextureDescriptor& a_descriptor ,const TUint8* a_data = NULL );
 
 private:
 
@@ -217,13 +225,17 @@ private:
 	/*
 	* Create a REsource view 
 	*/
-	ID3D11ShaderResourceView* CreateShaderResourceView( ID3D11Texture2D* a_texture );
+	ID3D11ShaderResourceView* CreateShaderResourceView( ID3D11Texture2D* a_texture , RhiTextureFormat a_format , TUint32 a_mipCount , TUint32 a_mostDetailedMip = 0 );
 
 	/*
 	* Create the Sampler State Matching the given params
 	*/
 	ID3D11SamplerState* CreateSamplerState( D3D11_FILTER a_filterType , D3D11_TEXTURE_ADDRESS_MODE a_addressU , D3D11_TEXTURE_ADDRESS_MODE a_addressV , D3D11_TEXTURE_ADDRESS_MODE a_addressW );
 
+	/*
+	* Build the subresource data array. to be deleted manually
+	*/
+	D3D11_SUBRESOURCE_DATA* BuildSubResourceData( const RhiTextureDescriptor& a_descriptor, const TUint8* a_data );
 
 private:
 
@@ -254,7 +266,7 @@ private:
 
 	StateObjectsManagerDX11		m_stateObjectsManager;
 
-	DXGI_FORMAT					m_textureFormat[ TEXTURE_FORMAT_COUNT ];
+	TextureFormat				m_textureFormat[ TEXTURE_FORMAT_COUNT ];
 
 
 };

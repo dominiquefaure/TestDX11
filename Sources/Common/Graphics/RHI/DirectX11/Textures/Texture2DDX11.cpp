@@ -24,7 +24,7 @@ void Texture2DDX11::Init( GraphicDeviceDX11* a_device , const RhiTextureDescript
 
 	m_texture												=	a_texture;
 
-	m_resourceView											=	m_owner->CreateShaderResourceView( m_texture );
+	m_resourceView											=	m_owner->CreateShaderResourceView( m_texture , m_descriptor.m_format , m_descriptor.m_mipmapCount );
 }
 //-------------------------------------------------------------------------
 

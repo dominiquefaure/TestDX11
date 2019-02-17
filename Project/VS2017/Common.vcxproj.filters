@@ -124,8 +124,8 @@
     <Filter Include="Graphics\Resources\Textures">
       <UniqueIdentifier>{54651fe9-6c12-48ad-9b05-675ab1b3135f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Resources\Textures\Loaders">
-      <UniqueIdentifier>{194027ed-dd66-45ca-b682-849ba4997323}</UniqueIdentifier>
+    <Filter Include="Graphics\Importers\DDS">
+      <UniqueIdentifier>{aab58e68-827d-4f97-854b-417624b277f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -526,14 +526,20 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Texture2D.h">
       <Filter>Graphics\Resources\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Loaders\DDSTextureLoader.h">
-      <Filter>Graphics\Resources\Textures\Loaders</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Includes.h">
       <Filter>Graphics\Resources\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Loaders\Includes.h">
-      <Filter>Graphics\Resources\Textures\Loaders</Filter>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\DDS\DDSHeaderHelper.h">
+      <Filter>Graphics\Importers\DDS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\DDS\DDSTextureLoader.h">
+      <Filter>Graphics\Importers\DDS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\DDS\Includes.h">
+      <Filter>Graphics\Importers\DDS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Includes.h">
+      <Filter>Graphics\Importers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -768,8 +774,11 @@
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Textures\Texture2D.cpp">
       <Filter>Graphics\Resources\Textures</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Textures\Loaders\DDSTextureLoeader.cpp">
-      <Filter>Graphics\Resources\Textures\Loaders</Filter>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\DDS\DDSHeaderHelper.cpp">
+      <Filter>Graphics\Importers\DDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Importers\DDS\DDSTextureLoader.cpp">
+      <Filter>Graphics\Importers\DDS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

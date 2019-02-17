@@ -414,14 +414,32 @@ ID3D11InputLayout* GraphicDeviceDX11::CreateInputLayout( D3D11_INPUT_ELEMENT_DES
 //-------------------------------------------------------------------------------------------------
 void GraphicDeviceDX11::InitTextureFormatArray()
 {
-	m_textureFormat[ TEXTURE_FORMAT_R8G8B8A8 ]				=	DXGI_FORMAT_R8G8B8A8_UNORM;
-	m_textureFormat[ TEXTURE_FORMAT_DEPTH_STENCIL ]			=	DXGI_FORMAT_D24_UNORM_S8_UINT;
+	m_textureFormat[ TEXTURE_FORMAT_R8G8B8A8 ].m_DXFormat			=	DXGI_FORMAT_R8G8B8A8_UNORM;
+	m_textureFormat[ TEXTURE_FORMAT_R8G8B8A8 ].m_blockWidth			=	1;
+	m_textureFormat[ TEXTURE_FORMAT_R8G8B8A8 ].m_blockHeight		=	1;
+	m_textureFormat[ TEXTURE_FORMAT_R8G8B8A8 ].m_blockSize			=	4;
+
+	m_textureFormat[ TEXTURE_FORMAT_B8G8R8A8 ].m_DXFormat			=	DXGI_FORMAT_B8G8R8A8_UNORM;
+	m_textureFormat[ TEXTURE_FORMAT_B8G8R8A8 ].m_blockWidth			=	1;
+	m_textureFormat[ TEXTURE_FORMAT_B8G8R8A8 ].m_blockHeight		=	1;
+	m_textureFormat[ TEXTURE_FORMAT_B8G8R8A8 ].m_blockSize			=	4;
+
+	m_textureFormat[ TEXTURE_FORMAT_DEPTH_STENCIL ].m_DXFormat		=	DXGI_FORMAT_D24_UNORM_S8_UINT;
+	m_textureFormat[ TEXTURE_FORMAT_DEPTH_STENCIL ].m_blockWidth	=	1;
+	m_textureFormat[ TEXTURE_FORMAT_DEPTH_STENCIL ].m_blockHeight	=	1;
+	m_textureFormat[ TEXTURE_FORMAT_DEPTH_STENCIL ].m_blockSize		=	4;
+
+	m_textureFormat[ TEXTURE_FORMAT_DXT1 ].m_DXFormat				=	DXGI_FORMAT_BC1_UNORM;
+	m_textureFormat[ TEXTURE_FORMAT_DXT1 ].m_blockWidth				=	4;
+	m_textureFormat[ TEXTURE_FORMAT_DXT1 ].m_blockHeight			=	4;
+	m_textureFormat[ TEXTURE_FORMAT_DXT1 ].m_blockSize				=	8;
+
 }
 //-------------------------------------------------------------------------------------------------
 
 
 //-------------------------------------------------------------------------------------------------
-Texture2DDX11* GraphicDeviceDX11::CreateTexture2D( const RhiTextureDescriptor& a_descriptor, void* a_data  )
+Texture2DDX11* GraphicDeviceDX11::CreateTexture2D( const RhiTextureDescriptor& a_descriptor, const TUint8* a_data  )
 {
 	D3D11_TEXTURE2D_DESC t_desc;
 	ZeroMemory( &t_desc , sizeof(D3D11_TEXTURE2D_DESC ) );
@@ -431,26 +449,11 @@ Texture2DDX11* GraphicDeviceDX11::CreateTexture2D( const RhiTextureDescriptor& a
 	ID3D11Texture2D* t_dxTexture;
 	HRESULT t_result;
 
-	if( a_data != NULL )
-	{
-		// Set the Resource descriptor
-		D3D11_SUBRESOURCE_DATA t_resourceData;
-		ZeroMemory( &t_resourceData , sizeof(t_resourceData) );
+	D3D11_SUBRESOURCE_DATA* t_subResources					=	BuildSubResourceData( a_descriptor , a_data );
+	t_result												=	m_d3dDevice->CreateTexture2D( &t_desc , t_subResources , &t_dxTexture );
 
-		// set the data to full the buffer with
-		t_resourceData.pSysMem								=	a_data;
-//		t_resourceData.SysMemPitch							=	a_descriptor.m_width * 4;
-//		t_resourceData.SysMemSlicePitch						=	a_descriptor.m_width * a_descriptor.m_height * 4;
-		t_resourceData.SysMemPitch							=	a_descriptor.m_width;
-		t_resourceData.SysMemSlicePitch						=	a_descriptor.m_width * a_descriptor.m_height;
-
-		t_result											=	m_d3dDevice->CreateTexture2D( &t_desc , &t_resourceData , &t_dxTexture );
-	}
-	else
-	{
-		t_result											=	m_d3dDevice->CreateTexture2D( &t_desc , NULL , &t_dxTexture );
-	}
-
+	// Free the resources
+//	SAFE_DELETE_ARRAY( t_subResources );
 
 	// if succeed
 	if( t_result == S_OK )
@@ -469,17 +472,16 @@ Texture2DDX11* GraphicDeviceDX11::CreateTexture2D( const RhiTextureDescriptor& a
 }
 //-------------------------------------------------------------------------------------------------
 
-
 //-------------------------------------------------------------------------------------------------
 void GraphicDeviceDX11::SetTextureDescriptor(  D3D11_TEXTURE2D_DESC& a_dxDescriptor , const RhiTextureDescriptor& a_descriptor )
 {
 	a_dxDescriptor.Width									=	a_descriptor.m_width;
 	a_dxDescriptor.Height									=	a_descriptor.m_height;
+	a_dxDescriptor.MipLevels								=	a_descriptor.m_mipmapCount;
 	a_dxDescriptor.ArraySize								=	1;
-	a_dxDescriptor.MipLevels								=	1;
 	a_dxDescriptor.SampleDesc.Count							=	1;
 	a_dxDescriptor.SampleDesc.Quality						=	0;
-	a_dxDescriptor.Format									=	m_textureFormat[ a_descriptor.m_format ];
+	a_dxDescriptor.Format									=	m_textureFormat[ a_descriptor.m_format ].m_DXFormat;
 	a_dxDescriptor.BindFlags								=	m_BufferBindFlags[ a_descriptor.m_shaderUsage ];
 
 	a_dxDescriptor.Usage									=	m_bufferUsages[ a_descriptor.m_usage ].Usage;
@@ -488,7 +490,46 @@ void GraphicDeviceDX11::SetTextureDescriptor(  D3D11_TEXTURE2D_DESC& a_dxDescrip
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-ID3D11ShaderResourceView* GraphicDeviceDX11::CreateShaderResourceView( ID3D11Texture2D* a_texture )
+D3D11_SUBRESOURCE_DATA* GraphicDeviceDX11::BuildSubResourceData( const RhiTextureDescriptor& a_descriptor, const TUint8* a_data )
+{
+	if( a_data != NULL )
+	{
+		TUint32 t_width										=	a_descriptor.m_width;
+		TUint32 t_height									=	a_descriptor.m_height;
+		TUint32 t_mipCount									=	a_descriptor.m_mipmapCount;
+		TextureFormat* t_format								=	&m_textureFormat[ a_descriptor.m_format ];
+
+		// Set the Resource descriptor
+		D3D11_SUBRESOURCE_DATA* t_resourceData				=	new D3D11_SUBRESOURCE_DATA[ t_mipCount ];
+		
+		TUint32 t_offset									=	0;
+
+		for( int i = 0 ; i <t_mipCount ; i ++ )
+		{
+			TUint32 t_numBlockX								=	max( 1 , ( t_width >> i ) / t_format->m_blockWidth );
+			TUint32 t_numBlockY								=	max( 1 , ( t_height >> i ) / t_format->m_blockHeight );
+
+			TUint32 t_rowPitch								=	t_numBlockX * t_format->m_blockSize;
+			TUint32 t_slicePitch							=	t_numBlockY * t_rowPitch;
+
+			// set the data to full the buffer with
+			t_resourceData[i].pSysMem						=	&a_data[ t_offset ];
+			t_resourceData[i].SysMemPitch					=	t_rowPitch;
+			t_resourceData[i].SysMemSlicePitch				=	t_slicePitch;
+		
+			t_offset										+=	t_slicePitch;
+		}
+
+		return t_resourceData;
+	}
+
+	return NULL;
+}
+//-------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------------------------
+ID3D11ShaderResourceView* GraphicDeviceDX11::CreateShaderResourceView( ID3D11Texture2D* a_texture , RhiTextureFormat a_format , TUint32 a_mipCount , TUint32 a_mostDetailedMip )
 {
 	ID3D11ShaderResourceView* t_view						=	NULL;
 
@@ -496,10 +537,10 @@ ID3D11ShaderResourceView* GraphicDeviceDX11::CreateShaderResourceView( ID3D11Tex
 	D3D11_SHADER_RESOURCE_VIEW_DESC t_desc;
 	ZeroMemory( &t_desc , sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC) );
 
-	t_desc.Format											=	DXGI_FORMAT_R8G8B8A8_UNORM;
+	t_desc.Format											=	m_textureFormat[ a_format ].m_DXFormat;
 	t_desc.ViewDimension									=	D3D_SRV_DIMENSION_TEXTURE2D;
-	t_desc.Texture2D.MostDetailedMip						=	0;
-	t_desc.Texture2D.MipLevels								=	1;
+	t_desc.Texture2D.MostDetailedMip						=	a_mostDetailedMip;
+	t_desc.Texture2D.MipLevels								=	a_mipCount;
 
 	HRESULT t_result										=	m_d3dDevice->CreateShaderResourceView( a_texture, &t_desc , &t_view );
 
