@@ -127,6 +127,9 @@
     <Filter Include="Graphics\Importers\DDS">
       <UniqueIdentifier>{aab58e68-827d-4f97-854b-417624b277f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\RHI\Common\Textures">
+      <UniqueIdentifier>{94762e13-d146-4a05-91c3-cc0e729a2cff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -415,9 +418,6 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiTextureDescriptor.h">
       <Filter>Graphics\RHI\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiTextureEnums.h">
-      <Filter>Graphics\RHI\Common\Enums</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiResourcesEnums.h">
       <Filter>Graphics\RHI\Common\Enums</Filter>
     </ClInclude>
@@ -540,6 +540,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Common\Graphics\Importers\Includes.h">
       <Filter>Graphics\Importers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Textures\RhiSamplerStateDescriptor.h">
+      <Filter>Graphics\RHI\Common\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Textures\RhiTextureEnums.h">
+      <Filter>Graphics\RHI\Common\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Textures\Includes.h">
+      <Filter>Graphics\RHI\Common\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiResource.h">
+      <Filter>Graphics\RHI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateManagerDX11.h">
+      <Filter>Graphics\RHI\DirectX11\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -779,6 +797,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Graphics\Importers\DDS\DDSTextureLoader.cpp">
       <Filter>Graphics\Importers\DDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateManagerDX11.cpp">
+      <Filter>Graphics\RHI\DirectX11\Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

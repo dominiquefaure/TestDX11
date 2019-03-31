@@ -1,8 +1,0 @@
-#ifndef __GRAPHICS_RESOURCES_TEXTURES_LOADERS_INCLUDES_H__
-#define __GRAPHICS_RESOURCES_TEXTURES_LOADERS_INCLUDES_H__
-
-
-#include "DDSTextureLoader.h"
-
-
-#endif

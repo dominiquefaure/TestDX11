@@ -169,8 +169,6 @@ void Sample::OnDraw()
 	m_perFrameConstantBuffer.Update( &m_perFrameConstants );
 	m_perFrameConstantBuffer.Bind( t_mainContext , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_FRAME );
 
-//	DrawTriangle( t_mainContext );
-
 	t_mainContext->SetWireframe( false );
 //	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
 	t_mainContext->SetCullingMode( RHI_CULLING_MODE_FRONT );
@@ -178,25 +176,6 @@ void Sample::OnDraw()
 	t_mainContext->SetTexture( 0 , m_testTexture->GetRhiTexture() );
 
 	m_renderScene.Draw( t_mainContext );
-
-}
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-void Sample::DrawTriangle( RhiGraphicContext* a_context )
-{
-	m_perDrawConstantBuffer.Update( &m_perDrawConstants );
-
-	m_perDrawConstantBuffer.Bind( a_context , RHI_SHADER_TYPE_VERTEX_SHADER ,VS_PARAMETER_SLOT_PER_DRAW );
-
-
-	a_context->SetWireframe( true );
-	a_context->SetCullingMode( RHI_CULLING_MODE_BACK );
-//	a_context->SetCullingMode( RHI_CULLING_MODE_FRONT );
-
-//	m_mesh->Draw( a_context , m_shader , 0 );
-//	m_mesh->DrawPart( 0 , a_context , m_material->GetShaderProgram() , 0 );
 
 }
 //---------------------------------------------------------------------------------------------

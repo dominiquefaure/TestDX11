@@ -17,6 +17,8 @@
 #include "Shaders/Includes.h"
 
 #include"../Common/Enums/RhiVertexLayoutEnums.h"
+#include"../Common/Textures/Includes.h"
+
 
 #include "VertexLayout/VertexLayoutManagerDX11.h"
 #include "Textures/Includes.h"
@@ -150,6 +152,12 @@ public:
 	*/
 	Texture2DDX11* CreateTexture2D( const RhiTextureDescriptor& a_descriptor ,const TUint8* a_data = NULL );
 
+	/*
+	* Create a new Sampler state
+	// todo : handle same sampler creation
+	*/
+	SamplerStateDX11* CreateSamplerState( const RhiSamplerStateDescriptor& a_descriptor );
+
 private:
 
 	/*
@@ -166,6 +174,11 @@ private:
 	* Initialize correctly the Main Graphic Context
 	*/
 	void InitMainContext();
+
+	/*
+	* Init the different sub managers
+	*/
+	void InitManagers( );
 
 	/*
 	* Init the Array used to Convert RhiShaderResourceBinding enum to DX BindFlag 
@@ -228,11 +241,6 @@ private:
 	ID3D11ShaderResourceView* CreateShaderResourceView( ID3D11Texture2D* a_texture , RhiTextureFormat a_format , TUint32 a_mipCount , TUint32 a_mostDetailedMip = 0 );
 
 	/*
-	* Create the Sampler State Matching the given params
-	*/
-	ID3D11SamplerState* CreateSamplerState( D3D11_FILTER a_filterType , D3D11_TEXTURE_ADDRESS_MODE a_addressU , D3D11_TEXTURE_ADDRESS_MODE a_addressV , D3D11_TEXTURE_ADDRESS_MODE a_addressW );
-
-	/*
 	* Build the subresource data array. to be deleted manually
 	*/
 	D3D11_SUBRESOURCE_DATA* BuildSubResourceData( const RhiTextureDescriptor& a_descriptor, const TUint8* a_data );
@@ -260,15 +268,12 @@ private:
 	// Store the different properties matching a RhiBufferUsage
 	BufferUsageParams			m_bufferUsages[ RHI_BUFFER_USAGE_COUNT ];
 
-
-
-	VertexLayoutManagerDX11*	m_vertexLayoutManager;
-
-	StateObjectsManagerDX11		m_stateObjectsManager;
-
 	TextureFormat				m_textureFormat[ TEXTURE_FORMAT_COUNT ];
 
-
+	// The differents sub managers
+	VertexLayoutManagerDX11*	m_vertexLayoutManager;
+	StateObjectsManagerDX11		m_stateObjectsManager;
+	SamplerStateManagerDX11		m_samplerStateManager;
 };
 
 // The inline is included in the Header only if not in debug mode

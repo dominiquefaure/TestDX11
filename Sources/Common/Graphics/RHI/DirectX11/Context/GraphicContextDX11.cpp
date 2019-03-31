@@ -48,8 +48,8 @@ void GraphicContextDX11::Init( GraphicDeviceDX11* a_owner ,  ID3D11DeviceContext
 	
 	m_pipelineStates.SetStateObjectManager( a_owner->GetStateObjetManager() );
 
-
-	m_defaultSamplerState									=	m_owner->CreateSamplerState( D3D11_FILTER_MIN_MAG_MIP_LINEAR , D3D11_TEXTURE_ADDRESS_WRAP , D3D11_TEXTURE_ADDRESS_WRAP , D3D11_TEXTURE_ADDRESS_WRAP );
+	RhiSamplerStateDescriptor t_samplerState( RHI_SAMPLER_FILTER_TRILINEAR , RHI_SAMPLER_MODE_WRAP , RHI_SAMPLER_MODE_WRAP , RHI_SAMPLER_MODE_WRAP );
+	m_defaultSamplerState									=	m_owner->CreateSamplerState( t_samplerState );
 }
 //---------------------------------------------------------------------------------------------------------
 
@@ -246,8 +246,8 @@ void GraphicContextDX11::SetTexture( TUint32 a_index , Texture2DDX11* a_texture 
 		ID3D11ShaderResourceView* t_resourceView	=	 a_texture->GetResourceView() ;
 		m_deviceContext->PSSetShaderResources( a_index , 1 , &t_resourceView );
 
-	
-		m_deviceContext->PSSetSamplers( a_index , 1 , &m_defaultSamplerState );
+		ID3D11SamplerState* t_samplerState			=	m_defaultSamplerState->GetResource();
+		m_deviceContext->PSSetSamplers( a_index , 1 , &t_samplerState );
 	
 	}
 }

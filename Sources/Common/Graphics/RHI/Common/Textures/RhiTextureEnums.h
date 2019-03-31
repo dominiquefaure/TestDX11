@@ -1,6 +1,37 @@
 #ifndef __RHI_TEXTURE_ENUMS_H__
 #define __RHI_TEXTURE_ENUMS_H__
 
+enum RhiSamplerAdressMode
+{
+	RHI_SAMPLER_MODE_WRAP = 0,
+	RHI_SAMPLER_MODE_CLAMP,
+	RHI_SAMPLER_MODE_MIRROR,
+	RHI_SAMPLER_MODE_BORDER,
+
+	// number of bits used to store the Sampler mode
+	RHI_SAMPLER_MODE_BITS_COUNT	=	2
+};
+
+enum RhiSamplerFilter
+{
+	RHI_SAMPLER_FILTER_POINT = 0,
+	RHI_SAMPLER_FILTER_BILINEAR,
+	RHI_SAMPLER_FILTER_TRILINEAR,
+	RHI_SAMPLER_FILTER_ANISOTROPIC_POINT,
+	RHI_SAMPLER_FILTER_ANISOTROPIC_LINEAR,
+
+	// number of bits used to store the Sampler Filter
+	RHI_SAMPLER_FILTER_BITS_COUNT	=	3
+};
+
+enum RhiSamplerComparisonFunction
+{
+	RHI_SAMPLER_COMPARISON_FUNC_NEVER = 0,
+	RHI_SAMPLER_COMPARISON_FUNC_LESS,
+
+	RHI_SAMPLER_COMPARISON_FUNC_BITS_COUNT = 1
+
+};
 
 // The different Textures Formats supported
 enum RhiTextureFormat

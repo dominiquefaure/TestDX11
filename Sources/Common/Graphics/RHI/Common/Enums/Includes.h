@@ -3,7 +3,6 @@
 
 
 #include "RhiResourcesEnums.h"
-#include "RhiTextureEnums.h"
 #include "RhiVertexLayoutEnums.h"
 
 

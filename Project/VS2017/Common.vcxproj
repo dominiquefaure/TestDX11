@@ -98,6 +98,12 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderProgram.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Textures\Texture2D.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiResource.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Textures\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Textures\RhiSamplerStateDescriptor.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Textures\RhiTextureEnums.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateDX11.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateManagerDX11.h" />
     <ClInclude Include="..\..\Sources\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Inputs\InputMacros.h" />
@@ -114,7 +120,6 @@
     <ClInclude Include="..\..\Sources\Common\Renderer\Scene\RenderScene.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiResourcesEnums.h" />
-    <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiTextureEnums.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Enums\RhiVertexLayoutEnums.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\Common\RhiShaderCompilationParams.h" />
@@ -208,6 +213,7 @@
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderPermutation.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderProgram.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Textures\Texture2D.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateManagerDX11.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\InputManager.cpp" />
     <ClCompile Include="..\..\Sources\Common\Inputs\KeyboardDevice.cpp" />
     <ClCompile Include="..\..\Sources\Common\Renderer\Scene\Elements\RenderSceneElement.cpp" />

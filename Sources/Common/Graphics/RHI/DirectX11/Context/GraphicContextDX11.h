@@ -26,6 +26,7 @@ class VertexShaderDX11;
 class PixelShaderDX11;
 class VertexLayoutDX11;
 class Texture2DDX11;
+class SamplerStateDX11;
 
 class ImGuiWrapper;
 
@@ -216,7 +217,7 @@ private:
 	GeometryStatesDX11		m_geometryStates;
 	PipelineStatesDX11		m_pipelineStates;
 
-	ID3D11SamplerState*		m_defaultSamplerState;
+	SamplerStateDX11*		m_defaultSamplerState;
 };
 
 // The inline is included in the Header only if not in debug mode

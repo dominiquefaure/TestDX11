@@ -66,8 +66,6 @@ private:
 
 	void LoadSprite( RhiGraphicDevice* a_device );
 
-	void DrawTriangle( RhiGraphicContext* a_context );
-
 	void CreateConstantBuffer( RhiGraphicDevice* a_device );
 
 // Fields

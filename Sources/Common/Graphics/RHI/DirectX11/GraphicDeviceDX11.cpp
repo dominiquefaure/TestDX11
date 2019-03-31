@@ -47,32 +47,15 @@ void GraphicDeviceDX11::Init( HWND a_handle , TUint32 a_width , TUint32 a_height
 
 	// Create the Swapchain
 	CreateSwapchain( a_handle , a_width , a_height );
+	
+	// Init the different Internal managers
+	InitManagers( );
 
-	// init the State objects
-	m_stateObjectsManager.Init( m_d3dDevice );
-
-	// Setup correctly the Main Context
+	// Setup correctly the Main Context, need to be done after all managers have been created
 	InitMainContext();
 
 	InitVertexLayouts();
-}
-//-------------------------------------------------------------------------------------------------
 
-//-------------------------------------------------------------------------------------------------
-ID3D11SamplerState* GraphicDeviceDX11::CreateSamplerState( D3D11_FILTER a_filterType , D3D11_TEXTURE_ADDRESS_MODE a_addressU , D3D11_TEXTURE_ADDRESS_MODE a_addressV , D3D11_TEXTURE_ADDRESS_MODE a_addressW )
-{
-	D3D11_SAMPLER_DESC t_desc;
-	ZeroMemory(&t_desc,sizeof(D3D11_SAMPLER_DESC));
-	t_desc.Filter											=	a_filterType;
-	t_desc.AddressU											=	a_addressU;
-	t_desc.AddressV											=	a_addressV;
-	t_desc.AddressW											=	a_addressW;
-
-	ID3D11SamplerState* t_sampler							=	NULL;
-
-	m_d3dDevice->CreateSamplerState( &t_desc ,  &t_sampler);
-
-	return t_sampler;
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -151,6 +134,15 @@ IDXGISwapChain* GraphicDeviceDX11::CreateDxSwapchain(  DXGI_SWAP_CHAIN_DESC& a_d
 }
 //-------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------------------------
+void GraphicDeviceDX11::InitManagers( )
+{
+	// init the State objects
+	m_stateObjectsManager.Init( m_d3dDevice );
+
+	m_samplerStateManager.Init( m_d3dDevice );
+}
+//-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
 void GraphicDeviceDX11::BeginFrame()
@@ -545,5 +537,12 @@ ID3D11ShaderResourceView* GraphicDeviceDX11::CreateShaderResourceView( ID3D11Tex
 	HRESULT t_result										=	m_d3dDevice->CreateShaderResourceView( a_texture, &t_desc , &t_view );
 
 	return t_view;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+SamplerStateDX11* GraphicDeviceDX11::CreateSamplerState( const RhiSamplerStateDescriptor& a_descriptor )
+{
+	return m_samplerStateManager.CreateSamplerState( a_descriptor );
 }
 //-------------------------------------------------------------------------------------------------

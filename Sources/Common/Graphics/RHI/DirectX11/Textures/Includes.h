@@ -3,6 +3,8 @@
 
 
 #include "Texture2DDX11.h"
+#include "SamplerStateDX11.h"
+#include "SamplerStateManagerDX11.h"
 
 
 #endif
