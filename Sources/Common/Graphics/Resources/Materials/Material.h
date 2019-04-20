@@ -78,4 +78,7 @@ private:
 	MaterialSharedParametersCollection		m_defaultSharedValues;
 };
 
+
+typedef ReferenceCountedPtr<Material>	MaterialRef;
+
 #endif

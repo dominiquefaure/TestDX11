@@ -27,6 +27,8 @@
     <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\ReferenceCounted.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\ReferenceCountedPtr.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Containers\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Containers\TArray.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Containers\TFixedArray.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreIncludes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\CoreMacros.h" />

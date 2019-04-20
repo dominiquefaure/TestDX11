@@ -4,5 +4,6 @@
 #include "Parameters/Includes.h"
 #include "Material.h"
 #include "MaterialInstance.h"
+#include "MaterialManager.h"
 
 #endif

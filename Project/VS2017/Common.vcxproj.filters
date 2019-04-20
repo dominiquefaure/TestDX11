@@ -559,6 +559,12 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateManagerDX11.h">
       <Filter>Graphics\RHI\DirectX11\Textures</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Containers\TArray.h">
+      <Filter>Core\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Containers\Includes.h">
+      <Filter>Core\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">

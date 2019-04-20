@@ -92,8 +92,7 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadSprite( RhiGraphicDevice* a_device )
 {
-	m_spriteMaterial										=	new Material();
-	m_spriteMaterial->Load( "SpriteMat.mat" );
+	m_spriteMaterial										=	m_materialManager.GetMaterial( "SpriteMat.mat" );
 
 	m_spriteMesh											=	new StaticMesh();
 	m_spriteMesh->LoadFromJSon( "Sprite.mesh" );

@@ -92,7 +92,8 @@ private:
 	StaticModelInstance*	m_meshInstance1;
 	StaticModelInstance*	m_meshInstance2;
 
-	Material*			m_material;
+	MaterialManager			m_materialManager;
+	MaterialRef				m_material;
 
-	Model*				m_model;
+	Model*					m_model;
 };

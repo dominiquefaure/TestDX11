@@ -89,8 +89,7 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadModel( RhiGraphicDevice* a_device )
 {
-	m_material												=	new Material();
-	m_material->Load( "DummyMaterial.mat" );
+	m_material												=	m_materialManager.GetMaterial( "DummyMaterial.mat" );
 
 	if( FileSystem::GetInstance()->Exist( "grendizer.mesh" ) )
 	{

@@ -81,15 +81,18 @@ private:
 	SConstantBuffer<PerFrameConstants>	m_perFrameConstantBuffer;
 	SConstantBuffer<PerDrawConstants>	m_perDrawConstantBuffer;
 
-	RenderScene			m_renderScene;
+	MaterialManager			m_materialManager;
+
+	RenderScene				m_renderScene;
 
 //	RhiTexture2D*			m_testTexture;
 	Texture2D*				m_testTexture;
 
 	StaticMesh*				m_spriteMesh;
-	Material*				m_spriteMaterial;
+	MaterialRef				m_spriteMaterial;
 	Model*					m_spriteModel;
 
 	StaticModelInstance*	m_spriteInstance;
+
 
 };
