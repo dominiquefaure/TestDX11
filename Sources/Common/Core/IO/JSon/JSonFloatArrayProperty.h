@@ -30,6 +30,16 @@ public:
 	*/
 	void GetValues32( TFloat32* a_array )const;
 
+	/*
+	* Get the Value at the given index. return 0.0f if exceed the array size
+	*/
+	TFloat32 GetValue32At( TUint32 a_index )const;
+
+	/*
+	* Get the Value at the given index. return 0.0f if exceed the array size
+	*/
+	TFloat64 GetValue64At( TUint32 a_index )const;
+
 
 protected:
 

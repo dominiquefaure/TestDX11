@@ -76,6 +76,10 @@ void Sample::OnInit( )
 	m_translate.Set( 0.0f , 0.0f , 0.0f );
 
 	m_testTexture	=	DDSTextureLoader::CreateTexture( RhiManager::GetInstance()->GetGraphicDevice() ,"armor.dds" );
+
+
+	MaterialTemplate t_template;
+	t_template.Load( "SpriteMatTemplate.json" );
 }
 //---------------------------------------------------------------------------------------------
 

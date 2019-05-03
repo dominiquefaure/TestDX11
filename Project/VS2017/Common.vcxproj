@@ -89,6 +89,9 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptor.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialSharedParametersCollection.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\Includes.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialParameterDescriptors.h" />
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\BaseMesh.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.h" />
@@ -207,6 +210,7 @@
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptor.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialSharedParametersCollection.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Meshes\BaseMesh.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.cpp" />
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Meshes\StaticMesh.cpp" />

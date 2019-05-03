@@ -1,0 +1,50 @@
+{
+
+    "Program" : "SpriteShader.json",
+    "Parameters" :
+    {
+
+        "Textures" :
+        [
+            {
+                "Name" : "Diffuse",
+                "Default" : "White.dds"
+            },
+            {
+                "Name" : "Normal"
+            }
+        ],
+        "Samplers" :
+        [
+            {
+                "Name" : "CommonSampler",
+                "Default" : 
+                {
+                    "Filter" : "RHI_SAMPLER_FILTER_TRILINEAR",
+                    "AddressU" : "RHI_SAMPLER_MODE_CLAMP",
+                    "AddressV" : "RHI_SAMPLER_MODE_CLAMP",
+                    "AddressW" : "RHI_SAMPLER_MODE_CLAMP"
+                }
+            }
+        ],
+        "Scalar" :
+        [
+            {
+                "Name" : "Coef1",
+                "DefaultValue" : 0.0
+            },
+            {
+                "Name" : "Coef2",
+                "DefaultValue" : 1.0
+            }
+        ],
+        "Vector3" :
+        [
+            {
+                "Name" : "Color",
+                "DefaultValue" : [ 1.0 , 0.0 , 0.0 ]
+            }
+
+        ]
+    }
+}

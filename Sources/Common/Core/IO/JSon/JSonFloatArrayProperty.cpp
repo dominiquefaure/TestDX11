@@ -44,6 +44,31 @@ void JSonFloatArrayProperty::GetValues32( TFloat32* a_array )const
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
+TFloat32 JSonFloatArrayProperty::GetValue32At( TUint32 a_index )const
+{
+	if( a_index < m_count )
+	{
+		return static_cast<TFloat32>( m_values[ a_index ] );
+	}
+
+	return 0.0f;
+}
+//-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+TFloat64 JSonFloatArrayProperty::GetValue64At( TUint32 a_index )const
+{
+	if( a_index < m_count )
+	{
+		return static_cast<TFloat64>( m_values[ a_index ] );
+	}
+
+	return 0.0f;
+}
+//-------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------------------------
 void JSonFloatArrayProperty::SetValues( TUint32 a_count , const TFloat64* a_values )
 {
 	m_count													=	a_count;

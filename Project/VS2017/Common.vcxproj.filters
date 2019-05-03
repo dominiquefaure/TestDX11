@@ -130,6 +130,9 @@
     <Filter Include="Graphics\RHI\Common\Textures">
       <UniqueIdentifier>{94762e13-d146-4a05-91c3-cc0e729a2cff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Resources\Materials\Templates">
+      <UniqueIdentifier>{2f436e1c-e32d-477d-80c0-b7557724f24e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -565,6 +568,15 @@
     <ClInclude Include="..\..\Sources\Common\Core\Containers\Includes.h">
       <Filter>Core\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.h">
+      <Filter>Graphics\Resources\Materials\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\Includes.h">
+      <Filter>Graphics\Resources\Materials\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialParameterDescriptors.h">
+      <Filter>Graphics\Resources\Materials\Templates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -806,6 +818,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Graphics\RHI\DirectX11\Textures\SamplerStateManagerDX11.cpp">
       <Filter>Graphics\RHI\DirectX11\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.cpp">
+      <Filter>Graphics\Resources\Materials\Templates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

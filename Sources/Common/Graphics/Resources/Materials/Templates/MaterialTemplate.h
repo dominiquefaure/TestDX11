@@ -1,0 +1,97 @@
+#ifndef __RENDERER_RESOURCES_MATERIAL_TEMPLATE_H__
+#define __RENDERER_RESOURCES_MATERIAL_TEMPLATE_H__
+
+#include "Core/CoreIncludes.h"
+#include "Graphics/Resources/Shaders/Includes.h"
+
+#include "MaterialParameterDescriptors.h"
+/*
+* Define the Template of a set of Materials.
+*
+* a Template contains:
+*	- Shader program to use
+*	- Description on the different Parameters that can be set per Material/Instance
+*/
+class MaterialTemplate
+{
+
+public:
+
+	MaterialTemplate();
+	virtual ~MaterialTemplate();
+
+	ShaderProgram* GetShaderProgram()const { return m_shaderProgram; }
+
+	/*
+	* Load the MaterialTemplate definition from a JSON File
+	*/
+	void Load( const std::string& a_filePath );
+
+// Methods
+private:
+
+	/*
+	* Add a scalar parameter to the Template
+	*/
+	void AddScalarParameter( const std::string& a_name , TFloat32 a_defaultValue );
+
+	/*
+	* Add a Vector3 parameter to the Template
+	*/
+	void AddVector3Parameter( const std::string& a_name , const Vector3F& a_defaultValue );
+
+
+	/////// Loading Methods
+
+	void LoadFromJSon( const JSonNode* a_rootNode );
+
+	/*
+	* Load the Shader program from JSon node
+	*/ 
+	void LoadShaderProgram( const JSonNode* a_rootNode );
+
+	/*
+	* Load all the parameters
+	*/
+	void LoadParameters( const JSonNode* a_rootNode );
+
+	/*
+	* Load all the Scalar parameters from JSon file
+	*/ 
+	void LoadScalarParameters( const JSonNodeArrayProperty* a_nodes );
+
+	/*
+	* Load the Scalar parameter represented by the given node
+	*/
+	void LoadScalarParameter( const JSonNode* a_parameterNode );
+
+
+	/*
+	* Load all the Vector3 parameters from JSon file
+	*/ 
+	void LoadVector3Parameters( const JSonNodeArrayProperty* a_nodes );
+
+	/*
+	* Load the Vector3 parameter represented by the given node
+	*/
+	void LoadVector3Parameter( const JSonNode* a_parameterNode );
+
+// Fields
+private:
+
+	// Program that Store the Shaders needed for this Material
+	ShaderProgram*								m_shaderProgram;
+
+	// Array that store all the Scalar parameters descriptors
+	TArray<MaterialParameterScalarDescriptor*>	m_scalarParameters;
+
+	// Array that store all the Vector3 parameters descriptors
+	TArray<MaterialParameterVector3Descriptor*>	m_vector3Parameters;
+
+
+
+};
+
+typedef ReferenceCountedPtr<MaterialTemplate>	MaterialTemplateRef;
+
+#endif
