@@ -20,7 +20,15 @@ public:
 	MaterialTemplate();
 	virtual ~MaterialTemplate();
 
-	ShaderProgram* GetShaderProgram()const { return m_shaderProgram; }
+	/*
+	* Get the MaterialTemplate path
+	*/
+	FORCE_INLINE const std::string& GetPath()const;
+
+	/*
+	* Get the ShaderProgram used by this Template
+	*/
+	FORCE_INLINE ShaderProgram* GetShaderProgram()const;
 
 	/*
 	* Load the MaterialTemplate definition from a JSON File
@@ -79,6 +87,9 @@ private:
 // Fields
 private:
 
+	// Template Path
+	std::string									m_path;
+
 	// Program that Store the Shaders needed for this Material
 	ShaderProgram*								m_shaderProgram;
 
@@ -91,6 +102,13 @@ private:
 
 
 };
+
+
+// The inline is included in the Header only if not in debug mode
+#ifndef _DEBUG
+#include "MaterialTemplate.inl"
+#endif
+
 
 typedef ReferenceCountedPtr<MaterialTemplate>	MaterialTemplateRef;
 

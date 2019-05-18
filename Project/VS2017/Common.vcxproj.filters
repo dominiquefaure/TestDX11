@@ -920,5 +920,8 @@
     <None Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.inl">
       <Filter>Graphics\Resources\Meshes</Filter>
     </None>
+    <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.inl">
+      <Filter>Graphics\Resources\Materials\Templates</Filter>
+    </None>
   </ItemGroup>
 </Project>

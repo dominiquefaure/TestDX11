@@ -266,6 +266,7 @@
     <None Include="..\..\Sources\Common\Graphics\Resources\Materials\MaterialInstance.inl" />
     <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptor.inl" />
     <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Parameters\MaterialParameterDescriptorCollection.inl" />
+    <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.inl" />
     <None Include="..\..\Sources\Common\Graphics\Resources\Meshes\MeshPart.inl" />
     <None Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderDefinition.inl" />
     <None Include="..\..\Sources\Common\Graphics\Resources\Shaders\ShaderPermutation.inl" />
