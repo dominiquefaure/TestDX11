@@ -23,6 +23,8 @@
     <ClInclude Include="..\..\Sources\Common\Application\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Application\WindowsAppConfig.h" />
     <ClInclude Include="..\..\Sources\Common\Application\WinMainLauncher.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\Asset.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\BaseDataTypes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\ReferenceCounted.h" />
@@ -171,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\GameApplication.cpp" />
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Assets\Asset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\AJSonProperty.cpp" />
@@ -253,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\Application\GameApplication.inl" />
+    <None Include="..\..\Sources\Common\Core\Assets\Asset.inl" />
     <None Include="..\..\Sources\Common\Core\IO\FileHandle.inl" />
     <None Include="..\..\Sources\Common\Core\Math\Color.inl" />
     <None Include="..\..\Sources\Common\Core\Math\Maths.inl" />

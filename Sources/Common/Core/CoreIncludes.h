@@ -17,4 +17,6 @@
 
 #include "Utils/Includes.h"
 
+#include "Assets/Includes.h"
+
 #endif

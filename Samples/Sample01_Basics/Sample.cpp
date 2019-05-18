@@ -94,7 +94,7 @@ void Sample::LoadModel( RhiGraphicDevice* a_device )
 	if( FileSystem::GetInstance()->Exist( "grendizer.mesh" ) )
 	{
 		m_mesh												=	new StaticMesh();
-		m_mesh->LoadFromJSon( "grendizer.mesh" );
+		m_mesh->Load( "grendizer.mesh" );
 	}
 	else
 	{

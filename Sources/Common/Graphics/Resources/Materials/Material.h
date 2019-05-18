@@ -9,7 +9,7 @@
 
 class ShaderProgram;
 
-class Material : public ReferenceCounted
+class Material : public Asset
 {
 public:
 
@@ -17,11 +17,6 @@ public:
 	virtual ~Material();
 
 	ShaderProgram* GetShaderProgram() { return m_shaderProgram; }
-
-	/*
-	* Load the Material definition from a JSON File
-	*/
-	void Load( const std::string& a_filePath );
 
 	/*
 	* Apply the Material to the Context
@@ -61,9 +56,9 @@ public:
 
 
 // Methods
-private:
+protected:
 
-	void LoadFromJSon( const JSonNode* a_rootNode );
+	virtual void LoadFromJSon( const JSonNode* a_rootNode );
 
 // Fields
 private:

@@ -95,18 +95,6 @@ void BaseMesh::CreateParts( TUint32 a_count )
 
 
 //-------------------------------------------------------------------------------------------------
-void BaseMesh::LoadFromJSon( const char* a_filePath )
-{
-	// Load the Json File
-	JSonReader t_reader;
-	t_reader.Load( a_filePath );
-
-	LoadFromJSon( t_reader.GetRootNode() );
-
-}
-//-------------------------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------------------------
 void BaseMesh::LoadFromJSon( const JSonNode* a_rootNode )
 {
 	LoadParts( a_rootNode );

@@ -20,7 +20,7 @@ class GeometryRenderElement;
 * Base class for all meshes
 */
 
-class BaseMesh : public ReferenceCounted
+class BaseMesh : public Asset
 {
 	friend class FbxMeshImporter;
 
@@ -30,12 +30,6 @@ public:
 	virtual ~BaseMesh();
 
 
-	void LoadFromJSon( const char* a_path );
-
-	/*
-	 * Load the Geometry data from a JSon node
-	 */
-	void LoadFromJSon( const JSonNode* a_rootNode );
 
 
 	void BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData = true );
@@ -60,6 +54,14 @@ public:
 	* Serialize this Mesh to a JSON file
 	*/
 	void SerializeToJSon( const char* a_path );
+
+
+protected:
+	/*
+	 * Load the Geometry data from a JSon node
+	 */
+	void LoadFromJSon( const JSonNode* a_rootNode );
+
 
 // Methods
 private:

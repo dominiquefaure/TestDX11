@@ -12,7 +12,7 @@
 *	- Shader program to use
 *	- Description on the different Parameters that can be set per Material/Instance
 */
-class MaterialTemplate
+class MaterialTemplate : public Asset
 {
 
 public:
@@ -30,10 +30,10 @@ public:
 	*/
 	FORCE_INLINE ShaderProgram* GetShaderProgram()const;
 
-	/*
-	* Load the MaterialTemplate definition from a JSON File
-	*/
-	void Load( const std::string& a_filePath );
+protected:
+
+
+	virtual void LoadFromJSon( const JSonNode* a_rootNode );
 
 // Methods
 private:
@@ -51,7 +51,6 @@ private:
 
 	/////// Loading Methods
 
-	void LoadFromJSon( const JSonNode* a_rootNode );
 
 	/*
 	* Load the Shader program from JSon node

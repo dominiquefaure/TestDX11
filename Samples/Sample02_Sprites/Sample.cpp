@@ -99,7 +99,7 @@ void Sample::LoadSprite( RhiGraphicDevice* a_device )
 	m_spriteMaterial										=	m_materialManager.GetMaterial( "SpriteMat.mat" );
 
 	m_spriteMesh											=	new StaticMesh();
-	m_spriteMesh->LoadFromJSon( "Sprite.mesh" );
+	m_spriteMesh->Load( "Sprite.mesh" );
 	m_spriteMesh->BuildRenderData( a_device );
 
 	m_spriteModel											=	new Model();

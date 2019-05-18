@@ -16,6 +16,12 @@ public:
 	~MaterialManager();
 
 	/*
+	* Get the MaterialTemplate with the given file path.
+	* Load it if necessary
+	*/
+//	MaterialTemplateRef GetTemplate( const std::string& a_filePath );
+
+	/*
 	* Get the Material with the given file path.
 	* Load it if necessary
 	*/
@@ -25,6 +31,11 @@ public:
 private:
 
 	/*
+	* Load a MaterialTemplate from file
+	*/
+//	MaterialTemplate LoadMaterialTemplate( const std::string& a_filePath );
+
+	/*
 	* Load a new Material
 	*/
 	MaterialRef LoadMaterial( const char* a_filePath );
@@ -32,7 +43,8 @@ private:
 
 private:
 
-	TArray<Material*>	m_materialList;
+//	TArray<MaterialTemplate*>	m_materialTemplateList;
+	TArray<Material*>			m_materialList;
 };
 
 #endif

@@ -50,20 +50,6 @@ void MaterialTemplate::AddVector3Parameter( const std::string& a_name , const Ve
 ////////
 
 //------------------------------------------------------------------------------------
-void MaterialTemplate::Load( const std::string& a_filePath )
-{
-	// Save the File Path
-	m_path													=	a_filePath;
-
-	// Load the Json File
-	JSonReader t_reader;
-	t_reader.Load( a_filePath );
-
-	LoadFromJSon( t_reader.GetRootNode() );
-}
-//------------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------------
 void MaterialTemplate::LoadFromJSon( const JSonNode* a_rootNode )
 {
 	LoadShaderProgram( a_rootNode );

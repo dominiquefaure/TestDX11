@@ -133,6 +133,9 @@
     <Filter Include="Graphics\Resources\Materials\Templates">
       <UniqueIdentifier>{2f436e1c-e32d-477d-80c0-b7557724f24e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Assets">
+      <UniqueIdentifier>{dadac9c9-1f9c-4e21-bc09-cbf82f109fde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Common\Application\GameApplication.h">
@@ -577,6 +580,12 @@
     <ClInclude Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialParameterDescriptors.h">
       <Filter>Graphics\Resources\Materials\Templates</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\Asset.h">
+      <Filter>Core\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\Includes.h">
+      <Filter>Core\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -822,6 +831,9 @@
     <ClCompile Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.cpp">
       <Filter>Graphics\Resources\Materials\Templates</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\Assets\Asset.cpp">
+      <Filter>Core\Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Sources\Common\Graphics\RHI\RhiManager.inl">
@@ -922,6 +934,9 @@
     </None>
     <None Include="..\..\Sources\Common\Graphics\Resources\Materials\Templates\MaterialTemplate.inl">
       <Filter>Graphics\Resources\Materials\Templates</Filter>
+    </None>
+    <None Include="..\..\Sources\Common\Core\Assets\Asset.inl">
+      <Filter>Core\Assets</Filter>
     </None>
   </ItemGroup>
 </Project>
