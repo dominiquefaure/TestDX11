@@ -14,4 +14,6 @@ public:
 
 };
 
+typedef ReferenceCountedPtr<StaticMesh>	StaticMeshRef;
+
 #endif

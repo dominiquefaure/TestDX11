@@ -36,6 +36,7 @@ private:
 #include "Asset.inl"
 #endif
 
+typedef ReferenceCountedPtr<Asset>	AssetRef;
 
 
 #endif

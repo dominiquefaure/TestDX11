@@ -6,7 +6,7 @@
 
 class ShaderDefinition;
 
-class ShaderProgram
+class ShaderProgram : public Asset
 {
 public:
 
@@ -23,16 +23,21 @@ public:
 	 */
 	FORCE_INLINE ShaderDefinition* GetPixelShaderDefinition();
 
-	/*
-	 * Load the Shader program data from a json file
-	 */
-	void Load( const std::string& a_jsonFilePath );
 
 	/*
 	 * Apply the correct shaders to the Context
 	 * return false if there is no permutation available for the actual VertexLayout
 	 */
 	TBool Apply( RhiGraphicContext* a_context, const RhiVertexLayoutType a_layoutType , const TUint64 a_permutationID );
+
+
+protected:
+
+	/*
+	 * Load the Shader program data from a json file
+	 */
+	virtual void LoadFromJSon( const JSonNode* a_rootNode );
+
 
 // Methods
 private:

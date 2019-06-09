@@ -88,7 +88,7 @@ private:
 //	RhiTexture2D*			m_testTexture;
 	Texture2D*				m_testTexture;
 
-	StaticMesh*				m_spriteMesh;
+	StaticMeshRef			m_spriteMesh;
 	MaterialRef				m_spriteMaterial;
 	Model*					m_spriteModel;
 

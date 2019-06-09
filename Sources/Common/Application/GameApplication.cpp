@@ -56,6 +56,7 @@ void GameApplication::Init( HWND a_handle )
 	RECT rc;
 	GetClientRect(a_handle, &rc);
 
+	AssetManager::CreateInstance();
 	RhiManager::CreateInstance();
 	RhiManager::GetInstance()->Init( a_handle ,  rc.right - rc.left , rc.bottom - rc.top  );
 

@@ -586,6 +586,9 @@
     <ClInclude Include="..\..\Sources\Common\Core\Assets\Includes.h">
       <Filter>Core\Assets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\AssetManager.h">
+      <Filter>Core\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -832,6 +835,9 @@
       <Filter>Graphics\Resources\Materials\Templates</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Assets\Asset.cpp">
+      <Filter>Core\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\Assets\AssetManager.cpp">
       <Filter>Core\Assets</Filter>
     </ClCompile>
   </ItemGroup>

@@ -29,11 +29,6 @@ public:
 	BaseMesh();
 	virtual ~BaseMesh();
 
-
-
-
-	void BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData = true );
-
 	/*
 	* Draw this Part
 	*/
@@ -55,12 +50,14 @@ public:
 	*/
 	void SerializeToJSon( const char* a_path );
 
+	void BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData = true );
 
 protected:
 	/*
 	 * Load the Geometry data from a JSon node
 	 */
-	void LoadFromJSon( const JSonNode* a_rootNode );
+	virtual void LoadFromJSon( const JSonNode* a_rootNode );
+
 
 
 // Methods

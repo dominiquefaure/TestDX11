@@ -78,8 +78,7 @@ void Sample::OnInit( )
 	m_testTexture	=	DDSTextureLoader::CreateTexture( RhiManager::GetInstance()->GetGraphicDevice() ,"armor.dds" );
 
 
-	MaterialTemplate t_template;
-	t_template.Load( "SpriteMatTemplate.json" );
+	MaterialTemplateRef t_template	=	AssetManager::GetInstance()->GetAsset<MaterialTemplate>( "SpriteMatTemplate.json");
 }
 //---------------------------------------------------------------------------------------------
 
@@ -96,14 +95,11 @@ void Sample::OnClose()
 //---------------------------------------------------------------------------------------------
 void Sample::LoadSprite( RhiGraphicDevice* a_device )
 {
-	m_spriteMaterial										=	m_materialManager.GetMaterial( "SpriteMat.mat" );
-
-	m_spriteMesh											=	new StaticMesh();
-	m_spriteMesh->Load( "Sprite.mesh" );
-	m_spriteMesh->BuildRenderData( a_device );
+	m_spriteMaterial										=	AssetManager::GetInstance()->GetAsset<Material>( "SpriteMat.mat");
+	m_spriteMesh											=	AssetManager::GetInstance()->GetAsset<StaticMesh>( "Sprite.mesh" );
 
 	m_spriteModel											=	new Model();
-	m_spriteModel->SetMesh( m_spriteMesh );
+	m_spriteModel->SetMesh( m_spriteMesh.Cast<BaseMesh>() );
 	m_spriteModel->SetMaterial( m_spriteMaterial );
 
 	m_spriteInstance										=	new StaticModelInstance();

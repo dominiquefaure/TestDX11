@@ -39,16 +39,12 @@ ShaderProgram::~ShaderProgram()
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-void ShaderProgram::Load( const std::string& a_jsonFilePath )
+void ShaderProgram::LoadFromJSon( const JSonNode* a_rootNode )
 {
-	// Load the content of the JSon file
-	JSonReader t_reader;
-	t_reader.Load( a_jsonFilePath );
+	m_vertexShader											=	LoadShaderDefinition( a_rootNode , "VertexShader" );
+	m_pixelShader											=	LoadShaderDefinition( a_rootNode , "PixelShader" );
 
-	m_vertexShader											=	LoadShaderDefinition( t_reader.GetRootNode() , "VertexShader" );
-	m_pixelShader											=	LoadShaderDefinition( t_reader.GetRootNode() , "PixelShader" );
-
-	SetSupportedVertexLayouts( t_reader.GetRootNode() );
+	SetSupportedVertexLayouts( a_rootNode );
 }
 //---------------------------------------------------------------------------------------------
 

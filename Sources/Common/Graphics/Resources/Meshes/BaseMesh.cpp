@@ -32,7 +32,7 @@ BaseMesh::~BaseMesh()
 //-------------------------------------------------------------------------------------------------
 void BaseMesh::BuildRenderData( RhiGraphicDevice* a_device , bool a_freeSourceData  )
 {
-	if( m_sourceData != nullptr )
+	if( ( m_sourceData != nullptr ) && ( m_renderGeometry == nullptr ) )
 	{
 		m_renderGeometry									=	new StaticGeometry();
 
@@ -99,6 +99,9 @@ void BaseMesh::LoadFromJSon( const JSonNode* a_rootNode )
 {
 	LoadParts( a_rootNode );
 	LoadGeometryDatas( a_rootNode );
+
+	RhiGraphicDevice* t_device								=	RhiManager::GetInstance()->GetGraphicDevice();
+	BuildRenderData( t_device );
 }
 //-------------------------------------------------------------------------------------------------
 
