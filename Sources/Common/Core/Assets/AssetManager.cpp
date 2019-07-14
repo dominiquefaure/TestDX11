@@ -1,14 +1,15 @@
 #include "AssetManager.h"
 
-/*
+
 //------------------------------------------------------------------------------------
-AssetRef AssetManager::GetAsset( const std::string& a_filePath )
+Asset* AssetManager::Find( const std::string& a_filePath )
 {
 
-	return LoadAsset( a_filePath );
+	return m_assetRegistry.Get( a_filePath );
 }
 //------------------------------------------------------------------------------------
 
+/*
 //------------------------------------------------------------------------------------
 AssetRef AssetManager::LoadAsset( const std::string& a_filePath )
 {

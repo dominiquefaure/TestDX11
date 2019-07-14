@@ -589,6 +589,9 @@
     <ClInclude Include="..\..\Sources\Common\Core\Assets\AssetManager.h">
       <Filter>Core\Assets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\AssetRegistry.h">
+      <Filter>Core\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp">
@@ -838,6 +841,9 @@
       <Filter>Core\Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Common\Core\Assets\AssetManager.cpp">
+      <Filter>Core\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Common\Core\Assets\AssetRegistry.cpp">
       <Filter>Core\Assets</Filter>
     </ClCompile>
   </ItemGroup>

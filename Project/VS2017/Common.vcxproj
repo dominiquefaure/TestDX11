@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\Sources\Common\Application\WinMainLauncher.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Assets\Asset.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Assets\AssetManager.h" />
+    <ClInclude Include="..\..\Sources\Common\Core\Assets\AssetRegistry.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Assets\Includes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\BaseDataTypes.h" />
     <ClInclude Include="..\..\Sources\Common\Core\Base\Includes.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="..\..\Sources\Common\Application\WinMainLauncher.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Assets\Asset.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\Assets\AssetManager.cpp" />
+    <ClCompile Include="..\..\Sources\Common\Core\Assets\AssetRegistry.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileHandle.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\FileSystem.cpp" />
     <ClCompile Include="..\..\Sources\Common\Core\IO\JSon\AJSonProperty.cpp" />

@@ -9,7 +9,9 @@ public:
 	/*
 	* Default Constructor
 	*/
-	ReferenceCounted() : m_count( 0 )
+	ReferenceCounted( bool a_autoDelete) :
+	m_autoDelete(a_autoDelete),
+	m_count( 0 )
 	{
 	}
 	//------------------------------------------------------------------------
@@ -21,13 +23,20 @@ public:
 	ReferenceCounted( const ReferenceCounted& a_ref ) : m_count( 0 )
 	{
 		// just to make sure that the count is not duplicated
+
+		m_autoDelete										=	a_ref.m_autoDelete;
 	}
 	//------------------------------------------------------------------------
 
 	//------------------------------------------------------------------------
 	virtual ~ReferenceCounted()
 	{
-		// do nothing !!
+		// if the Object is not Referenced
+		if( m_count == 0 )
+		{
+			// delete it
+			PerformDelete();
+		}
 	}
 	//------------------------------------------------------------------------
 
@@ -73,7 +82,14 @@ public:
 		// if not referenced anymore , really delete it
 		if( m_count == 0 )
 		{
-			PerformDelete();
+			if( m_autoDelete )
+			{
+				PerformDelete();
+			}
+			else
+			{
+				OnUnreferenced();
+			}
 		}
 	}
 	//------------------------------------------------------------------------
@@ -102,12 +118,22 @@ protected:
 
 	//------------------------------------------------------------------------
 	/*
+	* called for Object that are not auto-delete, when the reference count reach 0
+	*/
+	virtual void OnUnreferenced(){};
+	//------------------------------------------------------------------------
+
+	//------------------------------------------------------------------------
+	/*
 	* Delete this Object
 	*/
 	inline void PerformDelete()
 	{
 		// perform custom release Operations
 		this->PerformRelease();
+
+		// put the count to negative value to be sure it won't be deleted again
+		m_count												=	-1;
 
 		// Delete the object
 		delete this;
@@ -117,6 +143,9 @@ protected:
 private:
 
 	unsigned int		m_count;
+
+	// does the object get deleted directly when reference count reach 0?
+	TBool				m_autoDelete;
 };
 
 

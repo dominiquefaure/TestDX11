@@ -5,6 +5,7 @@
 #include "Core/Base/Includes.h"
 #include "Core//IO/Includes.h"
 
+
 /*
 * Base class for all assets
 */
@@ -12,6 +13,8 @@ class Asset : public ReferenceCounted
 {
 
 public:
+
+	Asset();
 
 	FORCE_INLINE const std::string& GetFilePath()const;
 

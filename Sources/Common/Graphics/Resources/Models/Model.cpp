@@ -4,7 +4,7 @@
 #include "Renderer/Scene/Rendering/GeometryRenderList.h"
 
 //------------------------------------------------------------------------------------
-Model::Model()
+Model::Model() : ReferenceCounted( true )
 {
 	m_mesh													=	nullptr;
 }
